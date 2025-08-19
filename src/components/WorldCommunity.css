@@ -148,7 +148,7 @@
 }
 
 /* Mobile Styles */
-.mobile-grid {
+.mobile-grid1 {
   display: none;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
@@ -241,8 +241,10 @@
     display: none !important;
   }
   
-  .mobile-grid {
-    display: grid;
+  .mobile-grid1 {
+    display: grid !important;
+    
+    gap: 0.4rem;
   }
   
   .more-badge-mobile {
