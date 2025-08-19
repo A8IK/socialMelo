@@ -1,0 +1,603 @@
+.creators-section {
+  position: relative;
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #faf5ff 0%, #fdf2f8 100%);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.italic-text {
+  font-style: italic;
+}
+
+.subtitle {
+  color: #4b5563;
+  font-size: 1.125rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* TikTok Mobile Mockup Styles */
+.tiktok-mobile-mockup {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.tiktok-rotate-left {
+  transform: rotate(-2deg);
+}
+
+.tiktok-rotate-right {
+  transform: rotate(2deg);
+}
+
+.tiktok-phone-frame {
+  position: relative;
+  background-color: #000;
+  border-radius: 25px;
+  padding: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.tiktok-phone-screen {
+  position: relative;
+  background-color: #111827;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 9/16;
+}
+
+.tiktok-background-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tiktok-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%, transparent 100%);
+}
+
+/* TikTok UI Elements */
+.tiktok-top-ui {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.tiktok-signal-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tiktok-dot {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.tiktok-time {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.tiktok-side-buttons {
+  position: absolute;
+  right: 12px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.tiktok-button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tiktok-like-button {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiktok-like-button span {
+  color: black;
+  font-size: 0.75rem;
+}
+
+.tiktok-like-count {
+  color: white;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.tiktok-action-button {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiktok-action-button span {
+  color: white;
+  font-size: 0.75rem;
+}
+
+/* TikTok Bottom Content */
+.tiktok-bottom-content {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 48px;
+  z-index: 10;
+}
+
+.tiktok-creator-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tiktok-creator-handle {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tiktok-creator-description {
+  color: white;
+  font-size: 0.75rem;
+  line-height: 1.333;
+  margin: 0 0 12px 0;
+}
+
+.tiktok-product-showcase {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tiktok-product-placeholder {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tiktok-shop-text {
+  color: white;
+  font-size: 0.75rem;
+}
+
+/* TikTok Play Button */
+.tiktok-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.tiktok-play-button {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.tiktok-play-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+  margin-left: 4px;
+}
+
+/* Creator Image Styles */
+.creator-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  aspect-ratio: 9/16;
+  cursor: pointer;
+}
+
+.creator-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.creator-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  padding: 1rem;
+  color: white;
+  z-index: 5;
+}
+
+.creator-name1 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: white;
+}
+
+.creator-handle {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Hover Effects for Creator Images */
+.creator-image-wrapper:hover .play-overlay {
+  opacity: 1;
+}
+
+.creator-image-wrapper:hover .play-button {
+  transform: scale(1);
+}
+
+.creator-image-wrapper:hover .creator-image {
+  transform: scale(1.05);
+}
+
+.rotate-left {
+  transform: rotate(-2deg);
+}
+
+.rotate-right {
+  transform: rotate(2deg);
+}
+
+/* Simple Creator Media Styles */
+.creator-media-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.rotate-left {
+  transform: rotate(-2deg);
+}
+
+.rotate-right {
+  transform: rotate(2deg);
+}
+
+.media-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  aspect-ratio: 9/16;
+  cursor: pointer;
+}
+
+.creator-media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  background-color: #f3f4f6;
+  background-image: linear-gradient(45deg, #e5e7eb 25%, transparent 25%), 
+                    linear-gradient(-45deg, #e5e7eb 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #e5e7eb 75%), 
+                    linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.creator-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.creator-media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* CSS Background Fallback */
+.creator-media-background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.creator-media-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.creator-media-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.creator-media-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.creator-media-category {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Play Button Overlay */
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.play-button {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.play-icon {
+  width: 24px;
+  height: 24px;
+  color: #333;
+  margin-left: 3px;
+}
+
+/* Hover Effects */
+.media-container:hover .play-overlay {
+  opacity: 1;
+}
+
+.media-container:hover .play-button {
+  transform: scale(1);
+}
+
+.media-container:hover .creator-media-image {
+  transform: scale(1.05);
+}
+
+/* Grid Layouts */
+.mockups-container {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.desktop-grid {
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.desktop-second-row {
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  max-width: 80rem;
+  margin: 2rem auto 0;
+}
+
+.mobile-grid {
+  display: block;
+}
+
+.mobile-first-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.mobile-second-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+/* Grid Item Positioning */
+.offset-down {
+  margin-top: 1rem;
+}
+
+.offset-down-large {
+  margin-top: 2rem;
+}
+
+.offset-up {
+  margin-top: -1rem;
+}
+
+/* Bottom Section */
+.bottom-section {
+  text-align: center;
+}
+
+.more-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2rem;
+}
+
+.cta-button1 {
+  padding: 1rem 2rem;
+  background-color: #D76D77;
+  color: white;
+  font-weight: 600;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Background Decoration */
+.background-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28rem;
+  height: 28rem;
+  opacity: 0.15;
+  background-image: url('Background 3.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .creators-section {
+    padding: 4rem 1rem;
+  }
+  
+  .main-title {
+    font-size: 3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    max-width: 60rem;
+    white-space: nowrap;
+  }
+  
+  .more-text {
+    font-size: 1.875rem;
+  }
+  
+  .desktop-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .desktop-second-row {
+    display: grid;
+  }
+  
+  .mobile-grid {
+    display: none;
+  }
+  
+  .creator-media-wrapper,
+  .creator-image-wrapper,
+  .tiktok-mobile-mockup {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-title {
+    font-size: 3.75rem;
+  }
+  
+  .desktop-grid {
+    gap: 1.5rem;
+  }
+  
+  .creator-media-wrapper,
+  .creator-image-wrapper,
+  .tiktok-mobile-mockup {
+    max-width: 220px;
+  }
+}

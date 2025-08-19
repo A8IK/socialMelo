@@ -1,0 +1,339 @@
+.worldwide-community {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    rgba(255, 175, 123, 0.1) 0%, 
+    rgba(255, 192, 203, 0.1) 50%, 
+    rgba(128, 0, 128, 0.1) 100%);
+  padding: 4rem 1rem;
+}
+
+.community-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title Section */
+.title-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.title-normal {
+  color: #374151;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, #FFAF7B, #D76D77, #3A1C71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Countries Wrapper */
+.countries-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Country Badges - Desktop */
+.country-badge {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  animation: float 3s ease-in-out infinite;
+}
+
+.badge-content {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.badge-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.flag-circle {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-initial {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.country-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+}
+
+/* Country Positions */
+.netherlands { top: 20%; left: 25%; }
+.nigeria { top: 15%; right: 46%; }
+.uk { top: 32%; left: 30%; }
+.germany { top: 35%; right: 22%; }
+.france { top: 8%; left: 28%; }
+.spain { top: 50%; right: 25%; }
+.singapore { top: 22%; right: 30%; }
+.argentina { top: 57%; left: 30%; }
+.italy { top: 52%; left: 48%; }
+.canada { top: 45%; right: 52%; }
+.japan { top: 62%; right: 26%; }
+.brazil { top: 14%; left: 68%; }
+.south-africa { top: 65%; left: 45%; }
+.uae { top: 10%; right: 35%; }
+
+/* Flag Colors */
+.orange { background-image: url('Netherland.png'); background-size: cover; background-position: center; }
+.green { background-image: url('Nigeria.png'); background-size: cover; background-position: center; }
+.blue { background-image: url('UK.png'); background-size: cover; background-position: center; }
+.red { background-image: url('Germany.png'); background-size: cover; background-position: center; }
+.blue-dark { background-image: url('France.png'); background-size: cover; background-position: center; }
+.yellow { background-image: url('Spain.png'); background-size: cover; background-position: center; }
+.red-dark { background-image: url('Singapore.png'); background-size: cover; background-position: center; }
+.blue-light { background-image: url('Argentina.png'); background-size: cover; background-position: center; }
+.green-light { background-image: url('Italy.png'); background-size: cover; background-position: center; }
+.red-canada { background-image: url('Canada.png'); background-size: cover; background-position: center; }
+
+/* More Badge - Desktop */
+.more-badge {
+  position: absolute;
+  top: 40%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+.more-badge-content {
+  background: linear-gradient(135deg, #FFAF7B, #D76D77, #3A1C71);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.more-badge-content:hover {
+  transform: scale(1.05);
+}
+
+.more-text1 {
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Mobile Styles */
+.mobile-grid {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.mobile-country-item {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-badge-content {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.mobile-country-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.more-badge-mobile {
+  display: none;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+/* Connecting Lines */
+.connecting-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.line-1 {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.line-2 {
+  animation: pulse 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.line-3 {
+  animation: pulse 2s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(-50%);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .countries-wrapper {
+    height: auto;
+  }
+  
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-grid {
+    display: grid;
+  }
+  
+  .more-badge-mobile {
+    display: flex;
+  }
+  
+  .connecting-lines {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .countries-wrapper {
+    height: 450px;
+  }
+  
+  .country-name {
+    font-size: 0.75rem;
+  }
+  
+  .flag-circle {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  
+  .country-initial {
+    font-size: 0.625rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .countries-wrapper {
+    height: 600px;
+  }
+  
+  .country-name {
+    font-size: 1rem;
+  }
+  
+  .flag-circle {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+  
+  .country-initial {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1024px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .countries-wrapper {
+    height: 600px;
+  }
+  
+  .country-name {
+    font-size: 1rem;
+  }
+  
+  .flag-circle {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+  
+  .country-initial {
+    font-size: 0.875rem;
+  }
+
+  .country-badge.netherlands { top: 20% !important; left: 25% !important; }
+  .country-badge.nigeria { top: 15% !important; right: 46% !important; }
+  .country-badge.uk { top: 32% !important; left: 30% !important; }
+  .country-badge.germany { top: 35% !important; right: 23% !important; }
+  .country-badge.france { top: 8% !important; left: 28% !important; }
+  .country-badge.spain { top: 50% !important; right: 25% !important; }
+  .country-badge.singapore { top: 22% !important; right: 30% !important; }
+  .country-badge.argentina { top: 57% !important; left: 30% !important; }
+  .country-badge.italy { top: 52% !important; left: 48% !important; }
+  .country-badge.canada { top: 45% !important; right: 52% !important; }
+  .country-badge.japan { top: 62% !important; right: 26% !important; }
+  .country-badge.brazil { top: 14% !important; left: 68% !important; }
+  .country-badge.south-africa { top: 65% !important; left: 45% !important; }
+  .country-badge.uae { top: 10% !important; right: 35% !important; }
+}
