@@ -10,6 +10,9 @@ import UserReview from './components/UserReview';
 import FixMeeting from './components/FixMeeting';
 import CreatorsSection from './components/CreatorsSection';
 
+import PricingHero from './components/PricingPage/PricingHero';
+import PricingPlan from './components/PricingPage/PricingPlan';
+
 function App() {
   return (
     <div className="font-krub">
@@ -30,6 +33,13 @@ function App() {
                   <FixMeeting />
                 </>
               } /> 
+
+               <Route path="/pricing" element={
+                <>
+                  <PricingHero />
+                  <PricingPlan />
+                </>
+              } />
             </Routes>
           </main>
           <Footer /> 
