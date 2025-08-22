@@ -97,7 +97,7 @@
 }
 
 .price {
-  font-size: 36px;
+  font-size: 35px;
   font-weight: 700;
   color: #D76D77;
   margin-bottom: 8px;
@@ -138,7 +138,7 @@
 .feature-item {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   margin-bottom: 12px;
   color: #333;
   font-size: 15px;
@@ -308,10 +308,10 @@
 }
 
 .compare-price {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: #D76D77;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .compare-description {

@@ -113,11 +113,15 @@ const PricingPlan = () => {
         <div className="compare-content">
           {/* Find Plan Image Section */}
          <div className="image-section">
-            <img 
+            <img style={{
+                    height: '290px',       
+                    width: 'auto',          
+                    objectFit: 'contain',   
+                    maxWidth: '100%'      
+                }}
                 src="FIND A PLAN THATS RIGHT FOR YOU.png" 
                 alt="Find a plan that's right for you" 
-                className="plan-image"
-            />
+                className="plan-image"/>
             </div>
 
           {/* Compare Plans */}

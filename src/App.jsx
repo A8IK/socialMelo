@@ -12,6 +12,8 @@ import CreatorsSection from './components/CreatorsSection';
 
 import PricingHero from './components/PricingPage/PricingHero';
 import PricingPlan from './components/PricingPage/PricingPlan';
+import SocialNetworks from './components/PricingPage/SocialNetworks';
+import PricingCta from './components/PricingPage/PricingCta';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
                 <>
                   <PricingHero />
                   <PricingPlan />
+                  <SocialNetworks />
+                  <PricingCta />
                 </>
               } />
             </Routes>
