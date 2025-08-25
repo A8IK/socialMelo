@@ -1,11 +1,11 @@
-.pricing-cta {
+.testimonial-showcase-wrapper2 {
   background: linear-gradient(135deg, #ffb380 0%, #ffa366 100%);
   padding: 4rem 0;
   font-family: 'Krub', sans-serif;
   overflow: hidden;
 }
 
-.pricing-cta-container {
+.testimonial-grid-layout3 {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -16,28 +16,28 @@
 }
 
 /* Left Side - Image Section */
-.cta-image-section {
+.mockup-visual-container3 {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem;
 }
 
-.cta-image {
+.client-showcase-graphic1 {
   width: 100%;
   height: auto;
-  max-width: 500px;
+  max-width: 650px;
   object-fit: contain;
 }
 
-.mockup-container {
+.testimonial-mockup-container-unique {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.phone-mockup {
+.testimonial-phone-mockup-unique {
   position: absolute;
   width: 280px;
   height: 180px;
@@ -50,7 +50,7 @@
 }
 
 /* Main Center Phone */
-.main-phone {
+.testimonial-main-phone-unique {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -59,20 +59,20 @@
   height: 200px;
 }
 
-.main-phone .phone-header {
+.testimonial-main-phone-unique .testimonial-phone-header-unique {
   font-size: 0.75rem;
   color: #666;
   margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
-.main-phone .phone-content {
+.testimonial-main-phone-unique .testimonial-phone-content-unique {
   display: flex;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.main-phone .profile-image {
+.testimonial-main-phone-unique .testimonial-profile-image-unique {
   width: 40px;
   height: 40px;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
@@ -80,18 +80,18 @@
   flex-shrink: 0;
 }
 
-.main-phone .content-text {
+.testimonial-main-phone-unique .testimonial-content-text-unique {
   flex: 1;
 }
 
-.main-phone .content-text p {
+.testimonial-main-phone-unique .testimonial-content-text-unique p {
   font-size: 0.8rem;
   color: #333;
   line-height: 1.4;
   margin: 0;
 }
 
-.comments-badge {
+.testimonial-comments-badge-unique {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -108,7 +108,7 @@
 }
 
 /* Left Phone - Reviews */
-.left-phone {
+.testimonial-left-phone-unique {
   top: 20%;
   left: 5%;
   transform: rotate(-5deg);
@@ -117,17 +117,17 @@
   height: 160px;
 }
 
-.reviews-content {
+.testimonial-reviews-content-unique {
   padding: 1rem;
 }
 
-.profile-section {
+.testimonial-profile-section-unique {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
 }
 
-.profile-avatar {
+.testimonial-profile-avatar-unique {
   width: 35px;
   height: 35px;
   background: linear-gradient(45deg, #ff9a56, #ff6b6b);
@@ -135,14 +135,14 @@
   flex-shrink: 0;
 }
 
-.profile-text p {
+.testimonial-profile-text-unique p {
   font-size: 0.75rem;
   color: #333;
   line-height: 1.3;
   margin: 0;
 }
 
-.reviews-badge {
+.testimonial-reviews-badge-unique {
   position: absolute;
   bottom: -10px;
   left: -10px;
@@ -159,7 +159,7 @@
 }
 
 /* Right Phone - DMs */
-.right-phone {
+.testimonial-right-phone-unique {
   top: 60%;
   right: 5%;
   transform: rotate(5deg);
@@ -168,14 +168,14 @@
   height: 140px;
 }
 
-.dms-content {
+.testimonial-dms-content-unique {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-.dm-message p {
+.testimonial-dm-message-unique p {
   font-size: 0.85rem;
   color: #333;
   text-align: center;
@@ -183,7 +183,7 @@
   font-weight: 500;
 }
 
-.dms-badge {
+.testimonial-dms-badge-unique {
   position: absolute;
   bottom: -10px;
   right: -10px;
@@ -200,14 +200,14 @@
 }
 
 /* Right Side - Content Section */
-.cta-content-section {
+.conversion-content-zone3 {
    padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.cta-content {
+.marketing-message-block2 {
    max-width: 800px;
   width: 100%;
   display: flex;
@@ -215,33 +215,35 @@
   gap: 1.5rem;
 }
 
-.cta-title {
+.performance-headline-text2 {
   font-size: 2.2rem;
   font-weight: 700;
   color: #1a365d;
   line-height: 1.2;
   margin-bottom: 0;
-  text-allign: left;
+  text-align: left;
 }
 
-.cta-subtitle {
+.trust-indicator-subtitle3 {
   font-size: 1.1rem;
   color: #2d3748;
   line-height: 1.5;
   margin-bottom: 2rem;
   opacity: 0.9;
   white-space: nowrap;
+  margin-top: -8px;
 }
 
-.cta-buttons {
+.action-button-cluster2 {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: -22px;
 }
 
-.btn-demo {
+.demo-request-btn3 {
   background: white;
   color: #2d3748;
   border: 2px solid white;
@@ -254,13 +256,21 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.btn-demo:hover {
+.demo-gradient-text {
+  background: linear-gradient(45deg, #3A1C71, #D76D77, #FFAF7B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.demo-request-btn3:hover {
   background: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.btn-trial {
+.trial-signup-btn4 {
   background: #2d3748;
   color: white;
   border: 2px solid #2d3748;
@@ -276,159 +286,259 @@
   box-shadow: 0 4px 15px rgba(45, 55, 72, 0.3);
 }
 
-.btn-trial:hover {
+.trial-signup-btn4:hover {
   background: #1a202c;
   border-color: #1a202c;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(45, 55, 72, 0.4);
 }
 
-.arrow-icon {
+.forward-arrow-symbol2 {
   font-size: 1.2rem;
   transition: transform 0.3s ease;
 }
 
-.btn-trial:hover .arrow-icon {
+.trial-signup-btn4:hover .forward-arrow-symbol2 {
   transform: translateX(3px);
 }
 
-/* Tablet Styles */
-@media (max-width: 1024px) {
-  .pricing-cta {
-    padding: 3rem 0;
+/* Large Desktop - 1200px and above (default styles already cover this) */
+
+/* Standard Desktop - 1024px to 1440px */
+@media (max-width: 1440px) {
+  .testimonial-grid-layout3 {
+    max-width: 1440px;
+    gap: 3rem;
   }
   
-  .pricing-cta-container {
-    gap: 2rem;
-    padding: 0 1.5rem;
+  .client-showcase-graphic1 {
+    max-width: 550px;
   }
   
-  .cta-image-section {
-    height: 300px;
-  }
-  
-  .phone-mockup {
-    width: 240px;
-    height: 150px;
-  }
-  
-  .main-phone {
-    width: 260px;
-    height: 170px;
-  }
-  
-  .left-phone, .right-phone {
-    width: 220px;
-    height: 130px;
-  }
-  
-  .cta-title {
+  .performance-headline-text2 {
     font-size: 2rem;
   }
   
-  .cta-subtitle {
+  .trust-indicator-subtitle3 {
     font-size: 1rem;
   }
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .pricing-cta {
-    padding: 2rem 0;
+/* Tablet Landscape - 769px to 1023px */
+@media (max-width: 1023px) {
+  .testimonial-showcase-wrapper2 {
+    padding: 3rem 0;
   }
   
-  .pricing-cta-container {
+  .testimonial-grid-layout3 {
+    gap: 2rem;
+    padding: 0 1.5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .mockup-visual-container3 {
+    height: 300px;
+  }
+  
+  .client-showcase-graphic1 {
+    max-width: 400px;
+  }
+  
+  .performance-headline-text2 {
+    font-size: 1.8rem;
+  }
+  
+  .trust-indicator-subtitle3 {
+    font-size: 0.95rem;
+    white-space: normal;
+    margin-top: -20px;
+  }
+  
+  .marketing-message-block2 {
+    max-width: 600px;
+  }
+  
+  .demo-request-btn3,
+  .trial-signup-btn4 {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet Portrait - 768px and below - HIDE IMAGE */
+@media (max-width: 768px) {
+  .testimonial-showcase-wrapper2 {
+    padding: 2.5rem 0;
+  }
+  
+  .testimonial-grid-layout3 {
     grid-template-columns: 1fr;
-    gap: 0;
-    padding: 0 1rem;
+    gap: 2rem;
+    padding: 0 1.5rem;
     text-align: center;
   }
   
-  /* Hide image section on mobile */
-  .cta-image-section {
+  /* Hide image section on tablet portrait and below */
+  .mockup-visual-container3 {
     display: none;
   }
   
-  .cta-content-section {
-    padding: 1rem 0;
+  .conversion-content-zone3 {
+    padding: 0;
   }
   
-  .cta-content {
+  .marketing-message-block2 {
     max-width: 100%;
   }
   
-  .cta-title {
-    font-size: 1.875rem;
+  .performance-headline-text2 {
+    font-size: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
   }
   
-  .cta-subtitle {
-    font-size: 0.95rem;
+  .trust-indicator-subtitle3 {
+    font-size: 1rem;
     margin-bottom: 1.5rem;
+    white-space: normal;
+    text-align: center;
   }
   
-  .cta-buttons {
+  .action-button-cluster2 {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
   }
   
-  .btn-demo,
-  .btn-trial {
+  .demo-request-btn3,
+  .trial-signup-btn4 {
     width: 100%;
     max-width: 300px;
     justify-content: center;
     padding: 1rem 2rem;
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 480px) {
-  .pricing-cta {
-    padding: 1.5rem 0;
+/* Mobile Landscape - 481px to 767px */
+@media (max-width: 640px) {
+  .testimonial-showcase-wrapper2 {
+    padding: 2rem 0;
   }
   
-  .pricing-cta-container {
-    padding: 0 0.75rem;
+  .testimonial-grid-layout3 {
+    padding: 0 1rem;
+    gap: 1.5rem;
   }
   
-  .cta-title {
-    font-size: 1.5rem;
+  .performance-headline-text2 {
+    font-size: 1.75rem;
     line-height: 1.3;
   }
   
-  .cta-subtitle {
-    font-size: 0.9rem;
+  .trust-indicator-subtitle3 {
+    font-size: 0.95rem;
   }
   
-  .btn-demo,
-  .btn-trial {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.9rem;
+  .action-button-cluster2 {
+    gap: 0.75rem;
+  }
+  
+  .demo-request-btn3,
+  .trial-signup-btn4 {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
   }
 }
 
-/* Animation for phone mockups */
-@keyframes float {
+/* Mobile Portrait - 480px and below */
+@media (max-width: 480px) {
+  .testimonial-showcase-wrapper2 {
+    padding: 1.5rem 0;
+  }
+  
+  .testimonial-grid-layout3 {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+  
+  .performance-headline-text2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  
+  .trust-indicator-subtitle3 {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+  }
+  
+  .action-button-cluster2 {
+    gap: 0.75rem;
+  }
+  
+  .demo-request-btn3,
+  .trial-signup-btn4 {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+}
+
+/* Extra Small Mobile - 360px and below */
+@media (max-width: 360px) {
+  .testimonial-showcase-wrapper2 {
+    padding: 1.25rem 0;
+  }
+  
+  .testimonial-grid-layout3 {
+    padding: 0 0.75rem;
+  }
+  
+  .performance-headline-text2 {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+  
+  .trust-indicator-subtitle3 {
+    font-size: 0.85rem;
+  }
+  
+  .demo-request-btn3,
+  .trial-signup-btn4 {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    max-width: 250px;
+  }
+  
+  .forward-arrow-symbol2 {
+    font-size: 1rem;
+  }
+}
+
+/* Animation for phone mockups - Unique keyframes */
+@keyframes testimonial-float-animation-unique {
   0%, 100% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
   50% { transform: translateY(-10px) rotate(var(--rotation, 0deg)); }
 }
 
-.phone-mockup {
-  animation: float 6s ease-in-out infinite;
+.testimonial-phone-mockup-unique {
+  animation: testimonial-float-animation-unique 6s ease-in-out infinite;
 }
 
-.left-phone {
+.testimonial-left-phone-unique {
   --rotation: -5deg;
   animation-delay: -2s;
 }
 
-.main-phone {
+.testimonial-main-phone-unique {
   --rotation: 0deg;
   animation-delay: 0s;
 }
 
-.right-phone {
+.testimonial-right-phone-unique {
   --rotation: 5deg;
   animation-delay: -4s;
 }

@@ -315,13 +315,13 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav style={headerStyles.nav}>
-            <Link 
+            {/* <Link 
               to="/social-melo" 
               style={headerStyles.navLink}
               onMouseEnter={handleNavLinkHover}
               onMouseLeave={handleNavLinkLeave}>
               SocialMelo
-            </Link>
+            </Link> */}
             <Link 
               to="/pricing" 
               style={headerStyles.navLink}
@@ -404,7 +404,7 @@ const Header = () => {
         <div style={headerStyles.mobileMenu}>
           <div style={headerStyles.mobileMenuContainer}>
             {/* Mobile Navigation Links */}
-            <Link 
+            {/* <Link 
               to="/social-melo" 
               style={headerStyles.mobileNavLink}
               onMouseEnter={handleMobileNavHover}
@@ -412,7 +412,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               SocialMelo
-            </Link>
+            </Link> */}
             <Link 
               to="/pricing" 
               style={headerStyles.mobileNavLink}
