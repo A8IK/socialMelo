@@ -15,7 +15,12 @@ import PricingPlan from './components/PricingPage/PricingPlan';
 import SocialNetworks from './components/PricingPage/SocialNetworks';
 import PricingCta from './components/PricingPage/PricingCta';
 
-import AboutHero from './components/About Us/AboutHero';
+import AboutHero from './components/AboutUs/AboutHero';
+import AboutRemarkable from './components/AboutUs/AboutRemarkable';
+import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
+import CultureTabs from './components/AboutUs/CultureTabs';
+
+import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
 function App() {
   return (
@@ -50,6 +55,15 @@ function App() {
                <Route path="/about" element={
                 <>
                   <AboutHero/>
+                  <AboutRemarkable />
+                  <ValuesTeamSection />
+                  <CultureTabs />
+                </>
+              } />
+
+              <Route path="/contact" element={
+                <>
+                  <ContactCollaboration />
                 </>
               } />
             </Routes>

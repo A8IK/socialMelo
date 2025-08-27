@@ -108,11 +108,7 @@
 }
 
 .zephyr-hero-gradient-cta-btn {
-  color: white;
-  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: white; 
   border: none;
   padding: 16px 32px;
   font-size: 1.1rem;
@@ -121,6 +117,24 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  
+  /* Create gradient text using pseudo-element */
+  color: transparent;
+}
+
+.zephyr-hero-gradient-cta-btn::before {
+  content: 'Hire Us';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .zephyr-hero-gradient-cta-btn:hover {
@@ -150,7 +164,7 @@
   z-index: 10;
   padding: 40px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 40px;
 }
 
@@ -167,17 +181,25 @@
 }
 
 .zephyr-number-highlight {
-  color: #D76D77 !important;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .zephyr-location-card .zephyr-stat-primary-number {
-  color: #D76D77;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   font-size: 2rem;
 }
 
 .zephyr-stat-description-label {
   font-size: 0.95rem;
-  color: #666;
+  color: #000000;
   margin: 0;
   line-height: 1.4;
   font-weight: 500;
@@ -224,7 +246,7 @@
     padding: 60px 20px 80px 20px;
     min-height: 50vh;
   }
-  
+
   .zephyr-hero-content-wrapper {
     justify-content: center;
      padding: 0 20px;
@@ -250,9 +272,9 @@
   }
   
   .zephyr-stats-grid-layout {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 25px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+    padding: 30px 20px;
   }
   
   .zephyr-stat-primary-number {
@@ -292,22 +314,19 @@
     font-size: 0.95rem;
   }
   
-  .zephyr-hero-gradient-cta-btn {
-    padding: 14px 28px;
-    font-size: 1rem;
-  }
-  
   .zephyr-stats-showcase-section {
     margin-top: -40px;
   }
   
   .zephyr-stats-grid-layout {
-    padding: 20px;
+    grid-template-columns: 1fr !important;
+  gap: 25px;
+  padding: 20px;
     border-radius: 15px;
   }
   
   .zephyr-stat-card-item {
-    padding: 15px 10px;
+    padding: 20px 15px;
   }
   
   .zephyr-stat-primary-number {

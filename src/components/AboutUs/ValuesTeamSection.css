@@ -1,0 +1,371 @@
+.aurora-values-team-main-container {
+  padding: 80px 20px;
+  background: #f8f9fa;
+  font-family: -apple-system, Krub;
+}
+
+.aurora-values-team-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Gradient Text */
+.aurora-gradient-text {
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Values Section */
+.aurora-values-section {
+  margin-bottom: 80px;
+}
+
+.aurora-values-main-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3A1C71;
+  text-align: center;
+  margin: 0 0 50px 0;
+}
+
+.aurora-values-grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.aurora-value-card {
+  background: white;
+  padding: 25px 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aurora-value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.aurora-value-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aurora-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.aurora-value-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* CEO Quote Section */
+.aurora-ceo-quote-section {
+  margin: 80px 0;
+}
+
+.aurora-ceo-content-wrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.aurora-ceo-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.aurora-ceo-image-wrapper {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D76D77 0%, #FFAF7B 100%);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aurora-ceo-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.aurora-ceo-text-container {
+  display: flex;
+  align-items: center;
+}
+
+.aurora-quote-paragraph {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+  text-align: justify;
+}
+
+.aurora-quote-paragraph:last-of-type {
+  margin-bottom: 30px;
+}
+
+.aurora-ceo-signature {
+  margin-top: 20px;
+}
+
+.aurora-ceo-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.aurora-ceo-title,
+.aurora-ceo-company {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Team Section */
+.aurora-team-section {
+  margin-top: 80px;
+}
+
+.aurora-team-main-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3A1C71;
+  text-align: center;
+  margin: 0 0 50px 0;
+}
+
+.aurora-team-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.aurora-team-member-card {
+  background: white;
+  padding: 0;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.aurora-team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.aurora-member-image-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.aurora-member-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aurora-member-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.aurora-member-position {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.4;
+}
+
+.aurora-linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0077B5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.aurora-linkedin-link:hover {
+  color: #005885;
+}
+
+.aurora-linkedin-icon {
+  width: 74px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .aurora-values-main-heading,
+  .aurora-team-main-heading {
+    font-size: 2.2rem;
+  }
+  
+  .aurora-values-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+  
+  .aurora-ceo-content-wrapper {
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+  }
+  
+  .aurora-ceo-image-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .aurora-team-grid-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aurora-values-team-main-container {
+    padding: 60px 15px;
+  }
+  
+  .aurora-values-main-heading,
+  .aurora-team-main-heading {
+    font-size: 1.9rem;
+  }
+  
+  .aurora-values-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .aurora-ceo-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .aurora-ceo-image-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .aurora-ceo-text-container {
+    text-align: left;
+  }
+  
+  .aurora-quote-paragraph {
+    font-size: 0.95rem;
+  }
+  
+  .aurora-team-grid-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .aurora-values-team-main-container {
+    padding: 40px 10px;
+  }
+  
+  .aurora-values-main-heading,
+  .aurora-team-main-heading {
+    font-size: 1.7rem;
+  }
+  
+  .aurora-values-grid-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .aurora-value-card {
+    padding: 20px 15px;
+  }
+  
+  .aurora-value-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .aurora-ceo-image-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .aurora-quote-paragraph {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  
+  .aurora-team-member-card {
+    padding: 25px 20px;
+  }
+  
+  .aurora-member-image-container {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .aurora-member-name {
+    font-size: 1.1rem;
+  }
+  
+  .aurora-member-position {
+    font-size: 0.95rem;
+  }
+}
+
+/* Animation */
+@keyframes aurora-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aurora-value-card,
+.aurora-team-member-card {
+  animation: aurora-fade-in-up 0.8s ease-out;
+}
+
+.aurora-ceo-quote-section {
+  animation: aurora-fade-in-up 0.8s ease-out 0.2s both;
+}
