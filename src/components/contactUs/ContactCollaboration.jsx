@@ -81,10 +81,10 @@ const ContactCollaboration = () => {
           
           {/* Left Side - Text Content */}
           <div className="cosmos-contact-text-section">
-            <h2 className="cosmos-contact-main-heading">
+            <h1 className="cosmos-contact-main-heading">
               Come <span className="cosmos-gradient-text">collaborate</span><br />
               with <span className="cosmos-gradient-text">SOCIAMELO</span>
-            </h2>
+            </h1>
             
             <p className="cosmos-contact-description">
               Need support or have a question? Send us a message, 
