@@ -15,6 +15,8 @@ import PricingPlan from './components/PricingPage/PricingPlan';
 import SocialNetworks from './components/PricingPage/SocialNetworks';
 import PricingCta from './components/PricingPage/PricingCta';
 
+import AboutHero from './components/About Us/AboutHero';
+
 function App() {
   return (
     <div className="font-krub">
@@ -42,6 +44,12 @@ function App() {
                   <PricingPlan />
                   <SocialNetworks />
                   <PricingCta />
+                </>
+              } />
+
+               <Route path="/about" element={
+                <>
+                  <AboutHero/>
                 </>
               } />
             </Routes>

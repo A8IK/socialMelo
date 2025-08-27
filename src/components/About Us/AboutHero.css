@@ -1,0 +1,344 @@
+.zephyr-influencer-main-wrapper {
+  font-family: -apple-system, Krub;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hero Section */
+.zephyr-hero-masthead-container {
+  background: #3A1C71;
+  min-height: 70vh;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px 120px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.zephyr-hero-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Background Image Section */
+.zephyr-hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+}
+
+.zephyr-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+/* Add circular background elements */
+.zephyr-hero-masthead-container::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -150px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.zephyr-hero-masthead-container::after {
+  content: '';
+  position: absolute;
+  top: 80px;
+  left: 100px;
+  width: 200px;
+  height: 200px;
+  background: rgba(118, 75, 162, 0.3);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.zephyr-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.zephyr-hero-text-section {
+  margin: 0 auto;
+  max-width: none;
+  width: 100%;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: 60px;
+  text-align: center;
+}
+
+.zephyr-hero-primary-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 100%;
+}
+
+.zephyr-hero-description-text {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 32px 0;
+  line-height: 1.6;
+  max-width: none;
+}
+
+.zephyr-hero-gradient-cta-btn {
+  color: white;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.zephyr-hero-gradient-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats Section */
+.zephyr-stats-showcase-section {
+  position: relative;
+  z-index: 10;
+  margin-top: -80px;
+  padding-bottom: 60px;
+}
+
+.zephyr-stats-container-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.zephyr-stats-grid-layout {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.zephyr-stat-card-item {
+  text-align: center;
+  padding: 20px 15px;
+}
+
+.zephyr-stat-primary-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #333;
+}
+
+.zephyr-number-highlight {
+  color: #D76D77 !important;
+}
+
+.zephyr-location-card .zephyr-stat-primary-number {
+  color: #D76D77;
+  font-size: 2rem;
+}
+
+.zephyr-stat-description-label {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1440px) {
+  .zephyr-hero-masthead-container {
+    min-height: 60vh;
+    padding: 60px 20px 100px 20px;
+  }
+  
+  .zephyr-hero-primary-heading {
+    font-size: 3rem;
+  }
+  
+  .zephyr-hero-text-section {
+    margin-right: 30px;
+  }
+  
+  .zephyr-stats-grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px;
+  }
+  
+  .zephyr-stats-showcase-section {
+    margin-top: -60px;
+  }
+  
+  .zephyr-hero-masthead-container::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .zephyr-hero-masthead-container::after {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .zephyr-hero-masthead-container {
+    padding: 60px 20px 80px 20px;
+    min-height: 50vh;
+  }
+  
+  .zephyr-hero-content-wrapper {
+    justify-content: center;
+     padding: 0 20px;
+  }
+  
+  .zephyr-hero-text-section {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .zephyr-hero-primary-heading {
+    font-size: 2.5rem;
+  }
+  
+  .zephyr-hero-description-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .zephyr-stats-showcase-section {
+    margin-top: -50px;
+  }
+  
+  .zephyr-stats-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 25px;
+  }
+  
+  .zephyr-stat-primary-number {
+    font-size: 2rem;
+  }
+  
+  .zephyr-hero-background-image {
+    width: 100%;
+  }
+  
+  .zephyr-hero-masthead-container::before {
+    width: 200px;
+    height: 200px;
+    top: -30px;
+    left: -80px;
+  }
+  
+  .zephyr-hero-masthead-container::after {
+    width: 120px;
+    height: 120px;
+    top: 40px;
+    left: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zephyr-hero-masthead-container {
+    padding: 40px 15px 60px 15px;
+  }
+  
+  .zephyr-hero-primary-heading {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+  
+  .zephyr-hero-description-text {
+    font-size: 0.95rem;
+  }
+  
+  .zephyr-hero-gradient-cta-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+  
+  .zephyr-stats-showcase-section {
+    margin-top: -40px;
+  }
+  
+  .zephyr-stats-grid-layout {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  .zephyr-stat-card-item {
+    padding: 15px 10px;
+  }
+  
+  .zephyr-stat-primary-number {
+    font-size: 1.8rem;
+  }
+  
+  .zephyr-stat-description-label {
+    font-size: 0.9rem;
+  }
+  
+  .zephyr-location-card .zephyr-stat-primary-number {
+    font-size: 1.6rem;
+  }
+}
+
+/* Animation for smooth loading */
+@keyframes zephyr-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.zephyr-hero-text-section {
+  animation: zephyr-fade-in-up 0.8s ease-out;
+}
+
+.zephyr-stats-grid-layout {
+  animation: zephyr-fade-in-up 0.8s ease-out 0.3s both;
+}

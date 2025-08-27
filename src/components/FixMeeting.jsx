@@ -15,9 +15,9 @@ const FixMeeting = () => {
 
           {/* Text Content Section */}
           <div className="text-content-section">
-            <h1 className="main-heading">
+            <h2 className="main-heading2">
               Looking for a Platform Your Team Will Love?
-            </h1>
+            </h2>
             <p className="sub-description">
               Discover why professionals worldwide trust us as their top-rated solution.
             </p>
