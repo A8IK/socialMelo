@@ -90,7 +90,7 @@ const Header = () => {
       fontWeight: '500',
       textDecoration: 'none',
       transition: 'color 0.2s ease',
-      fontSize: isDesktop ? '0.875rem' : '0.875rem',
+      fontSize: isDesktop ? '1.1rem' : '1rem',
       padding: '0.5rem 0'
     },
     buttonContainer: {
@@ -107,7 +107,7 @@ const Header = () => {
       borderRadius: '9999px',
       transition: 'all 0.2s ease',
       cursor: 'pointer',
-      fontSize: isDesktop ? '0.875rem' : '0.875rem'
+      fontSize: isDesktop ? '1.1rem' : '1rem'
     },
     brandButton: {
       color: 'white',

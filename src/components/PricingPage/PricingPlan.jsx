@@ -4,7 +4,7 @@ import './PricingPlan.css';
 const PricingPlan = () => {
   const [isAnnual, setIsAnnual] = useState(false);
 
-  const plans = [
+  const monthlyPlans = [
     {
       id: 'professional',
       name: 'Professional',
@@ -51,6 +51,56 @@ const PricingPlan = () => {
       isPopular: true
     }
   ];
+
+  const annualPlans = [
+    {
+      id: 'professional',
+      name: 'Professional',
+      price: '$318',
+      description: 'Elevate your experience with campaign management and reports.',
+      features: [
+        'Everything in basic',
+        'Post 1 campaign per month',
+        'Track live analytics for 5 posts at a time',
+        '20 influencer engagement',
+        'Up to 150/month for number analytics',
+        'Up to 1000/month for search results'
+      ],
+      isPopular: false
+    },
+    {
+      id: 'premium',
+      name: 'Premium',
+      price: '$798',
+      description: 'The all inclusive solution designed to meet higher requirements.',
+      features: [
+        'Everything in pro',
+        'Post unlimited campaigns per month',
+        'Track live analytics for 15 posts at a time',
+        '50 influencer engagement',
+        'Up to 500/month for number analytics',
+        'Up to 25,000/month for search results'
+      ],
+      isPopular: false
+    },
+    {
+      id: 'fullservice',
+      name: 'Full Service',
+      price: 'We Do The Work',
+      description: 'Gain unlimited access to the tools your business needs to scale, streamline, and succeed.',
+      features: [
+        'End-to-end campaign set up',
+        'Influencer sourcing and outreach',
+        'Content delivery & approvals',
+        'Unlimited engagement',
+        'Unlimited for number analytics',
+        'Unlimited for search results'
+      ],
+      isPopular: true
+    }
+  ];
+
+  const plans = isAnnual ? annualPlans : monthlyPlans;
 
   return (
     <div className="pricing-plan-container">
