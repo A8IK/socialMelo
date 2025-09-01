@@ -1,4 +1,3 @@
-import React from 'react';
 import './WorldCommunity.css';
 
 const WorldwideCommunity = () => {

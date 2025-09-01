@@ -391,13 +391,13 @@
     padding: 1.5rem 1rem;
   }
 
-
   .cta-content {
   flex-direction: row;
   gap: 1rem;
   text-align: left;
   align-items: center;
   justify-content: center;
+  margin-top: 1.95rem;
 }
 
 .cta-text {

@@ -110,16 +110,16 @@
 .uae { top: 10%; right: 35%; }
 
 /* Flag Colors */
-.orange { background-image: url('Netherland.png'); background-size: cover; background-position: center; }
-.green { background-image: url('Nigeria.png'); background-size: cover; background-position: center; }
-.blue { background-image: url('UK.png'); background-size: cover; background-position: center; }
-.red { background-image: url('Germany.png'); background-size: cover; background-position: center; }
-.blue-dark { background-image: url('France.png'); background-size: cover; background-position: center; }
-.yellow { background-image: url('Spain.png'); background-size: cover; background-position: center; }
-.red-dark { background-image: url('Singapore.png'); background-size: cover; background-position: center; }
-.blue-light { background-image: url('Argentina.png'); background-size: cover; background-position: center; }
-.green-light { background-image: url('Italy.png'); background-size: cover; background-position: center; }
-.red-canada { background-image: url('Canada.png'); background-size: cover; background-position: center; }
+.orange { background-image: url('/Netherland.png'); background-size: cover; background-position: center; }
+.green { background-image: url('/Nigeria.png'); background-size: cover; background-position: center; }
+.blue { background-image: url('/UK.png'); background-size: cover; background-position: center; }
+.red { background-image: url('/Germany.png'); background-size: cover; background-position: center; }
+.blue-dark { background-image: url('/France.png'); background-size: cover; background-position: center; }
+.yellow { background-image: url('/Spain.png'); background-size: cover; background-position: center; }
+.red-dark { background-image: url('/Singapore.png'); background-size: cover; background-position: center; }
+.blue-light { background-image: url('/Argentina.png'); background-size: cover; background-position: center; }
+.green-light { background-image: url('/Italy.png'); background-size: cover; background-position: center; }
+.red-canada { background-image: url('/Canada.png'); background-size: cover; background-position: center; }
 
 /* More Badge - Desktop */
 .more-badge {

@@ -470,6 +470,10 @@
   .testimonial-carousel__header {
     text-align: center;
   }
+
+  .app-image-section {
+    display: none;
+  }
 }
 
 /* Left align for desktop */
