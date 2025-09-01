@@ -44,6 +44,7 @@
   height: 500px;
   max-width: 1000px;
   margin: 0 auto;
+  margin-bottom: -10rem;
 }
 
 /* Country Badges - Desktop */
