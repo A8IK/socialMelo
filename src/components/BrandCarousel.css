@@ -1,0 +1,270 @@
+.brand-carousel-section {
+  width: 100%;
+  padding: 4rem 1rem;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.brand-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Title Styles */
+.brand-title4 {
+  text-align: center;
+  font-size: 2.5rem !important;
+  font-weight: 600;
+  color: #3A1C71;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Carousel Track */
+.carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  animation: slideLeft 30s linear infinite;
+  width: fit-content;
+  will-change: transform;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Brand Items */
+.brand-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.brand-logo {
+  height: 60px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.8);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.brand-logo:hover {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.1);
+}
+
+/* SlideLeft Animation */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Design */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .brand-title4 {
+    font-size: 2.20rem;
+  }
+  
+  .carousel-track {
+    gap: 5rem;
+  }
+  
+  .brand-logo {
+    height: 70px;
+    max-width: 180px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .brand-title4 {
+    font-size: 2.5rem;
+  }
+  
+  .carousel-track {
+    gap: 4rem;
+  }
+  
+  .brand-logo {
+    height: 60px;
+    max-width: 150px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .brand-carousel-section {
+    padding: 3rem 1rem;
+  }
+  
+  .brand-title {
+    font-size: 2.25rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .carousel-track {
+    gap: 3rem;
+    animation-duration: 25s;
+  }
+  
+  .brand-logo {
+    height: 50px;
+    max-width: 120px;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 480px) and (max-width: 767px) {
+  .brand-carousel-section {
+    padding: 2.5rem 1rem;
+  }
+  
+  .brand-title4 {
+    font-size: 1.875rem;
+    margin-bottom: 2rem;
+  }
+  
+  .carousel-track {
+    gap: 2.5rem;
+    animation-duration: 20s;
+  }
+  
+  .brand-logo {
+    height: 40px;
+    max-width: 100px;
+  }
+  
+  .brand-item {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 479px) {
+  .brand-carousel-section {
+    padding: 2rem 0.5rem;
+  }
+  
+  .brand-title4 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .carousel-track {
+    gap: 2rem;
+    animation-duration: 18s;
+  }
+  
+  .brand-logo {
+    height: 35px;
+    max-width: 80px;
+  }
+  
+  .brand-item {
+    padding: 0 0.25rem;
+  }
+  
+  .carousel-wrapper {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    animation: slideLeftSlow 60s linear infinite;
+  }
+  
+  @keyframes slideLeftSlow {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .brand-logo {
+    filter: grayscale(100%) contrast(1.2);
+  }
+  
+  .brand-logo:hover {
+    filter: grayscale(0%) contrast(1);
+  }
+}
+
+/* Focus states for accessibility */
+.brand-logo:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.1);
+}
+
+/* Dark mode support */
+/* @media (prefers-color-scheme: dark) {
+  .brand-carousel-section {
+    background-color: #111827;
+  }
+  
+  .brand-title4 {
+    color: #f9fafb;
+  }
+  
+  .brand-logo {
+    filter: grayscale(100%) brightness(0.9) invert(1);
+  }
+  
+  .brand-logo:hover {
+    filter: grayscale(0%) brightness(1) invert(0);
+  }
+} */

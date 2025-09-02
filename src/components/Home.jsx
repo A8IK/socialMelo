@@ -1,12 +1,19 @@
 import './Home.css';
+// import { usePageMeta } from '../usePageMeta';
 
 const Home = () => {
+//   usePageMeta(
+//   'SocialMelo | Leading Influencer Marketing Company Worldwide', 
+//   'Work with SocialMelo, a leading influencer marketing company trusted by global brands. 35,000+ campaigns delivered with proven ROI.'
+// );
   return (
+    <> 
     <section className="hero-section">
        <img 
                 src="Vectors.png" 
                 alt="Background Vectors" 
                 className="hero-background-image"/>
+                
       <div className="hero-container">
         {/* Main Content */}
         <div className="hero-content">
@@ -151,6 +158,7 @@ const Home = () => {
         </div>
       </div>
     </section>
+     </>
   );
 };
 

@@ -9,6 +9,7 @@ import CampaignEffort from './components/CampaignEffort';
 import UserReview from './components/UserReview';
 import FixMeeting from './components/FixMeeting';
 import CreatorsSection from './components/CreatorsSection';
+import BrandCarousel from './components/BrandCarousel';
 
 import PricingHero from './components/PricingPage/PricingHero';
 import PricingPlan from './components/PricingPage/PricingPlan';
@@ -33,6 +34,7 @@ function App() {
               <Route path="/" element={
                 <>
                   <Home/>
+                  <BrandCarousel />
                   <FindContent/>
                   <CreatorsSection />
                    <CampaignEffort />
