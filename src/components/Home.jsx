@@ -1,5 +1,6 @@
 import './Home.css';
-// import { usePageMeta } from '../usePageMeta';
+import { Helmet } from 'react-helmet';
+// import { usePageMeta } from './usePageMeta';
 
 const Home = () => {
 //   usePageMeta(
@@ -8,6 +9,10 @@ const Home = () => {
 // );
   return (
     <> 
+    <Helmet>
+        <title>SocialMelo | Leading Influencer Marketing Company Worldwide</title>
+        <meta name="description" content="Work with SocialMelo, a leading influencer marketing company trusted by global brands. 35,000+ campaigns delivered with proven ROI." />
+      </Helmet>
     <section className="hero-section">
        <img 
                 src="Vectors.png" 
