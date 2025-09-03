@@ -1,7 +1,6 @@
 .team-platform-section {
   background-color: #FFB17E;
   padding: 60px 20px;
-  min-height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -17,6 +16,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* Calendar Section */

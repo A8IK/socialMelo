@@ -8,10 +8,12 @@ const Home = () => {
 );
   return (
     <section className="hero-section">
-       <img 
-                src="Vectors.png" 
-                alt="Background Vectors" 
-                className="hero-background-image"/>
+       <div className="hero-background-container">
+          <img 
+            src="Vectors.png" 
+            alt="Background Vectors" 
+            className="hero-background-image"/>
+        </div>
                 
       <div className="hero-container">
         {/* Main Content */}

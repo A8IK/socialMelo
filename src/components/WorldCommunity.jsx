@@ -88,8 +88,7 @@ const WorldwideCommunity = () => {
               stroke="url(#lineGradient)"
               strokeWidth="1"
               fill="none"
-              className="line-1"
-            />
+              className="line-1"/>
             <path
               d="M150,300 Q350,250 550,320"
               stroke="url(#lineGradient)"
