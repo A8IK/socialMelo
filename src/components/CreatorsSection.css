@@ -31,7 +31,7 @@
   font-style: italic;
 }
 
-.subtitle {
+.subtitle2 {
   color: #4b5563;
   font-size: 1.125rem;
   max-width: 48rem;
@@ -487,6 +487,15 @@
   margin: 0 auto;
 }
 
+.mobile-third-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 20rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
 /* Grid Item Positioning */
 .offset-down {
   margin-top: 1rem;
@@ -523,6 +532,14 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+@media (max-width: 480px) {
+  .cta-button1 {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
 
 .cta-button1:hover {
   transform: scale(1.05);

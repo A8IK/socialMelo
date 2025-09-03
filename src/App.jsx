@@ -9,6 +9,19 @@ import CampaignEffort from './components/CampaignEffort';
 import UserReview from './components/UserReview';
 import FixMeeting from './components/FixMeeting';
 import CreatorsSection from './components/CreatorsSection';
+import BrandCarousel from './components/BrandCarousel';
+
+import PricingHero from './components/PricingPage/PricingHero';
+import PricingPlan from './components/PricingPage/PricingPlan';
+import SocialNetworks from './components/PricingPage/SocialNetworks';
+import PricingCta from './components/PricingPage/PricingCta';
+
+import AboutHero from './components/AboutUs/AboutHero';
+import AboutRemarkable from './components/AboutUs/AboutRemarkable';
+import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
+import CultureTabs from './components/AboutUs/CultureTabs';
+
+import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
 function App() {
   return (
@@ -21,6 +34,7 @@ function App() {
               <Route path="/" element={
                 <>
                   <Home/>
+                  <BrandCarousel />
                   <FindContent/>
                   <CreatorsSection />
                    <CampaignEffort />
@@ -30,6 +44,30 @@ function App() {
                   <FixMeeting />
                 </>
               } /> 
+
+               <Route path="/pricing" element={
+                <>
+                  <PricingHero />
+                  <PricingPlan />
+                  <SocialNetworks />
+                  <PricingCta />
+                </>
+              } />
+
+               <Route path="/about" element={
+                <>
+                  <AboutHero/>
+                  <AboutRemarkable />
+                  <ValuesTeamSection />
+                  <CultureTabs />
+                </>
+              } />
+
+              <Route path="/contact" element={
+                <>
+                  <ContactCollaboration />
+                </>
+              } />
             </Routes>
           </main>
           <Footer /> 

@@ -247,13 +247,15 @@ const Footer = () => {
           <div style={footerStyles.column}>
             <h3 style={footerStyles.columnTitle}>Resources</h3>
             <div style={footerStyles.linkList}>
-              <Link 
-                to="/blog" 
+              <a 
+                href="https://socialmelo.com/blog/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Blog
-              </Link>
+              </a>
               <Link 
                 to="/knowledge-base" 
                 style={footerStyles.link}

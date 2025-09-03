@@ -452,6 +452,10 @@
   .app-image-section {
     display: none;
   }
+
+  .testimonial-carousel__header {
+    text-align: center;
+  }
   
   .testimonial-carousel__testimonials-section {
     width: 100%;
@@ -465,6 +469,10 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .testimonial-carousel__header {
     text-align: center;
+  }
+
+  .app-image-section {
+    display: none;
   }
 }
 

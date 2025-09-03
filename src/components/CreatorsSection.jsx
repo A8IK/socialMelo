@@ -127,7 +127,7 @@ const CreatorsSection = () => {
           <h2 className="main-title">
             Meet Our Creators
           </h2>
-          <p className="subtitle">
+          <p className="subtitle2">
             Within minutes of posting your jobs, creators apply and you get to see their portfolios and choose the perfect match!
           </p>
         </div>

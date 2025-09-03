@@ -1,4 +1,3 @@
-import React from 'react';
 import './WorldCommunity.css';
 
 const WorldwideCommunity = () => {
@@ -37,8 +36,7 @@ const WorldwideCommunity = () => {
             <div
               key={country.name}
               className={`country-badge desktop-only ${country.position}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
+              style={{ animationDelay: `${index * 0.2}s` }}>
               <div className="badge-content">
                 <div className={`flag-circle ${country.color}`}>
                   
@@ -49,7 +47,7 @@ const WorldwideCommunity = () => {
           ))}
 
           {/* Mobile View - Grid Layout */}
-          <div className="mobile-grid">
+          <div className="mobile-grid1">
             {countries.slice(0, 12).map((country, index) => (
               <div key={country.name} className="mobile-country-item">
                 <div className="mobile-badge-content">

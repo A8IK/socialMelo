@@ -90,7 +90,7 @@ const Header = () => {
       fontWeight: '500',
       textDecoration: 'none',
       transition: 'color 0.2s ease',
-      fontSize: isDesktop ? '0.875rem' : '0.875rem',
+      fontSize: isDesktop ? '1.1rem' : '1rem',
       padding: '0.5rem 0'
     },
     buttonContainer: {
@@ -107,7 +107,7 @@ const Header = () => {
       borderRadius: '9999px',
       transition: 'all 0.2s ease',
       cursor: 'pointer',
-      fontSize: isDesktop ? '0.875rem' : '0.875rem'
+      fontSize: isDesktop ? '1.1rem' : '1rem'
     },
     brandButton: {
       color: 'white',
@@ -315,13 +315,13 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav style={headerStyles.nav}>
-            <Link 
+            {/* <Link 
               to="/social-melo" 
               style={headerStyles.navLink}
               onMouseEnter={handleNavLinkHover}
               onMouseLeave={handleNavLinkLeave}>
               SocialMelo
-            </Link>
+            </Link> */}
             <Link 
               to="/pricing" 
               style={headerStyles.navLink}
@@ -404,7 +404,7 @@ const Header = () => {
         <div style={headerStyles.mobileMenu}>
           <div style={headerStyles.mobileMenuContainer}>
             {/* Mobile Navigation Links */}
-            <Link 
+            {/* <Link 
               to="/social-melo" 
               style={headerStyles.mobileNavLink}
               onMouseEnter={handleMobileNavHover}
@@ -412,7 +412,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               SocialMelo
-            </Link>
+            </Link> */}
             <Link 
               to="/pricing" 
               style={headerStyles.mobileNavLink}

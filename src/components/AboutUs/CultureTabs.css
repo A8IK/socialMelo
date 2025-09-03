@@ -1,0 +1,249 @@
+.nebula-culture-tabs-main-container {
+  padding: 80px 20px;
+  background: #f8f9fa;
+  font-family: -apple-system, Krub;
+}
+
+.nebula-culture-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Gradient Text */
+.nebula-gradient-text {
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Title Section */
+.nebula-culture-title-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.nebula-culture-main-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3A1C71;
+  margin: 0;
+}
+
+/* Tab Navigation */
+.nebula-tab-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  border-bottom: 2px solid #e9ecef;
+  position: relative;
+}
+
+.nebula-tab-button {
+  background: none;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.nebula-tab-button:hover {
+  color: #3A1C71;
+}
+
+.nebula-tab-button.nebula-tab-active {
+  color: #3A1C71;
+  border-bottom: 3px solid #3A1C71;
+}
+
+/* Tab Content Section */
+.nebula-tab-content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Image Container */
+.nebula-content-image-container {
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.nebula-content-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.nebula-content-image:hover {
+  transform: scale(1.02);
+}
+
+/* Text Content */
+.nebula-content-text-container {
+  max-width: 900px;
+  text-align: center;
+}
+
+.nebula-content-text {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.8;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .nebula-culture-main-heading {
+    font-size: 2.2rem;
+  }
+  
+  .nebula-tab-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  
+  .nebula-content-image-container {
+    height: 300px;
+  }
+  
+  .nebula-content-text-container {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nebula-culture-tabs-main-container {
+    padding: 60px 15px;
+  }
+  
+  .nebula-culture-main-heading {
+    font-size: 1.9rem;
+  }
+  
+  .nebula-tab-navigation {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+  }
+  
+  .nebula-tab-button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    min-width: 80px;
+  }
+  
+  .nebula-tab-content-section {
+    gap: 30px;
+  }
+  
+  .nebula-content-image-container {
+    height: 250px;
+    max-width: 500px;
+  }
+  
+  .nebula-content-text-container {
+    max-width: 100%;
+  }
+  
+  .nebula-content-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .nebula-culture-tabs-main-container {
+    padding: 40px 10px;
+  }
+  
+  .nebula-culture-main-heading {
+    font-size: 1.7rem;
+  }
+  
+  .nebula-tab-navigation {
+    margin-bottom: 30px;
+  }
+  
+  .nebula-tab-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    min-width: 70px;
+  }
+  
+  .nebula-tab-content-section {
+    gap: 25px;
+  }
+  
+  .nebula-content-image-container {
+    height: 200px;
+    max-width: 350px;
+    border-radius: 12px;
+  }
+  
+  .nebula-content-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+/* Tab Content Animation */
+@keyframes nebula-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nebula-tab-content-section {
+  animation: nebula-fade-in 0.5s ease-out;
+}
+
+/* Active Tab Indicator Animation */
+.nebula-tab-button.nebula-tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  animation: nebula-slide-in 0.3s ease-out;
+}
+
+@keyframes nebula-slide-in {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Hover Effects */
+.nebula-content-image-container:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.nebula-tab-button:not(.nebula-tab-active):hover {
+  background: rgba(58, 28, 113, 0.05);
+  border-radius: 8px 8px 0 0;
+}

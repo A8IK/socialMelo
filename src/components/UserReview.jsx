@@ -102,7 +102,6 @@ const UserReview = () => {
   return (
     <div className="testimonial-carousel">
       <div className="testimonial-carousel__container">
-        {/* Header */}
         {/* Main Content */}
         <div className="testimonial-carousel__content">
             {/* Image Section */}
@@ -121,23 +120,20 @@ const UserReview = () => {
             <div 
               className="testimonials-wrapper"
               onMouseEnter={() => setIsAutoPlaying(false)}
-              onMouseLeave={() => setIsAutoPlaying(true)}
-            >
+              onMouseLeave={() => setIsAutoPlaying(true)}>
               {/* Testimonials Container */}
               <div 
                 className="testimonials-container"
                 style={{
                   transform: `translateX(-${currentIndex * (100 / currentItemsPerView)}%)`
-                }}
-              >
+                }}>
                 {testimonials.map((testimonial) => (
                   <div 
                     key={testimonial.id}
                     className={`testimonial-slide ${
                       currentItemsPerView === 1 ? 'testimonial-slide--full' :
                       currentItemsPerView === 2 ? 'testimonial-slide--half' : 'testimonial-slide--third'
-                    }`}
-                  >
+                    }`}>
                     <div className="testimonial-card">
                       {/* Quote Icon */}
                       <div className="testimonial-card__quote">
@@ -156,8 +152,7 @@ const UserReview = () => {
                         <img 
                           src={testimonial.avatar} 
                           alt={testimonial.name}
-                          className="user-avatar"
-                        />
+                          className="user-avatar"/>
                         <div className="user-info">
                           <h4 className="user-name gradient-text">
                             {testimonial.name}

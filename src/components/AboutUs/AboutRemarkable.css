@@ -1,0 +1,325 @@
+.phoenix-journey-main-container {
+  padding: 80px 20px;
+  background: #f8f9fa;
+  font-family: -apple-system, Krub;
+}
+
+.phoenix-journey-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title Section */
+.phoenix-journey-title-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.phoenix-journey-main-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3A1C71;
+  margin: 0;
+}
+
+.phoenix-gradient-text {
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Timeline Section */
+.phoenix-timeline-container {
+  position: relative;
+  margin-bottom: 80px;
+  padding: 40px 0;
+}
+
+.phoenix-timeline-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.phoenix-timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.phoenix-timeline-content {
+  margin-bottom: 30px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.phoenix-timeline-description {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 280px;
+}
+
+.phoenix-timeline-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 20px 0;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phoenix-marker-filled {
+  background: linear-gradient(135deg, #D76D77 0%, #FFAF7B 100%);
+  box-shadow: 0 4px 10px rgba(215, 109, 119, 0.3);
+}
+
+.phoenix-marker-filled::after {
+  content: '✓';
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.phoenix-marker-outline {
+  background: white;
+  border: 3px solid #FFAF7B;
+  box-shadow: 0 4px 10px rgba(255, 175, 123, 0.3);
+}
+
+.phoenix-marker-outline::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 2px solid #FFAF7B;
+  border-radius: 50%;
+}
+
+.phoenix-timeline-year {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin-top: 15px;
+}
+
+.phoenix-future-year {
+  color: #FFAF7B;
+}
+
+/* Timeline Line */
+.phoenix-timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  right: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #D76D77 0%, #FFAF7B 100%);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Vision Mission Cards */
+.phoenix-vision-mission-container {
+  margin-top: 60px;
+}
+
+.phoenix-vision-mission-wrapper {
+  background: #FFBC90;
+  border-radius: 20px;
+  padding: 50px 40px;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 50px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.phoenix-vision-card,
+.phoenix-mission-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.phoenix-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 25px 0;
+}
+
+.phoenix-card-description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+.phoenix-card-description:last-child {
+  margin-bottom: 0;
+}
+
+.phoenix-card-divider {
+  background: #333;
+  width: 2px;
+  border-radius: 1px;
+  opacity: 0.3;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .phoenix-journey-main-heading {
+    font-size: 2.2rem;
+  }
+  
+  .phoenix-timeline-wrapper {
+    gap: 30px;
+  }
+  
+  .phoenix-timeline-description {
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+  
+  .phoenix-vision-mission-wrapper {
+    padding: 40px 30px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .phoenix-journey-main-container {
+    padding: 60px 15px;
+  }
+  
+  .phoenix-journey-main-heading {
+    font-size: 1.9rem;
+  }
+  
+  .phoenix-timeline-wrapper {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .phoenix-timeline-item {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  .phoenix-timeline-content {
+    margin-bottom: 0;
+    margin-right: 20px;
+    min-height: auto;
+    flex: 1;
+  }
+  
+  .phoenix-timeline-marker {
+    margin: 0 20px 0 0;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  
+  .phoenix-timeline-year {
+    margin-top: 5px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  
+  .phoenix-timeline-line {
+    display: none;
+  }
+  
+  .phoenix-vision-mission-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 35px 25px;
+  }
+  
+  .phoenix-card-divider {
+    display: none;
+  }
+  
+  .phoenix-card-title {
+    font-size: 1.6rem;
+  }
+  
+  .phoenix-timeline-description {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .phoenix-journey-main-container {
+    padding: 40px 10px;
+  }
+  
+  .phoenix-journey-main-heading {
+    font-size: 1.7rem;
+  }
+  
+  .phoenix-timeline-item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .phoenix-timeline-content {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .phoenix-timeline-marker {
+    margin: 0 0 15px 0;
+  }
+  
+  .phoenix-timeline-year {
+    margin-left: 0;
+    font-size: 1.1rem;
+  }
+  
+  .phoenix-vision-mission-wrapper {
+    padding: 25px 20px;
+    gap: 30px;
+  }
+  
+  .phoenix-card-title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .phoenix-card-description {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+}
+
+/* Animation */
+@keyframes phoenix-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.phoenix-timeline-item {
+  animation: phoenix-fade-in-up 0.8s ease-out;
+}
+
+.phoenix-vision-mission-wrapper {
+  animation: phoenix-fade-in-up 0.8s ease-out 0.3s both;
+}

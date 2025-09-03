@@ -148,9 +148,9 @@ const FindContent = () => {
     <div className="content-discovery-container">
       {/* Header */}
       <div className="header-section">
-        <h1 className="main-title">
+        <h2 className="main-title">
           Find Sample Content for any task
-        </h1>
+        </h2>
         
         {/* Top Navigation Tabs */}
         <div className="nav-tabs">
