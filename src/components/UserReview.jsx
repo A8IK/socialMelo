@@ -125,7 +125,10 @@ const UserReview = () => {
               <div 
                 className="testimonials-container"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / currentItemsPerView)}%)`
+                  transform: `translateX(-${currentIndex * (100 / currentItemsPerView)}%)`,
+                  width: '140%', 
+                  padding: '0 3.5rem', 
+                  marginLeft: '-2%',
                 }}>
                 {testimonials.map((testimonial) => (
                   <div 
