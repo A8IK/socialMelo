@@ -1,7 +1,12 @@
 import React from 'react';
 import './PricingHero.css';
+import { usePageMeta } from '../../usePageMeta';
 
 const PricingHero = () => {
+    usePageMeta(
+    'Influencer Marketing Pricing – SocialMelo Plans & Packages', 
+    'View SocialMelo pricing. From Professional to Premium, find influencer marketing packages with analytics, campaigns, and engagement included.'
+  );
   return (
     <div className="pricing-container">
       <div className="pricing-content">

@@ -20,6 +20,18 @@
   line-height: 1.2;
 }
 
+/* Keep specific brands always grayscale */
+.brand-logo[alt="Sommarnox"],
+.brand-logo[alt="Uproas"] {
+  filter: grayscale(100%) brightness(0.8) !important;
+}
+
+.brand-logo[alt="Sommarnox"]:hover,
+.brand-logo[alt="Uproas"]:hover {
+  filter: grayscale(100%) brightness(0.8) !important;
+  transform: scale(1.1);
+}
+
 /* Carousel Wrapper */
 .carousel-wrapper {
   width: 100%;
@@ -88,8 +100,6 @@
     transform: translateX(-50%);
   }
 }
-
-/* Responsive Design */
 
 /* Large Desktop */
 @media (min-width: 1200px) {

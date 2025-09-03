@@ -60,11 +60,11 @@ const PricingPlan = () => {
       description: 'Elevate your experience with campaign management and reports.',
       features: [
         'Everything in basic',
-        'Post 1 campaign per month',
+        'Post 1 campaign per year',
         'Track live analytics for 5 posts at a time',
         '20 influencer engagement',
-        'Up to 150/month for number analytics',
-        'Up to 1000/month for search results'
+        'Up to 150/year for number analytics',
+        'Up to 1000/year for search results'
       ],
       isPopular: false
     },
@@ -75,11 +75,11 @@ const PricingPlan = () => {
       description: 'The all inclusive solution designed to meet higher requirements.',
       features: [
         'Everything in pro',
-        'Post unlimited campaigns per month',
+        'Post unlimited campaigns per year',
         'Track live analytics for 15 posts at a time',
         '50 influencer engagement',
-        'Up to 500/month for number analytics',
-        'Up to 25,000/month for search results'
+        'Up to 500/year for number analytics',
+        'Up to 25,000/year for search results'
       ],
       isPopular: false
     },
@@ -132,7 +132,7 @@ const PricingPlan = () => {
             <div className="card-header">
               <div className="price">
                 {plan.price}
-                {plan.id !== 'fullservice' && <span className="period">/month</span>}
+                {plan.id !== 'fullservice' && <span className="period">/{isAnnual ? 'year' : 'month'}</span>}
               </div>
               <h3 className="plan-name">{plan.name}</h3>
               <p className="plan-description">{plan.description}</p>

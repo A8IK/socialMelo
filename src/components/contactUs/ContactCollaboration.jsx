@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import './ContactCollaboration.css';
+import { usePageMeta } from '../../usePageMeta';
 
 const ContactCollaboration = () => {
+  usePageMeta(
+    'Contact SocialMelo | Influencer Marketing Company', 
+    'Have questions or want to collaborate? Reach out to SocialMelo, the global influencer marketing company. Email us at hello@socialmelo.io today'
+  );
   const [formData, setFormData] = useState({
     name: '',
     contact: '',
