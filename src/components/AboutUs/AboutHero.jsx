@@ -3,8 +3,8 @@ import { usePageMeta } from '../../usePageMeta';
 
 const AboutHero = () => {
    usePageMeta(
-      'SocialMelo – Global Influencer Marketing Experts | About Us', 
-      'Meet SocialMelo, the influencer marketing company behind 35,000+ successful campaigns. Creative strategies, top creators, and real results for your brand.'
+      'About SocialMelo | Global Influencer Marketing Platform Experts', 
+      'Meet SocialMelo, the influencer marketing Platform behind 35,000+ successful campaigns. Creative strategies, top creators, and real results for your brand'
     );
   return (
     <div className="zephyr-influencer-main-wrapper">

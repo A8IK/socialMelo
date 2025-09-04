@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 const Footer = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // Handle window resize for responsive behavior
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -31,8 +30,8 @@ const Footer = () => {
       position: 'absolute',
       bottom: 0,
       left: 0,
-      width: isDesktop ? '400px' : isTablet ? '300px' : '200px',
-      height: isDesktop ? '300px' : isTablet ? '200px' : '150px',
+      width: isDesktop ? '550px' : isTablet ? '400px' : '300px',
+      height: isDesktop ? '300px' : isTablet ? '200px' : '200px',
       opacity: 0.3,
       zIndex: 1
     },

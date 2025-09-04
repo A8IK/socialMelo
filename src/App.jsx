@@ -23,6 +23,8 @@ import CultureTabs from './components/AboutUs/CultureTabs';
 
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
+import Login from './components/Login';
+
 function App() {
   return (
     <div className="font-krub">
@@ -68,6 +70,7 @@ function App() {
                   <ContactCollaboration />
                 </>
               } />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </main>
           <Footer /> 

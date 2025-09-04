@@ -3,7 +3,6 @@ import { Play } from 'lucide-react';
 import './CreatorsSection.css';
 
 const CreatorsSection = () => {
-  // Mock data for creators - you can replace with actual data
   const creators = [
     {
       id: 1,
@@ -12,7 +11,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok1.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "2.3k",
-      description: "Amazing skincare routine ✨"
+      description: "Amazing skincare routine"
     },
     {
       id: 2,
@@ -21,7 +20,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok2.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "1.8k",
-      description: "Perfect foundation match 💄"
+      description: "Perfect foundation match"
     },
     {
       id: 3,
@@ -30,7 +29,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok3.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "3.1k",
-      description: "Hair transformation goals 🔥"
+      description: "Hair transformation goals"
     },
     {
       id: 4,
@@ -39,7 +38,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok4.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "4.2k",
-      description: "Skincare that actually works! 🌟"
+      description: "Skincare that actually works!"
     },
     {
       id: 5,
@@ -48,7 +47,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok5.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "2.7k",
-      description: "Bold look of the day 💋"
+      description: "Bold look of the day"
     },
     {
       id: 6,
@@ -57,7 +56,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok6.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "1.9k",
-      description: "Natural beauty essentials 🌿"
+      description: "Natural beauty essentials"
     },
     {
       id: 7,
@@ -66,7 +65,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok7.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "3.5k",
-      description: "Honest product reviews 📱"
+      description: "Honest product reviews"
     },
     {
       id: 8,
@@ -75,7 +74,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok8.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "2.1k",
-      description: "Latest beauty trends 💫"
+      description: "Latest beauty trends"
     },
     {
       id: 9,
@@ -84,7 +83,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok9.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "2.1k",
-      description: "Latest beauty trends 💫"
+      description: "Latest beauty trends"
     },
     {
       id: 10,
@@ -93,7 +92,7 @@ const CreatorsSection = () => {
       thumbnail: "Tiktok10.png",
       videoUrl: "/videos/creator1.mp4",
       likes: "2.1k",
-      description: "Latest beauty trends 💫"
+      description: "Latest beauty trends"
     },
   ];
 

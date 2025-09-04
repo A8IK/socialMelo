@@ -1,21 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
 
-  // Handle scroll effect for header shadow
+  // Handle scroll effect for header shadow and smart sticky behavior
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
+      const currentScrollY = window.scrollY;
+      const isScrolled = currentScrollY > 10;
+      
+      // Smart sticky behavior
+      if (currentScrollY < lastScrollY || currentScrollY < 50) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+        setIsMenuOpen(false); // Close mobile menu when hiding
+      }
+      
       setScrolled(isScrolled);
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // Handle window resize for responsive behavior
   useEffect(() => {
@@ -41,6 +55,68 @@ const Header = () => {
   const isLargeDesktop = windowWidth >= 1200;
   const isSmallDesktop = windowWidth >= 1024 && windowWidth < 1200;
 
+  // Helper function to check if a nav link is active
+  const isActiveLink = (path) => {
+    return location.pathname === path;
+  };
+
+  // Get nav link styles with active state
+  const getNavLinkStyle = (path) => {
+    const baseStyle = {
+      color: '#374151',
+      fontWeight: '500',
+      textDecoration: 'none',
+      transition: 'color 0.2s ease',
+      fontSize: isDesktop ? '1.1rem' : '1rem',
+      padding: '0.5rem 0',
+      position: 'relative'
+    };
+
+    if (isActiveLink(path)) {
+      return {
+        ...baseStyle,
+        background: 'linear-gradient(135deg, #3A1C71 0%, #3A1C71 50%, #FFAF7B 100%)',
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+        fontWeight: '700',
+        borderBottom: '3px solid',
+        borderImage: 'linear-gradient(135deg, #3A1C71 0%, #3A1C71 50%, #FFAF7B 100%) 1'
+      };
+    }
+
+    return baseStyle;
+  };
+
+  // Get mobile nav link styles with active state
+  const getMobileNavLinkStyle = (path) => {
+    const baseStyle = {
+      color: '#374151',
+      fontWeight: '500',
+      padding: '0.75rem 1rem',
+      borderRadius: '0.5rem',
+      textDecoration: 'none',
+      transition: 'all 0.2s ease',
+      fontSize: '1rem'
+    };
+
+    if (isActiveLink(path)) {
+      return {
+        ...baseStyle,
+        background: 'linear-gradient(135deg, #3A1C71 0%, #3A1C71 50%, #FFAF7B 100%)',
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+        fontWeight: '700',
+        borderLeft: '4px solid',
+        borderImage: 'linear-gradient(135deg, #3A1C71 0%, #3A1C71 50%, #FFAF7B 100%) 1',
+        backgroundColor: 'rgba(58, 28, 113, 0.05)'
+      };
+    }
+
+    return baseStyle;
+  };
+
   // Header-specific styles defined within the component
   const headerStyles = {
     header: {
@@ -49,7 +125,8 @@ const Header = () => {
       top: 0,
       zIndex: 50,
       fontFamily: 'Krub, sans-serif',
-      transition: 'all 0.3s ease',
+      transition: 'all 0.3s ease, transform 0.3s ease-in-out',
+      transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
       boxShadow: scrolled 
         ? '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)' 
         : '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
@@ -85,14 +162,6 @@ const Header = () => {
       alignItems: 'center',
       gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1rem' : '1.5rem'
     },
-    navLink: {
-      color: '#374151',
-      fontWeight: '500',
-      textDecoration: 'none',
-      transition: 'color 0.2s ease',
-      fontSize: isDesktop ? '1.1rem' : '1rem',
-      padding: '0.5rem 0'
-    },
     buttonContainer: {
       display: isDesktop ? 'flex' : 'none',
       alignItems: 'center',
@@ -107,7 +176,9 @@ const Header = () => {
       borderRadius: '9999px',
       transition: 'all 0.2s ease',
       cursor: 'pointer',
-      fontSize: isDesktop ? '1.1rem' : '1rem'
+      fontSize: isDesktop ? '1.1rem' : '1rem',
+      textDecoration: 'none',
+      display: 'inline-block'
     },
     brandButton: {
       color: 'white',
@@ -178,15 +249,6 @@ const Header = () => {
       flexDirection: 'column',
       gap: '0.25rem'
     },
-    mobileNavLink: {
-      color: '#374151',
-      fontWeight: '500',
-      padding: '0.75rem 1rem',
-      borderRadius: '0.5rem',
-      textDecoration: 'none',
-      transition: 'all 0.2s ease',
-      fontSize: '1rem'
-    },
     mobileButtonSection: {
       display: 'flex',
       flexDirection: 'column',
@@ -196,7 +258,7 @@ const Header = () => {
       borderTop: '1px solid #e5e7eb'
     },
     mobileLoginButton: {
-      textAlign: 'left',
+      textAlign: 'center',
       color: '#374151',
       fontWeight: '500',
       padding: '0.75rem 1rem',
@@ -205,7 +267,9 @@ const Header = () => {
       borderRadius: '0.5rem',
       transition: 'all 0.2s ease',
       cursor: 'pointer',
-      fontSize: '1rem'
+      fontSize: '1rem',
+      textDecoration: 'none',
+      display: 'block'
     },
     mobileBrandButton: {
       width: '100%',
@@ -221,22 +285,7 @@ const Header = () => {
       display: 'block',
       textAlign: 'center',
       fontSize: '1rem'
-    },
-    // mobileCreatorButton: {
-    //   width: '100%',
-    //   color: 'white',
-    //   fontWeight: '500',
-    //   padding: '0.75rem 1.5rem',
-    //   border: 'none',
-    //   borderRadius: '9999px',
-    //   background: 'linear-gradient(135deg, #422071 0%, #CD6877 50%, #FDAB7B 100%)',
-    //   transition: 'all 0.3s ease',
-    //   cursor: 'pointer',
-    //   textDecoration: 'none',
-    //   display: 'block',
-    //   textAlign: 'center',
-    //   fontSize: '1rem'
-    // }
+    }
   };
 
   // Event handlers
@@ -315,33 +364,26 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav style={headerStyles.nav}>
-            {/* <Link 
-              to="/social-melo" 
-              style={headerStyles.navLink}
-              onMouseEnter={handleNavLinkHover}
-              onMouseLeave={handleNavLinkLeave}>
-              SocialMelo
-            </Link> */}
             <Link 
               to="/pricing" 
-              style={headerStyles.navLink}
-              onMouseEnter={handleNavLinkHover}
-              onMouseLeave={handleNavLinkLeave}>
+              style={getNavLinkStyle('/pricing')}
+              onMouseEnter={!isActiveLink('/pricing') ? handleNavLinkHover : undefined}
+              onMouseLeave={!isActiveLink('/pricing') ? handleNavLinkLeave : undefined}>
               Pricing
             </Link>
             <Link 
               to="/about" 
-              style={headerStyles.navLink}
-              onMouseEnter={handleNavLinkHover}
-              onMouseLeave={handleNavLinkLeave}
+              style={getNavLinkStyle('/about')}
+              onMouseEnter={!isActiveLink('/about') ? handleNavLinkHover : undefined}
+              onMouseLeave={!isActiveLink('/about') ? handleNavLinkLeave : undefined}
             >
               About Us
             </Link>
             <Link 
               to="/contact" 
-              style={headerStyles.navLink}
-              onMouseEnter={handleNavLinkHover}
-              onMouseLeave={handleNavLinkLeave}
+              style={getNavLinkStyle('/contact')}
+              onMouseEnter={!isActiveLink('/contact') ? handleNavLinkHover : undefined}
+              onMouseLeave={!isActiveLink('/contact') ? handleNavLinkLeave : undefined}
             >
               Contact Us
             </Link>
@@ -349,13 +391,14 @@ const Header = () => {
           
           {/* Desktop CTA Buttons */}
           <div style={headerStyles.buttonContainer}>
-            <button 
+            <Link 
+              to="/login"
               style={headerStyles.loginButton}
               onMouseEnter={handleLoginButtonHover}
               onMouseLeave={handleLoginButtonLeave}
             >
               Log in
-            </button>
+            </Link>
             <Link to="/brands">
               <button 
                 style={headerStyles.brandButton}
@@ -404,38 +447,29 @@ const Header = () => {
         <div style={headerStyles.mobileMenu}>
           <div style={headerStyles.mobileMenuContainer}>
             {/* Mobile Navigation Links */}
-            {/* <Link 
-              to="/social-melo" 
-              style={headerStyles.mobileNavLink}
-              onMouseEnter={handleMobileNavHover}
-              onMouseLeave={handleMobileNavLeave}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              SocialMelo
-            </Link> */}
             <Link 
               to="/pricing" 
-              style={headerStyles.mobileNavLink}
-              onMouseEnter={handleMobileNavHover}
-              onMouseLeave={handleMobileNavLeave}
+              style={getMobileNavLinkStyle('/pricing')}
+              onMouseEnter={!isActiveLink('/pricing') ? handleMobileNavHover : undefined}
+              onMouseLeave={!isActiveLink('/pricing') ? handleMobileNavLeave : undefined}
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link 
               to="/about" 
-              style={headerStyles.mobileNavLink}
-              onMouseEnter={handleMobileNavHover}
-              onMouseLeave={handleMobileNavLeave}
+              style={getMobileNavLinkStyle('/about')}
+              onMouseEnter={!isActiveLink('/about') ? handleMobileNavHover : undefined}
+              onMouseLeave={!isActiveLink('/about') ? handleMobileNavLeave : undefined}
               onClick={() => setIsMenuOpen(false)}
             >
               About Us
             </Link>
             <Link 
               to="/contact" 
-              style={headerStyles.mobileNavLink}
-              onMouseEnter={handleMobileNavHover}
-              onMouseLeave={handleMobileNavLeave}
+              style={getMobileNavLinkStyle('/contact')}
+              onMouseEnter={!isActiveLink('/contact') ? handleMobileNavHover : undefined}
+              onMouseLeave={!isActiveLink('/contact') ? handleMobileNavLeave : undefined}
               onClick={() => setIsMenuOpen(false)}
             >
               Contact Us
@@ -443,13 +477,15 @@ const Header = () => {
             
             {/* Mobile CTA Buttons */}
             <div style={headerStyles.mobileButtonSection}>
-              <button 
+              <Link 
+                to="/login"
                 style={headerStyles.mobileLoginButton}
                 onMouseEnter={handleMobileNavHover}
                 onMouseLeave={handleMobileNavLeave}
+                onClick={() => setIsMenuOpen(false)}
               >
                 Log in
-              </button>
+              </Link>
               <Link to="/brands" onClick={() => setIsMenuOpen(false)}>
                 <button 
                   style={headerStyles.mobileBrandButton}

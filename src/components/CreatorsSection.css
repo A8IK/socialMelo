@@ -299,7 +299,7 @@
 }
 
 .creator-image-wrapper:hover .creator-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .rotate-left {
@@ -405,6 +405,7 @@
   position: absolute;
   inset: 0;
   display: flex;
+  border-radius: 20px;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.3);
