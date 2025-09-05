@@ -56,7 +56,7 @@
   display: block;
   text-align: left;
   margin-top: 2rem;
-  margin-left: -1.8rem;
+  margin-left: 0rem;
 }
 
 .explore-link {
@@ -374,6 +374,8 @@
   .cta-section {
     flex-direction: column;
     gap: 0rem;
+    margin-top: 2rem;
+    margin-bottom: 0rem;
     align-items: center;
   }
   

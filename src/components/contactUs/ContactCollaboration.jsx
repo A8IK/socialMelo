@@ -5,7 +5,7 @@ import { usePageMeta } from '../../usePageMeta';
 const ContactCollaboration = () => {
   usePageMeta(
     'Contact SocialMelo | Global Influencer Marketing Platform', 
-    'Have questions or want to collaborate? Reach out to SocialMelo, the global influencer marketing Platform. Email us at hello@socialmelo.io today'
+    'Have questions or want to collaborate? Reach out to SocialMelo, the global influencer marketing Platform. Email us at hello@socialmelo.io'
   );
   const [formData, setFormData] = useState({
     name: '',

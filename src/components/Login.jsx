@@ -2,8 +2,15 @@ import React, { useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, AlertCircle, Eye, EyeOff, Mail, Lock, Sparkles } from 'lucide-react';
 import './Login.css';
+import { usePageMeta } from '../usePageMeta';
 
 const Login = () => {
+
+  usePageMeta(
+      'Login | SocialMelo Influencer Marketing Platform', 
+      'Log in to your SocialMelo account to manage influencer campaigns, track performance and connect with brands for secure access to your marketing hub.'
+    );
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''

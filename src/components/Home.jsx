@@ -4,7 +4,7 @@ import { usePageMeta } from '../usePageMeta';
 const Home = () => {
   usePageMeta(
   'SocialMelo | Influencer Marketing Platform for Brands', 
-  'Work with SocialMelo, a leading influencer marketing platform trusted by global brands. Over 35,000 campaigns delivered worldwide with proven ROI.'
+  'Work with SocialMelo, a trusted influencer marketing platform for global brands. Over 35,000 campaigns delivered with proven ROI.'
 );
   return (
     <section className="hero-section">
