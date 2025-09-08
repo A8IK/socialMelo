@@ -6,4 +6,7 @@ export default defineConfig({
   css: {
     postcss: {},
   },
+  server: {
+    historyApiFallback: true
+  }
 })

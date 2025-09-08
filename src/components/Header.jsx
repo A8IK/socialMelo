@@ -160,7 +160,9 @@ const Header = () => {
     nav: {
       display: isDesktop ? 'flex' : 'none',
       alignItems: 'center',
-      gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1rem' : '1.5rem'
+      gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1rem' : '1.5rem',
+      marginLeft: 'auto',
+      marginRight: '7rem'
     },
     buttonContainer: {
       display: isDesktop ? 'flex' : 'none',
@@ -486,7 +488,7 @@ const Header = () => {
               >
                 Log in
               </Link>
-              <Link to="/brands" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/brands" onClick={() => setIsMenuOpen(false)}  style={{ textDecoration: 'none' }}>
                 <button 
                   style={headerStyles.mobileBrandButton}
                   onMouseEnter={handleGradientButtonHover}
@@ -495,7 +497,7 @@ const Header = () => {
                   Join as Brand
                 </button>
               </Link>
-              <Link to="/creators" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/creators" onClick={() => setIsMenuOpen(false)}  style={{ textDecoration: 'none' }}>
                 <button 
                     style={headerStyles.mobileCreatorButton}
                     onMouseEnter={handleGradientButtonHover}

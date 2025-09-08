@@ -248,7 +248,7 @@ const Footer = () => {
             <div style={footerStyles.linkList}>
               <a 
                 href="https://socialmelo.com/blog/" 
-                target="_blank"
+                // target="_blank"
                 rel="noopener noreferrer"
                 style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
