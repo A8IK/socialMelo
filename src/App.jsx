@@ -24,6 +24,7 @@ import CultureTabs from './components/AboutUs/CultureTabs';
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
                 </>
               } />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<SignUp />} />
             </Routes>
           </main>
           <Footer /> 

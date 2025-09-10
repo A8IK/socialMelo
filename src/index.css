@@ -25,3 +25,14 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
+
+/* Global text selection styles */
+::selection {
+  background: #D76D77;
+  color: white;
+}
+
+::-moz-selection {
+  background: #D76D77;
+  color: white;
+}

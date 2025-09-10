@@ -531,7 +531,7 @@
   font-size: 1.125rem;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease !important;
 }
 
 @media (max-width: 480px) {

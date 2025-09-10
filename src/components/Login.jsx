@@ -147,8 +147,7 @@ const Login = () => {
                   <button
                     type="button"
                     onClick={togglePasswordVisibility}
-                    className="password-toggle"
-                  >
+                    className="password-toggle">
                     {showPassword ? <EyeOff className="toggle-icon" /> : <Eye className="toggle-icon" />}
                   </button>
                 </div>
@@ -158,8 +157,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`submit-button ${loading ? 'submit-button-loading' : ''}`}
-              >
+                className={`submit-button ${loading ? 'submit-button-loading' : ''}`} >
                 {loading ? (
                   <div className="loading-content">
                     <div className="loading-spinner"></div>
@@ -194,11 +192,11 @@ const Login = () => {
               <div className="demo-content">
                 <div className="demo-row">
                   <span className="demo-label">Admin:</span>
-                  <span className="demo-value">admin@yourapp.com</span>
+                  {/* <span className="demo-value">admin@yourapp.com</span> */}
                 </div>
                 <div className="demo-row">
                   <span className="demo-label">Password:</span>
-                  <span className="demo-value">AdminPass123!</span>
+                  {/* <span className="demo-value">AdminPass123!</span> */}
                 </div>
               </div>
             </div>
