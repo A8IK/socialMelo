@@ -503,6 +503,14 @@ const FindContent = () => {
               transition: 'all 0.3s ease',
               marginTop: window.innerWidth < 768 ? '0' : '-10px',
               fontSize: window.innerWidth < 768 ? '0.875rem' : '1rem'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = '#D76D77';
+              e.target.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = '#D76D77';
+              e.target.style.transform = 'scale(1)';
             }}>
               Sign up now
             </button>
