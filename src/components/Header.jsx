@@ -66,7 +66,7 @@ const Header = () => {
       color: '#374151',
       fontWeight: '500',
       textDecoration: 'none',
-      transition: 'color 0.2s ease',
+      transition: 'all 0.1s cubic-bezier(0, 0, 2, 0)',
       fontSize: isDesktop ? '1.1rem' : '1rem',
       padding: '0.5rem 0',
       position: 'relative'
