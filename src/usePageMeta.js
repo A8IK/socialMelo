@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-export const usePageMeta = (title, description = null) => {
+export const usePageMeta = (title, description = null, canonicalUrl = null) => {
+  const location = useLocation();
+
   useEffect(() => {
     // Set title
     document.title = title;
@@ -39,5 +42,17 @@ export const usePageMeta = (title, description = null) => {
         document.head.appendChild(ogDescription);
       }
     }
-  }, [title, description]);
+
+     // Set canonical URL
+    const canonical = canonicalUrl || `${window.location.origin}${location.pathname}`;
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', canonical);
+    } else {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      canonicalLink.href = canonical;
+      document.head.appendChild(canonicalLink);
+    }
+  }, [title, description, canonicalUrl, location.pathname]);
 };

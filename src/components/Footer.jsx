@@ -84,6 +84,16 @@ const Footer = () => {
       transition: 'color 0.2s ease',
       cursor: 'pointer'
     },
+
+    // Add this new style for disabled links:
+  linkDisabled: {
+    color: 'rgba(255, 255, 255, 0.4)',
+    textDecoration: 'none',
+    fontSize: isDesktop ? '0.875rem' : '0.8rem',
+    cursor: 'default',
+    opacity: 0.6,
+    pointerEvents: 'none'
+  },
     bottomSection: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -116,6 +126,12 @@ const Footer = () => {
       cursor: 'pointer'
     }
   };
+
+  // Add these helper functions after your existing event handlers:
+const isLinkClickable = (linkText) => {
+  const clickableLinks = ['contacts', 'blog'];
+  return clickableLinks.includes(linkText.toLowerCase());
+};
 
   // Event handlers
   const handleLinkHover = (e) => {
