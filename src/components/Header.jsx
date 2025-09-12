@@ -401,7 +401,7 @@ const Header = () => {
             >
               Log in
             </Link>
-            <Link to="/brands">
+            <Link to="/register">
               <button 
                 style={headerStyles.brandButton}
                 onMouseEnter={handleGradientButtonHover}
@@ -410,7 +410,7 @@ const Header = () => {
                 Join as Brand
               </button>
             </Link>
-            <Link to="/creators">
+            <Link to="/register">
             <button 
                 style={headerStyles.creatorButton}
                 onMouseEnter={handleGradientButtonHover}

@@ -52,6 +52,15 @@ const Footer = () => {
         cursor: 'pointer',
         transition: 'all 0.3s ease'
     },
+    
+    //Disabled links
+    linkDisabled: {
+      color: 'rgba(255, 255, 255, 0.4)', // Grayed out color
+      textDecoration: 'none',
+      fontSize: isDesktop ? '0.875rem' : '0.8rem',
+      cursor: 'default',
+      pointerEvents: 'none'
+    },
     mainContent: {
       display: 'grid',
       gridTemplateColumns: isDesktop 
@@ -84,16 +93,6 @@ const Footer = () => {
       transition: 'color 0.2s ease',
       cursor: 'pointer'
     },
-
-    // Add this new style for disabled links:
-  linkDisabled: {
-    color: 'rgba(255, 255, 255, 0.4)',
-    textDecoration: 'none',
-    fontSize: isDesktop ? '0.875rem' : '0.8rem',
-    cursor: 'default',
-    opacity: 0.6,
-    pointerEvents: 'none'
-  },
     bottomSection: {
       display: 'flex',
       justifyContent: 'space-between',
@@ -126,12 +125,6 @@ const Footer = () => {
       cursor: 'pointer'
     }
   };
-
-  // Add these helper functions after your existing event handlers:
-const isLinkClickable = (linkText) => {
-  const clickableLinks = ['contacts', 'blog'];
-  return clickableLinks.includes(linkText.toLowerCase());
-};
 
   // Event handlers
   const handleLinkHover = (e) => {
@@ -195,7 +188,7 @@ const isLinkClickable = (linkText) => {
               </Link>
               <Link 
                 to="/faq" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 FAQ
@@ -209,20 +202,20 @@ const isLinkClickable = (linkText) => {
             <div style={footerStyles.linkList}>
               <Link 
                 to="/brands" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Brands
               </Link>
               <Link 
                 to="/agencies" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Agencies
               </Link>
               <Link to="/ecommerce" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 E-Commerce
@@ -236,21 +229,21 @@ const isLinkClickable = (linkText) => {
             <div style={footerStyles.linkList}>
               <Link 
                 to="/influencer-marketing" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Influencer Marketing
               </Link>
               <Link 
                 to="/social-media-management" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Social Media Management
               </Link>
               <Link 
                 to="/social-listening" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Social Listening
@@ -271,44 +264,46 @@ const isLinkClickable = (linkText) => {
                 onMouseLeave={handleLinkLeave}>
                 Blog
               </a>
-              <Link 
-                to="/knowledge-base" 
+              <a 
+                href="https://socialmelo.com/blog/html-sitemap/" 
+                // target="_blank"
+                rel="noopener noreferrer"
                 style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Knowledge Base
-              </Link>
+              </a>
               <Link 
                 to="/ebooks" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 eBooks
               </Link>
               <Link 
                 to="/guides" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Guides
               </Link>
               <Link 
                 to="/studies" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Studies
               </Link>
               <Link 
                 to="/videos" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Videos
               </Link>
               <Link 
                 to="/infographics" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Infographics
@@ -322,35 +317,35 @@ const isLinkClickable = (linkText) => {
             <div style={footerStyles.linkList}>
               <Link 
                 to="/our-advantage" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Our Advantage
               </Link>
               <Link 
                 to="/about" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Company
               </Link>
               <Link 
                 to="/testimonials" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Testimonials
               </Link>
               <Link 
                 to="/careers" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Careers
               </Link>
               <Link 
                 to="/affiliate-program" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Affiliate Program
@@ -364,28 +359,28 @@ const isLinkClickable = (linkText) => {
             <div style={footerStyles.linkList}>
               <Link 
                 to="/compliance" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave} >
                 Compliance
               </Link>
               <Link 
                 to="/legal" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Legal
               </Link>
               <Link 
                 to="/privacy" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Privacy & Cookie notice
               </Link>
               <Link 
                 to="/accessibility" 
-                style={footerStyles.link}
+                style={footerStyles.linkDisabled}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 Accessibility
