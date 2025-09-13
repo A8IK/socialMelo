@@ -61,7 +61,7 @@ const ValuesTeamSection = () => {
           <div className="aurora-ceo-content-wrapper">
             <div className="aurora-ceo-image-container">
               <div className="aurora-ceo-image-wrapper">
-                <img src="Abdullah-Mahmud-SEO-Expert.webp" alt="CEO" className="aurora-ceo-image" />
+                <img src="David.avif" alt="CEO" className="aurora-ceo-image" />
               </div>
             </div>
             
@@ -76,7 +76,7 @@ const ValuesTeamSection = () => {
                 </p>
                 
                 <div className="aurora-ceo-signature">
-                  <p className="aurora-ceo-name">Abdullah Mahmud</p>
+                  <p className="aurora-ceo-name">David Ryabchikov</p>
                   <p className="aurora-ceo-title">Founder & CEO,</p>
                   <p className="aurora-ceo-company">Socialmelo</p>
                 </div>

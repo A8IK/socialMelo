@@ -4,8 +4,8 @@ import { usePageMeta } from '../../usePageMeta';
 
 const PricingHero = () => {
     usePageMeta(
-    'Influencer Marketing Pricing – SocialMelo Plans & Packages', 
-    'View SocialMelo pricing. From Professional to Premium, find influencer marketing packages with analytics, campaigns, and engagement included.'
+    'SocialMelo Pricing | Influencer Marketing Plans', 
+    'View SocialMelo pricing. From Professional to Premium, choose influencer marketing plans with analytics, campaigns, and engagement tools.'
   );
   return (
     <div className="pricing-container">
