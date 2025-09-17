@@ -1,0 +1,568 @@
+/* Hide header and footer when 404 page is active */
+.error-404-page header,
+.error-404-page footer,
+.error-404-page nav,
+.error-404-page [class*="header"],
+.error-404-page [class*="Header"],
+.error-404-page [class*="footer"],
+.error-404-page [class*="Footer"],
+.error-404-page [class*="nav"],
+.error-404-page [class*="Nav"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Make 404 page full screen */
+.error-404-page {
+  overflow: hidden !important;
+}
+
+/* Force the error container to take full viewport */
+.error-404-page .error-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 999999 !important;
+  border-radius: 0px;
+}
+
+.error-container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 999999;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.error-content {
+  display: contents;
+}
+
+.content-wrapper {
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 90vw;
+}
+
+/* Main 404 Number Animation */
+.error-code {
+  font-size: clamp(8rem, 18vw, 15rem);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  margin-bottom: 0.5rem;
+  line-height: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: -0.05em;
+  perspective: 1000px;
+}
+
+.error-code .four:first-child {
+  animation: bounce-left 2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.error-code .zero {
+  animation: rotate-scale 3s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.error-code .four:last-child {
+  animation: bounce-right 2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+/* Brand Container */
+.brand-container {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.brand-name {
+  color: #ffd700;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  margin: 0;
+  text-align: center;
+}
+
+/* Message Container */
+.message-container {
+  margin-bottom: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-message {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: fade-in-up 1s ease-out 0.5s forwards;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.error-description {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255,255,255,0.95);
+  line-height: 1.7;
+  opacity: 0;
+  animation: fade-in-up 1s ease-out 1s forwards;
+  margin: 0;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  margin-top: -.5rem;
+  opacity: 0;
+  animation: fade-in-up 1s ease-out 1.5s forwards;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  min-width: 140px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #333;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(45deg, #ffed4e, #fff700);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.25);
+  border-color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+}
+
+.btn-tertiary {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: #fff;
+  border: 2px solid transparent;
+}
+
+.btn-tertiary:hover {
+  background: linear-gradient(45deg, #764ba2, #667eea);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.btn-icon {
+  font-size: 1.2em;
+}
+
+/* Lost Character Animation */
+.lost-character {
+  position: relative;
+  opacity: 0;
+  animation: fade-in 1s ease-out 2s forwards;
+  margin-top: -2.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.character {
+  font-size: 4rem;
+  animation: sway 3s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+  margin-bottom: 1rem;
+}
+
+.thought-bubble {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.bubble {
+  background: rgba(255,255,255,0.95);
+  color: #333;
+  padding: 12px 20px;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  animation: bubble-float 2s ease-in-out infinite;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba(255,255,255,0.95);
+}
+
+/* Floating Background Icons */
+.floating-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.1;
+  animation: float-around 10s ease-in-out infinite;
+  filter: blur(0.5px);
+}
+
+.icon-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.icon-2 { top: 20%; right: 15%; animation-delay: 1.5s; }
+.icon-3 { bottom: 30%; left: 20%; animation-delay: 3s; }
+.icon-4 { bottom: 20%; right: 10%; animation-delay: 4.5s; }
+.icon-5 { top: 60%; left: 5%; animation-delay: 6s; }
+.icon-6 { top: 40%; right: 5%; animation-delay: 7.5s; }
+.icon-7 { top: 80%; left: 50%; animation-delay: 9s; }
+.icon-8 { top: 30%; left: 50%; animation-delay: 10.5s; }
+
+/* Background Animated Shapes */
+.bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  animation: shape-float 8s ease-in-out infinite;
+  backdrop-filter: blur(1px);
+}
+
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  top: 15%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 5%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 15%;
+  left: 25%;
+  animation-delay: 4s;
+}
+
+.shape-4 {
+  width: 150px;
+  height: 150px;
+  top: 35%;
+  right: 25%;
+  animation-delay: 6s;
+}
+
+/* Keyframe Animations */
+@keyframes bounce-left {
+  0%, 20%, 50%, 80%, 100% { 
+    transform: translateX(0) rotateY(0deg) translateZ(0); 
+  }
+  40% { 
+    transform: translateX(-15px) rotateY(-15deg) translateZ(20px); 
+  }
+  60% { 
+    transform: translateX(-8px) rotateY(-8deg) translateZ(10px); 
+  }
+}
+
+@keyframes bounce-right {
+  0%, 20%, 50%, 80%, 100% { 
+    transform: translateX(0) rotateY(0deg) translateZ(0); 
+  }
+  40% { 
+    transform: translateX(15px) rotateY(15deg) translateZ(20px); 
+  }
+  60% { 
+    transform: translateX(8px) rotateY(8deg) translateZ(10px); 
+  }
+}
+
+@keyframes rotate-scale {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg) translateZ(0); 
+  }
+  25% { 
+    transform: scale(1.15) rotate(90deg) translateZ(30px); 
+  }
+  50% { 
+    transform: scale(1) rotate(180deg) translateZ(0); 
+  }
+  75% { 
+    transform: scale(1.15) rotate(270deg) translateZ(30px); 
+  }
+}
+
+@keyframes glow-pulse {
+  from {
+    text-shadow: 
+      0 0 20px rgba(255, 215, 0, 0.5),
+      0 0 40px rgba(255, 215, 0, 0.3);
+    transform: scale(1);
+  }
+  to {
+    text-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.8),
+      0 0 60px rgba(255, 215, 0, 0.5);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-15px) rotate(-8deg); }
+  75% { transform: translateX(15px) rotate(8deg); }
+}
+
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes float-around {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) translateX(0px); 
+    opacity: 0.1; 
+  }
+  25% { 
+    transform: translateY(-30px) rotate(90deg) translateX(-15px); 
+    opacity: 0.2; 
+  }
+  50% { 
+    transform: translateY(-15px) rotate(180deg) translateX(0px); 
+    opacity: 0.15; 
+  }
+  75% { 
+    transform: translateY(-25px) rotate(270deg) translateX(15px); 
+    opacity: 0.25; 
+  }
+}
+
+@keyframes shape-float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1) rotate(0deg); 
+    opacity: 0.03; 
+  }
+  33% {
+    transform: translateY(-30px) scale(1.1) rotate(120deg);
+    opacity: 0.05;
+  }
+  66% { 
+    transform: translateY(-15px) scale(1.05) rotate(240deg); 
+    opacity: 0.08; 
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .error-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px 24px;
+    font-size: 1rem;
+  }
+  
+  .error-code {
+    margin-bottom: 1rem;
+  }
+  
+  .brand-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .message-container {
+    margin-bottom: 2rem;
+  }
+  
+  .icon {
+    font-size: 2rem;
+    opacity: 0.08;
+  }
+  
+  .shape {
+    opacity: 0.02;
+  }
+  
+  .character {
+    font-size: 3.5rem;
+  }
+  
+  .lost-character {
+    margin-top: 1rem;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-wrapper {
+    padding: 0.5rem;
+  }
+  
+  .error-code {
+    margin-bottom: 0.5rem;
+  }
+  
+  .brand-container {
+    margin-bottom: 1rem;
+  }
+  
+  .message-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .icon {
+    display: none;
+  }
+  
+  .lost-character {
+    margin-top: 0.5rem;
+    max-width: 200px;
+  }
+  
+  .character {
+    font-size: 3rem;
+  }
+}

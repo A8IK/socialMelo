@@ -26,6 +26,8 @@ import ContactCollaboration from './components/contactUs/ContactCollaboration';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 
+import Error404 from './components/Error404';
+
 function App() {
   return (
     <div className="font-krub">
@@ -73,6 +75,8 @@ function App() {
               } />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
+
+              <Route path ="*" element={<Error404/>} />
             </Routes>
           </main>
           <Footer /> 

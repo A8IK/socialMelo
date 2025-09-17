@@ -97,7 +97,7 @@ const ContactCollaboration = () => {
             </p>
             
             <a href="mailto:hello@socialmelo.io" className="cosmos-email-link">
-              hello@socialmelo.io
+              danyel@socialmelo.com
             </a>
           </div>
 
