@@ -21,9 +21,9 @@ const BrandCarousel = () => {
 
   return (
     <div className="brand-carousel-section">
-      <div className="brand-container">
+      <div className="brand-container1">
         {/* Title */}
-        <h2 className="brand-title4">
+        <h2 className="brand-title5">
           Trusted by Leading Brands in 70+ Countries
         </h2>
 
