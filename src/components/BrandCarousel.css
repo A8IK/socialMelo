@@ -5,13 +5,13 @@
   overflow: hidden;
 }
 
-.brand-container {
+.brand-container1 {
   max-width: 1440px;
   margin: 0 auto;
 }
 
 /* Title Styles */
-.brand-title4 {
+.brand-title5 {
   text-align: center;
   font-size: 2.5rem !important;
   font-weight: 600;
@@ -103,7 +103,7 @@
 
 /* Large Desktop */
 @media (min-width: 1200px) {
-  .brand-title4 {
+  .brand-title5 {
     font-size: 2.20rem;
   }
   
@@ -119,7 +119,7 @@
 
 /* Desktop */
 @media (min-width: 1024px) and (max-width: 1199px) {
-  .brand-title4 {
+  .brand-title5 {
     font-size: 2.5rem;
   }
   
@@ -161,7 +161,7 @@
     padding: 2.5rem 1rem;
   }
   
-  .brand-title4 {
+  .brand-title5 {
     font-size: 1.875rem;
     margin-bottom: 2rem;
   }
@@ -187,7 +187,7 @@
     padding: 2rem 0.5rem;
   }
   
-  .brand-title4 {
+  .brand-title5 {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     line-height: 1.3;
