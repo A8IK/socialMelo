@@ -1,0 +1,2 @@
+# Redirect non-www to www
+https://socialmelo.com/* https://www.socialmelo.com/:splat 301!
