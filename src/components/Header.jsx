@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 
 const Header = () => {
@@ -8,6 +9,60 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
+
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const token = localStorage.getItem('token');
+      const userData = localStorage.getItem('user');
+      
+      if (token && userData) {
+        setIsLoggedIn(true);
+        setUser(JSON.parse(userData));
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    };
+
+    // Check on component mount
+    checkAuthStatus();
+
+    // Listen for storage changes (when user logs in/out in another tab)
+    window.addEventListener('storage', checkAuthStatus);
+    
+    // Custom event listener for login/logout
+    window.addEventListener('authChange', checkAuthStatus);
+
+    return () => {
+      window.removeEventListener('storage', checkAuthStatus);
+      window.removeEventListener('authChange', checkAuthStatus);
+    };
+  }, []);
+
+  // ✅ ADD LOGOUT FUNCTION
+  const handleLogout = () => {
+    // Clear localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    
+    // Update state
+    setIsLoggedIn(false);
+    setUser(null);
+    
+    // Show success toast
+    toast.success('Logged out successfully!');
+    
+    // Trigger custom event for other components
+    window.dispatchEvent(new Event('authChange'));
+    
+    // Redirect to home page
+    navigate('/');
+  };
+
 
   // Handle scroll effect for header shadow and smart sticky behavior
   useEffect(() => {
@@ -158,11 +213,15 @@ const Header = () => {
       transition: 'all 0.3s ease'
     },
     nav: {
-      display: isDesktop ? 'flex' : 'none',
-      alignItems: 'center',
-      gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1.3rem' : '1.5rem',
-      marginLeft: 'auto',
-      marginRight: windowWidth >= 2400 ? '20rem' : isSmallDesktop ? '0rem' : '7rem'
+       display: isDesktop ? 'flex' : 'none',
+        alignItems: 'center',
+        gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1.3rem' : '1.5rem',
+        // ✅ CHANGE THIS - Remove the dynamic marginRight
+        marginLeft: 'auto',
+        marginRight: 'auto', // Keep it centered
+        position: 'absolute', // Add this
+        left: '50%', // Add this
+        transform: 'translateX(-50%)',
     },
     buttonContainer: {
       display: isDesktop ? 'flex' : 'none',
@@ -406,38 +465,68 @@ const Header = () => {
           
           {/* Desktop CTA Buttons */}
           <div style={headerStyles.buttonContainer}>
-            <Link 
-              to="/login"
-              style={headerStyles.loginButton}
-              onMouseEnter={handleLoginButtonHover}
-              onMouseLeave={handleLoginButtonLeave}
-            >
-              Log in
-            </Link>
-            <Link to="/register">
-              <button 
-                style={headerStyles.brandButton}
-                onMouseEnter={handleGradientButtonHover}
-                onMouseLeave={handleGradientButtonLeave}
-              >
-                Join as Brand
-              </button>
-            </Link>
-            <Link to="/register">
-            <button 
-                style={headerStyles.creatorButton}
-                onMouseEnter={handleGradientButtonHover}
-                onMouseLeave={handleGradientButtonLeave}>
-                <span style={{ color: '#422071' }}>Join as </span>
+            {isLoggedIn ? (
+              // Show user info and logout when logged in
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <span style={{ 
-                background: 'linear-gradient(135deg, #CD6877 0%, #FDAB7B 100%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                color: 'transparent'
-                }}>Creator</span>
-            </button>
-            </Link>
+                  color: '#374151', 
+                  fontSize: '0.9rem',
+                  fontWeight: '500' 
+                }}>
+                  Welcome, {user?.name}!
+                </span>
+                <button
+                  onClick={handleLogout}
+                  style={headerStyles.loginButton}
+                  onMouseEnter={handleLoginButtonHover}
+                  onMouseLeave={handleLoginButtonLeave}
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              // Show login when not logged in
+              <Link 
+                to="/login"
+                style={headerStyles.loginButton}
+                onMouseEnter={handleLoginButtonHover}
+                onMouseLeave={handleLoginButtonLeave}
+              >
+                Log In
+              </Link>
+            )}
+            
+            {/* Only show Join buttons when not logged in */}
+            {!isLoggedIn && (
+              <>
+                <Link to="/register">
+                  <button 
+                    style={headerStyles.brandButton}
+                    onMouseEnter={handleGradientButtonHover}
+                    onMouseLeave={handleGradientButtonLeave}
+                  >
+                    Join as Brand
+                  </button>
+                </Link>
+                <Link to="/register">
+                  <button 
+                    style={headerStyles.creatorButton}
+                    onMouseEnter={handleGradientButtonHover}
+                    onMouseLeave={handleGradientButtonLeave}
+                  >
+                    <span style={{ color: '#422071' }}>Join as </span>
+                    <span style={{ 
+                      background: 'linear-gradient(135deg, #CD6877 0%, #FDAB7B 100%)',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      color: 'transparent'
+                    }}>Creator</span>
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
+
           
           {/* Mobile menu button */}
           <button 

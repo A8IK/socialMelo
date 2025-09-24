@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge, Camera, Upload, X } from 'lucide-react';
+import {toast} from 'react-toastify';
 import './SignUp.css';
 import { usePageMeta } from '../usePageMeta';
 
@@ -119,19 +120,22 @@ const SignUp = () => {
         submitData.append('profilePicture', formData.profilePicture);
       }
 
-    //   const response = await fetch('http://localhost:9000/api/auth/register', {
-    //     method: 'POST',
-    //     body: submitData,
-    //   });
+      const response = await fetch('http://localhost:9000/api/auth/register', {
+        method: 'POST',
+        body: submitData,
+      });
 
       const data = await response.json();
 
       if (data.success) {
+        toast.success('🎉 Successfull! Welcome to SocialMelo!');
+
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
-        navigate('/dashboard');
+        navigate('/');
       } else {
-        setError(data.message || 'Registration failed');
+        toast.error(data.message || 'Registration failed. ', error);
+        // setError(data.message || 'Registration failed');
       }
     } catch (err) {
       console.error('Registration error:', err);

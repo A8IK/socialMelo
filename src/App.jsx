@@ -23,6 +23,9 @@ import CultureTabs from './components/AboutUs/CultureTabs';
 
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 
@@ -81,6 +84,20 @@ function App() {
           </main>
           <Footer /> 
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+          theme="colored"
+          toastStyle={{
+          background: "#FFAF7BD6",
+          color: "white",
+          borderRadius: "12px",
+          fontWeight: "600"
+        }}
+          />
       </Router>
     </div>
   );
