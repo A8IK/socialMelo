@@ -160,9 +160,9 @@ const Header = () => {
     nav: {
       display: isDesktop ? 'flex' : 'none',
       alignItems: 'center',
-      gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1rem' : '1.5rem',
+      gap: isLargeDesktop ? '2rem' : isSmallDesktop ? '1.3rem' : '1.5rem',
       marginLeft: 'auto',
-      marginRight: '7rem'
+      marginRight: windowWidth >= 2400 ? '20rem' : isSmallDesktop ? '0rem' : '7rem'
     },
     buttonContainer: {
       display: isDesktop ? 'flex' : 'none',
@@ -226,7 +226,7 @@ const Header = () => {
     mobileCreatorButton: {
     width: '100%',
     fontWeight: '500',
-    padding: '0.75rem 1.5rem',
+    padding: '0.875rem 1.5rem',
     border: '2px solid transparent',
     borderRadius: '9999px',
     background: 'linear-gradient(white, white) padding-box, linear-gradient(135deg, #422071 0%, #CD6877 50%, #FDAB7B 100%) border-box',
@@ -236,6 +236,7 @@ const Header = () => {
     display: 'block',
     textAlign: 'center',
     fontSize: '1rem',
+    minHeight: '48px',
     backgroundColor: 'transparent'
     },
     mobileMenu: {
@@ -243,17 +244,23 @@ const Header = () => {
       borderTop: '1px solid #e5e7eb',
       backgroundColor: 'white',
       padding: '1rem 0',
-      position: 'relative',
-      zIndex: 40
+      position: 'absolute',
+      zIndex: 40,
+      left: 0,
+      top:'100%',
+  right: 0,
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
     },
     mobileMenuContainer: {
       display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
       gap: '0.25rem'
     },
     mobileButtonSection: {
       display: 'flex',
       flexDirection: 'column',
+      alignItems:'center',
       gap: '0.75rem',
       paddingTop: '1rem',
       marginTop: '1rem',
@@ -274,20 +281,26 @@ const Header = () => {
       display: 'block'
     },
     mobileBrandButton: {
-      width: '100%',
-      color: 'white',
-      fontWeight: '500',
-      padding: '0.75rem 1.5rem',
-      border: 'none',
-      borderRadius: '9999px',
-      background: 'linear-gradient(135deg, #64478A 0%, #E38E8D 50%, #EDA580 100%)',
-      transition: 'all 0.3s ease',
-      cursor: 'pointer',
-      textDecoration: 'none',
-      display: 'block',
-      textAlign: 'center',
-      fontSize: '1rem'
-    }
+  width: '100%', 
+  margin: '0 auto',
+  color: 'white',
+  fontWeight: '500',
+  padding: '0.875rem 1.5rem',
+  border: 'none',
+  borderRadius: '9999px',
+  background: 'linear-gradient(135deg, #64478A 0%, #E38E8D 50%, #EDA580 100%)',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  display: 'block',
+  textAlign: 'center',
+  fontSize: '1rem',
+  minHeight: '48px',
+  maxHeight: '48px',
+  boxSizing: 'border-box',
+  whiteSpace: 'nowrap', 
+  overflow: 'hidden'
+},
   };
 
   // Event handlers
@@ -488,7 +501,7 @@ const Header = () => {
               >
                 Log in
               </Link>
-              <Link to="/brands" onClick={() => setIsMenuOpen(false)}  style={{ textDecoration: 'none' }}>
+              <Link to="/register" onClick={() => setIsMenuOpen(false)}  style={{ textDecoration: 'none' }}>
                 <button 
                   style={headerStyles.mobileBrandButton}
                   onMouseEnter={handleGradientButtonHover}
@@ -497,7 +510,7 @@ const Header = () => {
                   Join as Brand
                 </button>
               </Link>
-              <Link to="/creators" onClick={() => setIsMenuOpen(false)}  style={{ textDecoration: 'none' }}>
+              <Link to="/register" onClick={() => setIsMenuOpen(false)}  style={{ textDecoration: 'none' }}>
                 <button 
                     style={headerStyles.mobileCreatorButton}
                     onMouseEnter={handleGradientButtonHover}
