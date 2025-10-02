@@ -392,7 +392,7 @@ const Footer = () => {
         {/* Bottom section with copyright and social links */}
         <div style={footerStyles.bottomSection}>
           <p style={footerStyles.copyright}>
-            © 2024 SocialMelo. All Rights Reserved.
+            © 2025 SocialMelo. All Rights Reserved.
           </p>
           
           <div style={footerStyles.socialLinks}>

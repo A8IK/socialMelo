@@ -3,8 +3,8 @@ import './FixMeeting.css';
 const FixMeeting = () => {
   return (
     <section className="team-platform-section">
-      <div className="container">
-        <div className="content-wrapper">
+      <div className="container5">
+        <div className="content-wrapper5">
           {/* Calendar Section */}
           <div className="calendar-section">
             <div className="calendar-image-container">
