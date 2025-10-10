@@ -1,4 +1,4 @@
-import './HowToUse.css';
+import './HowtoUse.css';
 
 const HowToUse = () => {
   return (
