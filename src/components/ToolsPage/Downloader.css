@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.container {
+.container8 {
   min-height: 100vh;
   background-color: #f9fafb;
   padding: 3rem 1rem;
@@ -268,7 +268,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .container {
+  .container8 {
     padding: 2rem 1rem;
   }
 

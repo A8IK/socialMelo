@@ -162,7 +162,7 @@ export default function InstagramDownloader() {
   };
 
   return (
-    <div className="container">
+    <div className="container8">
       {/* Toast Container */}
       <ToastContainer
         position="top-right"
