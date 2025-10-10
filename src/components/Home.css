@@ -111,6 +111,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none !important;
 }
 
 .btn-trial:hover {

@@ -1,8 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
-const fs = require('fs');
-const path = require('path');
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -19,10 +17,6 @@ const register = async (req, res) => {
     // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // Clean up uploaded file if validation fails
-      if (req.file) {
-        fs.unlinkSync(req.file.path);
-      }
       return res.status(400).json({
         success: false,
         message: 'Validation failed',
@@ -35,10 +29,6 @@ const register = async (req, res) => {
     // Check if user already exists
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     if (existingUser) {
-      // Clean up uploaded file
-      if (req.file) {
-        fs.unlinkSync(req.file.path);
-      }
       return res.status(400).json({
         success: false,
         message: 'User with this email already exists'
@@ -52,11 +42,6 @@ const register = async (req, res) => {
       password,
       userType: userType || 'Author'
     };
-
-    // Add profile picture path if uploaded
-    if (req.file) {
-      userData.profilePicture = req.file.filename;
-    }
 
     // Create user
     const user = await User.create(userData);
@@ -76,18 +61,13 @@ const register = async (req, res) => {
         name: user.name,
         email: user.email,
         userType: user.userType,
-        profilePicture: user.profilePicture ? `/uploads/${user.profilePicture}` : null,
+        profilePicture: user.profilePicture,
         createdAt: user.createdAt
       },
       token
     });
 
   } catch (error) {
-    // Clean up uploaded file on error
-    if (req.file) {
-      fs.unlinkSync(req.file.path);
-    }
-
     console.error('Registration error:', error);
     
     if (error.code === 11000) {
@@ -131,6 +111,14 @@ const login = async (req, res) => {
       });
     }
 
+    // Check if user has a password (not a Google OAuth user)
+    if (!user.password) {
+      return res.status(401).json({
+        success: false,
+        message: 'Please sign in with Google'
+      });
+    }
+
     // Check password
     const isPasswordMatch = await user.comparePassword(password);
     
@@ -164,7 +152,7 @@ const login = async (req, res) => {
         name: user.name,
         email: user.email,
         userType: user.userType,
-        profilePicture: user.profilePicture ? `/uploads/${user.profilePicture}` : null,
+        profilePicture: user.profilePicture,
         lastLogin: user.lastLogin
       },
       token
@@ -193,7 +181,7 @@ const getMe = async (req, res) => {
         name: user.name,
         email: user.email,
         userType: user.userType,
-        profilePicture: user.profilePicture ? `/uploads/${user.profilePicture}` : null,
+        profilePicture: user.profilePicture,
         createdAt: user.createdAt,
         lastLogin: user.lastLogin
       }

@@ -1,4 +1,5 @@
 import './Home.css';
+import { Link } from 'react-router-dom';
 import { usePageMeta } from '../usePageMeta';
 
 const Home = () => {
@@ -36,7 +37,9 @@ const Home = () => {
           
           <div className="hero-buttons">
             <button className="btn-demo"></button>
-            <button className="btn-trial">Start Your Trial →</button>
+            <Link to="/tools" className="btn-trial">
+              Start Your Trial →
+            </Link>
           </div>
         </div>
 

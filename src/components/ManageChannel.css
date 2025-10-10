@@ -44,7 +44,7 @@
 
 }
 
-.description {
+.description6 {
   font-size: 1.125rem;
   line-height: 1.7;
   color: #000000;
@@ -339,7 +339,7 @@
     font-size: 2rem;
   }
   
-  .description {
+  .description6 {
     font-size: 1rem;
   }
 }
@@ -366,7 +366,7 @@
     line-height: 1.3;
   }
   
-  .description {
+  .description6 {
     font-size: 0.875rem;
     max-width: 100%;
   }

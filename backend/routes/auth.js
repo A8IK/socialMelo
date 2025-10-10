@@ -2,7 +2,8 @@ const express = require('express');
 const { body } = require('express-validator');
 const { register, login, getMe } = require('../controllers/authControllers');
 const { protect } = require('../middleware/auth');
-const upload = require('../middleware/upload');
+const passport = require('passport'); 
+const jwt = require('jsonwebtoken'); 
 
 const router = express.Router();
 
@@ -34,9 +35,58 @@ const loginValidation = [
     .withMessage('Password is required')
 ];
 
-// Routes
-router.post('/register', upload.single('profilePicture'), registerValidation, register);
+// Regular Routes
+router.post('/register', registerValidation, register);
 router.post('/login', loginValidation, login);
 router.get('/me', protect, getMe);
+
+// @route   GET /api/auth/google
+// @desc    Initiate Google OAuth
+// @access  Public
+router.get('/google', 
+  passport.authenticate('google', { 
+    scope: ['profile', 'email'],
+    session: false 
+  })
+);
+
+// @route   GET /api/auth/google/callback
+// @desc    Google OAuth callback
+// @access  Public
+router.get('/google/callback',
+  passport.authenticate('google', { 
+    failureRedirect: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/register`,
+    session: false 
+  }),
+  async (req, res) => {
+    try {
+      // Generate JWT token for the authenticated user
+      const token = jwt.sign(
+        { id: req.user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRE || '7d' }
+      );
+
+      // Prepare user data to send to frontend
+      const user = {
+        id: req.user._id,
+        name: req.user.name,
+        email: req.user.email,
+        userType: req.user.userType,
+        profilePicture: req.user.profilePicture
+      };
+
+      // Redirect to frontend callback page with token and user data
+      res.redirect(
+        `${process.env.FRONTEND_URL || 'http://localhost:5173'}/auth/callback?token=${token}&user=${encodeURIComponent(JSON.stringify(user))}`
+      );
+    } catch (err) {
+      console.error('Google OAuth callback error:', err);
+      res.redirect(
+        `${process.env.FRONTEND_URL || 'http://localhost:5173'}/register?error=authentication_failed`
+      );
+    }
+  }
+);
 
 module.exports = router;

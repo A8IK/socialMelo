@@ -21,8 +21,13 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, 'Password is required'],
+    // [true, 'Password is required']'
     minlength: [6, 'Password must be at least 6 characters']
+  },
+  googleId: { 
+    type: String,
+    unique: true,
+    sparse: true
   },
   userType: {
     type: String,
@@ -33,6 +38,10 @@ const userSchema = new mongoose.Schema({
   profilePicture: {
     type: String,
     default: null
+  },
+  isVerified: { 
+    type: Boolean,
+    default: false
   },
   isActive: {
     type: Boolean,
@@ -48,7 +57,8 @@ const userSchema = new mongoose.Schema({
 
 // Hash password before saving
 userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) {
+  // Only hash if password exists and is modified
+  if (!this.password || !this.isModified('password')) {
     return next();
   }
   
@@ -63,6 +73,10 @@ userSchema.pre('save', async function(next) {
 
 // Compare password method
 userSchema.methods.comparePassword = async function(candidatePassword) {
+  // Return false if no password is set (Google users)
+  if (!this.password) {
+    return false;
+  }
   return await bcrypt.compare(candidatePassword, this.password);
 };
 

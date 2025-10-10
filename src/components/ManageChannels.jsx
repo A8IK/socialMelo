@@ -15,7 +15,7 @@ const ManageChannels = () => {
               Manage all your channels straightforwardly
             </h2>
             
-            <p className="description">
+            <p className="description6">
               Take the stress out of community management and customer support. 
               Engage customers and prospects with one social inbox for all your 
               social media channels.

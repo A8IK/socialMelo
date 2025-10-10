@@ -21,6 +21,11 @@ import AboutRemarkable from './components/AboutUs/AboutRemarkable';
 import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
 import CultureTabs from './components/AboutUs/CultureTabs';
 
+import Downloader from './components/ToolsPage/Downloader';
+import HowToUse from './components/ToolsPage/HowtoUse';
+import FeaturesSection from './components/ToolsPage/FeatureSection';
+import FAQ from './components/ToolsPage/Faq';
+
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
 import { ToastContainer } from 'react-toastify';
@@ -28,6 +33,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+
+import AuthCallback from './AuthCallback';
 
 import Error404 from './components/Error404';
 
@@ -76,8 +83,19 @@ function App() {
                   <ContactCollaboration />
                 </>
               } />
+
+              <Route path="/tools" element={
+                <>
+                  <Downloader />
+                  <HowToUse />
+                  <FeaturesSection />
+                  <FAQ />
+                </>
+              } />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
+
+              <Route path="/auth/callback" element={<AuthCallback />} />
 
               <Route path ="*" element={<Error404/>} />
             </Routes>
