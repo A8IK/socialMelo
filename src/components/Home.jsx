@@ -36,8 +36,8 @@ const Home = () => {
           </p>
           
           <div className="hero-buttons">
-            <button className="btn-demo"></button>
-            <Link to="/tools" className="btn-trial">
+             <Link to="/register" className="btn-demo"></Link>
+            <Link to="/register" className="btn-trial">
               Start Your Trial →
             </Link>
           </div>
@@ -48,9 +48,14 @@ const Home = () => {
 
           {/* Social Media Icons */}
             <img 
-            src="Socialicon 2.png" 
-            alt="Rotating Social Media Circle" 
-            className="rotating-image"/>
+              src="Socialicon 2.png" 
+              alt="Rotating Social Media Circle" 
+              className="rotating-image"
+              draggable="false"
+              onContextMenu={(e) => e.preventDefault()}
+              style={{ pointerEvents: 'none', userSelect: 'none' }}
+            />
+
 
           {/* Creator Search Badge */}
           <img src="CreatorSearch.png" style={{top: '0%', right: '-15%'}}

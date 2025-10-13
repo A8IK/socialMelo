@@ -49,11 +49,10 @@ export default function InstagramDownloader() {
     { value: 'HD', label: 'Quality' }
   ];
 
-  // Update activeTab based on URL parameter
   useEffect(() => {
     if (type && tabs.some(tab => tab.id === type)) {
       setActiveTab(type);
-    } else if (location.pathname === '/tools') {
+    } else if (location.pathname === '/tools/instagram-downloader') {
       setActiveTab('video');
     }
   }, [type, location.pathname]);
@@ -61,7 +60,7 @@ export default function InstagramDownloader() {
   // Handle tab change
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
-    navigate(`/tools/${tabId}`);
+    navigate(`/tools/instagram-downloader/${tabId}`);
   };
 
   const currentTab = tabs.find(tab => tab.id === activeTab);

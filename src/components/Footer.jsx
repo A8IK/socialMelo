@@ -55,7 +55,7 @@ const Footer = () => {
     
     //Disabled links
     linkDisabled: {
-      color: 'rgba(255, 255, 255, 0.4)', // Grayed out color
+      color: 'rgba(255, 255, 255, 0.4)', 
       textDecoration: 'none',
       fontSize: isDesktop ? '0.875rem' : '0.8rem',
       cursor: 'default',
@@ -148,7 +148,7 @@ const Footer = () => {
   return (
     <footer style={footerStyles.footer}>
       <img 
-        src="Vector.png" 
+        src="/Vector.png" 
         alt="" 
         style={footerStyles.backgroundDecoration}/>
       
@@ -157,7 +157,7 @@ const Footer = () => {
         <div style={footerStyles.logoSection}>
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <img 
-                src="Socialmelo 2.png" 
+                src="/Socialmelo 2.png" 
                 alt="SocialMelo" 
                 style={footerStyles.logo}
                 onMouseEnter={(e) => {
@@ -225,28 +225,21 @@ const Footer = () => {
 
           {/* Solutions */}
           <div style={footerStyles.column}>
-            <h3 style={footerStyles.columnTitle}>Solutions</h3>
+            <h3 style={footerStyles.columnTitle}>Free Tools</h3>
             <div style={footerStyles.linkList}>
               <Link 
-                to="/influencer-marketing" 
-                style={footerStyles.linkDisabled}
+                to="/tools/instagram-downloader" 
+                style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
-                Influencer Marketing
+                Instagram Video downloader
               </Link>
               <Link 
-                to="/social-media-management" 
-                style={footerStyles.linkDisabled}
+                to="/tools/snapchat-downloader" 
+                style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
-                Social Media Management
-              </Link>
-              <Link 
-                to="/social-listening" 
-                style={footerStyles.linkDisabled}
-                onMouseEnter={handleLinkHover}
-                onMouseLeave={handleLinkLeave}>
-                Social Listening
+                Snapchat Video downloader
               </Link>
             </div>
           </div>

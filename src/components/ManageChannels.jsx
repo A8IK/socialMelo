@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import './ManageChannel.css';
 
@@ -22,11 +23,10 @@ const ManageChannels = () => {
             </p>
             
             <div className="cta-section">
-              <a href="#" className="explore-link">
+              <Link to="/register" className="explore-link">
                 Explore our Social Hub features
                 <ArrowRight className="arrow-icon" />
-              </a>
-
+              </Link>
             </div>
           </div>
         </div>

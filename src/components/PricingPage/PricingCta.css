@@ -302,8 +302,14 @@
   transform: translateX(3px);
 }
 
-/* Large Desktop - 1200px and above (default styles already cover this) */
+.demo-request-btn3,
+.btn-trial {
+  display: inline-block; 
+  text-decoration: none; 
+  cursor: pointer;
+}
 
+/* Large Desktop - 1200px and above */
 /* Standard Desktop - 1024px to 1440px */
 @media (max-width: 1440px) {
   .testimonial-grid-layout3 {

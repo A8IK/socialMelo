@@ -43,7 +43,7 @@ const Header = () => {
     };
   }, []);
 
-  // ✅ ADD LOGOUT FUNCTION
+  //  ADD LOGOUT FUNCTION
   const handleLogout = () => {
     // Clear localStorage
     localStorage.removeItem('token');
@@ -479,8 +479,7 @@ const Header = () => {
                   onClick={handleLogout}
                   style={headerStyles.loginButton}
                   onMouseEnter={handleLoginButtonHover}
-                  onMouseLeave={handleLoginButtonLeave}
-                >
+                  onMouseLeave={handleLoginButtonLeave}>
                   Log Out
                 </button>
               </div>

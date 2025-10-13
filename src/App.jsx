@@ -84,7 +84,7 @@ function App() {
                 </>
               } />
 
-              <Route path="/tools" element={
+              <Route path="/tools/instagram-downloader" element={
                 <>
                   <Downloader />
                   <HowToUse />
@@ -93,7 +93,7 @@ function App() {
                 </>
               } />
 
-              <Route path="/tools/:type" element={
+              <Route path="/tools/instagram-downloader/:type" element={
                 <>
                   <Downloader />
                   <HowToUse />
@@ -101,7 +101,7 @@ function App() {
                   <FAQ />
                 </>
               } />
-              
+
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
 

@@ -3,32 +3,32 @@ import './FeatureSection.css';
 const FeaturesSection = () => {
   const features = [
     {
-      icon: 'checked.png',
+      icon: '/checked.png',
       title: 'HD Quality Downloads',
       description: 'Download videos in original HD quality without any compression'
     },
     {
-      icon: 'traffic-signal.png',
+      icon: '/traffic-signal.png',
       title: 'No Watermarks',
       description: 'Clean downloads without any watermarks or branding'
     },
     {
-      icon: 'thunder.png',
+      icon: '/thunder.png',
       title: 'Lightning Fast',
       description: 'Ultra-fast processing and download speeds'
     },
     {
-      icon: 'padlock.png',
+      icon: '/padlock.png',
       title: '100% Secure',
       description: 'Your privacy is protected with secure downloads'
     },
     {
-      icon: 'device.png',
+      icon: '/device.png',
       title: 'All Devices',
       description: 'Works on mobile, tablet, and desktop devices'
     },
     {
-      icon: 'free.png',
+      icon: '/free.png',
       title: 'Always Free',
       description: 'No hidden fees or subscription required'
     }

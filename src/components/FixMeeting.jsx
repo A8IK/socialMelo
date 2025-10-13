@@ -1,4 +1,5 @@
 import './FixMeeting.css';
+import { Link } from 'react-router-dom';
 
 const FixMeeting = () => {
   return (
@@ -21,8 +22,8 @@ const FixMeeting = () => {
               Discover why professionals worldwide trust us as their top-rated solution.
             </p>
             <div className="cta-buttons">
-              <button className="btn-demo"></button>
-              <button className="btn-trial">Start Your Trial →</button>
+              <Link to="/register" className="btn-demo"></Link>
+              <Link to="/register" className="btn-trial">Start Your Trial →</Link>
             </div>
           </div>
         </div>

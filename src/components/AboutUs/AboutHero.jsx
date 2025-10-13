@@ -1,4 +1,5 @@
 import './AboutHero.css';
+import { Link } from 'react-router-dom';
 import { usePageMeta } from '../../usePageMeta';
 
 const AboutHero = () => {
@@ -23,9 +24,9 @@ const AboutHero = () => {
             <p className="zephyr-hero-description-text">
               SocialMedia is a Global influencer marketing company, with a presence across the worldwide.
             </p>
-            <button className="zephyr-hero-gradient-cta-btn">
+            <Link to="/register" className="zephyr-hero-gradient-cta-btn">
               Hire Us
-            </button>
+            </Link>
           </div>
         </div>
       </section>
