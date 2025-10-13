@@ -51,12 +51,10 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className={`faq-item ${openIndex === index ? 'active' : ''}`}
-            >
+              className={`faq-item ${openIndex === index ? 'active' : ''}`}>
               <button
                 className="faq-question"
-                onClick={() => toggleFAQ(index)}
-              >
+                onClick={() => toggleFAQ(index)}>
                 <span>{faq.question}</span>
                 <span className={`faq-icon ${openIndex === index ? 'open' : ''}`}>
                   {openIndex === index ? '▲' : '▼'}

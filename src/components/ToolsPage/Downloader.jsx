@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Downloader.css';
 
 export default function InstagramDownloader() {
+  const navigate = useNavigate();
+  const { type } = useParams();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('video');
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -45,6 +49,21 @@ export default function InstagramDownloader() {
     { value: 'HD', label: 'Quality' }
   ];
 
+  // Update activeTab based on URL parameter
+  useEffect(() => {
+    if (type && tabs.some(tab => tab.id === type)) {
+      setActiveTab(type);
+    } else if (location.pathname === '/tools') {
+      setActiveTab('video');
+    }
+  }, [type, location.pathname]);
+
+  // Handle tab change
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    navigate(`/tools/${tabId}`);
+  };
+
   const currentTab = tabs.find(tab => tab.id === activeTab);
 
   // Validate Instagram URL
@@ -55,7 +74,6 @@ export default function InstagramDownloader() {
 
   // Handle Download
   const handleDownload = async () => {
-    // Validate URL
     if (!url.trim()) {
       toast.error('Please enter an Instagram URL', {
         position: "top-right",
@@ -82,13 +100,12 @@ export default function InstagramDownloader() {
 
     setLoading(true);
 
-    // Show loading toast
     const loadingToast = toast.loading('Fetching download link...', {
       position: "top-right"
     });
 
     try {
-      // Call your backend API
+      //backend API
       const response = await fetch('http://localhost:9000/api/download/instagram', {
         method: 'POST',
         headers: {
@@ -117,7 +134,6 @@ export default function InstagramDownloader() {
         link.click();
         document.body.removeChild(link);
 
-        // Update loading toast to success
         toast.update(loadingToast, {
           render: 'Download started successfully! 🎉',
           type: 'success',
@@ -128,8 +144,7 @@ export default function InstagramDownloader() {
           pauseOnHover: true,
           draggable: true,
         });
-        
-        // Clear input after successful download
+
         setTimeout(() => {
           setUrl('');
         }, 1000);
@@ -138,7 +153,6 @@ export default function InstagramDownloader() {
     } catch (err) {
       console.error('Download error:', err);
       
-      // Update loading toast to error
       toast.update(loadingToast, {
         render: err.message || 'Failed to download. Please try again.',
         type: 'error',
@@ -154,7 +168,6 @@ export default function InstagramDownloader() {
     }
   };
 
-  // Handle Enter key press
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !loading) {
       handleDownload();
@@ -187,7 +200,7 @@ export default function InstagramDownloader() {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={() => handleTabChange(tab.id)}
                 className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}>
                 <img 
                   src={tab.icon} 

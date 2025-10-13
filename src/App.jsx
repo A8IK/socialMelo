@@ -92,6 +92,16 @@ function App() {
                   <FAQ />
                 </>
               } />
+
+              <Route path="/tools/:type" element={
+                <>
+                  <Downloader />
+                  <HowToUse />
+                  <FeaturesSection />
+                  <FAQ />
+                </>
+              } />
+              
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
 

@@ -14,7 +14,6 @@ const HowToUse = () => {
           </p>
         </div>
 
-        {/* Steps Flow - Desktop */}
         <div className="steps-wrapper desktop-steps">
           {/* Left Section - Step 01 */}
           <div className="step-section step-left-section">
