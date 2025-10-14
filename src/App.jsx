@@ -21,10 +21,11 @@ import AboutRemarkable from './components/AboutUs/AboutRemarkable';
 import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
 import CultureTabs from './components/AboutUs/CultureTabs';
 
-// CHANGED: Now only import Downloader (which includes all sections)
 import Downloader from './components/ToolsPage/Downloader';
 
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
+
+import ScrollToTop from './components/ScrollToTop';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,6 +41,7 @@ function App() {
   return (
     <div className="font-krub">
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">

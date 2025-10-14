@@ -192,6 +192,12 @@
     padding: 20px;
     flex-direction: column;
     text-align: center;
+    align-items: center; 
+  }
+
+  .feature-content {
+    text-align: center;
+    width: 100%;
   }
   
   .feature-icon {
