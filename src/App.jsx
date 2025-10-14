@@ -21,10 +21,8 @@ import AboutRemarkable from './components/AboutUs/AboutRemarkable';
 import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
 import CultureTabs from './components/AboutUs/CultureTabs';
 
+// CHANGED: Now only import Downloader (which includes all sections)
 import Downloader from './components/ToolsPage/Downloader';
-import HowToUse from './components/ToolsPage/HowtoUse';
-import FeaturesSection from './components/ToolsPage/FeatureSection';
-import FAQ from './components/ToolsPage/Faq';
 
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
@@ -84,23 +82,9 @@ function App() {
                 </>
               } />
 
-              <Route path="/tools/instagram-downloader" element={
-                <>
-                  <Downloader />
-                  <HowToUse />
-                  <FeaturesSection />
-                  <FAQ />
-                </>
-              } />
+              <Route path="/tools/instagram-downloader" element={<Downloader />} />
 
-              <Route path="/tools/instagram-downloader/:type" element={
-                <>
-                  <Downloader />
-                  <HowToUse />
-                  <FeaturesSection />
-                  <FAQ />
-                </>
-              } />
+              <Route path="/tools/instagram-downloader/:type" element={<Downloader />} />
 
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
