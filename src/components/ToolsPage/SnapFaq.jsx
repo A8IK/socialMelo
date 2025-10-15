@@ -6,36 +6,32 @@ const SnapFaq = () => {
 
   const faqs = [
     {
-      question: 'What is SocialMelo [Platform] Video Downloader?',
-      answer: 'It’s a free online tool that allows you to download [Platform] videos in MP4 or MP3 formats.'
+      question: 'Is SocialMelo really free?',
+      answer: 'Yes. No catches. No fine print.'
     },
     {
-      question: 'How long does it take to download a video?',
-      answer: 'Most downloads are complete in seconds, depending on internet speed'
+      question: 'Do I need to install anything?',
+      answer: 'Nope. Browser-only. Easy.'
     },
     {
-      question: 'How do I download [Platform] videos on Android?',
-      answer: 'Copy the video link, paste it in SocialMelo, and tap download.'
+      question: 'Can I pick video quality?',
+      answer: 'Yep. From 720p all the way up to 4K.'
     },
     {
-      question: 'How do I download [Platform] videos on iPhone?',
-      answer: 'Use Safari, paste the video link in SocialMelo, and save directly to your device.'
+      question: 'How fast is the download?',
+      answer: 'Usually seconds, depending on your internet.'
     },
     {
-      question: 'Can I choose video quality?',
-      answer: 'Yes, select from resolutions like 720p, 1080p, 2K, or 4K before downloading.'
+      question: 'Is it safe?',
+      answer: '100%. No malware, no shady stuff.'
     },
     {
-      question: 'Is it safe to download videos from [Platform]?',
-      answer: 'Yes, SocialMelo is secure and does not require installation.'
+      question: 'Can I use this on iPhone or Android?',
+      answer: 'Yes. Works in Safari, Chrome, or any browser.'
     },
     {
-      question: 'Is it legal to download [Platform] videos?',
-      answer: 'Downloading videos for personal use is legal. Respect copyright when sharing or publishing.'
-    },
-    {
-      question: 'Can I download videos for free?',
-      answer: 'Absolutely! SocialMelo is 100% free with unlimited downloads.'
+      question: 'Is downloading Snapchat videos legal?',
+      answer: 'For personal use, yes. Just don’t repost without respecting copyrights.'
     },
   ];
 

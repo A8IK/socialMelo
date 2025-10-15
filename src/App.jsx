@@ -25,6 +25,11 @@ import Downloader from './components/ToolsPage/Downloader';
 
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
+import SnapDownloader from './components/ToolsPage/SnapDownloader';
+import SnapMannual from './components/ToolsPage/SnapMannual';
+import SnapFeature from './components/ToolsPage/SnapFeature';
+import SnapFaq from './components/ToolsPage/SnapFaq';
+
 import ScrollToTop from './components/ScrollToTop';
 
 import { ToastContainer } from 'react-toastify';
@@ -87,6 +92,27 @@ function App() {
               <Route path="/tools/instagram-downloader" element={<Downloader />} />
 
               <Route path="/tools/instagram-downloader/:type" element={<Downloader />} />
+
+              <Route path="/tools/snapchat-downloader" element={
+                  <>
+                    <SnapDownloader />
+                    <SnapFaq />
+                  </>
+                } />
+
+                <Route path="/tools/snapchat-audio-downloader" element={
+                  <>
+                    <SnapDownloader />
+                    <SnapFaq />
+                  </>
+                } />
+              
+              <Route path="/tools/snapchat-video-downloader" element={
+                  <>
+                    <SnapDownloader />
+                    <SnapFaq />
+                  </>
+                } />
 
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
