@@ -26,9 +26,8 @@ import Downloader from './components/ToolsPage/Downloader';
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
 
 import SnapDownloader from './components/ToolsPage/SnapDownloader';
-import SnapMannual from './components/ToolsPage/SnapMannual';
-import SnapFeature from './components/ToolsPage/SnapFeature';
-import SnapFaq from './components/ToolsPage/SnapFaq';
+
+import YoutubeDownloader from './components/ToolsPage/YoutubeDownloader';
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -95,22 +94,37 @@ function App() {
 
               <Route path="/tools/snapchat-downloader" element={
                   <>
-                    <SnapDownloader />
-                    <SnapFaq />
+                    <SnapDownloader /> 
                   </>
-                } />
+              } />
 
                 <Route path="/tools/snapchat-audio-downloader" element={
                   <>
                     <SnapDownloader />
-                    <SnapFaq />
                   </>
                 } />
               
-              <Route path="/tools/snapchat-video-downloader" element={
+                <Route path="/tools/snapchat-video-downloader" element={
                   <>
                     <SnapDownloader />
-                    <SnapFaq />
+                  </>
+                } />
+
+                <Route path="/tools/youtube-downloader" element={
+                  <>
+                    <YoutubeDownloader /> 
+                  </>
+                } />
+
+                <Route path="/tools/youtube-video-downloader" element={
+                  <>
+                    <YoutubeDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/youtube-audio-downloader" element={
+                  <>
+                    <YoutubeDownloader />
                   </>
                 } />
 

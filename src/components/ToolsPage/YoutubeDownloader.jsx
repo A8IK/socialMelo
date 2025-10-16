@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './SnapDownloader.css';
+import './YoutubeDownloader.css';
 import { usePageMeta } from '../../usePageMeta';
-import { snapConfig } from '../config/SnapConfig';
-import SnapMannual from './SnapMannual';
-import SnapFeature from './SnapFeature';
-import SnapFaq from './SnapFaq';
+import { youtubeConfig } from '../config/YoutubeConfig';
+import YoutubeMannual from './YoutubeMannual';
+import YoutubeFeature from './YoutubeFeature';
+import YoutubeFaq from './YoutubeFaq';
 
-export default function SnapDownloader() {
+export default function YoutubeDownloader() {
   const navigate = useNavigate();
   const [url, setUrl] = useState('');
    const { type } = useParams();
@@ -26,7 +26,7 @@ export default function SnapDownloader() {
     }
   }, [type]);
 
-  const currentConfig = snapConfig[format];
+  const currentConfig = youtubeConfig[format];
 
   usePageMeta(
     currentConfig.pageTitle,
@@ -43,20 +43,20 @@ export default function SnapDownloader() {
   setFormat(newFormat);
   
   if (newFormat === 'mp4') {
-    navigate('/tools/snapchat-video-downloader');
+    navigate('/tools/youtube-video-downloader');
   } else if (newFormat === 'mp3') {
-    navigate('/tools/snapchat-audio-downloader');
+    navigate('/tools/youtube-audio-downloader');
   }
 }
 
-  const isValidSnapchatUrl = (url) => {
-    const snapchatRegex = /^https?:\/\/(www\.)?(snapchat\.com|story\.snapchat\.com|t\.snapchat\.com)\/.+/;
-    return snapchatRegex.test(url);
+  const isValidyoutubeUrl = (url) => {
+    const youtubeRegex = /^https?:\/\/(www\.)?(youtube\.com|story\.youtube\.com|t\.youtube\.com)\/.+/;
+    return youtubeRegex.test(url);
   };
 
   const handleDownload = async () => {
     if (!url.trim()) {
-      toast.error('Please enter a Snapchat URL', {
+      toast.error('Please enter a youtube URL', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -67,8 +67,8 @@ export default function SnapDownloader() {
       return;
     }
 
-    if (!isValidSnapchatUrl(url)) {
-      toast.error('Please enter a valid Snapchat URL', {
+    if (!isValidyoutubeUrl(url)) {
+      toast.error('Please enter a valid youtube URL', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -86,7 +86,7 @@ export default function SnapDownloader() {
     });
 
     try {
-      const response = await fetch('http://localhost:9000/api/download/snapchat', {
+      const response = await fetch('http://localhost:9000/api/download/youtube', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export default function SnapDownloader() {
         const link = document.createElement('a');
         link.href = result.data.downloadUrl;
         link.target = '_blank';
-        link.download = `snapchat_${format}_${Date.now()}`;
+        link.download = `youtube_${format}_${Date.now()}`;
         
         document.body.appendChild(link);
         link.click();
@@ -182,7 +182,7 @@ export default function SnapDownloader() {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Paste Snapchat Video URL Here"
+                placeholder="Paste youtube Video URL Here"
                 className="snap-url-input"
                 disabled={loading}/>
               <p className="snap-privacy-text">
@@ -239,9 +239,9 @@ export default function SnapDownloader() {
         </div>
       </div>
 
-      <SnapMannual format={format} />
-      <SnapFeature format={format} />
-      <SnapFaq format = {format} />
+      <YoutubeMannual format={format} />
+      <YoutubeFeature format={format} />
+      <YoutubeFaq format = {format} />
     </>
   );
 }

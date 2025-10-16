@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import './SnapFaq.css';
-import { snapConfig } from '../config/SnapConfig';
+import './YoutubeFaq.css';
+import { youtubeConfig } from '../config/YoutubeConfig';
 
-const SnapFaq = ({ format = 'mp4' }) => {
+const YoutubeFaq = ({ format = 'mp4' }) => {
   const [openIndex, setOpenIndex] = useState(-1);
-  const faqs = snapConfig[format].faqs;
-  const tabLabel = snapConfig[format].label;
+  const faqs = youtubeConfig[format].faqs;
+  const tabLabel = youtubeConfig[format].label;
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -17,10 +17,10 @@ const SnapFaq = ({ format = 'mp4' }) => {
         {/* Header */}
         <div className="faq-header">
           <h2 className="faq-title">
-            FAQs About Snapchat {tabLabel} Downloader
+            FAQs About Youtube {tabLabel} Downloader
           </h2>
           <p className="faq-subtitle">
-            Everything you need to know about our Snapchat downloader tool
+            Everything you need to know about our Youtube downloader tool
           </p>
         </div>
 
@@ -53,4 +53,4 @@ const SnapFaq = ({ format = 'mp4' }) => {
   );
 };
 
-export default SnapFaq;
+export default YoutubeFaq;

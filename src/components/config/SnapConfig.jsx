@@ -69,7 +69,37 @@ export const snapConfig = {
           description: 'Unlimited video downloads without any fees'
         }
       ]
-    }
+    },
+    faqs: [
+      {
+        question: 'Is SocialMelo really free?',
+        answer: 'Yes. No catches. No fine print.'
+      },
+      {
+        question: 'Do I need to install anything?',
+        answer: 'Nope. Browser-only. Easy.'
+      },
+      {
+        question: 'Can I pick video quality?',
+        answer: 'Yep. From 720p all the way up to 4K.'
+      },
+      {
+        question: 'How fast is the download?',
+        answer: 'Usually seconds, depending on your internet.'
+      },
+      {
+        question: 'Is it safe?',
+        answer: '100%. No malware, no shady stuff.'
+      },
+      {
+        question: 'Can I use this on iPhone or Android?',
+        answer: 'Yes. Works in Safari, Chrome, or any browser.'
+      },
+      {
+        question: 'Is downloading Snapchat videos legal?',
+        answer: 'For personal use, yes. Just don’t repost without respecting copyrights.'
+      }
+    ]
   },
   mp3: {
     id: 'mp3',
@@ -117,8 +147,8 @@ export const snapConfig = {
         },
         {
           icon: '/traffic-signal.png',
-          title: 'Pure Audio',
-          description: 'Get clean MP3 audio without any watermarks or branding'
+          title: 'No Apps, No Extensions ',
+          description: 'Pure browser magic.'
         },
         {
           icon: '/thunder.png',
@@ -126,14 +156,14 @@ export const snapConfig = {
           description: 'Ultra-fast audio extraction and conversion speeds'
         },
         {
-          icon: '/padlock.png',
-          title: '100% Secure',
-          description: 'Your privacy is protected with secure audio downloads'
+          icon: '/speaker.png',
+          title: 'Audio Extraction',
+          description: 'Want just the sound? Convert Snap videos into crisp MP3s.'
         },
         {
           icon: '/device.png',
-          title: 'All Devices',
-          description: 'Download audio on mobile, tablet, and desktop devices'
+          title: 'Works Everywhere',
+          description: 'PC, Mac, iPhone, Android, tablets—you name it.'
         },
         {
           icon: '/free.png',
@@ -141,6 +171,36 @@ export const snapConfig = {
           description: 'Unlimited audio downloads without any fees'
         }
       ]
-    }
+    },
+    faqs: [
+      {
+        question: 'Is SocialMelo really free?',
+        answer: 'Yes. No catches. No fine print.'
+      },
+      {
+        question: 'Do I need to install anything?',
+        answer: 'Nope. Browser-only. Easy.'
+      },
+      {
+        question: 'Can I pick Audio quality?',
+        answer: 'Yep. From standard bitrate all the way up to high-resolution sound.'
+      },
+      {
+        question: 'How fast is the download?',
+        answer: 'Usually seconds, depending on your internet.'
+      },
+      {
+        question: 'Is it safe?',
+        answer: '100%. No malware, no shady stuff.'
+      },
+      {
+        question: 'Can I use this on iPhone or Android?',
+        answer: 'Yes. Works in Safari, Chrome, or any browser.'
+      },
+      {
+        question: 'Is downloading Snapchat audio legal?',
+        answer: 'For personal use, yes. Just don’t share or reuse without permission.'
+      }
+    ]
   }
 };

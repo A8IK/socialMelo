@@ -241,6 +241,13 @@ const Footer = () => {
                 onMouseLeave={handleLinkLeave}>
                 Snapchat Video downloader
               </Link>
+              <Link 
+                to="/tools/youtube-downloader" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Youtube Video downloader
+              </Link>
             </div>
           </div>
 
