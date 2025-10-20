@@ -28,6 +28,7 @@ import ContactCollaboration from './components/contactUs/ContactCollaboration';
 import SnapDownloader from './components/ToolsPage/SnapDownloader';
 
 import YoutubeDownloader from './components/ToolsPage/YoutubeDownloader';
+import FacebookDownloader from './components/ToolsPage/FacebookDownloader';
 
 import ScrollToTop from './components/ScrollToTop';
 
@@ -40,6 +41,7 @@ import SignUp from './components/SignUp';
 import AuthCallback from './AuthCallback';
 
 import Error404 from './components/Error404';
+
 
 function App() {
   return (
@@ -125,6 +127,24 @@ function App() {
                 <Route path="/tools/youtube-audio-downloader" element={
                   <>
                     <YoutubeDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/facebook-downloader" element={
+                  <>
+                    <FacebookDownloader /> 
+                  </>
+                } />
+
+                <Route path="/tools/facebook-video-downloader" element={
+                  <>
+                    <FacebookDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/facebook-audio-downloader" element={
+                  <>
+                    <FacebookDownloader />
                   </>
                 } />
 

@@ -37,7 +37,7 @@ const AboutHero = () => {
           <div className="zephyr-stats-grid-layout">
             {/* Row 1 */}
             <div className="zephyr-stat-card-item zephyr-location-card">
-              <h3 className="zephyr-stat-primary-number">Dhaka, US</h3>
+              <h3 className="zephyr-stat-primary-number">26 James Street, Southampton, SO14 1PJ, UK</h3>
               <p className="zephyr-stat-description-label">Headquarters</p>
             </div>
             
