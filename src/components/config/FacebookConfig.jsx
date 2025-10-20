@@ -7,7 +7,7 @@ export const facebookConfig = {
     pageTitle: 'Fast & Free Facebook Video Downloader – SocialMelo',
     pageDescription: "Download Facebook videos instantly and for free with SocialMelo’s Facebook Video Downloader. Save in MP4 or convert to MP3, watermark-free, and unlimited.",
     downloaderTitle: 'Free Facebook Video Downloader Online',
-    downloaderSubtitle: "SocialMelo isn’t just a downloader—it’s your shortcut to keeping content that matters to you. SocialMelo isn’t just another “free tool” that leaves you feeling scammed—it’s your no-BS shortcut to grabbing Facebook videos you actually want.",
+    downloaderSubtitle: "Need to save a Facebook video? No problem. SocialMelo’s Facebook Video Downloader lets you grab videos in seconds—clean, fast, and completely free.",
     manual: {
       title: 'How to Download Facebook Videos in 4 Easy Steps',
       subtitle: 'Saving videos with SocialMelo is so easy, you’ll wonder why you didn’t switch sooner',
@@ -109,7 +109,7 @@ export const facebookConfig = {
     pageTitle: 'Fast & Free Facebook Audio Downloader – SocialMelo',
     pageDescription: "Download Facebook videos instantly and for free with SocialMelo’s Facebook Audio Downloader. Save in MP4 or convert to MP3, watermark-free, and unlimited.",
     downloaderTitle: 'Free Facebook Audio Downloader Online',
-    downloaderSubtitle: 'Need just the audio from a Facebook video? No problem. SocialMelo extracts audio from Facebook videos and converts them to MP3. Clean, fast, and completely free.',
+    downloaderSubtitle: 'Need to save a Facebook audio? No problem. SocialMelo’s Facebook Audio Downloader lets you grab audios in seconds—clean, fast, and completely free.',
     manual: {
       title: 'How to Download Facebook Audios in 4 Easy Steps',
       subtitle: 'Saving audio with SocialMelo is so easy, you’ll wonder why you didn’t switch sooner',
