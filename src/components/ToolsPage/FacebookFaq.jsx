@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './FacebookFaq.css';
-import { youtubeConfig } from '../config/YoutubeConfig';
+import { facebookConfig } from '../config/FacebookConfig';
 
 const FacebookFaq = ({ format = 'mp4' }) => {
   const [openIndex, setOpenIndex] = useState(-1);
-  const faqs = youtubeConfig[format].faqs;
-  const tabLabel = youtubeConfig[format].label;
+  const faqs = facebookConfig[format].faqs;
+  const tabLabel = facebookConfig[format].label;
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
