@@ -17,10 +17,10 @@ const FacebookFaq = ({ format = 'mp4' }) => {
         {/* Header */}
         <div className="faq-header">
           <h2 className="faq-title">
-            FAQs About Youtube {tabLabel} Downloader
+            FAQs About Facebook {tabLabel} Downloader
           </h2>
           <p className="faq-subtitle">
-            Everything you need to know about our Youtube downloader tool
+            Everything you need to know about our Facebook downloader tool
           </p>
         </div>
 
