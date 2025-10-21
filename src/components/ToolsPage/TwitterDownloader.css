@@ -1,0 +1,306 @@
+.snap-downloader-container {
+  min-height: 100vh;
+  background: #f9fafb;
+  padding: 60px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snap-wrapper {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+.snap-header-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #3A1C71;
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.snap-header-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2937;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+/* Card */
+.snap-card {
+  margin-top: -30px;
+  background: transparent;
+  border-radius: 20px;
+  padding: 50px 40px;
+  box-shadow: none;
+}
+
+/* Input Section */
+.snap-input-section {
+  margin-bottom: 24px;
+}
+
+.snap-url-input {
+  width: 100%;
+  padding: 18px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s;
+  font-family: inherit;
+}
+
+.snap-url-input:focus {
+  border-color: #d87d8e;
+}
+
+.snap-url-input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.snap-privacy-text {
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* Format Buttons */
+.snap-format-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+   transition: all 0.3s;
+}
+
+.snap-format-button {
+  padding: 16px 24px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.snap-format-button:hover:not(:disabled):not(.active) {
+  border-color: #d87d8e;
+  background: #d87d8e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(216, 125, 142, 0.4);
+}
+
+.snap-format-button.active {
+  background: #d87d8e;
+  color: white;
+  border-color: #d87d8e;
+}
+
+.snap-format-button:active:not(:disabled):not(.active) {
+  transform: translateY(0);
+}
+
+.snap-format-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Download Button */
+.snap-download-button {
+  width: 100%;
+  padding: 18px;
+  background: #d87d8e;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 32px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.snap-download-button:hover:not(:disabled) {
+  background: #c56b7d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(216, 125, 142, 0.4);
+}
+
+.snap-download-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Spinner */
+.snap-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: snap-spin 0.8s linear infinite;
+}
+
+@keyframes snap-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Stats */
+.snap-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.snap-stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.snap-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.snap-stat-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .snap-downloader-container {
+    padding: 40px 15px;
+  }
+
+  .snap-header-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .snap-header-subtitle {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  .snap-card {
+    padding: 40px 24px;
+  }
+
+  .snap-url-input {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+
+  .snap-format-buttons {
+    gap: 12px;
+  }
+
+  .snap-format-button {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .snap-download-button {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .snap-stat-value {
+    font-size: 28px;
+  }
+
+  .snap-stat-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .snap-downloader-container {
+    padding: 30px 10px;
+  }
+
+  .snap-header-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .snap-header-subtitle {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .snap-card {
+    padding: 32px 20px;
+  }
+
+  .snap-url-input {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .snap-format-buttons {
+    gap: 10px;
+  }
+
+  .snap-format-button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .snap-download-button {
+    padding: 14px;
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .snap-stats {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .snap-stat-item {
+    width: auto;
+  }
+
+  .snap-stat-value {
+    font-size: 24px;
+  }
+
+  .snap-stat-label {
+    font-size: 12px;
+  }
+
+  .snap-privacy-text {
+    font-size: 12px;
+  }
+}

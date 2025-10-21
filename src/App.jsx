@@ -41,6 +41,8 @@ import SignUp from './components/SignUp';
 import AuthCallback from './AuthCallback';
 
 import Error404 from './components/Error404';
+import TiktokDownloader from './components/ToolsPage/TikTokDownloader';
+import TwitterDownloader from './components/ToolsPage/TwitterDownloader';
 
 
 function App() {
@@ -145,6 +147,39 @@ function App() {
                 <Route path="/tools/facebook-audio-downloader" element={
                   <>
                     <FacebookDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/tiktok-downloader" element={
+                  <>
+                    <TiktokDownloader /> 
+                  </>
+                } />
+                <Route path="/tools/tiktok-video-downloader" element={
+                  <>
+                    <TiktokDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/tiktok-audio-downloader" element={
+                  <>
+                    <TiktokDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/twitter-downloader" element={
+                  <>
+                    <TwitterDownloader /> 
+                  </>
+                } />
+                <Route path="/tools/twitter-video-downloader" element={
+                  <>
+                    <TwitterDownloader/>
+                  </>
+                } />
+                <Route path="/tools/twitter-audio-downloader" element={
+                  <>
+                    <TwitterDownloader />
                   </>
                 } />
 

@@ -255,6 +255,13 @@ const Footer = () => {
                 onMouseLeave={handleLinkLeave}>
                 Facebook Video downloader
               </Link>
+              <Link 
+                to="/tools/twitter-downloader" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Twitter Video downloader
+              </Link>
             </div>
           </div>
 
