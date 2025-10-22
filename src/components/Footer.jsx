@@ -262,6 +262,13 @@ const Footer = () => {
                 onMouseLeave={handleLinkLeave}>
                 Twitter Video downloader
               </Link>
+              <Link 
+                to="/tools/tiktok-downloader" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Tiktok Video downloader
+              </Link>
             </div>
           </div>
 
