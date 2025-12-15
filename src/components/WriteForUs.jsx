@@ -106,7 +106,7 @@ const WriteForUs = () => {
             <h2 className="wfu-section-title">
             Why Write for <span className="wfu-gradient-text">SocialMelo?</span>
             </h2>
-            <p className="wfu-section-description">
+            <p className="wfu-section-description1">
             By contributing to SocialMelo, you can
             </p>
             
@@ -185,7 +185,7 @@ const WriteForUs = () => {
           <h2 className="wfu-section-title">
             Content We're <span className="wfu-gradient-text">Looking For</span>
           </h2>
-          <p className="wfu-section-description">
+          <p className="wfu-section-description1">
             We're especially interested in these topics
           </p>
           <div className="wfu-topics-grid">
