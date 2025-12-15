@@ -193,6 +193,13 @@ const Footer = () => {
                 onMouseLeave={handleLinkLeave}>
                 FAQ
               </Link>
+              <Link 
+                to="/write-for-us" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Write for Us
+              </Link>
             </div>
           </div>
 
@@ -219,6 +226,13 @@ const Footer = () => {
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
                 E-Commerce
+              </Link>
+              <Link 
+                to="/partners" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Partners
               </Link>
             </div>
           </div>

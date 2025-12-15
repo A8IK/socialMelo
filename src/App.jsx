@@ -21,6 +21,11 @@ import AboutRemarkable from './components/AboutUs/AboutRemarkable';
 import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
 import CultureTabs from './components/AboutUs/CultureTabs';
 
+import PartnersHero from './components/partnersPage/partnersHero';
+import WhyPartner from './components/partnersPage/WhyPartner';
+
+import WriteForUs from './components/WriteForUs';
+
 import Downloader from './components/ToolsPage/Downloader';
 
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
@@ -89,6 +94,14 @@ function App() {
               <Route path="/contact" element={
                 <>
                   <ContactCollaboration />
+                </>
+              } />
+
+              <Route path="/partners" element={
+                <>
+                  <PartnersHero />
+                  <BrandCarousel/>
+                  <WhyPartner/>
                 </>
               } />
 
@@ -182,6 +195,12 @@ function App() {
                     <TwitterDownloader />
                   </>
                 } />
+                
+                <Route path = "/write-for-us" element={
+                  <>
+                    <WriteForUs/>
+                  </>
+                }/>
 
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
