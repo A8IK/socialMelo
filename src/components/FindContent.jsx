@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Play, Heart, Paintbrush, ShoppingBag, Home, Users, Grid3X3 } from 'lucide-react';
 
 const FindContent = () => {
@@ -329,8 +330,7 @@ const FindContent = () => {
                       boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
                       opacity: currentSlide === 0 ? 0.5 : 1,
                       zIndex: 11
-                    }}
-                  >
+                    }}>
                     <ChevronLeft style={{
                       width: window.innerWidth >= 1024 ? '1.5rem' : '1.25rem',
                       height: window.innerWidth >= 1024 ? '1.5rem' : '1.25rem',
@@ -492,28 +492,32 @@ const FindContent = () => {
             }}>
               Ready to get started?
             </p>
-            <button style={{
-              padding: window.innerWidth < 768 ? '0.5rem 1.5rem' : '0.75rem 2rem',
-              color: 'white',
-              fontWeight: '600',
-              border: 'none',
-              borderRadius: '9999px',
-              background: '#D76D77',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              marginTop: window.innerWidth < 768 ? '0' : '-10px',
-              fontSize: window.innerWidth < 768 ? '0.875rem' : '1rem'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#D76D77';
-              e.target.style.transform = 'scale(1.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = '#D76D77';
-              e.target.style.transform = 'scale(1)';
-            }}>
+            <Link 
+              to="/register"
+              style={{
+                display: 'inline-block',
+                padding: window.innerWidth < 768 ? '0.5rem 1.5rem' : '0.75rem 2rem',
+                color: 'white',
+                fontWeight: '600',
+                border: 'none',
+                borderRadius: '9999px',
+                background: '#D76D77',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                marginTop: window.innerWidth < 768 ? '0' : '-10px',
+                fontSize: window.innerWidth < 768 ? '0.875rem' : '1rem',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#D76D77';
+                e.target.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = '#D76D77';
+                e.target.style.transform = 'scale(1)';
+              }}>
               Sign up now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

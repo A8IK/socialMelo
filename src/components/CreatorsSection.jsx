@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Play } from 'lucide-react';
 import './CreatorsSection.css';
 
 const CreatorsSection = () => {
+  const navigate = useNavigate ();
   const creators = [
     {
       id: 1,
@@ -180,7 +182,9 @@ const CreatorsSection = () => {
             and 250,000+ more...
           </p>
           
-          <button className="cta-button1">
+          <button 
+            className="cta-button1"
+            onClick={() => navigate('/register')}>
             Get Started for free
           </button>
         </div>
@@ -188,7 +192,7 @@ const CreatorsSection = () => {
       
       {/* Background decoration placeholder */}
       <div className="background-decoration">
-        {/* This is where your background image will go */}
+        {/* This is where background image will go */}
       </div>
     </section>
   );

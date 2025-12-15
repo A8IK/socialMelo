@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge, Camera, Upload, X } from 'lucide-react';
+import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge } from 'lucide-react';
+import {toast} from 'react-toastify';
 import './SignUp.css';
 import { usePageMeta } from '../usePageMeta';
 
@@ -14,10 +15,8 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    userType: 'Author',
-    profilePicture: null
+    userType: 'None'
   });
-  const [profilePreview, setProfilePreview] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,44 +42,10 @@ const SignUp = () => {
     setShowConfirmPassword(prev => !prev);
   }, []);
 
-  const handleProfilePictureChange = useCallback((e) => {
-    const file = e.target.files[0];
-    if (file) {
-      if (!file.type.startsWith('image/')) {
-        setError('Please select a valid image file');
-        return;
-      }
-      
-      if (file.size > 5 * 1024 * 1024) {
-        setError('Image size should be less than 5MB');
-        return;
-      }
-
-      setFormData(prev => ({
-        ...prev,
-        profilePicture: file
-      }));
-
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setProfilePreview(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  }, []);
-
-  const removeProfilePicture = useCallback(() => {
-    setFormData(prev => ({
-      ...prev,
-      profilePicture: null
-    }));
-    setProfilePreview(null);
-  }, []);
-
   const handleSelectChange = (value) => {
     setFormData(prev => ({ ...prev, userType: value }));
     setDropdownOpen(false);
-    };
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -109,29 +74,30 @@ const SignUp = () => {
     setLoading(true);
 
     try {
-      const submitData = new FormData();
-      submitData.append('name', formData.name.trim());
-      submitData.append('email', formData.email);
-      submitData.append('password', formData.password);
-      submitData.append('userType', formData.userType);
-      
-      if (formData.profilePicture) {
-        submitData.append('profilePicture', formData.profilePicture);
-      }
+      const submitData = {
+        name: formData.name.trim(),
+        email: formData.email,
+        password: formData.password,
+        userType: formData.userType
+      };
 
-    //   const response = await fetch('http://localhost:9000/api/auth/register', {
-    //     method: 'POST',
-    //     body: submitData,
-    //   });
+      const response = await fetch('http://localhost:9000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData),
+      });
 
       const data = await response.json();
 
       if (data.success) {
+        toast.success('🎉 Successful! Welcome to SocialMelo!');
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
-        navigate('/dashboard');
+        navigate('/');
       } else {
-        setError(data.message || 'Registration failed');
+        toast.error(data.message || 'Registration failed.');
       }
     } catch (err) {
       console.error('Registration error:', err);
@@ -139,6 +105,14 @@ const SignUp = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleSignUp = () => {
+    // Store the selected userType in sessionStorage before redirecting
+    sessionStorage.setItem('pendingUserType', formData.userType);
+    
+    // Redirect to Google OAuth endpoint
+    window.location.href = 'http://localhost:9000/api/auth/google';
   };
 
   return (
@@ -182,53 +156,6 @@ const SignUp = () => {
             )}
 
             <form onSubmit={handleSubmit} className="signup-form">
-              {/* Profile Picture Upload */}
-              <div className="form-group">
-                <label className="form-label">Profile Picture</label>
-                <div className="profile-upload-section">
-                  <div className="profile-preview">
-                    <div className="profile-preview-container">
-                      {profilePreview ? (
-                        <img 
-                          src={profilePreview} 
-                          alt="Profile preview" 
-                          className="profile-image"
-                        />
-                      ) : (
-                        <Camera className="profile-placeholder-icon" />
-                      )}
-                    </div>
-                    {profilePreview && (
-                      <button
-                        type="button"
-                        onClick={removeProfilePicture}
-                        className="remove-photo-btn"
-                      >
-                        <X className="remove-icon" />
-                      </button>
-                    )}
-                  </div>
-                  
-                  <div className="upload-section">
-                    <label className="upload-label">
-                      <div className="upload-button">
-                        <Upload className="upload-icon" />
-                        <span className="upload-text">
-                          {formData.profilePicture ? 'Change Photo' : 'Upload Photo'}
-                        </span>
-                      </div>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleProfilePictureChange}
-                        className="hidden-input"
-                      />
-                    </label>
-                    <p className="upload-hint">Max 5MB, JPG/PNG/GIF supported</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Name field */}
               <div className="form-group">
                 <label className="form-label">Full Name *</label>
@@ -273,37 +200,32 @@ const SignUp = () => {
               <div className="form-group">
                 <label className="form-label">User Type *</label>
                 <div className="input-wrapper">
-                    <div className="input-icon-left">
+                  <div className="input-icon-left">
                     <Badge className="input-icon" />
-                    </div>
-                    <div className="custom-select" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                  </div>
+                  <div className="custom-select" onClick={() => setDropdownOpen(!dropdownOpen)}>
                     <span className="selected-value">{formData.userType}</span>
                     <div className={`dropdown-arrow ${dropdownOpen ? 'open' : ''}`}>▼</div>
                     {dropdownOpen && (
-                        <div className="dropdown-options">
+                      <div className="dropdown-options">
                         <div 
-                            className="dropdown-option" 
-                            onClick={() => handleSelectChange('Author')}>
-                            Author
-                        </div>
-                        <div 
-                            className="dropdown-option" 
-                            onClick={() => handleSelectChange('Join as Brand')}>
-                            Join as Brand
+                          className="dropdown-option" 
+                          onClick={() => handleSelectChange('Join as Brand')}>
+                          Join as Brand
                         </div>
                         <div 
-                            className="dropdown-option" 
-                            onClick={() => handleSelectChange('Join as Creator')}>
-                            Join as Creator
+                          className="dropdown-option" 
+                          onClick={() => handleSelectChange('Join as Creator')}>
+                          Join as Creator
                         </div>
-                        </div>
+                      </div>
                     )}
-                    </div>
+                  </div>
                 </div>
                 <p className="field-hint">
-                    Authors can create content, Reviewers can review and approve content
+                  Select your role.
                 </p>
-                </div>
+              </div>
 
               {/* Password field */}
               <div className="form-group">
@@ -378,6 +300,28 @@ const SignUp = () => {
                 )}
               </button>
             </form>
+
+            {/* Divider */}
+            <div className="divider-container">
+              <div className="divider-line"></div>
+              <span className="divider-text">or</span>
+              <div className="divider-line"></div>
+            </div>
+
+            {/* Google Sign Up Button */}
+            <button
+              type="button"
+              onClick={handleGoogleSignUp}
+              className="google-signup-button"
+            >
+              <svg className="google-icon" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <span className="google-button-text">Continue with Google</span>
+            </button>
 
             {/* Links */}
             <div className="links-section">

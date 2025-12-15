@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import './ManageChannel.css';
 
@@ -15,18 +16,17 @@ const ManageChannels = () => {
               Manage all your channels straightforwardly
             </h2>
             
-            <p className="description">
+            <p className="description6">
               Take the stress out of community management and customer support. 
               Engage customers and prospects with one social inbox for all your 
               social media channels.
             </p>
             
             <div className="cta-section">
-              <a href="#" className="explore-link">
+              <Link to="/register" className="explore-link">
                 Explore our Social Hub features
                 <ArrowRight className="arrow-icon" />
-              </a>
-
+              </Link>
             </div>
           </div>
         </div>

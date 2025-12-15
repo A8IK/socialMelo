@@ -94,6 +94,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 700;
 }
 
 .btn-demo:hover {
@@ -111,6 +112,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none !important;
 }
 
 .btn-trial:hover {
@@ -298,6 +300,17 @@
   height: 100%;
   object-fit: contain;
   animation: seamlessRotate 20s linear infinite;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 @keyframes seamlessRotate {

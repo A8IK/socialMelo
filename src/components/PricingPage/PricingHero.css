@@ -77,6 +77,13 @@
   max-width: 320px;
 }
 
+.demo-button,
+.trial-button {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .demo-button-wrapper:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(58, 28, 113, 0.2);

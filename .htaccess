@@ -1,8 +1,31 @@
 RewriteEngine On
 RewriteBase /
 
-# Handle Angular and React routing
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
+
+# Force HTTPS (add this if you need it)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Serve sitemap and robots.txt directly - MUST come before React routing
+RewriteRule ^sitemap\.xml$ sitemap.xml [L]
+RewriteRule ^robots\.txt$ robots.txt [L]
+
+# Handle React routing - comes AFTER static files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/blog
-RewriteRule ^(.*)$ /index.html [L]
+RewriteRule ^(.*)$ /index.html [L,QSA]
+
+# Set correct MIME types
+<IfModule mod_mime.c>
+  AddType application/xml .xml
+  AddType text/plain .txt
+  AddType application/javascript .js
+  AddType text/css .css
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes

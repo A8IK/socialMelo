@@ -1,0 +1,1124 @@
+.write-for-us-page {
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.wfu-hero-section {
+  min-height: 70vh;
+  background: linear-gradient(135deg, #3A1C7166 0%, #D76D7766 50%, #FFAF7B66 100%);
+  display: flex;
+  align-items: center;
+  padding: 120px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wfu-hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 175, 123, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: wfuFloat 6s ease-in-out infinite;
+}
+
+.wfu-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.wfu-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.wfu-hero-content.wfu-fade-in-up {
+  animation: wfuFadeInUp 0.8s ease forwards;
+}
+
+.wfu-hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #3A1C71;
+  margin-bottom: 24px;
+}
+
+.wfu-gradient-text {
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wfu-hero-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wfu-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.3);
+}
+
+.wfu-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(58, 28, 113, 0.4);
+}
+
+.wfu-arrow-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.wfu-cta-button:hover .wfu-arrow-icon {
+  transform: translateX(5px);
+}
+
+/* Container */
+.wfu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Titles */
+.wfu-section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.wfu-section-description {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: #6b7280;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  margin-bottom: 12px;
+}
+
+/* Why Write Section */
+.wfu-why-write-section {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.wfu-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.wfu-benefit-card {
+  text-align: center;
+  padding: 40px 24px;
+  background: #f9fafb;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.wfu-benefit-card.wfu-fade-in-up {
+  animation: wfuFadeInUp 0.6s ease forwards;
+}
+
+.wfu-benefit-card:hover {
+  transform: translateY(-10px);
+  border-color: #FFAF7B;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(58, 28, 113, 0.1);
+}
+
+.wfu-benefit-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.wfu-benefit-card:hover .wfu-benefit-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.wfu-benefit-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.wfu-benefit-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+/* Audience Section */
+.wfu-audience-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+}
+
+.wfu-two-column-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.wfu-column .wfu-section-title {
+  text-align: left;
+}
+
+.wfu-column .wfu-section-description {
+  text-align: left;
+  margin: 0 0 30px 0;
+}
+
+.wfu-audience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wfu-audience-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  font-size: 16px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.wfu-audience-item:hover {
+  padding-left: 10px;
+  color: #3A1C71;
+}
+
+.wfu-check-icon {
+  width: 24px;
+  height: 24px;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.wfu-image-placeholder {
+  background: linear-gradient(135deg, #3A1C7120 0%, #D76D7720 50%, #FFAF7B20 100%);
+  border-radius: 20px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.wfu-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Topics Section */
+.wfu-topics-section {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.wfu-topics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wfu-topic-tag {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #3A1C7110 0%, #D76D7710 50%, #FFAF7B10 100%);
+  border: 2px solid #e5e7eb;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #3A1C71;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.wfu-topic-tag.wfu-fade-in {
+  animation: wfuFadeIn 0.5s ease forwards;
+}
+
+.wfu-topic-tag:hover {
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(58, 28, 113, 0.2);
+}
+
+/* Requirements Section */
+.wfu-requirements-section {
+  padding: 100px 20px;
+  background: #f9fafb;
+}
+
+.wfu-requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.wfu-requirement-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.wfu-requirement-card:hover {
+  border-color: #FFAF7B;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.1);
+}
+
+.wfu-requirement-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.wfu-requirement-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.wfu-requirements-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.wfu-subsection-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wfu-standards-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.wfu-standards-list li {
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border-left: 4px solid #FFAF7B;
+  font-size: 15px;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.wfu-standards-list li:hover {
+  background: linear-gradient(135deg, #3A1C7105 0%, #FFAF7B05 100%);
+  transform: translateX(5px);
+}
+
+/* Process Section */
+.wfu-process-section {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.wfu-process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wfu-step-card {
+  padding: 40px 30px;
+  background: #f9fafb;
+  border-radius: 20px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wfu-step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.wfu-step-card:hover::before {
+  opacity: 1;
+}
+
+.wfu-step-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(58, 28, 113, 0.15);
+  border-color: transparent;
+}
+
+.wfu-step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.wfu-step-card:hover .wfu-step-number {
+  transform: scale(1.1) rotate(5deg);
+  background: white;
+  color: #3A1C71;
+}
+
+.wfu-step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.wfu-step-card:hover .wfu-step-title {
+  color: white;
+}
+
+.wfu-step-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.wfu-step-card:hover .wfu-step-description {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.wfu-step-description a {
+  color: #3A1C71;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.wfu-step-card:hover .wfu-step-description a {
+  color: white;
+  text-decoration: underline;
+}
+
+.wfu-step-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.wfu-step-list li {
+  padding: 10px 0 10px 28px;
+  font-size: 14px;
+  color: #4b5563;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.wfu-step-card:hover .wfu-step-list li {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wfu-step-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.wfu-step-card:hover .wfu-step-list li::before {
+  color: white;
+}
+
+/* Contact Section */
+.wfu-contact-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #3A1C7105 0%, #FFAF7B05 100%);
+}
+
+.wfu-contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.wfu-contact-info .wfu-section-title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.wfu-contact-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 40px;
+}
+
+.wfu-contact-details {
+  margin-top: 40px;
+}
+
+.wfu-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.wfu-contact-icon {
+  width: 24px;
+  height: 24px;
+  color: #3A1C71;
+}
+
+.wfu-contact-item a {
+  color: #3A1C71;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.wfu-contact-item a:hover {
+  color: #D76D77;
+}
+
+/* Contact Form */
+.wfu-contact-form {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(58, 28, 113, 0.1);
+}
+
+.wfu-form-group {
+  margin-bottom: 24px;
+}
+
+.wfu-form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.wfu-form-group input,
+.wfu-form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.wfu-form-group input:focus,
+.wfu-form-group textarea:focus {
+  outline: none;
+  border-color: #FFAF7B;
+  box-shadow: 0 0 0 3px rgba(255, 175, 123, 0.1);
+}
+
+.wfu-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.wfu-submit-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.wfu-submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.3);
+}
+
+.wfu-submit-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.wfu-submit-button:hover .wfu-submit-icon {
+  transform: translateX(5px);
+}
+
+/* Benefits List Wrapper */
+.wfu-benefits-list-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wfu-benefits-text-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wfu-benefits-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 28px;
+  background: #f9fafb;
+  border-radius: 16px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #374151;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.wfu-benefits-list-item.wfu-fade-in-up {
+  animation: wfuFadeInUp 0.6s ease forwards;
+}
+
+.wfu-benefits-list-item:hover {
+  background: white;
+  border-left-color: #FFAF7B;
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.08);
+}
+
+.wfu-check-icon-large {
+  width: 28px;
+  height: 28px;
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.wfu-benefits-list-item:hover .wfu-check-icon-large {
+  color: #FFAF7B;
+  transform: scale(1.1);
+}
+
+.wfu-format-requirements .wfu-subsection-title {
+  margin-top: 60px;
+}
+
+.wfu-subsection-description {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #6b7280;
+  text-align: left;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Editorial & Review Process Section */
+.wfu-editorial-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+}
+
+.wfu-editorial-list-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wfu-editorial-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wfu-editorial-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.wfu-editorial-item.wfu-fade-in-up {
+  animation: wfuFadeInUp 0.6s ease forwards;
+}
+
+.wfu-editorial-item:hover {
+  border-color: #FFAF7B;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.1);
+}
+
+.wfu-editorial-icon {
+  font-size: 32px;
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3A1C7110 0%, #FFAF7B10 100%);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.wfu-editorial-item:hover .wfu-editorial-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.wfu-editorial-content {
+  flex: 1;
+}
+
+.wfu-editorial-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.wfu-editorial-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Terms Section */
+.wfu-terms-section {
+  padding: 100px 20px;
+  background: #ffffff;
+}
+
+.wfu-terms-list-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wfu-terms-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wfu-terms-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 28px;
+  background: #f9fafb;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #374151;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.wfu-terms-item.wfu-fade-in-up {
+  animation: wfuFadeInUp 0.6s ease forwards;
+}
+
+.wfu-terms-item:hover {
+  background: white;
+  border-left-color: #3A1C71;
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.08);
+}
+
+.wfu-check-icon-terms {
+  width: 28px;
+  height: 28px;
+  color: #3A1C71;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.wfu-terms-item:hover .wfu-check-icon-terms {
+  color: #FFAF7B;
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes wfuFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wfuFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wfuFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Center the last 3 cards on desktop */
+@media (min-width: 1025px) {
+  .wfu-requirements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .wfu-requirement-card {
+    flex: 0 0 calc(25% - 15px);
+    max-width: calc(25% - 15px);
+  }
+  
+  .wfu-requirement-card:nth-child(5),
+  .wfu-requirement-card:nth-child(6),
+  .wfu-requirement-card:nth-child(7) {
+    flex: 0 0 calc(25% - 15px);
+    max-width: calc(25% - 15px);
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .wfu-hero-title {
+    font-size: 48px;
+  }
+
+  .wfu-section-title {
+    font-size: 36px;
+  }
+
+  .wfu-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wfu-requirements-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wfu-standards-list {
+    grid-template-columns: 1fr;
+  }
+
+  .wfu-process-steps {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .wfu-contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .wfu-two-column-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .wfu-image-placeholder {
+    display: none; 
+  }
+}
+
+@media (max-width: 768px) {
+  .wfu-hero-section {
+    padding: 100px 20px 60px;
+    min-height: 60vh;
+  }
+
+  .wfu-hero-title {
+    font-size: 36px;
+  }
+
+  .wfu-hero-description {
+    font-size: 16px;
+  }
+
+  .wfu-section-title {
+    font-size: 32px;
+  }
+
+  .wfu-section-description {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .wfu-benefits-text-list {
+    gap: 16px;
+  }
+
+  .wfu-benefits-list-item {
+    padding: 20px 20px;
+    font-size: 16px;
+  }
+
+  .wfu-check-icon-large {
+    width: 24px;
+    height: 24px;
+  }
+
+  .wfu-why-write-section,
+  .wfu-audience-section,
+  .wfu-topics-section,
+  .wfu-requirements-section,
+  .wfu-process-section,
+  .wfu-contact-section {
+    padding: 60px 20px;
+  }
+
+  .wfu-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .wfu-two-column-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .wfu-image-placeholder {
+    display: none;
+  }
+
+  .wfu-requirements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wfu-contact-form {
+    padding: 30px 20px;
+  }
+
+  .wfu-cta-button {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+
+  .wfu-arrow-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .wfu-editorial-section,
+  .wfu-terms-section {
+    padding: 60px 20px;
+  }
+
+  .wfu-editorial-list {
+    gap: 20px;
+  }
+
+  .wfu-editorial-item {
+    padding: 24px 20px;
+  }
+
+  .wfu-editorial-icon {
+    font-size: 28px;
+    min-width: 45px;
+    height: 45px;
+  }
+
+  .wfu-editorial-title {
+    font-size: 17px;
+  }
+
+  .wfu-editorial-text {
+    font-size: 14px;
+  }
+
+  .wfu-terms-list {
+    gap: 16px;
+  }
+
+  .wfu-terms-item {
+    padding: 20px 20px;
+    font-size: 15px;
+  }
+
+  .wfu-check-icon-terms {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wfu-benefits-list-item {
+    padding: 18px 16px;
+    font-size: 15px;
+  }
+
+  .wfu-check-icon-large {
+    width: 22px;
+    height: 22px;
+  }
+
+  .wfu-hero-title {
+    font-size: 28px;
+  }
+
+  .wfu-section-title {
+    font-size: 28px;
+  }
+
+  .wfu-cta-button {
+    width: auto;
+    display: inline-flex;
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .wfu-benefit-card {
+    padding: 30px 20px;
+  }
+
+  .wfu-step-card {
+    padding: 30px 20px;
+  }
+
+  .wfu-arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .wfu-editorial-item {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .wfu-editorial-icon {
+    font-size: 24px;
+    min-width: 40px;
+    height: 40px;
+  }
+
+  .wfu-editorial-title {
+    font-size: 16px;
+  }
+
+  .wfu-editorial-text {
+    font-size: 13px;
+  }
+
+  .wfu-terms-item {
+    padding: 18px 16px;
+    font-size: 14px;
+  }
+
+  .wfu-check-icon-terms {
+    width: 22px;
+    height: 22px;
+  }
+}

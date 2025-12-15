@@ -21,17 +21,40 @@ import AboutRemarkable from './components/AboutUs/AboutRemarkable';
 import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
 import CultureTabs from './components/AboutUs/CultureTabs';
 
+import PartnersHero from './components/partnersPage/partnersHero';
+import WhyPartner from './components/partnersPage/WhyPartner';
+
+import WriteForUs from './components/WriteForUs';
+
+import Downloader from './components/ToolsPage/Downloader';
+
 import ContactCollaboration from './components/contactUs/ContactCollaboration';
+
+import SnapDownloader from './components/ToolsPage/SnapDownloader';
+
+import YoutubeDownloader from './components/ToolsPage/YoutubeDownloader';
+import FacebookDownloader from './components/ToolsPage/FacebookDownloader';
+
+import ScrollToTop from './components/ScrollToTop';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 
+import AuthCallback from './AuthCallback';
+
 import Error404 from './components/Error404';
+import TiktokDownloader from './components/ToolsPage/TikTokDownloader';
+import TwitterDownloader from './components/ToolsPage/TwitterDownloader';
+
 
 function App() {
   return (
     <div className="font-krub">
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">
@@ -73,14 +96,136 @@ function App() {
                   <ContactCollaboration />
                 </>
               } />
+
+              <Route path="/partners" element={
+                <>
+                  <PartnersHero />
+                  <BrandCarousel/>
+                  <WhyPartner/>
+                </>
+              } />
+
+              <Route path="/tools/instagram-downloader" element={<Downloader />} />
+
+              <Route path="/tools/instagram-downloader/:type" element={<Downloader />} />
+
+              <Route path="/tools/snapchat-downloader" element={
+                  <>
+                    <SnapDownloader /> 
+                  </>
+              } />
+
+                <Route path="/tools/snapchat-audio-downloader" element={
+                  <>
+                    <SnapDownloader />
+                  </>
+                } />
+              
+                <Route path="/tools/snapchat-video-downloader" element={
+                  <>
+                    <SnapDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/youtube-downloader" element={
+                  <>
+                    <YoutubeDownloader /> 
+                  </>
+                } />
+
+                <Route path="/tools/youtube-video-downloader" element={
+                  <>
+                    <YoutubeDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/youtube-audio-downloader" element={
+                  <>
+                    <YoutubeDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/facebook-downloader" element={
+                  <>
+                    <FacebookDownloader /> 
+                  </>
+                } />
+
+                <Route path="/tools/facebook-video-downloader" element={
+                  <>
+                    <FacebookDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/facebook-audio-downloader" element={
+                  <>
+                    <FacebookDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/tiktok-downloader" element={
+                  <>
+                    <TiktokDownloader /> 
+                  </>
+                } />
+                <Route path="/tools/tiktok-video-downloader" element={
+                  <>
+                    <TiktokDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/tiktok-audio-downloader" element={
+                  <>
+                    <TiktokDownloader />
+                  </>
+                } />
+
+                <Route path="/tools/twitter-downloader" element={
+                  <>
+                    <TwitterDownloader /> 
+                  </>
+                } />
+                <Route path="/tools/twitter-video-downloader" element={
+                  <>
+                    <TwitterDownloader/>
+                  </>
+                } />
+                <Route path="/tools/twitter-audio-downloader" element={
+                  <>
+                    <TwitterDownloader />
+                  </>
+                } />
+                
+                <Route path = "/write-for-us" element={
+                  <>
+                    <WriteForUs/>
+                  </>
+                }/>
+
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<SignUp />} />
+
+              <Route path="/auth/callback" element={<AuthCallback />} />
 
               <Route path ="*" element={<Error404/>} />
             </Routes>
           </main>
           <Footer /> 
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+          theme="colored"
+          toastStyle={{
+          background: "#FFAF7BD6",
+          color: "white",
+          borderRadius: "12px",
+          fontWeight: "600"
+        }}
+          />
       </Router>
     </div>
   );

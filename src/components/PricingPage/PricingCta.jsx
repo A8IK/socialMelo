@@ -1,4 +1,5 @@
 import './PricingCta.css';
+import { Link } from 'react-router-dom';
 
 const PricingCta = () => {
   return (
@@ -23,12 +24,12 @@ const PricingCta = () => {
               Discover why professionals worldwide trust us as their top-rated solution.
             </p>
             <div className="action-button-cluster2">
-              <button className="demo-request-btn3">
+              <Link to="/register" className="demo-request-btn3">
                 <span className="demo-gradient-text">Get Your Demo</span>
-              </button>
+              </Link>
               <div className="cta-buttons">
-              <button className="btn-trial">Start Your Trial →</button>
-            </div>
+                <Link to="/register" className="btn-trial">Start Your Trial →</Link>
+              </div>
             </div>
           </div>
         </div>

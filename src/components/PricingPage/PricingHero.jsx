@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './PricingHero.css';
 import { usePageMeta } from '../../usePageMeta';
 
@@ -29,16 +30,15 @@ const PricingHero = () => {
         <div className="button-container">
           {/* Get Your Demo Button */}
           <div className="demo-button-wrapper">
-            <button className="demo-button">
-              <span className="demo-button-text">Get Your Demo</span>
-            </button>
-          </div>
-          
-          {/* Start Your Trial Button */}
-          <button className="trial-button">
-            Start Your Trial
-            <span className="arrow-icon">→</span>
-          </button>
+  <Link to="/register" className="demo-button">
+    <span className="demo-button-text">Get Your Demo</span>
+  </Link>
+</div>
+
+{/* Start Your Trial Button */}
+<Link to="/register" className="trial-button">
+  Start Your Trial →
+</Link>
         </div>
       </div>
     </div>

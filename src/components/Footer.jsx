@@ -55,7 +55,7 @@ const Footer = () => {
     
     //Disabled links
     linkDisabled: {
-      color: 'rgba(255, 255, 255, 0.4)', // Grayed out color
+      color: 'rgba(255, 255, 255, 0.4)', 
       textDecoration: 'none',
       fontSize: isDesktop ? '0.875rem' : '0.8rem',
       cursor: 'default',
@@ -148,7 +148,7 @@ const Footer = () => {
   return (
     <footer style={footerStyles.footer}>
       <img 
-        src="Vector.png" 
+        src="/Vector.png" 
         alt="" 
         style={footerStyles.backgroundDecoration}/>
       
@@ -157,7 +157,7 @@ const Footer = () => {
         <div style={footerStyles.logoSection}>
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <img 
-                src="Socialmelo 2.png" 
+                src="/Socialmelo 2.png" 
                 alt="SocialMelo" 
                 style={footerStyles.logo}
                 onMouseEnter={(e) => {
@@ -193,6 +193,13 @@ const Footer = () => {
                 onMouseLeave={handleLinkLeave}>
                 FAQ
               </Link>
+              <Link 
+                to="/write-for-us" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Write for Us
+              </Link>
             </div>
           </div>
 
@@ -220,33 +227,61 @@ const Footer = () => {
                 onMouseLeave={handleLinkLeave}>
                 E-Commerce
               </Link>
+              <Link 
+                to="/partners" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Partners
+              </Link>
             </div>
           </div>
 
           {/* Solutions */}
           <div style={footerStyles.column}>
-            <h3 style={footerStyles.columnTitle}>Solutions</h3>
+            <h3 style={footerStyles.columnTitle}>Free Tools</h3>
             <div style={footerStyles.linkList}>
               <Link 
-                to="/influencer-marketing" 
-                style={footerStyles.linkDisabled}
+                to="/tools/instagram-downloader" 
+                style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
-                Influencer Marketing
+                Instagram Video downloader
               </Link>
               <Link 
-                to="/social-media-management" 
-                style={footerStyles.linkDisabled}
+                to="/tools/snapchat-downloader" 
+                style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
-                Social Media Management
+                Snapchat Video downloader
               </Link>
               <Link 
-                to="/social-listening" 
-                style={footerStyles.linkDisabled}
+                to="/tools/youtube-downloader" 
+                style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkLeave}>
-                Social Listening
+                Youtube Video downloader
+              </Link>
+              <Link 
+                to="/tools/facebook-downloader" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Facebook Video downloader
+              </Link>
+              <Link 
+                to="/tools/twitter-downloader" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Twitter Video downloader
+              </Link>
+              <Link 
+                to="/tools/tiktok-downloader" 
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}>
+                Tiktok Video downloader
               </Link>
             </div>
           </div>
@@ -392,7 +427,7 @@ const Footer = () => {
         {/* Bottom section with copyright and social links */}
         <div style={footerStyles.bottomSection}>
           <p style={footerStyles.copyright}>
-            © 2024 SocialMelo. All Rights Reserved.
+            © 2025 SocialMelo. All Rights Reserved.
           </p>
           
           <div style={footerStyles.socialLinks}>

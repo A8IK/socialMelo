@@ -189,131 +189,6 @@
   margin-left: 0.25rem;
 }
 
-/* Profile Picture Upload */
-.profile-upload-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.profile-preview {
-  position: relative;
-}
-
-.profile-preview-container {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.form-input::placeholder {
-  color: #6b7280 !important;
-}
-
-.form-input-password::placeholder {
-  color: #9ca3af !important;
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.profile-placeholder-icon {
-  height: 2rem;
-  width: 2rem;
-  color: #d9d9d9;
-}
-
-.remove-photo-btn {
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: #ef4444;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.remove-photo-btn:hover {
-  background: #dc2626;
-}
-
-.remove-icon {
-  height: 0.75rem;
-  width: 0.75rem;
-}
-
-.upload-section {
-  flex: 1;
-}
-
-.upload-label {
-  cursor: pointer;
-}
-
-.upload-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  transition: all 0.3s ease;
-}
-
-.upload-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.upload-icon {
-  height: 1.25rem;
-  width: 1.25rem;
-  color: #9ca3af;
-  margin-right: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.upload-button:hover .upload-icon {
-  color: #a855f7;
-}
-
-.upload-text {
-  font-size: 0.875rem;
-  color: #d1d5db;
-  transition: color 0.3s ease;
-}
-
-.upload-button:hover .upload-text {
-  color: white;
-}
-
-.upload-hint {
-  font-size: 0.75rem;
-  color: #9ca3af;
-  margin-top: 0.25rem;
-  margin-left: 0.25rem;
-}
-
-.hidden-input {
-  display: none;
-}
-
 /* Input Fields */
 .input-wrapper {
   position: relative;
@@ -354,7 +229,11 @@
 }
 
 .form-input::placeholder {
-  color: #9ca3af;
+  color: #6b7280 !important;
+}
+
+.form-input-password::placeholder {
+  color: #9ca3af !important;
 }
 
 .form-input:focus {
@@ -367,34 +246,7 @@
   padding-right: 3rem;
 }
 
-.form-select {
-  width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2rem;
-  color: white;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-  appearance: none;
-  cursor: pointer;
-}
-
-.form-select:focus {
-  outline: none;
-  border-color: rgba(168, 85, 247, 0.5);
-  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25);
-}
-
-.form-select option {
-  background: #374151;
-  color: white;
-}
-
-
-
-
+/* Custom Select Dropdown */
 .custom-select {
   width: 100%;
   padding: 1rem 1rem 1rem 3rem;
@@ -453,13 +305,6 @@
 .dropdown-option:last-child {
   border-radius: 0 0 0.5rem 0.5rem;
 }
-
-
-
-
-
-
-
 
 .field-hint {
   font-size: 0.75rem;
@@ -558,6 +403,73 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Divider - NEW */
+.divider-container {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  gap: 1rem;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.divider-text {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Google Sign Up Button - NEW */
+.google-signup-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  background: white;
+  color: #1f2937;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.google-signup-button:hover {
+  background: #f9fafb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.google-signup-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.google-button-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
 /* Links Section */
@@ -670,13 +582,17 @@
     max-height: 3rem;
   }
   
-  .profile-upload-section {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: stretch;
+  .google-signup-button {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
   }
   
-  .profile-preview {
-    align-self: center;
+  .google-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .divider-text {
+    font-size: 0.8125rem;
   }
 }

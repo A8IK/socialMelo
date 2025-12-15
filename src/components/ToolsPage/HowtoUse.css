@@ -1,0 +1,328 @@
+.how-to-use-section {
+  padding: 80px 20px;
+  background-color: #f9fafb;
+}
+
+.how-to-use-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.how-to-use-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.how-to-use-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  color: #3A1C71; 
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.how-to-use-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Steps Wrapper */
+.steps-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* 4 Steps Layout */
+.steps-wrapper.steps-4 {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1400px;
+  gap: 30px;
+}
+
+/* Horizontal SVG Line */
+.horizontal-line-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Step Section */
+.step-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Step Number Indicator */
+.step-number-indicator {
+  font-size: 42px;
+  font-weight: 700;
+  color: #D76D77;
+  margin-bottom: 12px;
+}
+
+.step-center-section .step-number-indicator {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* Circle with Line Container */
+.circle-with-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-center-section .circle-with-line {
+  flex-direction: column-reverse;
+}
+
+/* Step Circle Dot */
+.step-circle-dot {
+  width: 48px;
+  height: 48px;
+  background: #D76D77;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 0 2px #D76D77;
+  position: relative;
+  z-index: 3;
+}
+
+/* Vertical Connector */
+.vertical-connector {
+  width: 4px;
+  height: 50px;
+  background: #D76D77;
+}
+
+/* Step Info Card */
+.step-info-card {
+  border: 2px solid #D76D77;
+  border-radius: 16px;
+  padding: 24px;
+  background: white;
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 12px;
+  box-shadow: 0 2px 8px rgba(215, 109, 119, 0.1);
+}
+
+/* Smaller cards for 4-step layout */
+.steps-4 .step-info-card {
+  max-width: 280px;
+  padding: 20px;
+}
+
+.step-card-top {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.step-heading {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.steps-4 .step-heading {
+  font-size: 16px;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.steps-4 .step-text {
+  font-size: 13px;
+}
+
+/* Mobile Steps Layout */
+.desktop-steps {
+  display: grid;
+}
+
+.mobile-steps {
+  display: none;
+}
+
+.mobile-step-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.mobile-connector-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.mobile-step-section:last-child .mobile-connector-wrapper .vertical-connector:last-child {
+  display: none;
+}
+
+.mobile-steps .step-number-indicator {
+  margin-bottom: -30px;
+}
+
+.mobile-step-section:last-child .step-number-indicator {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .steps-wrapper.steps-4 {
+    max-width: 1100px;
+    gap: 25px;
+  }
+  
+  .steps-4 .step-info-card {
+    max-width: 250px;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 968px) {
+  .desktop-steps {
+    display: none;
+  }
+
+  .mobile-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-info-card {
+    max-width: 400px;
+  }
+
+  .step-number-indicator {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .steps-wrapper {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .horizontal-line-svg {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .how-to-use-section {
+    padding: 60px 15px;
+  }
+
+  .how-to-use-header {
+    margin-bottom: 60px;
+  }
+
+  .how-to-use-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .how-to-use-subtitle {
+    font-size: 15px;
+  }
+
+  .step-number-indicator {
+    font-size: 36px;
+  }
+
+  .step-circle-dot {
+    width: 44px;
+    height: 44px;
+  }
+
+  .vertical-connector {
+    height: 40px;
+  }
+
+  .step-info-card {
+    padding: 20px;
+  }
+
+  .step-heading {
+    font-size: 16px;
+  }
+
+  .step-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-to-use-section {
+    padding: 50px 10px;
+  }
+
+  .how-to-use-title {
+    font-size: 24px;
+  }
+
+  .how-to-use-subtitle {
+    font-size: 14px;
+  }
+
+  .step-number-indicator {
+    font-size: 32px;
+  }
+
+  .step-circle-dot {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vertical-connector {
+    height: 35px;
+  }
+
+  .step-info-card {
+    padding: 18px;
+  }
+
+  .step-heading {
+    font-size: 15px;
+  }
+
+  .step-text {
+    font-size: 12px;
+  }
+}

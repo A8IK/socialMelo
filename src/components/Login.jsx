@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, AlertCircle, Eye, EyeOff, Mail, Lock, Sparkles } from 'lucide-react';
+import {toast} from 'react-toastify';
 import './Login.css';
 import { usePageMeta } from '../usePageMeta';
 
@@ -39,28 +40,36 @@ const Login = () => {
     setError('');
 
     try {
-    //   const response = await fetch('http://localhost:9000/api/auth/login', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
+      const response = await fetch('http://localhost:9000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    //   const data = await response.json();
+      const data = await response.json();
 
       if (data.success) {
-        // Store user data in localStorage for now (replace with proper auth context later)
+        toast.success(`Welcome back, ${data.user.name}! 🎉`);
+
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
-        navigate('/newsfeed');
+
+        setTimeout(() => {
+          window.dispatchEvent(new Event('authChange'));
+        }, 100);
+        
+        navigate('/');
         console.log('Login successful:', data.user);
       } else {
-        setError(data.message || 'Login failed');
+        toast.error(data.message || 'Login failed. ',error);
+        // setError(data.message || 'Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);
-      setError('Network error. Please try again.');
+      toast.error('Network error. Please try again.');
+      // setError('Network error. Please try again.');
     } finally {
       setLoading(false);
     }
