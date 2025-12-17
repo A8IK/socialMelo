@@ -37,6 +37,11 @@
   border-radius: 0;
   box-shadow: none;
   background: transparent;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
 }
 
 /* Content Section - Right Side */

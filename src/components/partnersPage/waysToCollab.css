@@ -1,0 +1,246 @@
+.ways-collab-wrapper {
+  padding: 100px 20px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ways-collab-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.ways-collab-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.ways-collab-header.ways-collab-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ways-collab-main-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #3A1C71;
+  margin-bottom: 16px;
+}
+
+.ways-collab-gradient-text {
+  background: linear-gradient(135deg, #D76D77 0%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.ways-collab-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Grid */
+.ways-collab-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Card */
+.ways-collab-card {
+  background: #ffffff;
+  padding: 32px 24px;
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  border-left: 4px solid #D76D77;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+}
+
+.ways-collab-card.ways-collab-fade-in-up {
+  animation: waysCollabFadeInUp 0.6s ease forwards;
+}
+
+.ways-collab-card:hover {
+  transform: translateY(-8px);
+  border-left-color: #FFAF7B;
+  box-shadow: 0 15px 40px rgba(58, 28, 113, 0.12);
+}
+
+/* Icon */
+.ways-collab-icon-wrapper {
+  margin-bottom: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.ways-collab-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  transition: transform 0.3s ease;
+}
+
+.ways-collab-card:hover .ways-collab-icon {
+  transform: scale(1.1);
+}
+
+/* Content */
+.ways-collab-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.ways-collab-card:hover .ways-collab-title {
+  color: #D76D77;
+}
+
+.ways-collab-card-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Animation */
+@keyframes waysCollabFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ways-collab-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ways-collab-wrapper {
+    padding: 80px 20px;
+  }
+
+  .ways-collab-main-title {
+    font-size: 40px;
+  }
+
+  .ways-collab-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .ways-collab-card {
+    padding: 28px 20px;
+  }
+
+  .ways-collab-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ways-collab-title {
+    font-size: 19px;
+  }
+
+  .ways-collab-card-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ways-collab-wrapper {
+    padding: 60px 20px;
+  }
+
+  .ways-collab-header {
+    margin-bottom: 40px;
+  }
+
+  .ways-collab-main-title {
+    font-size: 32px;
+  }
+
+  .ways-collab-description {
+    font-size: 16px;
+  }
+
+  .ways-collab-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .ways-collab-card {
+    padding: 24px 20px;
+  }
+
+  .ways-collab-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ways-collab-title {
+    font-size: 18px;
+  }
+
+  .ways-collab-card-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ways-collab-wrapper {
+    padding: 50px 16px;
+  }
+
+  .ways-collab-main-title {
+    font-size: 28px;
+  }
+
+  .ways-collab-description {
+    font-size: 15px;
+  }
+
+  .ways-collab-card {
+    padding: 20px 18px;
+  }
+
+  .ways-collab-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ways-collab-title {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .ways-collab-card-description {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,342 @@
+.powerful-tools-wrapper {
+  padding: 100px 20px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.powerful-tools-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.powerful-tools-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.powerful-tools-header.powerful-tools-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.powerful-tools-main-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #3A1C71;
+  margin-bottom: 16px;
+}
+
+.powerful-tools-gradient-text {
+  background: linear-gradient(135deg, #D76D77 0%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.powerful-tools-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Top Section: Image Left + Cards Right */
+.powerful-tools-top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+/* Bottom Section: Cards Left + Image Right */
+.powerful-tools-bottom-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Left Image */
+.powerful-tools-left-image {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s ease;
+}
+
+.powerful-tools-left-image.powerful-tools-fade-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.powerful-tools-image-left {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 20px;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  object-fit: cover;
+}
+
+/* Right Image */
+.powerful-tools-right-image {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s ease;
+}
+
+.powerful-tools-right-image.powerful-tools-fade-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.powerful-tools-image-right {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  max-width: 100%;
+  border-radius: 20px;
+  display: block;
+  pointer-events: none; 
+  user-select: none;
+  -webkit-user-drag: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Card Containers */
+.powerful-tools-right-cards,
+.powerful-tools-left-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px; 
+}
+
+.powerful-tools-right-cards {
+  margin-left: auto; 
+}
+
+.powerful-tools-left-cards {
+  margin-right: auto; 
+}
+
+/* Individual Card */
+.powerful-tools-card {
+  background: #ffffff;
+  padding: 16px 24px !important;
+  padding: 0;
+  border-radius: 16px;
+  border: 2px solid #f3e8ff;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: auto;
+}
+
+.powerful-tools-card.powerful-tools-fade-in-up {
+  animation: powerfulToolsFadeInUp 0.6s ease forwards;
+}
+
+/* Card Inner Content Wrapper */
+.powerful-tools-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #3A1C71 0%, #D76D77 50%, #FFAF7B 100%);
+  transition: opacity 0.3s ease;
+}
+
+.powerful-tools-card:hover {
+  transform: translateY(-5px);
+  border-color: #FFAF7B;
+  box-shadow: 0 10px 30px rgba(58, 28, 113, 0.12);
+}
+
+/* Hide bottom stripe on hover */
+.powerful-tools-card:hover::after {
+  opacity: 0;
+}
+
+/* Card Content Wrapper (to add padding) */
+.powerful-tools-card > * {
+  padding: 0 24px;
+}
+
+.powerful-tools-card > :first-child {
+  padding-top: 24px;
+}
+
+.powerful-tools-card > :last-child {
+  padding-bottom: 24px;
+}
+
+/* Card Layout - Horizontal */
+.powerful-tools-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+}
+
+.powerful-tools-card > * {
+  padding: 0;
+}
+
+/* Card Icon */
+.powerful-tools-card-icon {
+  flex-shrink: 0;
+  border-radius: 12px;
+  /* background: linear-gradient(135deg, #3A1C71 0%, #D76D77 100%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  user-select: none;
+  transition: none; 
+  align-self: flex-start; 
+  margin-top: -8px;
+}
+
+.powerful-tools-icon-img {
+  width: 120%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  /* filter: brightness(0) invert(1); */
+}
+
+/* Card Content */
+.powerful-tools-card-content {
+  flex: 1;
+}
+
+.powerful-tools-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.powerful-tools-card:hover .powerful-tools-card-title {
+  color: #3A1C71;
+}
+
+.powerful-tools-card-description {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Animation */
+@keyframes powerfulToolsFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .powerful-tools-top-section,
+  .powerful-tools-bottom-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .powerful-tools-left-image,
+  .powerful-tools-right-image {
+    display: none; /* Hide images on tablet and mobile */
+  }
+
+  .powerful-tools-right-cards,
+  .powerful-tools-left-cards {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .powerful-tools-wrapper {
+    padding: 60px 20px;
+  }
+
+  .powerful-tools-header {
+    margin-bottom: 40px;
+  }
+
+  .powerful-tools-main-title {
+    font-size: 32px;
+  }
+
+  .powerful-tools-description {
+    font-size: 16px;
+  }
+
+  .powerful-tools-card {
+    padding: 20px;
+  }
+
+  .powerful-tools-card-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .powerful-tools-card-title {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .powerful-tools-wrapper {
+    padding: 50px 16px;
+  }
+
+  .powerful-tools-main-title {
+    font-size: 28px;
+  }
+
+  .powerful-tools-description {
+    font-size: 15px;
+  }
+
+  .powerful-tools-card {
+    padding: 18px;
+  }
+
+  .powerful-tools-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .powerful-tools-card-title {
+    font-size: 16px;
+  }
+
+  .powerful-tools-card-description {
+    font-size: 12px;
+  }
+}

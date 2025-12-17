@@ -1,0 +1,213 @@
+.transform-partnership-wrapper {
+  padding: 80px 20px;
+  background: #FFB17E;
+  position: relative;
+  overflow: hidden;
+}
+
+.transform-partnership-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left Side - Image */
+.transform-partnership-image {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s ease;
+  pointer-events: none; 
+  user-select: none;
+}
+
+.transform-partnership-image.transform-partnership-fade-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.transform-partnership-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Right Side - Content */
+.transform-partnership-content {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s ease;
+}
+
+.transform-partnership-content.transform-partnership-fade-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.transform-partnership-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #3A1C71;
+  margin-bottom: 20px;
+}
+
+.transform-partnership-highlight {
+  color: #3A1C71;
+}
+
+.transform-partnership-description {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 32px;
+}
+
+/* CTA Form */
+.transform-partnership-form {
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.transform-partnership-input {
+  flex: 1;
+  padding: 16px 24px;
+  border-radius: 50px;
+  border: 2px solid #ffffff;
+  background: #ffffff;
+  font-size: 15px;
+  color: #1f2937;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.transform-partnership-input::placeholder {
+  color: #9ca3af;
+}
+
+.transform-partnership-input:focus {
+  border-color: #3A1C71;
+  box-shadow: 0 0 0 4px rgba(58, 28, 113, 0.1);
+}
+
+.transform-partnership-button {
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: none;
+  background: #3A1C71;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.transform-partnership-button:hover {
+  background: #2d1556;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(58, 28, 113, 0.3);
+}
+
+.transform-partnership-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .transform-partnership-wrapper {
+    padding: 70px 20px;
+  }
+
+  .transform-partnership-container {
+    gap: 50px;
+  }
+
+  .transform-partnership-title {
+    font-size: 40px;
+  }
+
+  .transform-partnership-description {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .transform-partnership-wrapper {
+    padding: 60px 20px;
+  }
+
+  .transform-partnership-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .transform-partnership-image {
+    display: none;
+  }
+
+  .transform-partnership-img {
+    max-width: 100%;
+  }
+
+  .transform-partnership-content {
+    order: 1;
+    text-align: center;
+  }
+
+  .transform-partnership-title {
+    font-size: 36px;
+  }
+
+  .transform-partnership-description {
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+
+  .transform-partnership-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .transform-partnership-input {
+    padding: 14px 20px;
+  }
+
+  .transform-partnership-button {
+    padding: 14px 32px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .transform-partnership-wrapper {
+    padding: 50px 16px;
+  }
+
+  .transform-partnership-title {
+    font-size: 28px;
+  }
+
+  .transform-partnership-description {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .transform-partnership-input {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .transform-partnership-button {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+}

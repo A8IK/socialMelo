@@ -23,6 +23,10 @@ import CultureTabs from './components/AboutUs/CultureTabs';
 
 import PartnersHero from './components/partnersPage/partnersHero';
 import WhyPartner from './components/partnersPage/WhyPartner';
+import WaysToCollab from './components/partnersPage/WaysToCollab';
+import SuccesStories from './components/partnersPage/SuccesStories';
+import PartnershipPlan from './components/partnersPage/PartnershipPlan';
+import PowerfulTools from './components/partnersPage/PowerfulTools';
 
 import WriteForUs from './components/WriteForUs';
 
@@ -48,7 +52,12 @@ import AuthCallback from './AuthCallback';
 import Error404 from './components/Error404';
 import TiktokDownloader from './components/ToolsPage/TikTokDownloader';
 import TwitterDownloader from './components/ToolsPage/TwitterDownloader';
-
+import PartnersProcess from './components/partnersPage/PartnersProcess';
+import Resources from './components/partnersPage/Resources';
+import TrustedLeaders from './components/partnersPage/TrustedLeaders';
+import SeamlessIntegrations from './components/partnersPage/SeamlessIntegration';
+import PartnersFaq from './components/partnersPage/PartnersFaq';
+import TransformPartnership from './components/partnersPage/TransformPartnership';
 
 function App() {
   return (
@@ -102,6 +111,16 @@ function App() {
                   <PartnersHero />
                   <BrandCarousel/>
                   <WhyPartner/>
+                  <PartnersProcess/>
+                  <WaysToCollab/>
+                  <SuccesStories/>
+                  <PowerfulTools/>
+                  <PartnershipPlan/>
+                  <Resources/>
+                  <TrustedLeaders/>
+                  <SeamlessIntegrations/>
+                  <PartnersFaq/>
+                  <TransformPartnership/>
                 </>
               } />
 

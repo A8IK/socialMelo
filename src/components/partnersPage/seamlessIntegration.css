@@ -1,0 +1,190 @@
+.seamless-integrations-wrapper {
+  padding: 100px 20px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.seamless-integrations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.seamless-integrations-header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.seamless-integrations-header.seamless-integrations-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.seamless-integrations-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.seamless-integrations-gradient-text {
+  background: linear-gradient(135deg, #D76D77 0%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.seamless-integrations-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Integrations Grid */
+.seamless-integrations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Integration Card */
+.seamless-integration-card {
+  background: #ffffff;
+  border: 2px solid #FFCCCB;
+  border-radius: 20px;
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  min-height: 200px;
+}
+
+.seamless-integration-card.seamless-integration-fade-in-up {
+  animation: seamlessIntegrationFadeInUp 0.6s ease forwards;
+}
+
+.seamless-integration-card:hover {
+  transform: translateY(-10px);
+  border-color: #FFAF7B;
+  box-shadow: 0 15px 40px rgba(58, 28, 113, 0.12);
+}
+
+/* Integration Logo */
+.seamless-integration-logo {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.3s ease;
+}
+
+.seamless-integration-card:hover .seamless-integration-logo {
+  transform: scale(1.1);
+}
+
+/* Animation */
+@keyframes seamlessIntegrationFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .seamless-integrations-wrapper {
+    padding: 80px 20px;
+  }
+
+  .seamless-integrations-title {
+    font-size: 40px;
+  }
+
+  .seamless-integrations-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  .seamless-integration-card {
+    padding: 50px 30px;
+    min-height: 180px;
+  }
+
+  .seamless-integration-logo {
+    max-height: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .seamless-integrations-wrapper {
+    padding: 60px 20px;
+  }
+
+  .seamless-integrations-header {
+    margin-bottom: 40px;
+  }
+
+  .seamless-integrations-title {
+    font-size: 32px;
+  }
+
+  .seamless-integrations-subtitle {
+    font-size: 16px;
+  }
+
+  .seamless-integrations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .seamless-integration-card {
+    padding: 40px 25px;
+    min-height: 160px;
+  }
+
+  .seamless-integration-logo {
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .seamless-integrations-wrapper {
+    padding: 50px 16px;
+  }
+
+  .seamless-integrations-title {
+    font-size: 28px;
+  }
+
+  .seamless-integrations-subtitle {
+    font-size: 15px;
+  }
+
+  .seamless-integrations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .seamless-integration-card {
+    padding: 35px 20px;
+    min-height: 140px;
+  }
+
+  .seamless-integration-logo {
+    max-height: 50px;
+  }
+}
