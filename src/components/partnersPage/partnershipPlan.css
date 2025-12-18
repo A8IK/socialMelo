@@ -1,0 +1,280 @@
+/* Main Wrapper */
+.partners-pricing-wrapper {
+  padding: 100px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+/* Section Header */
+.partners-pricing-header-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.partners-pricing-section-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #3A1C71;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.partners-pricing-title-gradient {
+  background: linear-gradient(135deg, #D76D77 0%, #FFAF7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.partners-pricing-section-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Payment Toggle */
+.partners-pricing-toggle-wrapper {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.partners-pricing-toggle-buttons {
+  display: inline-flex;
+  background: #f8f9fa;
+  border-radius: 50px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.partners-pricing-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 46px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #6c757d;
+}
+
+.partners-pricing-toggle-btn.partners-pricing-toggle-active {
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.partners-pricing-discount-info {
+  color: #6c757d;
+  font-size: 14px;
+  margin: 0;
+}
+
+.partners-pricing-discount-highlight {
+  color: #D76D77;
+  font-weight: 600;
+}
+
+/* Pricing Cards Grid */
+.partners-pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Individual Card */
+.partners-pricing-plan-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  padding: 40px 30px;
+  position: relative;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.partners-pricing-plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.partners-pricing-plan-card.partners-pricing-plan-popular {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+  border: 2px solid #f9a8d4;
+  transform: scale(1.05);
+}
+
+.partners-pricing-popular-tag {
+  position: absolute;
+  top: -12px;
+  right: 30px;
+  background: linear-gradient(135deg, #412071 0%, #C26276 50%, #FDAC7A 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Card Header */
+.partners-pricing-card-top {
+  margin-bottom: 30px;
+}
+
+.partners-pricing-amount {
+  font-size: 35px;
+  font-weight: 700;
+  color: #D76D77;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.partners-pricing-duration {
+  font-size: 18px;
+  color: #6c757d;
+  font-weight: 400;
+}
+
+.partners-pricing-plan-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.partners-pricing-plan-desc {
+  color: #6c757d;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Features List */
+.partners-pricing-features-wrapper {
+  margin-bottom: 40px;
+}
+
+.partners-pricing-feature-row {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 15px;
+}
+
+.partners-pricing-feature-icon {
+  width: 20px;
+  height: 20px;
+  color: #22c55e;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* CTA Button */
+.partners-pricing-cta-button {
+  width: 100%;
+  background: #D76D77;
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.partners-pricing-cta-button:hover {
+  background: #c55a6b;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .partners-pricing-wrapper {
+    padding: 80px 20px;
+  }
+
+  .partners-pricing-section-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-pricing-wrapper {
+    padding: 60px 15px;
+  }
+
+  .partners-pricing-header-section {
+    margin-bottom: 40px;
+  }
+
+  .partners-pricing-section-title {
+    font-size: 32px;
+  }
+
+  .partners-pricing-section-subtitle {
+    font-size: 16px;
+  }
+
+  .partners-pricing-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .partners-pricing-plan-card.partners-pricing-plan-popular {
+    transform: none;
+  }
+
+  .partners-pricing-toggle-buttons {
+    flex-direction: column;
+    background: transparent;
+    gap: 8px;
+  }
+
+  .partners-pricing-toggle-btn {
+    border: 1px solid #e9ecef;
+    background: white;
+  }
+
+  .partners-pricing-toggle-btn.partners-pricing-toggle-active {
+    background: #D76D77;
+    color: white;
+    border-color: #D76D77;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-pricing-wrapper {
+    padding: 50px 16px;
+  }
+
+  .partners-pricing-section-title {
+    font-size: 28px;
+  }
+
+  .partners-pricing-section-subtitle {
+    font-size: 15px;
+  }
+
+  .partners-pricing-plan-card {
+    padding: 30px 20px;
+  }
+
+  .partners-pricing-amount {
+    font-size: 28px;
+  }
+
+  .partners-pricing-plan-title {
+    font-size: 20px;
+  }
+}

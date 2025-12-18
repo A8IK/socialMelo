@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import './partnersHero.css';
+import { usePageMeta } from '../../usePageMeta';
 
 const PartnersHero = () => {
+  usePageMeta(
+      'SocialMelo Partner| Data Driven Brand Collaborations', 
+      'Partner with SocialMelo to connect brands and creators worldwide. Scale campaigns, track ROI, and build authentic, high-impact partnerships.'
+    );
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
