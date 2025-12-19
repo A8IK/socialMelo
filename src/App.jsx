@@ -21,7 +21,7 @@ import AboutRemarkable from './components/AboutUs/AboutRemarkable';
 import ValuesTeamSection from './components/AboutUs/ValuesTeamSection';
 import CultureTabs from './components/AboutUs/CultureTabs';
 
-import PartnersHero from './components/partnersPage/partnersHero';
+import PartnersHero from './components/partnersPage/PartnersHero';
 import WhyPartner from './components/partnersPage/WhyPartner';
 import WaysToCollab from './components/partnersPage/WaysToCollab';
 import SuccesStories from './components/partnersPage/SuccesStories';
