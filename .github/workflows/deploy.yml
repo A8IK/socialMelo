@@ -31,7 +31,7 @@ jobs:
       with:
         server: premium304.web-hosting.com
         username: abduksto
-        password: ${{ secrets.CPANEL_DEPLOY_SECRET }}
+        password: ${{ secrets.CPANEL_PASSWORD }}
         local-dir: ./dist/
         server-dir: /home/abduksto/socialmelo.com/
         dangerous-clean-slate: true
