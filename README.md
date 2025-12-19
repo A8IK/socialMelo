@@ -1,6 +1,6 @@
-# React + Vite
+# React + Vite && NodeJS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site Link: https://socialmelo.com
 
 Currently, two official plugins are available:
 
