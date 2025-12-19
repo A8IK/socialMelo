@@ -5,12 +5,33 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install Dependencies
+      run: npm ci
+    
+    - name: Build Project
+      run: npm run build
+      env:
+        CI: false
+    
+    - name: Verify Build
+      run: |
+        echo "Contents of current directory:"
+        ls -la
+        echo "Contents of dist folder:"
+        ls -la dist/
     
     - name: Deploy via SSH
       uses: appleboy/scp-action@master
@@ -19,7 +40,7 @@ jobs:
         username: abduksto
         key: ${{ secrets.CPANEL_DEPLOY_SECRET }}
         port: 21098
-        source: "dist/*"
+        source: "dist/"
         target: "/home/abduksto/socialmelo.com/"
         strip_components: 1
-        rm: true
+        rm: false
