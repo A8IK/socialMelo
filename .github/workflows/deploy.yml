@@ -17,7 +17,7 @@ jobs:
       with:
         host: premium304.web-hosting.com
         username: abduksto
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.CPANEL_DEPLOY_SECRET }}
         port: 21098
         source: "dist/*"
         target: "/home/abduksto/socialmelo.com/"
