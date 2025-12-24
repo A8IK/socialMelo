@@ -10,25 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v3
       
-      - name: Setup Node.js
+      - name: 🟢 Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
           cache: 'npm'
       
-      - name: Install Dependencies
+      - name: 📦 Install Dependencies
         run: npm ci
       
-      - name: Build Frontend
+      - name: 🏗️ Build Frontend
         run: npm run build
         env:
           CI: false
           VITE_API_URL: https://socialmelo.com
       
-      - name: Deploy Frontend to cPanel
+      - name: 🚀 Deploy Frontend to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: premium304.web-hosting.com
@@ -41,6 +41,12 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/blog/**
+            **/.htaccess
+            **/robots.txt
+            **/sitemap.xml
+            **/sitemap.xsl
+            **/.cpanel.yml
 
   deploy-backend:
     name: Deploy Backend
@@ -48,10 +54,10 @@ jobs:
     needs: deploy-frontend
     
     steps:
-      - name: Checkout Repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v3
       
-      - name: Deploy Backend to cPanel
+      - name: 🚀 Deploy Backend to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: premium304.web-hosting.com
@@ -68,3 +74,4 @@ jobs:
             **/uploads/**
             **/*.log
             **/tmp/**
+            **/temp/**
