@@ -8,6 +8,7 @@ import { usePageMeta } from '../../usePageMeta';
 import HowToUse from './HowtoUse';
 import FeaturesSection from './FeatureSection';
 import FAQ from './Faq';
+import API_BASE_URL from '../../config/api';
 
 export default function InstagramDownloader() {
   const navigate = useNavigate();
@@ -46,89 +47,95 @@ export default function InstagramDownloader() {
   const currentTab = tabsConfig[activeTab];
 
   const isValidInstagramUrl = (url) => {
-    const instagramRegex = /^https?:\/\/(www\.)?instagram\.com\/.*\/(p|reel|tv|stories)\/[A-Za-z0-9_-]+/;
+    const instagramRegex = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|tv|stories)\/[A-Za-z0-9_-]+/;
     return instagramRegex.test(url);
   };
 
   const handleDownload = async () => {
-    if (!url.trim()) {
-      toast.error('Please enter an Instagram URL', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-      return;
-    }
+  console.log('=== FRONTEND DOWNLOAD STARTED ===');
+  console.log('URL from state:', url);
+  console.log('URL length:', url.length);
+  console.log('URL trimmed:', url.trim());
+  
+  if (!url.trim()) {
+    console.log('❌ URL is empty');
+    toast.error('Please enter an Instagram URL', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    return;
+  }
 
-    if (!isValidInstagramUrl(url)) {
-      toast.error('Please enter a valid Instagram URL', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-      return;
-    }
+  if (!isValidInstagramUrl(url)) {
+    console.log('❌ URL validation failed');
+    console.log('URL value:', url);
+    toast.error('Please enter a valid Instagram URL', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    return;
+  }
 
-    setLoading(true);
+  console.log('✅ URL validation passed');
+  setLoading(true);
 
-    const loadingToast = toast.loading('Fetching download link...', {
-      position: "top-right"
+  const loadingToast = toast.loading('Fetching download link...', {
+    position: "top-right"
+  });
+
+  try {
+    const requestBody = { url: url.trim() };
+    // console.log('📤 Request body:', requestBody);
+    // console.log('📤 Request body JSON:', JSON.stringify(requestBody));
+    // console.log('📤 API endpoint:', 'http://localhost:9000/api/download/instagram');
+    
+    const response = await fetch(`${API_BASE_URL}/api/download/instagram`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(requestBody)
     });
 
-    try {
-      const response = await fetch('http://localhost:9000/api/download/instagram', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ url: url })
-      });
+    console.log('📥 Response status:', response.status);
+    console.log('📥 Response ok:', response.ok);
+    console.log('📥 Response headers:', response.headers);
 
-      const result = await response.json();
+    const result = await response.json();
+    console.log('📥 Response data:', result);
 
-      if (!result.success) {
-        throw new Error(result.message || 'Failed to download');
-      }
+    if (!result.success) {
+      console.log('❌ API returned success: false');
+      throw new Error(result.message || 'Failed to download');
+    }
 
-      if (result.data.downloadUrl) {
-        const link = document.createElement('a');
-        link.href = result.data.downloadUrl;
-        link.target = '_blank';
-        link.download = `instagram_${activeTab}_${Date.now()}`;
-        
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        toast.update(loadingToast, {
-          render: 'Download started successfully! 🎉',
-          type: 'success',
-          isLoading: false,
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-
-        setTimeout(() => {
-          setUrl('');
-        }, 1000);
-      }
+    if (result.data && result.data.downloadUrl) {
+      console.log('✅ Download URL received:', result.data.downloadUrl);
+      console.log('📦 Media type:', result.data.mediaType);
       
-    } catch (err) {
-      console.error('Download error:', err);
+      const link = document.createElement('a');
+      link.href = result.data.downloadUrl;
+      link.target = '_blank';
+      link.download = `instagram_${activeTab}_${Date.now()}`;
       
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      console.log('✅ Download triggered');
+
       toast.update(loadingToast, {
-        render: err.message || 'Failed to download. Please try again.',
-        type: 'error',
+        render: 'Download started successfully! 🎉',
+        type: 'success',
         isLoading: false,
         autoClose: 3000,
         hideProgressBar: false,
@@ -136,10 +143,35 @@ export default function InstagramDownloader() {
         pauseOnHover: true,
         draggable: true,
       });
-    } finally {
-      setLoading(false);
+
+      setTimeout(() => {
+        setUrl('');
+      }, 1000);
+    } else {
+      console.log('❌ No download URL in response');
+      throw new Error('No download URL received');
     }
-  };
+    
+  } catch (err) {
+    console.error('=== FRONTEND ERROR ===');
+    console.error('Error type:', err.constructor.name);
+    console.error('Error message:', err.message);
+    console.error('Full error:', err);
+    
+    toast.update(loadingToast, {
+      render: err.message || 'Failed to download. Please try again.',
+      type: 'error',
+      isLoading: false,
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !loading) {

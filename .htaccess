@@ -5,18 +5,39 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
 
-# Force HTTPS (add this if you need it)
+# Force HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# === IMPORTANT: Proxy API requests to Node.js backend ===
+# This MUST come before React routing
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/(.*)$ http://127.0.0.1:9000/api/$1 [P,L]
+# === End API proxy ===
 
 # Serve sitemap and robots.txt directly - MUST come before React routing
 RewriteRule ^sitemap\.xml$ sitemap.xml [L]
 RewriteRule ^robots\.txt$ robots.txt [L]
 
-# Handle React routing - comes AFTER static files
+# === Specific 301 redirects ===
+RewriteRule ^youtube-channel-name-ideas/?$ https://socialmelo.com/blog/english-youtube-channel-name-ideas/ [R=301,L]
+RewriteRule ^instagram-bio-ideas/?$ https://socialmelo.com/blog/instagram-bio/ [R=301,L]
+RewriteRule ^tiktok-username-ideas/?$ https://socialmelo.com/blog/tiktok-bio/ [R=301,L]
+RewriteRule ^discord-server-names/?$ https://socialmelo.com/blog/discord-bio-template/ [R=301,L]
+RewriteRule ^youtube-channel-ideas/?$ https://socialmelo.com/blog/water-youtube-channel-name/ [R=301,L]
+RewriteRule ^social-media-bio-templates/?$ https://socialmelo.com/blog/aesthetic-bio-ideas/ [R=301,L]
+RewriteRule ^content-creator-resources/?$ https://socialmelo.com/ [R=301,L]
+RewriteRule ^influencer-guides/?$ https://socialmelo.com/ [R=301,L]
+RewriteRule ^social-media-tips/?$ https://socialmelo.com/ [R=301,L]
+RewriteRule ^channel-name-generator/?$ https://socialmelo.com/ [R=301,L]
+RewriteRule ^profile-optimization/?$ https://socialmelo.com/ [R=301,L]
+# === End specific redirects ===
+
+# Handle React routing - comes AFTER static files and redirects
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/blog
+RewriteCond %{REQUEST_URI} !^/api
 RewriteRule ^(.*)$ /index.html [L,QSA]
 
 # Set correct MIME types

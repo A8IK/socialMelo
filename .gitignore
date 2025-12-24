@@ -7,30 +7,43 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Frontend build files (existing rules)
-dist
-dist-ssr
+# Build files
+dist/
+dist-ssr/
 *.local
+build/
 
-# Backend environment files
+# Environment files (Keep secrets hidden)
 .env
 .env.local
-.env.development
-.env.production
-.env.test
-backend/.env*
+.env.development.local
+.env.production.local
+.env.test.local
+backend/.env
 
-# Logs (enhanced from your existing)
-logs
+# BUT allow example files
+!.env.example
+!.env.development
+!.env.production
+!backend/.env.example
+
+# Logs
+logs/
 *.log
 
 # Backend uploads
 backend/uploads/
+uploads/
 
-# Editor directories and files (your existing rules + more)
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Editor directories
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
@@ -38,12 +51,7 @@ backend/uploads/
 *.sln
 *.sw?
 
-# Additional backend ignores
-backend/package-lock.json
-uploads/
-*.db
-*.sqlite
-*.sqlite3
+# Additional files
 coverage/
 *.pid
 *.seed

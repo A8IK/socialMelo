@@ -1,37 +1,70 @@
-name: CI/CD Pipeline - Deploy to cPanel
+name: Deploy SocialMelo to cPanel
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  deploy-frontend:
+    name: Build & Deploy Frontend
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Build Frontend
+        run: npm run build
+        env:
+          CI: false
+          VITE_API_URL: https://socialmelo.com
+      
+      - name: Deploy Frontend to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: premium304.web-hosting.com
+          username: abduksto
+          password: ${{ secrets.CPANEL_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /home/abduksto/socialmelo.com/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+
+  deploy-backend:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    needs: deploy-frontend
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-        cache: 'npm'
-    
-    - name: Install Dependencies
-      run: npm ci
-    
-    - name: Build Project
-      run: npm run build
-      env:
-        CI: false
-    
-    - name: 📂 Deploy to cPanel via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: premium304.web-hosting.com
-        username: abduksto
-        password: ${{ secrets.CPANEL_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /home/abduksto/socialmelo.com/
-        dangerous-clean-slate: true
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      
+      - name: Deploy Backend to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: premium304.web-hosting.com
+          username: abduksto
+          password: ${{ secrets.CPANEL_PASSWORD }}
+          local-dir: ./backend/
+          server-dir: /home/abduksto/backend/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env
+            **/uploads/**
+            **/*.log
+            **/tmp/**
