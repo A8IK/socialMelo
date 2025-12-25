@@ -12,12 +12,19 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # === Blog passthrough ===
 RewriteRule ^blog - [L]
 
-# === API Proxy - Try ProxyPass first ===
+# === API Proxy - Try ProxyPass first, fallback to PHP ===
 <IfModule mod_proxy.c>
   ProxyRequests Off
   ProxyPreserveHost On
   ProxyPass /api http://127.0.0.1:9000/api
   ProxyPassReverse /api http://127.0.0.1:9000/api
+</IfModule>
+
+# If mod_proxy not available, use PHP proxy
+<IfModule !mod_proxy.c>
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} ^/api
+  RewriteRule ^api(.*)$ /api.php [L,QSA]
 </IfModule>
 
 # === Static files ===
