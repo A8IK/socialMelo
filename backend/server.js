@@ -21,7 +21,7 @@ const app = express();
 connectDB()
   .then(() => console.log('🎉 MongoDB connection established'))
   .catch((err) => {
-    console.error('💥 Failed to connect to MongoDB:', err.message);
+    console.error(' Failed to connect to MongoDB:', err.message);
     process.exit(1);
   });
 
@@ -34,9 +34,7 @@ app.use(helmet({
 // Trust proxy
 app.set('trust proxy', 1);
 
-// CORS configuration - MUST BE BEFORE ROUTES
-// CORS configuration - MUST BE BEFORE ROUTES
-// CORS configuration - Allow localhost in all environments for development
+// CORS configuration
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173', 
@@ -48,8 +46,6 @@ const allowedOrigins = [
 const corsOptions = {
   origin: function (origin, callback) {
     console.log('🔍 CORS Check - Origin:', origin);
-    console.log('🔍 Allowed Origins:', allowedOrigins);
-    console.log('🔍 NODE_ENV:', process.env.NODE_ENV);
     
     // Allow requests with no origin (mobile apps, curl, Postman)
     if (!origin) {
@@ -62,8 +58,6 @@ const corsOptions = {
       callback(null, true);
     } else {
       console.log('❌ CORS: Origin blocked');
-      console.log('   Received:', origin);
-      console.log('   Expected one of:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -75,7 +69,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Body parser middleware - MUST BE BEFORE ROUTES
+// Body parser middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
@@ -109,8 +103,6 @@ app.use(passport.session());
 if (process.env.NODE_ENV !== 'production') {
   app.use((req, res, next) => {
     console.log(`📨 [${new Date().toISOString()}] ${req.method} ${req.path}`);
-    console.log('   Origin:', req.get('origin'));
-    console.log('   Content-Type:', req.get('content-type'));
     next();
   });
 }
@@ -118,7 +110,6 @@ if (process.env.NODE_ENV !== 'production') {
 // Serve static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Rate limiting AFTER logging
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -141,16 +132,18 @@ const downloadLimiter = rateLimit({
   }
 });
 
-// API Routes - Define routes BEFORE rate limiting
-app.use('/api/auth', authRoutes);
-app.use('/api/download', downloadLimiter, downloadRoutes); // Rate limit only download
+// 1. Root route (no rate limit)
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Welcome to SocialMelo API',
+    version: '1.0.0'
+  });
+});
 
-// Apply general rate limit to all other /api routes
-app.use('/api', generalLimiter);
-
-// Health check route
+// 2. Health check route (no rate limit) - MUST BE BEFORE /api catch-all
 app.get('/api/health', (req, res) => {
-  console.log('✅ Health check requested');
+  // console.log('✅ Health check requested');
   res.json({
     success: true,
     message: 'SocialMelo API is running',
@@ -165,18 +158,16 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Root route
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: 'Welcome to SocialMelo API',
-    version: '1.0.0'
-  });
-});
+// 3. Specific API routes with their own rate limits
+app.use('/api/auth', authRoutes);
+app.use('/api/download', downloadLimiter, downloadRoutes);
+
+// 4. General rate limiter for any other /api routes (catch-all)
+app.use('/api', generalLimiter);
 
 // 404 handler
 app.use((req, res) => {
-  console.log('❌ 404:', req.method, req.path);
+  // console.log('❌ 404:', req.method, req.path);
   res.status(404).json({
     success: false,
     message: 'API endpoint not found',
@@ -205,7 +196,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-// Start server
 const PORT = process.env.PORT || 9000;
 
 const server = app.listen(PORT, () => {
