@@ -5,8 +5,8 @@ import { usePageMeta } from '../usePageMeta';
 const WriteForUs = () => {
 
   usePageMeta(
-      'Write for Us | Influencer & Creator Marketing Content', 
-      'Contribute to SocialMelo and reach brand marketers. Share insights on influencer marketing, UGC, creator campaigns, and social media growth.'
+      'Write for Us: Guest Post | Social Media, Marketing, Business', 
+      'Socialmelo invites guest posts on social media, marketing & business strategy. High-quality backlinks included. Submit your content now!'
     );
 
   const [isVisible, setIsVisible] = useState(false);
@@ -84,7 +84,7 @@ const WriteForUs = () => {
         <div className="wfu-hero-container">
           <div className={`wfu-hero-content ${isVisible ? 'wfu-fade-in-up' : ''}`}>
             <h1 className="wfu-hero-title">
-              Collaborate With <span className="wfu-gradient-text">SocialMelo</span>
+              Submit Your Guest Post on <span className="wfu-gradient-text">Social Media Marketing & Business Growth</span>
             </h1>
             <p className="wfu-hero-description">
               Share your influencer marketing insights with brand marketers, agencies, and creators. 
