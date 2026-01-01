@@ -43,7 +43,7 @@ export default function TiktokDownloader() {
   setFormat(newFormat);
   
   if (newFormat === 'mp4') {
-    navigate('/tools/tiktok-video-downloader');
+    navigate('/tools/tiktok-downloader');
   } else if (newFormat === 'mp3') {
     navigate('/tools/tiktok-audio-downloader');
   }

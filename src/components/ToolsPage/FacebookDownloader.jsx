@@ -43,7 +43,7 @@ export default function FacebookDownloader() {
   setFormat(newFormat);
   
   if (newFormat === 'mp4') {
-    navigate('/tools/facebook-video-downloader');
+    navigate('/tools/facebook-downloader');
   } else if (newFormat === 'mp3') {
     navigate('/tools/facebook-audio-downloader');
   }

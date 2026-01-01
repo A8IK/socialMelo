@@ -43,7 +43,7 @@ export default function YoutubeDownloader() {
   setFormat(newFormat);
   
   if (newFormat === 'mp4') {
-    navigate('/tools/youtube-video-downloader');
+    navigate('/tools/youtube-downloader');
   } else if (newFormat === 'mp3') {
     navigate('/tools/youtube-audio-downloader');
   }

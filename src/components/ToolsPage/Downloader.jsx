@@ -41,7 +41,11 @@ export default function InstagramDownloader() {
 
   const handleTabChange = (tabId) => {
     setActiveTab(tabId);
-    navigate(`/tools/instagram-downloader/${tabId}`);
+     if (tabId === 'video') {
+    navigate('/tools/instagram-downloader');
+    } else {
+      navigate(`/tools/instagram-downloader/${tabId}`);
+    }
   };
 
   const currentTab = tabsConfig[activeTab];

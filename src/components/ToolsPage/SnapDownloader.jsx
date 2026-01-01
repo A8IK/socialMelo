@@ -43,7 +43,7 @@ export default function SnapDownloader() {
   setFormat(newFormat);
   
   if (newFormat === 'mp4') {
-    navigate('/tools/snapchat-video-downloader');
+    navigate('/tools/snapchat-downloader');
   } else if (newFormat === 'mp3') {
     navigate('/tools/snapchat-audio-downloader');
   }

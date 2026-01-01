@@ -43,7 +43,7 @@ export default function TwitterDownloader() {
   setFormat(newFormat);
   
   if (newFormat === 'mp4') {
-    navigate('/tools/twitter-video-downloader');
+    navigate('/tools/twitter-downloader');
   } else if (newFormat === 'mp3') {
     navigate('/tools/twitter-audio-downloader');
   }
