@@ -59,46 +59,6 @@ import SeamlessIntegrations from './components/partnersPage/SeamlessIntegration'
 import PartnersFaq from './components/partnersPage/PartnersFaq';
 import TransformPartnership from './components/partnersPage/TransformPartnership';
 
-// Canonical URL Manager Component
-function CanonicalManager() {
-  const location = useLocation();
-
-  useEffect(() => {
-    let canonicalUrl = window.location.origin;
-
-    // Define base canonical URLs for downloader pages
-    if (location.pathname.startsWith('/tools/instagram-downloader')) {
-      canonicalUrl += '/tools/instagram-downloader';
-    } else if (location.pathname.startsWith('/tools/snapchat')) {
-      canonicalUrl += '/tools/snapchat-downloader';
-    } else if (location.pathname.startsWith('/tools/youtube')) {
-      canonicalUrl += '/tools/youtube-downloader';
-    } else if (location.pathname.startsWith('/tools/facebook')) {
-      canonicalUrl += '/tools/facebook-downloader';
-    } else if (location.pathname.startsWith('/tools/tiktok')) {
-      canonicalUrl += '/tools/tiktok-downloader';
-    } else if (location.pathname.startsWith('/tools/twitter')) {
-      canonicalUrl += '/tools/twitter-downloader';
-    } else {
-      // For all other pages, use the current path
-      canonicalUrl += location.pathname;
-    }
-
-    // Update or create canonical link
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-    
-    canonicalLink.setAttribute('href', canonicalUrl);
-  }, [location.pathname]);
-
-  return null; // This component doesn't render anything
-}
-
 function App() {
   return (
     <div className="font-krub">
