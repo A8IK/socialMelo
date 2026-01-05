@@ -51,8 +51,10 @@ export default function InstagramDownloader() {
   const currentTab = tabsConfig[activeTab];
 
   const isValidInstagramUrl = (url) => {
-    const instagramRegex = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|tv|stories)\/[A-Za-z0-9_-]+/;
-    return instagramRegex.test(url);
+    // const instagramRegex = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|tv|stories)\/[A-Za-z0-9_-]+/;
+    const instagramRegex = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|reels|tv|stories)\/[A-Za-z0-9_-]+/;
+    // return instagramRegex.test(url);
+    return instagramRegex.test(url.trim());
   };
 
   const handleDownload = async () => {

@@ -21,7 +21,8 @@ router.post('/instagram', async (req, res) => {
     console.log('Clean URL:', cleanUrl);
     
     // Extract shortcode
-    const shortcodeMatch = cleanUrl.match(/\/(p|reel|tv|stories)\/([A-Za-z0-9_-]+)/);
+    // const shortcodeMatch = cleanUrl.match(/\/(p|reel|tv|stories)\/([A-Za-z0-9_-]+)/);
+    const shortcodeMatch = cleanUrl.match(/\/(p|reel|reels|tv|stories)\/([A-Za-z0-9_-]+)/);
     
     if (!shortcodeMatch) {
       return res.status(400).json({
@@ -51,6 +52,15 @@ router.post('/instagram', async (req, res) => {
     
     const response = await axios.request(options);
     console.log('✅ API Response Status:', response.status);
+
+    // Check if content is restricted or private
+    if (response.data && response.data.error) {
+      console.log('❌ The content you are trying is restricted.');
+      return res.status(403).json({
+        success: false,
+        message: 'This content is private or restricted and cannot be downloaded'
+      });
+    }
     
     // Response is an array of carousel items
     if (!Array.isArray(response.data) || response.data.length === 0) {

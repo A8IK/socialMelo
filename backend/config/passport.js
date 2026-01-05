@@ -107,7 +107,7 @@ const User = require('../models/User');
 
 // Only initialize Google OAuth if credentials exist
 if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
-  console.log('✅ Google OAuth credentials found - initializing Google login');
+  console.log('Google OAuth credentials found - initializing Google login');
   
   // Determine callback URL based on environment
   const callbackURL = process.env.NODE_ENV === 'production'
@@ -151,7 +151,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
             await user.save();
             
             if (process.env.NODE_ENV === 'development') {
-              console.log('✅ Updated existing user with Google ID');
+              console.log('Updated existing user with Google ID');
             }
           }
           
@@ -177,21 +177,21 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
           user = await newUser.save();
           
           if (process.env.NODE_ENV === 'development') {
-            console.log('✅ New Google user created:', user.email);
+            console.log(' New Google user created:', user.email);
           }
           
           return done(null, user);
         }
         
       } catch (err) {
-        console.error('❌ Google Strategy Error:', err);
+        // console.error(' Google Strategy Error:', err);
         return done(err, null);
       }
     }
   ));
 } else {
-  console.log('⚠️  Google OAuth not configured');
-  console.log('⚠️  Missing GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET');
+  // console.log('⚠️  Google OAuth not configured');
+  // console.log('⚠️  Missing GOOGLE_CLIENT_ID or GOOGLE_CLIENT_SECRET');
   console.log('⚠️  Google login will be disabled, but other features will work');
 }
 
@@ -206,7 +206,7 @@ passport.deserializeUser(async (id, done) => {
     const user = await User.findById(id).select('-password');
     done(null, user);
   } catch (err) {
-    console.error('❌ Deserialize user error:', err);
+    // console.error('❌ Deserialize user error:', err);
     done(err, null);
   }
 });
