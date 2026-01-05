@@ -18,7 +18,7 @@ router.post('/instagram', async (req, res) => {
     
     // Remove query parameters
     const cleanUrl = trimmedUrl.split('?')[0];
-    console.log('Clean URL:', cleanUrl);
+    // console.log('Clean URL:', cleanUrl);
     
     // Extract shortcode
     // const shortcodeMatch = cleanUrl.match(/\/(p|reel|tv|stories)\/([A-Za-z0-9_-]+)/);
@@ -32,7 +32,7 @@ router.post('/instagram', async (req, res) => {
     }
     
     const shortcode = shortcodeMatch[2];
-    console.log('✅ Extracted shortcode:', shortcode);
+    // console.log('✅ Extracted shortcode:', shortcode);
     
     // Call Instagram120 API
     console.log('📡 Calling /mediaByShortcode endpoint...');
@@ -51,11 +51,11 @@ router.post('/instagram', async (req, res) => {
     };
     
     const response = await axios.request(options);
-    console.log('✅ API Response Status:', response.status);
+    // console.log('✅ API Response Status:', response.status);
 
     // Check if content is restricted or private
     if (response.data && response.data.error) {
-      console.log('❌ The content you are trying is restricted.');
+      // console.log('❌ The content you are trying is restricted.');
       return res.status(403).json({
         success: false,
         message: 'This content is private or restricted and cannot be downloaded'
@@ -64,7 +64,7 @@ router.post('/instagram', async (req, res) => {
     
     // Response is an array of carousel items
     if (!Array.isArray(response.data) || response.data.length === 0) {
-      console.log('❌ Invalid response structure or empty array');
+      // console.log('❌ Invalid response structure or empty array');
       return res.status(404).json({
         success: false,
         message: 'No media found for this post'
@@ -101,23 +101,23 @@ router.post('/instagram', async (req, res) => {
     if (!downloadUrl && firstItem.pictureUrl) {
       downloadUrl = firstItem.pictureUrl;
       mediaType = 'photo';
-      console.log('📷 Using pictureUrl as fallback');
+      // console.log('📷 Using pictureUrl as fallback');
     }
     
     // Set thumbnail
     thumbnail = firstItem.pictureUrl || downloadUrl;
     
     if (!downloadUrl) {
-      console.log('❌ Could not extract download URL');
+      // console.log('❌ Could not extract download URL');
       return res.status(404).json({
         success: false,
         message: 'Could not extract download URL from response'
       });
     }
     
-    console.log('✅ Success!');
-    console.log('Download URL:', downloadUrl);
-    console.log('Media Type:', mediaType);
+    // console.log('✅ Success!');
+    // console.log('Download URL:', downloadUrl);
+    // console.log('Media Type:', mediaType);
     
     // Return response with all carousel items info
     const allMediaUrls = response.data.map(item => ({
@@ -142,7 +142,6 @@ router.post('/instagram', async (req, res) => {
     });
     
   } catch (error) {
-    console.error('=== ERROR ===');
     console.error('Error message:', error.message);
     
     if (error.response) {

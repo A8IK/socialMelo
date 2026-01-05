@@ -58,13 +58,12 @@ export default function InstagramDownloader() {
   };
 
   const handleDownload = async () => {
-  console.log('=== FRONTEND DOWNLOAD STARTED ===');
-  console.log('URL from state:', url);
-  console.log('URL length:', url.length);
-  console.log('URL trimmed:', url.trim());
+  // console.log('URL from state:', url);
+  // console.log('URL length:', url.length);
+  // console.log('URL trimmed:', url.trim());
   
   if (!url.trim()) {
-    console.log('❌ URL is empty');
+    // console.log('❌ URL is empty');
     toast.error('Please enter an Instagram URL', {
       position: "top-right",
       autoClose: 3000,
@@ -77,8 +76,8 @@ export default function InstagramDownloader() {
   }
 
   if (!isValidInstagramUrl(url)) {
-    console.log('❌ URL validation failed');
-    console.log('URL value:', url);
+    // console.log('❌ URL validation failed');
+    // console.log('URL value:', url);
     toast.error('Please enter a valid Instagram URL', {
       position: "top-right",
       autoClose: 3000,
@@ -90,7 +89,7 @@ export default function InstagramDownloader() {
     return;
   }
 
-  console.log('✅ URL validation passed');
+  // console.log('✅ URL validation passed');
   setLoading(true);
 
   const loadingToast = toast.loading('Fetching download link...', {
@@ -112,21 +111,21 @@ export default function InstagramDownloader() {
       body: JSON.stringify(requestBody)
     });
 
-    console.log('📥 Response status:', response.status);
-    console.log('📥 Response ok:', response.ok);
-    console.log('📥 Response headers:', response.headers);
+    // console.log('📥 Response status:', response.status);
+    // console.log('📥 Response ok:', response.ok);
+    // console.log('📥 Response headers:', response.headers);
 
     const result = await response.json();
-    console.log('📥 Response data:', result);
+    // console.log('📥 Response data:', result);
 
     if (!result.success) {
-      console.log('❌ API returned success: false');
+      // console.log('❌ API returned success: false');
       throw new Error(result.message || 'Failed to download');
     }
 
     if (result.data && result.data.downloadUrl) {
-      console.log('✅ Download URL received:', result.data.downloadUrl);
-      console.log('📦 Media type:', result.data.mediaType);
+      // console.log('✅ Download URL received:', result.data.downloadUrl);
+      // console.log('📦 Media type:', result.data.mediaType);
       
       const link = document.createElement('a');
       link.href = result.data.downloadUrl;
@@ -154,15 +153,14 @@ export default function InstagramDownloader() {
         setUrl('');
       }, 1000);
     } else {
-      console.log('❌ No download URL in response');
+      // console.log('❌ No download URL in response');
       throw new Error('No download URL received');
     }
     
   } catch (err) {
-    console.error('=== FRONTEND ERROR ===');
-    console.error('Error type:', err.constructor.name);
-    console.error('Error message:', err.message);
-    console.error('Full error:', err);
+    // console.error('Error type:', err.constructor.name);
+    // console.error('Error message:', err.message);
+    // console.error('Full error:', err);
     
     toast.update(loadingToast, {
       render: err.message || 'Failed to download. Please try again.',
