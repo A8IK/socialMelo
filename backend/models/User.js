@@ -35,6 +35,30 @@ const userSchema = new mongoose.Schema({
     enum: ['Author', 'Join as Brand', 'Join as Creator'],
     default: 'Author'
   },
+  brandDetails: {
+    productTypes: { type: [String], default: [] },
+    desiredInfluencerNiches: { type: [String], default: [] },
+    niches: { type: [String], default: [] },
+    location: { type: String, trim: true, default: '' }
+  },
+  creatorDetails: {
+    niches: { type: [String], default: [] },
+    platforms: {
+      type: [{
+        _id: false,
+        name: { type: String, trim: true, required: true },
+        followers: { type: Number, default: 0, min: 0 },
+        profileLink: { type: String, trim: true, default: '' }
+      }],
+      default: []
+    },
+    contentLanguages: { type: [String], default: [] },
+    location: { type: String, trim: true, default: '' }
+  },
+  ipAddress: {
+    type: String,
+    default: null
+  },
   profilePicture: {
     type: String,
     default: null

@@ -554,6 +554,240 @@
   margin-top: 0.5rem;
 }
 
+/* Role-specific section (Brand / Creator) */
+.role-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.role-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.auto-detect-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #e5e7eb;
+  font-size: 0.8125rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 0.5rem;
+  margin: 0;
+}
+
+.inline-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: #c084fc;
+  flex-shrink: 0;
+}
+
+/* Native <select> styled to match form-input */
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3e%3cpath d='M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 011.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.1rem;
+  cursor: pointer;
+}
+
+.form-select option {
+  background: #1f2937;
+  color: white;
+}
+
+/* Multi-select dropdown */
+.multi-select {
+  position: relative;
+  width: 100%;
+}
+
+/* Only the currently-open multi-select floats above sibling form-groups.
+   Without this, later form-groups paint on top of the open panel because
+   every .form-group has position:relative and shares the same stacking ctx. */
+.form-group:has(.multi-select-open) {
+  z-index: 2000;
+}
+
+.multi-select-trigger {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.multi-select-with-icon {
+  padding-left: 3rem;
+}
+
+.multi-select-trigger:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.multi-select-trigger:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25);
+}
+
+.multi-select-placeholder {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.multi-select-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.multi-select-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  background: rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  border-radius: 999px;
+  color: #f3e8ff;
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.multi-select-tag-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.multi-select-tag-remove:hover {
+  background: rgba(239, 68, 68, 0.6);
+}
+
+.multi-select-chevron {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.1rem;
+  height: 1.1rem;
+  color: #9ca3af;
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.multi-select-chevron.open {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.multi-select-panel {
+  /* Portaled to <body>, so position/width are set inline from the trigger rect */
+  max-height: 15rem;
+  overflow-y: auto;
+  background-color: #1f2937;
+  background-image: none;
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  padding: 0.35rem;
+  z-index: 9999;
+}
+
+.multi-select-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.5rem;
+  color: #e5e7eb;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.multi-select-option:hover {
+  background: rgba(168, 85, 247, 0.15);
+}
+
+.multi-select-option input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #a855f7;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.multi-select-option-active {
+  background: rgba(168, 85, 247, 0.18);
+  color: white;
+}
+
+/* Per-platform sub-cards (creator) */
+.platform-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 0.9rem;
+}
+
+.platform-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f3e8ff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 /* Responsive Design */
 @media (max-width: 640px) {
   .signup-container {
@@ -594,5 +828,13 @@
   
   .divider-text {
     font-size: 0.8125rem;
+  }
+
+  .role-section {
+    padding: 0.75rem;
+  }
+
+  .multi-select-panel {
+    max-height: 12rem;
   }
 }

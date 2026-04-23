@@ -1,13 +1,194 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge } from 'lucide-react';
+import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge, Package, Tag, MapPin, Users, Link2, Globe, Share2, ChevronDown } from 'lucide-react';
 import {toast} from 'react-toastify';
 import './SignUp.css';
 import { usePageMeta } from '../usePageMeta';
 
+const PRODUCT_CATEGORIES = [
+  'Beauty & Cosmetics',
+  'Fashion & Apparel',
+  'Technology & Electronics',
+  'Food & Beverage',
+  'Health & Wellness',
+  'Fitness & Sports',
+  'Travel & Hospitality',
+  'Gaming',
+  'Lifestyle',
+  'Home & Decor',
+  'Finance',
+  'Education',
+  'Entertainment',
+  'Automotive',
+  'Other'
+];
+
+const NICHE_OPTIONS = [
+  'Beauty',
+  'Fashion',
+  'Tech',
+  'Food',
+  'Fitness',
+  'Travel',
+  'Gaming',
+  'Lifestyle',
+  'Parenting',
+  'Education',
+  'Finance',
+  'Entertainment',
+  'Music',
+  'Art',
+  'Sports',
+  'Comedy',
+  'Other'
+];
+
+const PLATFORM_OPTIONS = [
+  'Instagram',
+  'YouTube',
+  'TikTok',
+  'Twitter/X',
+  'Facebook',
+  'LinkedIn',
+  'Snapchat',
+  'Pinterest',
+  'Twitch',
+  'Other'
+];
+
+const LANGUAGE_OPTIONS = [
+  'English',
+  'Spanish',
+  'French',
+  'German',
+  'Portuguese',
+  'Russian',
+  'Arabic',
+  'Hindi',
+  'Bengali',
+  'Urdu',
+  'Chinese',
+  'Japanese',
+  'Korean',
+  'Italian',
+  'Turkish',
+  'Indonesian',
+  'Other'
+];
+
+const MultiSelectDropdown = ({ options, value, onToggle, placeholder, icon: Icon }) => {
+  const [open, setOpen] = useState(false);
+  const [panelStyle, setPanelStyle] = useState(null);
+  const wrapperRef = useRef(null);
+  const panelRef = useRef(null);
+
+  const recomputePosition = useCallback(() => {
+    if (!wrapperRef.current) return;
+    const rect = wrapperRef.current.getBoundingClientRect();
+    setPanelStyle({
+      position: 'fixed',
+      top: rect.bottom + 6,
+      left: rect.left,
+      width: rect.width
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    recomputePosition();
+  }, [open, recomputePosition]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDocClick = (e) => {
+      const insideTrigger = wrapperRef.current && wrapperRef.current.contains(e.target);
+      const insidePanel = panelRef.current && panelRef.current.contains(e.target);
+      if (!insideTrigger && !insidePanel) setOpen(false);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const onReflow = () => recomputePosition();
+    document.addEventListener('mousedown', onDocClick);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onReflow);
+    window.addEventListener('scroll', onReflow, true);
+    return () => {
+      document.removeEventListener('mousedown', onDocClick);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onReflow);
+      window.removeEventListener('scroll', onReflow, true);
+    };
+  }, [open, recomputePosition]);
+
+  return (
+    <div className={`multi-select ${open ? 'multi-select-open' : ''}`} ref={wrapperRef}>
+      <div className="input-wrapper">
+        {Icon && (
+          <div className="input-icon-left">
+            <Icon className="input-icon" />
+          </div>
+        )}
+        <button
+          type="button"
+          className={`multi-select-trigger ${Icon ? 'multi-select-with-icon' : ''}`}
+          onClick={() => setOpen(o => !o)}
+        >
+          {value.length === 0 ? (
+            <span className="multi-select-placeholder">{placeholder}</span>
+          ) : (
+            <div className="multi-select-tags">
+              {value.map(v => (
+                <span key={v} className="multi-select-tag">
+                  {v}
+                  <span
+                    className="multi-select-tag-remove"
+                    role="button"
+                    tabIndex={-1}
+                    onClick={(e) => { e.stopPropagation(); onToggle(v); }}
+                  >
+                    ×
+                  </span>
+                </span>
+              ))}
+            </div>
+          )}
+          <ChevronDown className={`multi-select-chevron ${open ? 'open' : ''}`} />
+        </button>
+      </div>
+
+      {open && panelStyle && createPortal(
+        <div
+          className="multi-select-panel"
+          style={panelStyle}
+          ref={panelRef}
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {options.map(opt => {
+            const checked = value.includes(opt);
+            return (
+              <label
+                key={opt}
+                className={`multi-select-option ${checked ? 'multi-select-option-active' : ''}`}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => onToggle(opt)}
+                />
+                <span>{opt}</span>
+              </label>
+            );
+          })}
+        </div>,
+        document.body
+      )}
+    </div>
+  );
+};
+
 const SignUp = () => {
   usePageMeta(
-    'Sign Up | Join SocialMelo to Connect with Brands & Influencers', 
+    'Sign Up | Join SocialMelo to Connect with Brands & Influencers',
     'Create your SocialMelo account to connect with brands, manage campaigns, and grow your influence. All in one easy, powerful platform.'
   );
   const [formData, setFormData] = useState({
@@ -15,7 +196,14 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    userType: 'None'
+    userType: 'None',
+    brandProductTypes: [],
+    brandDesiredNiches: [],
+    brandNiches: [],
+    creatorNiches: [],
+    creatorPlatforms: [],
+    creatorPlatformData: {},
+    creatorContentLanguages: []
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -47,6 +235,51 @@ const SignUp = () => {
     setDropdownOpen(false);
   };
 
+  const toggleInArray = useCallback((fieldName, value) => {
+    setFormData(prev => {
+      const arr = prev[fieldName] || [];
+      const exists = arr.includes(value);
+      return {
+        ...prev,
+        [fieldName]: exists ? arr.filter(v => v !== value) : [...arr, value]
+      };
+    });
+  }, []);
+
+  const toggleCreatorPlatform = useCallback((platform) => {
+    setFormData(prev => {
+      const exists = prev.creatorPlatforms.includes(platform);
+      const nextPlatforms = exists
+        ? prev.creatorPlatforms.filter(p => p !== platform)
+        : [...prev.creatorPlatforms, platform];
+      const nextData = { ...prev.creatorPlatformData };
+      if (exists) {
+        delete nextData[platform];
+      } else {
+        nextData[platform] = { followers: '', profileLink: '' };
+      }
+      return {
+        ...prev,
+        creatorPlatforms: nextPlatforms,
+        creatorPlatformData: nextData
+      };
+    });
+  }, []);
+
+  const updatePlatformField = useCallback((platform, field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      creatorPlatformData: {
+        ...prev.creatorPlatformData,
+        [platform]: {
+          ...(prev.creatorPlatformData[platform] || { followers: '', profileLink: '' }),
+          [field]: value
+        }
+      }
+    }));
+    if (error) setError('');
+  }, [error]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -66,9 +299,51 @@ const SignUp = () => {
       return;
     }
 
-    if (!formData.userType) {
+    if (!formData.userType || formData.userType === 'None') {
       setError('Please select a user type');
       return;
+    }
+
+    if (formData.userType === 'Join as Brand') {
+      if (formData.brandProductTypes.length === 0) {
+        setError('Please select at least one product category');
+        return;
+      }
+      if (formData.brandDesiredNiches.length === 0) {
+        setError('Please select at least one influencer type you are looking for');
+        return;
+      }
+      if (formData.brandNiches.length === 0) {
+        setError('Please select at least one brand niche');
+        return;
+      }
+    }
+
+    if (formData.userType === 'Join as Creator') {
+      if (formData.creatorNiches.length === 0) {
+        setError('Please select at least one niche');
+        return;
+      }
+      if (formData.creatorPlatforms.length === 0) {
+        setError('Please select at least one platform');
+        return;
+      }
+      for (const platform of formData.creatorPlatforms) {
+        const pd = formData.creatorPlatformData[platform] || {};
+        const followersNum = Number(pd.followers);
+        if (!pd.followers || !Number.isFinite(followersNum) || followersNum < 0) {
+          setError(`Please enter a valid follower/subscriber count for ${platform}`);
+          return;
+        }
+        if (!pd.profileLink || !pd.profileLink.trim()) {
+          setError(`Please enter your ${platform} profile link`);
+          return;
+        }
+      }
+      if (formData.creatorContentLanguages.length === 0) {
+        setError('Please select at least one content language');
+        return;
+      }
     }
 
     setLoading(true);
@@ -80,6 +355,29 @@ const SignUp = () => {
         password: formData.password,
         userType: formData.userType
       };
+
+      if (formData.userType === 'Join as Brand') {
+        submitData.brandDetails = {
+          productTypes: formData.brandProductTypes,
+          desiredInfluencerNiches: formData.brandDesiredNiches,
+          niches: formData.brandNiches
+        };
+      }
+
+      if (formData.userType === 'Join as Creator') {
+        submitData.creatorDetails = {
+          niches: formData.creatorNiches,
+          platforms: formData.creatorPlatforms.map(name => {
+            const pd = formData.creatorPlatformData[name] || {};
+            return {
+              name,
+              followers: Number(pd.followers) || 0,
+              profileLink: (pd.profileLink || '').trim()
+            };
+          }),
+          contentLanguages: formData.creatorContentLanguages
+        };
+      }
 
       const response = await fetch('http://localhost:9000/api/auth/register', {
         method: 'POST',
@@ -226,6 +524,151 @@ const SignUp = () => {
                   Select your role.
                 </p>
               </div>
+
+              {/* Brand-specific fields */}
+              {formData.userType === 'Join as Brand' && (
+                <div className="role-section">
+                  <div className="role-section-title">Brand Details</div>
+
+                  <div className="form-group">
+                    <label className="form-label">Product Categories *</label>
+                    <MultiSelectDropdown
+                      icon={Package}
+                      placeholder="Select product categories"
+                      options={PRODUCT_CATEGORIES}
+                      value={formData.brandProductTypes}
+                      onToggle={(v) => toggleInArray('brandProductTypes', v)}
+                    />
+                    <p className="field-hint">Select all categories your products fit into.</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Looking For (Influencer Type) *</label>
+                    <MultiSelectDropdown
+                      icon={Tag}
+                      placeholder="Select influencer niches"
+                      options={NICHE_OPTIONS}
+                      value={formData.brandDesiredNiches}
+                      onToggle={(v) => toggleInArray('brandDesiredNiches', v)}
+                    />
+                    <p className="field-hint">Pick all influencer niches you want to collaborate with.</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Your Brand Niche *</label>
+                    <MultiSelectDropdown
+                      icon={Tag}
+                      placeholder="Select your niches"
+                      options={NICHE_OPTIONS}
+                      value={formData.brandNiches}
+                      onToggle={(v) => toggleInArray('brandNiches', v)}
+                    />
+                    <p className="field-hint">Select every niche that describes your brand.</p>
+                  </div>
+
+                  {/* <p className="field-hint auto-detect-hint">
+                    <MapPin className="inline-icon" /> Your location and IP will be detected automatically.
+                  </p> */}
+                </div>
+              )}
+
+              {/* Creator-specific fields */}
+              {formData.userType === 'Join as Creator' && (
+                <div className="role-section">
+                  <div className="role-section-title">Creator Details</div>
+
+                  <div className="form-group">
+                    <label className="form-label">Niches *</label>
+                    <MultiSelectDropdown
+                      icon={Tag}
+                      placeholder="Select your niches"
+                      options={NICHE_OPTIONS}
+                      value={formData.creatorNiches}
+                      onToggle={(v) => toggleInArray('creatorNiches', v)}
+                    />
+                    <p className="field-hint">Pick every niche that describes your content.</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Platforms *</label>
+                    <MultiSelectDropdown
+                      icon={Share2}
+                      placeholder="Select platforms"
+                      options={PLATFORM_OPTIONS}
+                      value={formData.creatorPlatforms}
+                      onToggle={toggleCreatorPlatform}
+                    />
+                    <p className="field-hint">Select every platform you create content on — follower count and profile link will be asked for each one.</p>
+                  </div>
+
+                  {formData.creatorPlatforms.length > 0 && (
+                    <div className="platform-details-list">
+                      {formData.creatorPlatforms.map(platform => {
+                        const pd = formData.creatorPlatformData[platform] || { followers: '', profileLink: '' };
+                        return (
+                          <div key={platform} className="platform-card">
+                            <div className="platform-card-header">
+                              <Share2 className="inline-icon" />
+                              <span>{platform}</span>
+                            </div>
+
+                            <div className="form-group">
+                              <label className="form-label">Followers / Subscribers *</label>
+                              <div className="input-wrapper">
+                                <div className="input-icon-left">
+                                  <Users className="input-icon" />
+                                </div>
+                                <input
+                                  type="number"
+                                  min="0"
+                                  required
+                                  value={pd.followers}
+                                  onChange={(e) => updatePlatformField(platform, 'followers', e.target.value)}
+                                  className="form-input"
+                                  placeholder="e.g. 12500"
+                                />
+                              </div>
+                            </div>
+
+                            <div className="form-group">
+                              <label className="form-label">Profile Link *</label>
+                              <div className="input-wrapper">
+                                <div className="input-icon-left">
+                                  <Link2 className="input-icon" />
+                                </div>
+                                <input
+                                  type="url"
+                                  required
+                                  value={pd.profileLink}
+                                  onChange={(e) => updatePlatformField(platform, 'profileLink', e.target.value)}
+                                  className="form-input"
+                                  placeholder={`https://${platform.toLowerCase().replace('/x', '.com').replace(/[^a-z.]/g, '')}.com/yourhandle`}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  <div className="form-group">
+                    <label className="form-label">Content Languages *</label>
+                    <MultiSelectDropdown
+                      icon={Globe}
+                      placeholder="Select languages"
+                      options={LANGUAGE_OPTIONS}
+                      value={formData.creatorContentLanguages}
+                      onToggle={(v) => toggleInArray('creatorContentLanguages', v)}
+                    />
+                    <p className="field-hint">Pick every language you produce content in.</p>
+                  </div>
+
+                  {/* <p className="field-hint auto-detect-hint">
+                    <MapPin className="inline-icon" /> Your location and IP will be detected automatically.
+                  </p> */}
+                </div>
+              )}
 
               {/* Password field */}
               <div className="form-group">

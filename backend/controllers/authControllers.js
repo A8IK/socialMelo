@@ -1,6 +1,23 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
+const axios = require('axios');
+
+const PRIVATE_IP_REGEX = /^(::1|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[0-1])\.)/;
+
+async function resolveLocationFromIp(ip) {
+  if (!ip || PRIVATE_IP_REGEX.test(ip)) return '';
+  try {
+    const { data } = await axios.get(`https://ipwho.is/${encodeURIComponent(ip)}`, { timeout: 4000 });
+    if (data && data.success) {
+      const parts = [data.city, data.country].filter(Boolean);
+      return parts.join(', ');
+    }
+  } catch (err) {
+    console.warn('IP geolocation failed:', err.message);
+  }
+  return '';
+}
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -24,7 +41,7 @@ const register = async (req, res) => {
       });
     }
 
-    const { name, email, password, userType } = req.body;
+    const { name, email, password, userType, brandDetails, creatorDetails } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email: email.toLowerCase() });
@@ -35,13 +52,46 @@ const register = async (req, res) => {
       });
     }
 
+    const forwarded = req.headers['x-forwarded-for'];
+    const ipAddress = (typeof forwarded === 'string' && forwarded.length > 0
+      ? forwarded.split(',')[0].trim()
+      : req.ip) || null;
+
+    const resolvedLocation = await resolveLocationFromIp(ipAddress);
+
     // Create user object
     const userData = {
       name: name.trim(),
       email: email.toLowerCase(),
       password,
-      userType: userType || 'Author'
+      userType: userType || 'Author',
+      ipAddress
     };
+
+    if (userType === 'Join as Brand' && brandDetails && typeof brandDetails === 'object') {
+      userData.brandDetails = {
+        productTypes: Array.isArray(brandDetails.productTypes) ? brandDetails.productTypes : [],
+        desiredInfluencerNiches: Array.isArray(brandDetails.desiredInfluencerNiches) ? brandDetails.desiredInfluencerNiches : [],
+        niches: Array.isArray(brandDetails.niches) ? brandDetails.niches : [],
+        location: resolvedLocation
+      };
+    }
+
+    if (userType === 'Join as Creator' && creatorDetails && typeof creatorDetails === 'object') {
+      const rawPlatforms = Array.isArray(creatorDetails.platforms) ? creatorDetails.platforms : [];
+      userData.creatorDetails = {
+        niches: Array.isArray(creatorDetails.niches) ? creatorDetails.niches : [],
+        platforms: rawPlatforms
+          .filter(p => p && typeof p === 'object' && p.name)
+          .map(p => ({
+            name: String(p.name).trim(),
+            followers: Number.isFinite(Number(p.followers)) ? Number(p.followers) : 0,
+            profileLink: String(p.profileLink || '').trim()
+          })),
+        contentLanguages: Array.isArray(creatorDetails.contentLanguages) ? creatorDetails.contentLanguages : [],
+        location: resolvedLocation
+      };
+    }
 
     // Create user
     const user = await User.create(userData);
