@@ -88,7 +88,7 @@ const ContactCollaboration = () => {
           <div className="cosmos-contact-text-section">
             <h1 className="cosmos-contact-main-heading">
               Come <span className="cosmos-gradient-text">collaborate</span><br />
-              with <span className="cosmos-gradient-text">SOCIAMELO</span>
+              with <span className="cosmos-gradient-text">SOCIALMELO</span>
             </h1>
             
             <p className="cosmos-contact-description">
