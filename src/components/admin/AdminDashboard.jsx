@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Users, Briefcase, Megaphone, Shield, Search, Filter, X, LogOut, RefreshCw } from 'lucide-react';
+import { Users, Briefcase, Megaphone, Shield, Search, Filter, X, RefreshCw } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { usePageMeta } from '../../usePageMeta';
 import './AdminDashboard.css';
@@ -79,51 +78,72 @@ const UserDetailDrawer = ({ userId, onClose }) => {
               </dl>
             </section>
 
-            {user.userType === 'Join as Brand' && user.brandDetails && (
-              <section>
-                <h3>Brand Details</h3>
-                <dl>
-                  <dt>Product Categories</dt><dd>{(user.brandDetails.productTypes || []).join(', ') || '—'}</dd>
-                  <dt>Looking For</dt><dd>{(user.brandDetails.desiredInfluencerNiches || []).join(', ') || '—'}</dd>
-                  <dt>Brand Niches</dt><dd>{(user.brandDetails.niches || []).join(', ') || '—'}</dd>
-                  <dt>Country</dt><dd>{user.brandDetails.country || '—'}</dd>
-                  <dt>State</dt><dd>{user.brandDetails.state || '—'}</dd>
-                  <dt>Location (IP)</dt><dd>{user.brandDetails.location || '—'}</dd>
-                </dl>
-              </section>
-            )}
+            {user.userType === 'Join as Brand' && user.brandDetails && (() => {
+              const b = user.brandDetails;
+              const desired = (b.desiredInfluencerNiches && b.desiredInfluencerNiches.length)
+                ? b.desiredInfluencerNiches
+                : (b.desiredInfluencerNiche ? [b.desiredInfluencerNiche] : []);
+              const brandNiches = (b.niches && b.niches.length)
+                ? b.niches
+                : (b.niche ? [b.niche] : []);
+              return (
+                <section>
+                  <h3>Brand Details</h3>
+                  <dl>
+                    <dt>Product Categories</dt><dd>{(b.productTypes || []).join(', ') || '—'}</dd>
+                    <dt>Looking For</dt><dd>{desired.join(', ') || '—'}</dd>
+                    <dt>Brand Niches</dt><dd>{brandNiches.join(', ') || '—'}</dd>
+                    <dt>Country</dt><dd>{b.country || '—'}</dd>
+                    <dt>State</dt><dd>{b.state || '—'}</dd>
+                    <dt>Location (IP)</dt><dd>{b.location || '—'}</dd>
+                  </dl>
+                </section>
+              );
+            })()}
 
-            {user.userType === 'Join as Creator' && user.creatorDetails && (
-              <section>
-                <h3>Creator Details</h3>
-                <dl>
-                  <dt>Niches</dt><dd>{(user.creatorDetails.niches || []).join(', ') || '—'}</dd>
-                  <dt>Content Languages</dt><dd>{(user.creatorDetails.contentLanguages || []).join(', ') || '—'}</dd>
-                  <dt>Country</dt><dd>{user.creatorDetails.country || '—'}</dd>
-                  <dt>State</dt><dd>{user.creatorDetails.state || '—'}</dd>
-                  <dt>Location (IP)</dt><dd>{user.creatorDetails.location || '—'}</dd>
-                </dl>
-                <h4>Platforms</h4>
-                {(user.creatorDetails.platforms || []).length === 0 ? (
-                  <p className="admin-muted">No platforms listed.</p>
-                ) : (
-                  <table className="admin-inner-table">
-                    <thead>
-                      <tr><th>Platform</th><th>Followers</th><th>Profile Link</th></tr>
-                    </thead>
-                    <tbody>
-                      {user.creatorDetails.platforms.map((p, i) => (
-                        <tr key={i}>
-                          <td>{p.name}</td>
-                          <td>{p.followers?.toLocaleString?.() ?? p.followers}</td>
-                          <td>{p.profileLink ? <a href={p.profileLink} target="_blank" rel="noreferrer">{p.profileLink}</a> : '—'}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                )}
-              </section>
-            )}
+            {user.userType === 'Join as Creator' && user.creatorDetails && (() => {
+              const c = user.creatorDetails;
+              const niches = (c.niches && c.niches.length)
+                ? c.niches
+                : (c.niche ? [c.niche] : []);
+              const languages = (c.contentLanguages && c.contentLanguages.length)
+                ? c.contentLanguages
+                : (c.contentLanguage ? [c.contentLanguage] : []);
+              const platforms = (c.platforms && c.platforms.length)
+                ? c.platforms
+                : (c.platform ? [{ name: c.platform, followers: c.followers || 0, profileLink: c.profileLink || '' }] : []);
+              return (
+                <section>
+                  <h3>Creator Details</h3>
+                  <dl>
+                    <dt>Niches</dt><dd>{niches.join(', ') || '—'}</dd>
+                    <dt>Content Languages</dt><dd>{languages.join(', ') || '—'}</dd>
+                    <dt>Country</dt><dd>{c.country || '—'}</dd>
+                    <dt>State</dt><dd>{c.state || '—'}</dd>
+                    <dt>Location (IP)</dt><dd>{c.location || '—'}</dd>
+                  </dl>
+                  <h4>Platforms</h4>
+                  {platforms.length === 0 ? (
+                    <p className="admin-muted">No platforms listed.</p>
+                  ) : (
+                    <table className="admin-inner-table">
+                      <thead>
+                        <tr><th>Platform</th><th>Followers</th><th>Profile Link</th></tr>
+                      </thead>
+                      <tbody>
+                        {platforms.map((p, i) => (
+                          <tr key={i}>
+                            <td>{p.name}</td>
+                            <td>{p.followers?.toLocaleString?.() ?? p.followers}</td>
+                            <td>{p.profileLink ? <a href={p.profileLink} target="_blank" rel="noreferrer">{p.profileLink}</a> : '—'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </section>
+              );
+            })()}
           </div>
         )}
       </div>
@@ -134,7 +154,6 @@ const UserDetailDrawer = ({ userId, onClose }) => {
 const AdminDashboard = () => {
   usePageMeta('Admin Dashboard | SocialMelo', 'Internal admin dashboard for managing SocialMelo users.');
 
-  const navigate = useNavigate();
   const adminUser = JSON.parse(localStorage.getItem('user') || 'null');
 
   const [stats, setStats] = useState(null);
@@ -175,13 +194,6 @@ const AdminDashboard = () => {
   useEffect(() => { loadStats(); }, [loadStats]);
   useEffect(() => { loadUsers(1); }, [loadUsers]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.dispatchEvent(new Event('authChange'));
-    navigate('/login');
-  };
-
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     loadUsers(1);
@@ -200,9 +212,6 @@ const AdminDashboard = () => {
         <div className="admin-header-actions">
           <button className="admin-btn admin-btn-ghost" onClick={() => { loadStats(); loadUsers(pagination.page); }}>
             <RefreshCw size={16} /> Refresh
-          </button>
-          <button className="admin-btn admin-btn-ghost" onClick={handleLogout}>
-            <LogOut size={16} /> Log out
           </button>
         </div>
       </header>

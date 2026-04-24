@@ -9,6 +9,7 @@ const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -58,9 +59,9 @@ const Header = () => {
     
     // Trigger custom event for other components
     window.dispatchEvent(new Event('authChange'));
-    
-    // Redirect to home page
-    navigate('/');
+
+    // Redirect to login page
+    navigate('/login');
   };
 
 
@@ -453,14 +454,24 @@ const Header = () => {
             >
               About Us
             </Link>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               style={getNavLinkStyle('/contact')}
               onMouseEnter={!isActiveLink('/contact') ? handleNavLinkHover : undefined}
               onMouseLeave={!isActiveLink('/contact') ? handleNavLinkLeave : undefined}
             >
               Contact Us
             </Link>
+            {user?.userType === 'Admin' && (
+              <Link
+                to="/admin"
+                style={getNavLinkStyle('/admin')}
+                onMouseEnter={!isActiveLink('/admin') ? handleNavLinkHover : undefined}
+                onMouseLeave={!isActiveLink('/admin') ? handleNavLinkLeave : undefined}
+              >
+                Dashboard
+              </Link>
+            )}
           </nav>
           
           {/* Desktop CTA Buttons */}
@@ -568,8 +579,8 @@ const Header = () => {
             >
               About Us
             </Link>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               style={getMobileNavLinkStyle('/contact')}
               onMouseEnter={!isActiveLink('/contact') ? handleMobileNavHover : undefined}
               onMouseLeave={!isActiveLink('/contact') ? handleMobileNavLeave : undefined}
@@ -577,7 +588,18 @@ const Header = () => {
             >
               Contact Us
             </Link>
-            
+            {user?.userType === 'Admin' && (
+              <Link
+                to="/admin"
+                style={getMobileNavLinkStyle('/admin')}
+                onMouseEnter={!isActiveLink('/admin') ? handleMobileNavHover : undefined}
+                onMouseLeave={!isActiveLink('/admin') ? handleMobileNavLeave : undefined}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Dashboard
+              </Link>
+            )}
+
             {/* Mobile CTA Buttons */}
             <div style={headerStyles.mobileButtonSection}>
               <Link 

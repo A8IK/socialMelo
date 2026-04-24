@@ -96,8 +96,8 @@ const ContactCollaboration = () => {
               and we'll be in touch. Reach out to us at:
             </p>
             
-            <a href="mailto:danyel@socialmelo.io" className="cosmos-email-link">
-              danyel@socialmelo.com
+            <a href="mailto:abdullah@socialmelo.com" className="cosmos-email-link">
+              abdullah@socialmelo.com
             </a>
           </div>
 

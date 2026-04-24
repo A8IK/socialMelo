@@ -260,7 +260,7 @@ const WriteForUs = () => {
               <div className="wfu-step-number">1</div>
               <h3 className="wfu-step-title">Send Your Pitch</h3>
               <p className="wfu-step-description">
-                Email your pitch to <a href="mailto:danyel@socialmelo.com">danyel@socialmelo.com</a> with:
+                Email your pitch to <a href="mailto:abdullah@socialmelo.com">abdullah@socialmelo.com</a> with:
               </p>
               <ul className="wfu-step-list">
                 <li>Your name and professional background</li>
@@ -417,7 +417,7 @@ const WriteForUs = () => {
                   <svg className="wfu-contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  <a href="mailto:danyel@socialmelo.com">danyel@socialmelo.com</a>
+                  <a href="mailto:abdullah@socialmelo.com">abdullah@socialmelo.com</a>
                 </div>
               </div>
             </div>
