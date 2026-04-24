@@ -42,8 +42,13 @@ async function run() {
         existing.password = admin.password;
         await existing.save();
         console.log(`Upgraded existing user to Admin: ${email}`);
+      } else if (process.env.FORCE_UPDATE === '1') {
+        existing.password = admin.password;
+        existing.name = admin.name;
+        await existing.save();
+        console.log(`Password reset for admin: ${email}`);
       } else {
-        console.log(`Admin already exists (unchanged): ${email}`);
+        console.log(`Admin already exists (unchanged): ${email}  [set FORCE_UPDATE=1 to reset password]`);
       }
       continue;
     }
