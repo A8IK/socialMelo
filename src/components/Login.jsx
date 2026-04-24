@@ -59,8 +59,8 @@ const Login = () => {
         setTimeout(() => {
           window.dispatchEvent(new Event('authChange'));
         }, 100);
-        
-        navigate('/');
+
+        navigate(data.user.userType === 'Admin' ? '/admin' : '/');
         console.log('Login successful:', data.user);
       } else {
         toast.error(data.message || 'Login failed. ',error);

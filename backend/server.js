@@ -13,6 +13,7 @@ const connectDB = require('./config/database');
 // Import routes
 const authRoutes = require('./routes/auth');
 const downloadRoutes = require('./routes/download');
+const adminRoutes = require('./routes/admin');
 
 // Create Express app
 const app = express();
@@ -160,6 +161,7 @@ app.get('/api/health', (req, res) => {
 
 // 3. Specific API routes with their own rate limits
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/download', downloadLimiter, downloadRoutes);
 
 // 4. General rate limiter for any other /api routes (catch-all)

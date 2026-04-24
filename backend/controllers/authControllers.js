@@ -73,6 +73,8 @@ const register = async (req, res) => {
         productTypes: Array.isArray(brandDetails.productTypes) ? brandDetails.productTypes : [],
         desiredInfluencerNiches: Array.isArray(brandDetails.desiredInfluencerNiches) ? brandDetails.desiredInfluencerNiches : [],
         niches: Array.isArray(brandDetails.niches) ? brandDetails.niches : [],
+        country: String(brandDetails.country || '').trim(),
+        state: String(brandDetails.state || '').trim(),
         location: resolvedLocation
       };
     }
@@ -89,6 +91,8 @@ const register = async (req, res) => {
             profileLink: String(p.profileLink || '').trim()
           })),
         contentLanguages: Array.isArray(creatorDetails.contentLanguages) ? creatorDetails.contentLanguages : [],
+        country: String(creatorDetails.country || '').trim(),
+        state: String(creatorDetails.state || '').trim(),
         location: resolvedLocation
       };
     }

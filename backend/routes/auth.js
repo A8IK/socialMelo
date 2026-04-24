@@ -23,6 +23,10 @@ const registerValidation = [
   body('userType')
     .isIn(['Author', 'Join as Brand', 'Join as Creator'])
     .withMessage('Invalid user type')
+    .custom((value) => {
+      if (value === 'Admin') throw new Error('Admin accounts cannot be created via the public API');
+      return true;
+    })
 ];
 
 const loginValidation = [

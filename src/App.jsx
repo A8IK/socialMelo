@@ -49,6 +49,9 @@ import SignUp from './components/SignUp';
 
 import AuthCallback from './AuthCallback';
 
+import AdminRoute from './components/admin/AdminRoute';
+import AdminDashboard from './components/admin/AdminDashboard';
+
 import Error404 from './components/Error404';
 import TiktokDownloader from './components/ToolsPage/TikTokDownloader';
 import TwitterDownloader from './components/ToolsPage/TwitterDownloader';
@@ -225,6 +228,12 @@ function App() {
               <Route path="/register" element={<SignUp />} />
 
               <Route path="/auth/callback" element={<AuthCallback />} />
+
+              <Route path="/admin" element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              } />
 
               <Route path ="*" element={<Error404/>} />
             </Routes>

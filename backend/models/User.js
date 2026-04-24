@@ -32,13 +32,15 @@ const userSchema = new mongoose.Schema({
   userType: {
     type: String,
     required: [true, 'User type is required'],
-    enum: ['Author', 'Join as Brand', 'Join as Creator'],
+    enum: ['Author', 'Join as Brand', 'Join as Creator', 'Admin'],
     default: 'Author'
   },
   brandDetails: {
     productTypes: { type: [String], default: [] },
     desiredInfluencerNiches: { type: [String], default: [] },
     niches: { type: [String], default: [] },
+    country: { type: String, trim: true, default: '' },
+    state: { type: String, trim: true, default: '' },
     location: { type: String, trim: true, default: '' }
   },
   creatorDetails: {
@@ -53,6 +55,8 @@ const userSchema = new mongoose.Schema({
       default: []
     },
     contentLanguages: { type: [String], default: [] },
+    country: { type: String, trim: true, default: '' },
+    state: { type: String, trim: true, default: '' },
     location: { type: String, trim: true, default: '' }
   },
   ipAddress: {

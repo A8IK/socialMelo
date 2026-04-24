@@ -57,6 +57,35 @@ const PLATFORM_OPTIONS = [
   'Other'
 ];
 
+const COUNTRY_OPTIONS = [
+  'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia',
+  'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium',
+  'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei',
+  'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde',
+  'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo',
+  'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica',
+  'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea',
+  'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia',
+  'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana',
+  'Haiti', 'Honduras', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland',
+  'Israel', 'Italy', 'Ivory Coast', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya',
+  'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya',
+  'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives',
+  'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia',
+  'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia',
+  'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea',
+  'North Macedonia', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestine', 'Panama',
+  'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania',
+  'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines',
+  'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia',
+  'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia',
+  'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname',
+  'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste',
+  'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda',
+  'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan',
+  'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe', 'Other'
+];
+
 const LANGUAGE_OPTIONS = [
   'English',
   'Spanish',
@@ -200,10 +229,14 @@ const SignUp = () => {
     brandProductTypes: [],
     brandDesiredNiches: [],
     brandNiches: [],
+    brandCountry: '',
+    brandState: '',
     creatorNiches: [],
     creatorPlatforms: [],
     creatorPlatformData: {},
-    creatorContentLanguages: []
+    creatorContentLanguages: [],
+    creatorCountry: '',
+    creatorState: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -317,6 +350,14 @@ const SignUp = () => {
         setError('Please select at least one brand niche');
         return;
       }
+      if (!formData.brandCountry) {
+        setError('Please select your country');
+        return;
+      }
+      if (!formData.brandState.trim()) {
+        setError('Please enter your state / region');
+        return;
+      }
     }
 
     if (formData.userType === 'Join as Creator') {
@@ -344,6 +385,14 @@ const SignUp = () => {
         setError('Please select at least one content language');
         return;
       }
+      if (!formData.creatorCountry) {
+        setError('Please select your country');
+        return;
+      }
+      if (!formData.creatorState.trim()) {
+        setError('Please enter your state / region');
+        return;
+      }
     }
 
     setLoading(true);
@@ -360,7 +409,9 @@ const SignUp = () => {
         submitData.brandDetails = {
           productTypes: formData.brandProductTypes,
           desiredInfluencerNiches: formData.brandDesiredNiches,
-          niches: formData.brandNiches
+          niches: formData.brandNiches,
+          country: formData.brandCountry,
+          state: formData.brandState.trim()
         };
       }
 
@@ -375,7 +426,9 @@ const SignUp = () => {
               profileLink: (pd.profileLink || '').trim()
             };
           }),
-          contentLanguages: formData.creatorContentLanguages
+          contentLanguages: formData.creatorContentLanguages,
+          country: formData.creatorCountry,
+          state: formData.creatorState.trim()
         };
       }
 
@@ -566,6 +619,45 @@ const SignUp = () => {
                     <p className="field-hint">Select every niche that describes your brand.</p>
                   </div>
 
+                  <div className="form-group">
+                    <label className="form-label">Country *</label>
+                    <div className="input-wrapper">
+                      <div className="input-icon-left">
+                        <MapPin className="input-icon" />
+                      </div>
+                      <select
+                        name="brandCountry"
+                        required
+                        value={formData.brandCountry}
+                        onChange={handleInputChange}
+                        className="form-input form-select"
+                      >
+                        <option value="">Select your country</option>
+                        {COUNTRY_OPTIONS.map(c => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">State / Region *</label>
+                    <div className="input-wrapper">
+                      <div className="input-icon-left">
+                        <MapPin className="input-icon" />
+                      </div>
+                      <input
+                        type="text"
+                        name="brandState"
+                        required
+                        value={formData.brandState}
+                        onChange={handleInputChange}
+                        className="form-input"
+                        placeholder="e.g. California"
+                      />
+                    </div>
+                  </div>
+
                   {/* <p className="field-hint auto-detect-hint">
                     <MapPin className="inline-icon" /> Your location and IP will be detected automatically.
                   </p> */}
@@ -662,6 +754,45 @@ const SignUp = () => {
                       onToggle={(v) => toggleInArray('creatorContentLanguages', v)}
                     />
                     <p className="field-hint">Pick every language you produce content in.</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Country *</label>
+                    <div className="input-wrapper">
+                      <div className="input-icon-left">
+                        <MapPin className="input-icon" />
+                      </div>
+                      <select
+                        name="creatorCountry"
+                        required
+                        value={formData.creatorCountry}
+                        onChange={handleInputChange}
+                        className="form-input form-select"
+                      >
+                        <option value="">Select your country</option>
+                        {COUNTRY_OPTIONS.map(c => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">State / Region *</label>
+                    <div className="input-wrapper">
+                      <div className="input-icon-left">
+                        <MapPin className="input-icon" />
+                      </div>
+                      <input
+                        type="text"
+                        name="creatorState"
+                        required
+                        value={formData.creatorState}
+                        onChange={handleInputChange}
+                        className="form-input"
+                        placeholder="e.g. California"
+                      />
+                    </div>
                   </div>
 
                   {/* <p className="field-hint auto-detect-hint">
