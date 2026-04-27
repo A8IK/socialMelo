@@ -8,6 +8,7 @@ import { facebookConfig } from '../config/FacebookConfig';
 import FacebookMannual from './FacebookMannual';
 import FacebookFeature from './FacebookFeature';
 import FacebookFaq from './FacebookFaq';
+import API_BASE_URL from '../../config/api';
 
 export default function FacebookDownloader() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ export default function FacebookDownloader() {
     });
 
     try {
-      const response = await fetch('http://localhost:9000/api/download/facebook', {
+      const response = await fetch(`${API_BASE_URL}/api/download/facebook`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

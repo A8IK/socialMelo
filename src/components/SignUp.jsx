@@ -5,6 +5,7 @@ import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge, Package, T
 import {toast} from 'react-toastify';
 import './SignUp.css';
 import { usePageMeta } from '../usePageMeta';
+import API_BASE_URL from '../config/api';
 
 const PRODUCT_CATEGORIES = [
   'Beauty & Cosmetics',
@@ -432,7 +433,7 @@ const SignUp = () => {
         };
       }
 
-      const response = await fetch('http://localhost:9000/api/auth/register', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -463,7 +464,7 @@ const SignUp = () => {
     sessionStorage.setItem('pendingUserType', formData.userType);
     
     // Redirect to Google OAuth endpoint
-    window.location.href = 'http://localhost:9000/api/auth/google';
+    window.location.href = `${API_BASE_URL}/api/auth/google`;
   };
 
   return (

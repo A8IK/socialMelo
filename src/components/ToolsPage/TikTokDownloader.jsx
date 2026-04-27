@@ -8,6 +8,7 @@ import { tiktokConfig } from '../config/TiktokConfig';
 import TiktokMannual from './TiktokMannual';
 import TiktokFeature from './TiktokFeature';
 import TiktokFaq from './TiktokFaq';
+import API_BASE_URL from '../../config/api';
 
 export default function TiktokDownloader() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ export default function TiktokDownloader() {
     });
 
     try {
-      const response = await fetch('http://localhost:9000/api/download/tiktok', {
+      const response = await fetch(`${API_BASE_URL}/api/download/tiktok`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

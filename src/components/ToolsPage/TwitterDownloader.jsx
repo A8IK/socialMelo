@@ -8,6 +8,7 @@ import { twitterConfig } from '../config/TwitterConfig';
 import TwitterMannual from './TwitterMannual';
 import TwitterFeature from './TwitterFeature';
 import TwitterFaq from './TwitterFaq';
+import API_BASE_URL from '../../config/api';
 
 export default function TwitterDownloader() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ export default function TwitterDownloader() {
     });
 
     try {
-      const response = await fetch('http://localhost:9000/api/download/tiktok', {
+      const response = await fetch(`${API_BASE_URL}/api/download/tiktok`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

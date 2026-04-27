@@ -8,6 +8,7 @@ import { youtubeConfig } from '../config/YoutubeConfig';
 import YoutubeMannual from './YoutubeMannual';
 import YoutubeFeature from './YoutubeFeature';
 import YoutubeFaq from './YoutubeFaq';
+import API_BASE_URL from '../../config/api';
 
 export default function YoutubeDownloader() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ export default function YoutubeDownloader() {
     });
 
     try {
-      const response = await fetch('http://localhost:9000/api/download/youtube', {
+      const response = await fetch(`${API_BASE_URL}/api/download/youtube`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

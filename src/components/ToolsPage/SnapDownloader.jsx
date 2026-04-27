@@ -8,6 +8,7 @@ import { snapConfig } from '../config/SnapConfig';
 import SnapMannual from './SnapMannual';
 import SnapFeature from './SnapFeature';
 import SnapFaq from './SnapFaq';
+import API_BASE_URL from '../../config/api';
 
 export default function SnapDownloader() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ export default function SnapDownloader() {
     });
 
     try {
-      const response = await fetch('http://localhost:9000/api/download/snapchat', {
+      const response = await fetch(`${API_BASE_URL}/api/download/snapchat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

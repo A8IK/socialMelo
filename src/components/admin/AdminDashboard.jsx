@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Users, Briefcase, Megaphone, Shield, Search, Filter, X, RefreshCw } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { usePageMeta } from '../../usePageMeta';
+import API_BASE_URL from '../../config/api';
 import './AdminDashboard.css';
 
-const API_BASE = 'http://localhost:9000/api/admin';
+const API_BASE = `${API_BASE_URL}/api/admin`;
 
 const authHeaders = () => ({
   'Content-Type': 'application/json',
