@@ -329,6 +329,38 @@
   color: #9ca3af;
 }
 
+.admin-drawer-danger {
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 0.6rem;
+  background: rgba(248, 113, 113, 0.06);
+}
+
+.admin-drawer-danger h3 {
+  color: #fca5a5 !important;
+}
+
+.admin-drawer-danger p {
+  margin: 0 0 0.85rem;
+}
+
+.admin-btn-danger {
+  background: rgba(220, 38, 38, 0.18);
+  border-color: rgba(248, 113, 113, 0.45);
+  color: #fecaca;
+}
+
+.admin-btn-danger:hover:not(:disabled) {
+  background: rgba(220, 38, 38, 0.35);
+  color: #fff;
+}
+
+.admin-btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .admin-inner-table {
   width: 100%;
   border-collapse: collapse;

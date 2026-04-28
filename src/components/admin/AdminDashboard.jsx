@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Users, Briefcase, Megaphone, Shield, Search, Filter, X, RefreshCw } from 'lucide-react';
+import { Users, Briefcase, Megaphone, Shield, Search, Filter, X, RefreshCw, Trash2 } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { usePageMeta } from '../../usePageMeta';
 import API_BASE_URL from '../../config/api';
@@ -33,12 +33,39 @@ const StatCard = ({ icon, label, value, accent }) => (
   </div>
 );
 
-const UserDetailDrawer = ({ userId, onClose }) => {
+const UserDetailDrawer = ({ userId, onClose, onDeleted }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [matches, setMatches] = useState([]);
   const [matchesLoading, setMatchesLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    if (!user) return;
+    const ok = window.confirm(
+      `Delete ${user.name} (${user.email})? This permanently removes the user and cannot be undone.`
+    );
+    if (!ok) return;
+    setDeleting(true);
+    try {
+      const res = await fetch(`${API_BASE}/users/${user._id}`, {
+        method: 'DELETE',
+        headers: authHeaders()
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        toast.success('User deleted');
+        onDeleted && onDeleted(user._id);
+      } else {
+        toast.error(data.message || 'Failed to delete user');
+      }
+    } catch {
+      toast.error('Network error while deleting user');
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   useEffect(() => {
     if (!userId) return;
@@ -260,6 +287,21 @@ const UserDetailDrawer = ({ userId, onClose }) => {
                 </div>
               </section>
             )}
+
+            {user.userType !== 'Admin' && (
+              <section className="admin-drawer-danger">
+                <h3>Danger Zone</h3>
+                <p className="admin-muted">Permanently remove this user and all their data. This action cannot be undone.</p>
+                <button
+                  type="button"
+                  className="admin-btn admin-btn-danger"
+                  onClick={handleDelete}
+                  disabled={deleting}
+                >
+                  <Trash2 size={16} /> {deleting ? 'Deleting…' : 'Delete user'}
+                </button>
+              </section>
+            )}
           </div>
         )}
       </div>
@@ -410,7 +452,15 @@ const AdminDashboard = () => {
         )}
       </section>
 
-      <UserDetailDrawer userId={selectedUserId} onClose={() => setSelectedUserId(null)} />
+      <UserDetailDrawer
+        userId={selectedUserId}
+        onClose={() => setSelectedUserId(null)}
+        onDeleted={() => {
+          setSelectedUserId(null);
+          loadStats();
+          loadUsers(pagination.page);
+        }}
+      />
     </div>
   );
 };

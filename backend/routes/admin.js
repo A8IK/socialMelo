@@ -82,4 +82,27 @@ router.get('/users/:id', async (req, res) => {
   }
 });
 
+router.delete('/users/:id', async (req, res) => {
+  try {
+    if (req.user && String(req.user._id) === String(req.params.id)) {
+      return res.status(400).json({ success: false, message: 'You cannot delete your own admin account.' });
+    }
+    const target = await User.findById(req.params.id);
+    if (!target) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    if (target.userType === 'Admin') {
+      return res.status(403).json({ success: false, message: 'Admin accounts cannot be deleted from the dashboard.' });
+    }
+    await target.deleteOne();
+    res.json({ success: true, message: 'User deleted', id: req.params.id });
+  } catch (err) {
+    if (err.name === 'CastError') {
+      return res.status(400).json({ success: false, message: 'Invalid user id' });
+    }
+    console.error('Admin delete user error:', err);
+    res.status(500).json({ success: false, message: 'Failed to delete user' });
+  }
+});
+
 module.exports = router;
