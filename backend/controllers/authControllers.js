@@ -117,9 +117,10 @@ const register = async (req, res) => {
     await user.save();
 
     // Fire-and-forget signup emails (admin notification + user welcome).
-    // Awaiting would block the response on SMTP latency; failures are
-    // already logged inside the utility.
-    sendSignupEmails(user).catch(() => {});
+    // Awaiting would block the response on SMTP latency.
+    sendSignupEmails(user).catch(err => {
+      console.error('[email] sendSignupEmails crashed:', err && err.message ? err.message : err);
+    });
 
     res.status(201).json({
       success: true,
