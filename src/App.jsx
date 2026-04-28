@@ -52,6 +52,9 @@ import AuthCallback from './AuthCallback';
 import AdminRoute from './components/admin/AdminRoute';
 import AdminDashboard from './components/admin/AdminDashboard';
 
+import ProfileRoute from './components/profile/ProfileRoute';
+import ProfilePage from './components/profile/ProfilePage';
+
 import Error404 from './components/Error404';
 import TiktokDownloader from './components/ToolsPage/TikTokDownloader';
 import TwitterDownloader from './components/ToolsPage/TwitterDownloader';
@@ -233,6 +236,18 @@ function App() {
                 <AdminRoute>
                   <AdminDashboard />
                 </AdminRoute>
+              } />
+
+              <Route path="/profile" element={
+                <ProfileRoute>
+                  <ProfilePage />
+                </ProfileRoute>
+              } />
+
+              <Route path="/profile/:userId" element={
+                <ProfileRoute>
+                  <ProfilePage />
+                </ProfileRoute>
               } />
 
               <Route path ="*" element={<Error404/>} />

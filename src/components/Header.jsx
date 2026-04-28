@@ -472,6 +472,16 @@ const Header = () => {
                 Dashboard
               </Link>
             )}
+            {isLoggedIn && (user?.userType === 'Join as Brand' || user?.userType === 'Join as Creator') && (
+              <Link
+                to="/profile"
+                style={getNavLinkStyle('/profile')}
+                onMouseEnter={!isActiveLink('/profile') ? handleNavLinkHover : undefined}
+                onMouseLeave={!isActiveLink('/profile') ? handleNavLinkLeave : undefined}
+              >
+                Profile
+              </Link>
+            )}
           </nav>
           
           {/* Desktop CTA Buttons */}
@@ -597,6 +607,17 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Dashboard
+              </Link>
+            )}
+            {isLoggedIn && (user?.userType === 'Join as Brand' || user?.userType === 'Join as Creator') && (
+              <Link
+                to="/profile"
+                style={getMobileNavLinkStyle('/profile')}
+                onMouseEnter={!isActiveLink('/profile') ? handleMobileNavHover : undefined}
+                onMouseLeave={!isActiveLink('/profile') ? handleMobileNavLeave : undefined}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Profile
               </Link>
             )}
 

@@ -14,6 +14,8 @@ const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
 const downloadRoutes = require('./routes/download');
 const adminRoutes = require('./routes/admin');
+const profileRoutes = require('./routes/profile');
+const matchRoutes = require('./routes/match');
 
 // Create Express app
 const app = express();
@@ -64,7 +66,7 @@ const corsOptions = {
   },
   credentials: true,
   optionsSuccessStatus: 200,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 
@@ -162,6 +164,8 @@ app.get('/api/health', (req, res) => {
 // 3. Specific API routes with their own rate limits
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/match', matchRoutes);
 app.use('/api/download', downloadLimiter, downloadRoutes);
 
 // 4. General rate limiter for any other /api routes (catch-all)

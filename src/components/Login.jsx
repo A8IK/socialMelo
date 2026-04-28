@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, AlertCircle, Eye, EyeOff, Mail, Lock, Sparkles } from 'lucide-react';
+import { AlertCircle, Eye, EyeOff, Mail, Lock } from 'lucide-react';
 import {toast} from 'react-toastify';
 import './Login.css';
 import { usePageMeta } from '../usePageMeta';
@@ -191,24 +191,6 @@ const Login = () => {
               <Link to="/newsfeed" className="guest-link">
                 Continue as guest
               </Link>
-            </div>
-
-            {/* Demo accounts */}
-            <div className="demo-section">
-              <h3 className="demo-title">
-                <User className="demo-icon" />
-                Demo Accounts
-              </h3>
-              <div className="demo-content">
-                <div className="demo-row">
-                  <span className="demo-label">Admin:</span>
-                  {/* <span className="demo-value">admin@yourapp.com</span> */}
-                </div>
-                <div className="demo-row">
-                  <span className="demo-label">Password:</span>
-                  {/* <span className="demo-value">AdminPass123!</span> */}
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -41,9 +41,31 @@ const userSchema = new mongoose.Schema({
     niches: { type: [String], default: [] },
     country: { type: String, trim: true, default: '' },
     state: { type: String, trim: true, default: '' },
-    location: { type: String, trim: true, default: '' }
+    location: { type: String, trim: true, default: '' },
+    industry: { type: String, trim: true, default: '' },
+    budgetRangePerCampaign: {
+      min: { type: Number, default: null, min: 0 },
+      max: { type: Number, default: null, min: 0 },
+      currency: { type: String, trim: true, default: 'USD' }
+    },
+    campaignGoals: { type: [String], default: [] },
+    targetAudience: {
+      ageMin: { type: Number, default: null, min: 0 },
+      ageMax: { type: Number, default: null, min: 0 },
+      genders: { type: [String], default: [] },
+      geos: { type: [String], default: [] }
+    },
+    preferredCreatorTiers: { type: [String], default: [] },
+    preferredContentFormats: { type: [String], default: [] },
+    profileCompleted: { type: Boolean, default: false }
   },
   creatorDetails: {
+    age: { type: Number, default: null, min: 13, max: 100 },
+    gender: { type: String, trim: true, default: '' },
+    phone: {
+      countryCode: { type: String, trim: true, default: '' },
+      number: { type: String, trim: true, default: '' }
+    },
     niches: { type: [String], default: [] },
     platforms: {
       type: [{
@@ -57,7 +79,36 @@ const userSchema = new mongoose.Schema({
     contentLanguages: { type: [String], default: [] },
     country: { type: String, trim: true, default: '' },
     state: { type: String, trim: true, default: '' },
-    location: { type: String, trim: true, default: '' }
+    location: { type: String, trim: true, default: '' },
+    rateRange: {
+      min: { type: Number, default: null, min: 0 },
+      max: { type: Number, default: null, min: 0 },
+      currency: { type: String, trim: true, default: 'USD' },
+      openToNegotiation: { type: Boolean, default: false }
+    },
+    audienceDemographics: {
+      topCountries: { type: [String], default: [] },
+      ageSplit: {
+        '13-17': { type: Number, default: null, min: 0, max: 100 },
+        '18-24': { type: Number, default: null, min: 0, max: 100 },
+        '25-34': { type: Number, default: null, min: 0, max: 100 },
+        '35-44': { type: Number, default: null, min: 0, max: 100 },
+        '45+': { type: Number, default: null, min: 0, max: 100 }
+      },
+      genderSplit: {
+        male: { type: Number, default: null, min: 0, max: 100 },
+        female: { type: Number, default: null, min: 0, max: 100 },
+        other: { type: Number, default: null, min: 0, max: 100 }
+      }
+    },
+    openToPaidPartnerships: { type: Boolean, default: false },
+    mediaKitUrl: { type: String, trim: true, default: '' },
+    averageEngagementRate: { type: Number, default: null, min: 0, max: 100 },
+    exclusivityStatus: { type: String, trim: true, default: '' },
+    paymentMethodPreference: { type: String, trim: true, default: '' },
+    howHeardAboutUs: { type: String, trim: true, default: '' },
+    marketingOptIn: { type: Boolean, default: false },
+    profileCompleted: { type: Boolean, default: false }
   },
   ipAddress: {
     type: String,

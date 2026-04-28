@@ -2,6 +2,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
 const axios = require('axios');
+const { sendSignupEmails } = require('../utils/email');
 
 const PRIVATE_IP_REGEX = /^(::1|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[0-1])\.)/;
 
@@ -81,7 +82,15 @@ const register = async (req, res) => {
 
     if (userType === 'Join as Creator' && creatorDetails && typeof creatorDetails === 'object') {
       const rawPlatforms = Array.isArray(creatorDetails.platforms) ? creatorDetails.platforms : [];
+      const ageVal = Number(creatorDetails.age);
+      const phone = (creatorDetails.phone && typeof creatorDetails.phone === 'object') ? creatorDetails.phone : {};
       userData.creatorDetails = {
+        age: Number.isFinite(ageVal) && ageVal >= 13 && ageVal <= 100 ? ageVal : null,
+        gender: String(creatorDetails.gender || '').trim(),
+        phone: {
+          countryCode: String(phone.countryCode || '').trim(),
+          number: String(phone.number || '').trim()
+        },
         niches: Array.isArray(creatorDetails.niches) ? creatorDetails.niches : [],
         platforms: rawPlatforms
           .filter(p => p && typeof p === 'object' && p.name)
@@ -106,6 +115,11 @@ const register = async (req, res) => {
     // Update last login
     user.lastLogin = new Date();
     await user.save();
+
+    // Fire-and-forget signup emails (admin notification + user welcome).
+    // Awaiting would block the response on SMTP latency; failures are
+    // already logged inside the utility.
+    sendSignupEmails(user).catch(() => {});
 
     res.status(201).json({
       success: true,

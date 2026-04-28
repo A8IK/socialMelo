@@ -777,6 +777,22 @@
   border-radius: 0.9rem;
 }
 
+.phone-row {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 0.6rem;
+}
+
+.phone-code-wrapper .form-select {
+  padding-left: 1rem;
+}
+
+@media (max-width: 480px) {
+  .phone-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .platform-card-header {
   display: flex;
   align-items: center;

@@ -3,9 +3,11 @@ import { Users, Briefcase, Megaphone, Shield, Search, Filter, X, RefreshCw } fro
 import { toast } from 'react-toastify';
 import { usePageMeta } from '../../usePageMeta';
 import API_BASE_URL from '../../config/api';
+import MatchSection from '../match/MatchSection';
 import './AdminDashboard.css';
 
 const API_BASE = `${API_BASE_URL}/api/admin`;
+const MATCH_BASE = `${API_BASE_URL}/api/match`;
 
 const authHeaders = () => ({
   'Content-Type': 'application/json',
@@ -35,11 +37,14 @@ const UserDetailDrawer = ({ userId, onClose }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [matches, setMatches] = useState([]);
+  const [matchesLoading, setMatchesLoading] = useState(false);
 
   useEffect(() => {
     if (!userId) return;
     setLoading(true);
     setError('');
+    setMatches([]);
     fetch(`${API_BASE}/users/${userId}`, { headers: authHeaders() })
       .then(r => r.json())
       .then(data => {
@@ -49,6 +54,17 @@ const UserDetailDrawer = ({ userId, onClose }) => {
       .catch(() => setError('Network error'))
       .finally(() => setLoading(false));
   }, [userId]);
+
+  useEffect(() => {
+    if (!user) return;
+    if (user.userType !== 'Join as Brand' && user.userType !== 'Join as Creator') return;
+    setMatchesLoading(true);
+    fetch(`${MATCH_BASE}/admin/${user._id}`, { headers: authHeaders() })
+      .then(r => r.json())
+      .then(data => { if (data.success) setMatches(data.matches || []); })
+      .catch(() => {})
+      .finally(() => setMatchesLoading(false));
+  }, [user]);
 
   if (!userId) return null;
 
@@ -87,18 +103,51 @@ const UserDetailDrawer = ({ userId, onClose }) => {
               const brandNiches = (b.niches && b.niches.length)
                 ? b.niches
                 : (b.niche ? [b.niche] : []);
+              const formatRange = (r, currency = 'USD') => {
+                if (!r || (r.min == null && r.max == null)) return '—';
+                const sym = (r.currency || currency) === 'USD' ? '$' : `${r.currency || currency} `;
+                if (r.min != null && r.max != null) return `${sym}${Number(r.min).toLocaleString()} – ${sym}${Number(r.max).toLocaleString()}`;
+                if (r.min != null) return `From ${sym}${Number(r.min).toLocaleString()}`;
+                return `Up to ${sym}${Number(r.max).toLocaleString()}`;
+              };
+              const ageRange = b.targetAudience && (b.targetAudience.ageMin != null || b.targetAudience.ageMax != null)
+                ? `${b.targetAudience.ageMin ?? '—'} – ${b.targetAudience.ageMax ?? '—'}`
+                : '—';
               return (
-                <section>
-                  <h3>Brand Details</h3>
-                  <dl>
-                    <dt>Product Categories</dt><dd>{(b.productTypes || []).join(', ') || '—'}</dd>
-                    <dt>Looking For</dt><dd>{desired.join(', ') || '—'}</dd>
-                    <dt>Brand Niches</dt><dd>{brandNiches.join(', ') || '—'}</dd>
-                    <dt>Country</dt><dd>{b.country || '—'}</dd>
-                    <dt>State</dt><dd>{b.state || '—'}</dd>
-                    <dt>Location (IP)</dt><dd>{b.location || '—'}</dd>
-                  </dl>
-                </section>
+                <>
+                  <section>
+                    <h3>Brand Details</h3>
+                    <dl>
+                      <dt>Profile Completed</dt><dd>{b.profileCompleted ? 'Yes' : 'No'}</dd>
+                      <dt>Industry / Vertical</dt><dd>{b.industry || '—'}</dd>
+                      <dt>Product Categories</dt><dd>{(b.productTypes || []).join(', ') || '—'}</dd>
+                      <dt>Looking For</dt><dd>{desired.join(', ') || '—'}</dd>
+                      <dt>Brand Niches</dt><dd>{brandNiches.join(', ') || '—'}</dd>
+                      <dt>Country</dt><dd>{b.country || '—'}</dd>
+                      <dt>State</dt><dd>{b.state || '—'}</dd>
+                      <dt>Location (IP)</dt><dd>{b.location || '—'}</dd>
+                    </dl>
+                  </section>
+
+                  <section>
+                    <h3>Campaign Setup</h3>
+                    <dl>
+                      <dt>Budget per Campaign</dt><dd>{formatRange(b.budgetRangePerCampaign)}</dd>
+                      <dt>Campaign Goals</dt><dd>{(b.campaignGoals || []).join(', ') || '—'}</dd>
+                      <dt>Preferred Creator Tiers</dt><dd>{(b.preferredCreatorTiers || []).join(', ') || '—'}</dd>
+                      <dt>Preferred Content Formats</dt><dd>{(b.preferredContentFormats || []).join(', ') || '—'}</dd>
+                    </dl>
+                  </section>
+
+                  <section>
+                    <h3>Target Audience</h3>
+                    <dl>
+                      <dt>Age Range</dt><dd>{ageRange}</dd>
+                      <dt>Genders</dt><dd>{(b.targetAudience?.genders || []).join(', ') || '—'}</dd>
+                      <dt>Geographies</dt><dd>{(b.targetAudience?.geos || []).join(', ') || '—'}</dd>
+                    </dl>
+                  </section>
+                </>
               );
             })()}
 
@@ -113,38 +162,104 @@ const UserDetailDrawer = ({ userId, onClose }) => {
               const platforms = (c.platforms && c.platforms.length)
                 ? c.platforms
                 : (c.platform ? [{ name: c.platform, followers: c.followers || 0, profileLink: c.profileLink || '' }] : []);
+              const phoneStr = c.phone && (c.phone.countryCode || c.phone.number)
+                ? `${c.phone.countryCode || ''} ${c.phone.number || ''}`.trim()
+                : '';
+              const formatRange = (r) => {
+                if (!r || (r.min == null && r.max == null)) return '—';
+                const sym = (r.currency || 'USD') === 'USD' ? '$' : `${r.currency || ''} `;
+                if (r.min != null && r.max != null) return `${sym}${Number(r.min).toLocaleString()} – ${sym}${Number(r.max).toLocaleString()}`;
+                if (r.min != null) return `From ${sym}${Number(r.min).toLocaleString()}`;
+                return `Up to ${sym}${Number(r.max).toLocaleString()}`;
+              };
+              const ad = c.audienceDemographics || {};
+              const ageSplit = ad.ageSplit
+                ? Object.entries(ad.ageSplit).filter(([, v]) => v != null && v !== '').map(([k, v]) => `${k}: ${v}%`).join(' · ')
+                : '';
+              const genderSplit = ad.genderSplit
+                ? Object.entries(ad.genderSplit).filter(([, v]) => v != null && v !== '').map(([k, v]) => `${k}: ${v}%`).join(' · ')
+                : '';
               return (
-                <section>
-                  <h3>Creator Details</h3>
-                  <dl>
-                    <dt>Niches</dt><dd>{niches.join(', ') || '—'}</dd>
-                    <dt>Content Languages</dt><dd>{languages.join(', ') || '—'}</dd>
-                    <dt>Country</dt><dd>{c.country || '—'}</dd>
-                    <dt>State</dt><dd>{c.state || '—'}</dd>
-                    <dt>Location (IP)</dt><dd>{c.location || '—'}</dd>
-                  </dl>
-                  <h4>Platforms</h4>
-                  {platforms.length === 0 ? (
-                    <p className="admin-muted">No platforms listed.</p>
-                  ) : (
-                    <table className="admin-inner-table">
-                      <thead>
-                        <tr><th>Platform</th><th>Followers</th><th>Profile Link</th></tr>
-                      </thead>
-                      <tbody>
-                        {platforms.map((p, i) => (
-                          <tr key={i}>
-                            <td>{p.name}</td>
-                            <td>{p.followers?.toLocaleString?.() ?? p.followers}</td>
-                            <td>{p.profileLink ? <a href={p.profileLink} target="_blank" rel="noreferrer">{p.profileLink}</a> : '—'}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  )}
-                </section>
+                <>
+                  <section>
+                    <h3>Creator Details</h3>
+                    <dl>
+                      <dt>Profile Completed</dt><dd>{c.profileCompleted ? 'Yes' : 'No'}</dd>
+                      <dt>Age</dt><dd>{c.age != null ? c.age : '—'}</dd>
+                      <dt>Gender</dt><dd>{c.gender || '—'}</dd>
+                      <dt>Phone</dt><dd>{phoneStr || '—'}</dd>
+                      <dt>Niches</dt><dd>{niches.join(', ') || '—'}</dd>
+                      <dt>Content Languages</dt><dd>{languages.join(', ') || '—'}</dd>
+                      <dt>Country</dt><dd>{c.country || '—'}</dd>
+                      <dt>State</dt><dd>{c.state || '—'}</dd>
+                      <dt>Location (IP)</dt><dd>{c.location || '—'}</dd>
+                    </dl>
+                    <h4>Platforms</h4>
+                    {platforms.length === 0 ? (
+                      <p className="admin-muted">No platforms listed.</p>
+                    ) : (
+                      <table className="admin-inner-table">
+                        <thead>
+                          <tr><th>Platform</th><th>Followers</th><th>Profile Link</th></tr>
+                        </thead>
+                        <tbody>
+                          {platforms.map((p, i) => (
+                            <tr key={i}>
+                              <td>{p.name}</td>
+                              <td>{p.followers?.toLocaleString?.() ?? p.followers}</td>
+                              <td>{p.profileLink ? <a href={p.profileLink} target="_blank" rel="noreferrer">{p.profileLink}</a> : '—'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
+                  </section>
+
+                  <section>
+                    <h3>Rates &amp; Engagement</h3>
+                    <dl>
+                      <dt>Rate Range</dt><dd>{formatRange(c.rateRange)}</dd>
+                      <dt>Open to Negotiation</dt><dd>{c.rateRange?.openToNegotiation ? 'Yes' : 'No'}</dd>
+                      <dt>Avg Engagement Rate</dt><dd>{c.averageEngagementRate != null ? `${c.averageEngagementRate}%` : '—'}</dd>
+                    </dl>
+                  </section>
+
+                  <section>
+                    <h3>Audience Demographics</h3>
+                    <dl>
+                      <dt>Top Countries</dt><dd>{(ad.topCountries || []).join(', ') || '—'}</dd>
+                      <dt>Age Split</dt><dd>{ageSplit || '—'}</dd>
+                      <dt>Gender Split</dt><dd>{genderSplit || '—'}</dd>
+                    </dl>
+                  </section>
+
+                  <section>
+                    <h3>Partnerships &amp; Preferences</h3>
+                    <dl>
+                      <dt>Open to Paid Partnerships</dt><dd>{c.openToPaidPartnerships ? 'Yes' : 'No'}</dd>
+                      <dt>Exclusivity Status</dt><dd>{c.exclusivityStatus || '—'}</dd>
+                      <dt>Payment Method</dt><dd>{c.paymentMethodPreference || '—'}</dd>
+                      <dt>Media Kit / Portfolio</dt><dd>{c.mediaKitUrl ? <a href={c.mediaKitUrl} target="_blank" rel="noreferrer">{c.mediaKitUrl}</a> : '—'}</dd>
+                      <dt>Heard About Us From</dt><dd>{c.howHeardAboutUs || '—'}</dd>
+                      <dt>Marketing Opt-in</dt><dd>{c.marketingOptIn ? 'Yes' : 'No'}</dd>
+                    </dl>
+                  </section>
+                </>
               );
             })()}
+
+            {(user.userType === 'Join as Brand' || user.userType === 'Join as Creator') && (
+              <section>
+                <h3>Suggested Matches</h3>
+                <div className="match-dark">
+                  <MatchSection
+                    matches={matches}
+                    loading={matchesLoading}
+                    emptyHint="No matches yet — once more profiles complete, suggestions will appear here."
+                  />
+                </div>
+              </section>
+            )}
           </div>
         )}
       </div>

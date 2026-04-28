@@ -1,11 +1,12 @@
 import React, { useState, useCallback, useEffect, useRef, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, AlertCircle, Eye, EyeOff, Mail, Lock, UserPlus, Badge, Package, Tag, MapPin, Users, Link2, Globe, Share2, ChevronDown } from 'lucide-react';
+import { User, Eye, EyeOff, Mail, Lock, UserPlus, Badge, Package, Tag, MapPin, Users, Link2, Globe, Share2, ChevronDown } from 'lucide-react';
 import {toast} from 'react-toastify';
 import './SignUp.css';
 import { usePageMeta } from '../usePageMeta';
 import API_BASE_URL from '../config/api';
+import ProfileCompletionModal from './profile/ProfileCompletionModal';
 
 const PRODUCT_CATEGORIES = [
   'Beauty & Cosmetics',
@@ -56,6 +57,40 @@ const PLATFORM_OPTIONS = [
   'Pinterest',
   'Twitch',
   'Other'
+];
+
+const GENDER_OPTIONS = ['Male', 'Female', 'Non-binary', 'Prefer not to say'];
+
+const PHONE_COUNTRY_CODES = [
+  '+93 Afghanistan', '+355 Albania', '+213 Algeria', '+376 Andorra', '+244 Angola',
+  '+54 Argentina', '+374 Armenia', '+61 Australia', '+43 Austria', '+994 Azerbaijan',
+  '+973 Bahrain', '+880 Bangladesh', '+1 Barbados', '+375 Belarus', '+32 Belgium',
+  '+501 Belize', '+229 Benin', '+975 Bhutan', '+591 Bolivia', '+387 Bosnia and Herzegovina',
+  '+267 Botswana', '+55 Brazil', '+673 Brunei', '+359 Bulgaria', '+226 Burkina Faso',
+  '+855 Cambodia', '+237 Cameroon', '+1 Canada', '+238 Cape Verde', '+56 Chile',
+  '+86 China', '+57 Colombia', '+506 Costa Rica', '+225 Cote d\'Ivoire', '+385 Croatia',
+  '+53 Cuba', '+357 Cyprus', '+420 Czech Republic', '+45 Denmark', '+1 Dominican Republic',
+  '+593 Ecuador', '+20 Egypt', '+503 El Salvador', '+372 Estonia', '+251 Ethiopia',
+  '+679 Fiji', '+358 Finland', '+33 France', '+995 Georgia', '+49 Germany',
+  '+233 Ghana', '+30 Greece', '+502 Guatemala', '+509 Haiti', '+504 Honduras',
+  '+852 Hong Kong', '+36 Hungary', '+354 Iceland', '+91 India', '+62 Indonesia',
+  '+98 Iran', '+964 Iraq', '+353 Ireland', '+972 Israel', '+39 Italy',
+  '+1 Jamaica', '+81 Japan', '+962 Jordan', '+7 Kazakhstan', '+254 Kenya',
+  '+965 Kuwait', '+856 Laos', '+371 Latvia', '+961 Lebanon', '+218 Libya',
+  '+370 Lithuania', '+352 Luxembourg', '+853 Macao', '+261 Madagascar', '+60 Malaysia',
+  '+960 Maldives', '+356 Malta', '+230 Mauritius', '+52 Mexico', '+373 Moldova',
+  '+976 Mongolia', '+382 Montenegro', '+212 Morocco', '+258 Mozambique', '+95 Myanmar',
+  '+264 Namibia', '+977 Nepal', '+31 Netherlands', '+64 New Zealand', '+505 Nicaragua',
+  '+234 Nigeria', '+47 Norway', '+968 Oman', '+92 Pakistan', '+970 Palestine',
+  '+507 Panama', '+595 Paraguay', '+51 Peru', '+63 Philippines', '+48 Poland',
+  '+351 Portugal', '+974 Qatar', '+40 Romania', '+7 Russia', '+250 Rwanda',
+  '+966 Saudi Arabia', '+221 Senegal', '+381 Serbia', '+65 Singapore', '+421 Slovakia',
+  '+386 Slovenia', '+27 South Africa', '+82 South Korea', '+34 Spain', '+94 Sri Lanka',
+  '+249 Sudan', '+46 Sweden', '+41 Switzerland', '+963 Syria', '+886 Taiwan',
+  '+255 Tanzania', '+66 Thailand', '+1 Trinidad and Tobago', '+216 Tunisia', '+90 Turkey',
+  '+256 Uganda', '+380 Ukraine', '+971 United Arab Emirates', '+44 United Kingdom',
+  '+1 United States', '+598 Uruguay', '+998 Uzbekistan', '+58 Venezuela', '+84 Vietnam',
+  '+967 Yemen', '+260 Zambia', '+263 Zimbabwe'
 ];
 
 const COUNTRY_OPTIONS = [
@@ -232,6 +267,10 @@ const SignUp = () => {
     brandNiches: [],
     brandCountry: '',
     brandState: '',
+    creatorAge: '',
+    creatorGender: '',
+    creatorPhoneCountryCode: '',
+    creatorPhoneNumber: '',
     creatorNiches: [],
     creatorPlatforms: [],
     creatorPlatformData: {},
@@ -242,9 +281,10 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [profileModalUserType, setProfileModalUserType] = useState(null);
+
   const navigate = useNavigate();
 
   const handleInputChange = useCallback((e) => {
@@ -253,8 +293,7 @@ const SignUp = () => {
       ...prev,
       [name]: value
     }));
-    if (error) setError('');
-  }, [error]);
+  }, []);
 
   const togglePasswordVisibility = useCallback(() => {
     setShowPassword(prev => !prev);
@@ -311,87 +350,103 @@ const SignUp = () => {
         }
       }
     }));
-    if (error) setError('');
-  }, [error]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      toast.error('Passwords do not match');
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      toast.error('Password must be at least 6 characters');
       return;
     }
 
     if (!formData.name.trim()) {
-      setError('Name is required');
+      toast.error('Name is required');
       return;
     }
 
     if (!formData.userType || formData.userType === 'None') {
-      setError('Please select a user type');
+      toast.error('Please select a user type');
       return;
     }
 
     if (formData.userType === 'Join as Brand') {
       if (formData.brandProductTypes.length === 0) {
-        setError('Please select at least one product category');
+        toast.error('Please select at least one product category');
         return;
       }
       if (formData.brandDesiredNiches.length === 0) {
-        setError('Please select at least one influencer type you are looking for');
+        toast.error('Please select at least one influencer type you are looking for');
         return;
       }
       if (formData.brandNiches.length === 0) {
-        setError('Please select at least one brand niche');
+        toast.error('Please select at least one brand niche');
         return;
       }
       if (!formData.brandCountry) {
-        setError('Please select your country');
+        toast.error('Please select your country');
         return;
       }
       if (!formData.brandState.trim()) {
-        setError('Please enter your state / region');
+        toast.error('Please enter your state / region');
         return;
       }
     }
 
     if (formData.userType === 'Join as Creator') {
+      const ageNum = Number(formData.creatorAge);
+      if (!formData.creatorAge || !Number.isFinite(ageNum) || ageNum < 13 || ageNum > 100) {
+        toast.error('Please enter a valid age between 13 and 100');
+        return;
+      }
+      if (!formData.creatorGender) {
+        toast.error('Please select your gender');
+        return;
+      }
+      if (!formData.creatorPhoneCountryCode) {
+        toast.error('Please select your phone country code');
+        return;
+      }
+      const phoneDigits = formData.creatorPhoneNumber.replace(/\D/g, '');
+      if (phoneDigits.length < 6 || phoneDigits.length > 15) {
+        toast.error('Please enter a valid phone number');
+        return;
+      }
       if (formData.creatorNiches.length === 0) {
-        setError('Please select at least one niche');
+        toast.error('Please select at least one niche');
         return;
       }
       if (formData.creatorPlatforms.length === 0) {
-        setError('Please select at least one platform');
+        toast.error('Please select at least one platform');
         return;
       }
       for (const platform of formData.creatorPlatforms) {
         const pd = formData.creatorPlatformData[platform] || {};
         const followersNum = Number(pd.followers);
         if (!pd.followers || !Number.isFinite(followersNum) || followersNum < 0) {
-          setError(`Please enter a valid follower/subscriber count for ${platform}`);
+          toast.error(`Please enter a valid follower/subscriber count for ${platform}`);
           return;
         }
         if (!pd.profileLink || !pd.profileLink.trim()) {
-          setError(`Please enter your ${platform} profile link`);
+          toast.error(`Please enter your ${platform} profile link`);
           return;
         }
       }
       if (formData.creatorContentLanguages.length === 0) {
-        setError('Please select at least one content language');
+        toast.error('Please select at least one content language');
         return;
       }
       if (!formData.creatorCountry) {
-        setError('Please select your country');
+        toast.error('Please select your country');
         return;
       }
       if (!formData.creatorState.trim()) {
-        setError('Please enter your state / region');
+        toast.error('Please enter your state / region');
         return;
       }
     }
@@ -418,6 +473,12 @@ const SignUp = () => {
 
       if (formData.userType === 'Join as Creator') {
         submitData.creatorDetails = {
+          age: Number(formData.creatorAge),
+          gender: formData.creatorGender,
+          phone: {
+            countryCode: formData.creatorPhoneCountryCode,
+            number: formData.creatorPhoneNumber.trim()
+          },
           niches: formData.creatorNiches,
           platforms: formData.creatorPlatforms.map(name => {
             const pd = formData.creatorPlatformData[name] || {};
@@ -447,13 +508,19 @@ const SignUp = () => {
         toast.success('🎉 Successful! Welcome to SocialMelo!');
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
-        navigate('/');
+        window.dispatchEvent(new Event('authChange'));
+        if (data.user.userType === 'Join as Brand' || data.user.userType === 'Join as Creator') {
+          setProfileModalUserType(data.user.userType);
+          setProfileModalOpen(true);
+        } else {
+          navigate('/');
+        }
       } else {
         toast.error(data.message || 'Registration failed.');
       }
     } catch (err) {
       console.error('Registration error:', err);
-      setError('Network error occurred');
+      toast.error('Network error occurred');
     } finally {
       setLoading(false);
     }
@@ -496,16 +563,6 @@ const SignUp = () => {
               <h1 className="welcome-title">Join Us Today</h1>
               <p className="welcome-subtitle">Create your account and start your journey</p>
             </div>
-
-            {/* Error message */}
-            {error && (
-              <div className="error-container">
-                <div className="error-content">
-                  <AlertCircle className="error-icon" />
-                  <p className="error-text">{error}</p>
-                </div>
-              </div>
-            )}
 
             <form onSubmit={handleSubmit} className="signup-form">
               {/* Name field */}
@@ -669,6 +726,79 @@ const SignUp = () => {
               {formData.userType === 'Join as Creator' && (
                 <div className="role-section">
                   <div className="role-section-title">Creator Details</div>
+
+                  <div className="form-group">
+                    <label className="form-label">Age *</label>
+                    <div className="input-wrapper">
+                      <div className="input-icon-left">
+                        <User className="input-icon" />
+                      </div>
+                      <input
+                        type="number"
+                        name="creatorAge"
+                        min="13"
+                        max="100"
+                        required
+                        value={formData.creatorAge}
+                        onChange={handleInputChange}
+                        className="form-input"
+                        placeholder="e.g. 21"
+                      />
+                    </div>
+                    <p className="field-hint">Must be at least 13 (some brand campaigns require 18+).</p>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Gender *</label>
+                    <div className="input-wrapper">
+                      <div className="input-icon-left">
+                        <User className="input-icon" />
+                      </div>
+                      <select
+                        name="creatorGender"
+                        required
+                        value={formData.creatorGender}
+                        onChange={handleInputChange}
+                        className="form-input form-select"
+                      >
+                        <option value="">Select gender</option>
+                        {GENDER_OPTIONS.map(g => (
+                          <option key={g} value={g}>{g}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Phone Number *</label>
+                    <div className="phone-row">
+                      <div className="input-wrapper phone-code-wrapper">
+                        <select
+                          name="creatorPhoneCountryCode"
+                          required
+                          value={formData.creatorPhoneCountryCode}
+                          onChange={handleInputChange}
+                          className="form-input form-select"
+                        >
+                          <option value="">Code</option>
+                          {PHONE_COUNTRY_CODES.map(c => (
+                            <option key={c} value={c}>{c}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="input-wrapper phone-number-wrapper">
+                        <input
+                          type="tel"
+                          name="creatorPhoneNumber"
+                          required
+                          value={formData.creatorPhoneNumber}
+                          onChange={handleInputChange}
+                          className="form-input"
+                          placeholder="e.g. 9876543210"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
                   <div className="form-group">
                     <label className="form-label">Niches *</label>
@@ -929,6 +1059,12 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ProfileCompletionModal
+        open={profileModalOpen}
+        userType={profileModalUserType}
+        onClose={() => { setProfileModalOpen(false); navigate('/profile'); }}
+        onCompleted={() => { setProfileModalOpen(false); navigate('/profile'); }}
+      />
     </div>
   );
 };
