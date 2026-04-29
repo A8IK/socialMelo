@@ -15,18 +15,19 @@ function getTransporter() {
   return cachedTransporter;
 }
 
-async function sendMail({ to, subject, html, text }) {
+async function sendMail({ to, subject, html, text, from }) {
   const transporter = getTransporter();
   if (!transporter) {
     console.warn(`[email] SMTP not configured — skipping email to ${to}`);
     return { skipped: true };
   }
-  const from = process.env.SMTP_FROM || 'SocialMelo <noreply@socialmelo.com>';
+  const sender = from || process.env.SMTP_FROM || 'SocialMelo <noreply@socialmelo.com>';
   try {
-    const info = await transporter.sendMail({ from, to, subject, html, text });
+    const info = await transporter.sendMail({ from: sender, to, subject, html, text });
+    console.log(`[email] sent to ${to} — messageId=${info.messageId} response="${info.response}"`);
     return { skipped: false, messageId: info.messageId };
   } catch (err) {
-    console.error('[email] send failed:', err.message);
+    console.error(`[email] send failed (to=${to} subject="${subject}"):`, err.message);
     return { skipped: false, error: err.message };
   }
 }
@@ -76,6 +77,7 @@ function shortRole(userType) {
 async function sendSignupEmails(user) {
   const role = shortRole(user.userType);
   const adminTo = process.env.ADMIN_NOTIFICATION_EMAIL || 'abdullah@socialmelo.com';
+  const adminFrom = process.env.ADMIN_NOTIFICATION_FROM || 'SocialMelo Notifications <notifications@socialmelo.com>';
 
   await Promise.allSettled([
     sendMail({
@@ -86,6 +88,7 @@ async function sendSignupEmails(user) {
     }),
     sendMail({
       to: adminTo,
+      from: adminFrom,
       subject: `[SocialMelo] New ${role} signup — ${user.name}`,
       html: adminNotificationHtml(user),
       text: `${user.name} (${user.email}) just registered as a ${role}.`
