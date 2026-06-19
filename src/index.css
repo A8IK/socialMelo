@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,15 +8,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  },
+  }
+
   body {
-    font-family: 'Krub', sans-serif;
+    font-family: "Krub", sans-serif;
   }
 }
 
 @layer base {
   body {
-    font-family: 'Krub', sans-serif;
+    font-family: "Krub", sans-serif;
   }
 }
 
@@ -28,12 +29,12 @@
 
 /* Global text selection styles */
 ::selection {
-  background: #D76D77;
+  background: #d76d77;
   color: white;
 }
 
 ::-moz-selection {
-  background: #D76D77;
+  background: #d76d77;
   color: white;
 }
 
@@ -43,11 +44,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #3A1C71;
+  background: #3a1c71;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #FFAF7B 0%, #D76D77 50%, #3A1C71 100%);
+  background: linear-gradient(135deg, #ffaf7b 0%, #d76d77 50%, #3a1c71 100%);
   border-radius: 4px;
 }
 
@@ -58,5 +59,5 @@
 /* Firefox scrollbar */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #3A1C71 #f1f1f1;
+  scrollbar-color: #3a1c71 #f1f1f1;
 }

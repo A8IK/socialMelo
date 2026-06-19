@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap");
+
+.tu {
+  font-family:
+    "Krub",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background: #fff8f2;
+  color: #8e8794;
+  -webkit-font-smoothing: antialiased;
+}
+.tu *,
+.tu *::before,
+.tu *::after {
+  box-sizing: border-box;
+}
+.tu-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 100px 24px 84px;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 74px;
+  align-items: start;
+}
+
+/* ---- form card ---- */
+.tu-card {
+  position: relative;
+  background: #fff;
+  border-radius: 22px;
+  padding: 52px 54px 54px;
+  box-shadow: 0 24px 60px rgba(120, 80, 120, 0.1);
+  overflow: hidden;
+}
+.tu-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #eda37e 0%, #c46e7c 50%, #4e2f6b 100%);
+}
+.tu-title {
+  font-weight: 700;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    #743974 0%,
+    #9c4b74 18%,
+    #bc5b76 33%,
+    #d96c76 48%,
+    #e37b76 62%,
+    #eb8877 77%,
+    #f09478 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.tu-lead {
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 11px 0 32px;
+}
+
+.tu-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 18px;
+}
+.tu-field {
+  display: flex;
+  flex-direction: column;
+}
+.tu-label {
+  color: #2d1963;
+  font-weight: 600;
+  font-size: 0.84rem;
+  margin-bottom: 8px;
+}
+.tu-req {
+  color: #e0795f;
+  margin-left: 2px;
+}
+.tu-input,
+.tu-select,
+.tu-area {
+  font-family: inherit;
+  width: 100%;
+  border: 1px solid #e7dfe6;
+  border-radius: 10px;
+  background: #fff;
+  color: #2d1963;
+  font-size: 1rem;
+  padding: 14px 16px;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+  outline: none;
+}
+.tu-input::placeholder,
+.tu-area::placeholder {
+  color: #4b5563;
+}
+.tu-input:focus,
+.tu-select:focus,
+.tu-area:focus {
+  border-color: #2d1963;
+  box-shadow: 0 0 0 3px rgba(45, 25, 99, 0.1);
+}
+.tu-area {
+  resize: vertical;
+  min-height: 118px;
+  line-height: 1.55;
+}
+.tu-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.tu-block {
+  margin-top: 18px;
+}
+.tu-seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-top: 7px;
+}
+.tu-seg-btn {
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid #e7dfe6;
+  background: #fff;
+  color: #2d1963;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 15px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+.tu-seg-btn:hover {
+  border-color: #cdbfd6;
+}
+.tu-seg-btn.on {
+  background: linear-gradient(135deg, #3a1f70, #2a1659);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(45, 25, 99, 0.22);
+}
+
+.tu-help {
+  font-style: italic;
+  color: #b0a8b6;
+  font-size: 0.76rem;
+  text-align: right;
+  margin: 7px 0 0;
+}
+.tu-submit {
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+  border: 0;
+  border-radius: 100px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 19px;
+  background: linear-gradient(135deg, #3a1f70, #2a1659);
+  box-shadow: 0 16px 34px rgba(45, 25, 99, 0.26);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+.tu-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 42px rgba(45, 25, 99, 0.32);
+}
+
+/* ---- right column ---- */
+.tu-right {
+  padding-top: 14px;
+  position: sticky;
+  top: 48px;
+  align-self: start;
+}
+.tu-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.tu-eyebrow-line {
+  width: 28px;
+  height: 2px;
+  background: #d76d77;
+}
+.tu-eyebrow-t {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #d76d77;
+}
+.tu-h2 {
+  font-weight: 700;
+  font-size: clamp(1.7rem, 2.7vw, 2.2rem);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  margin: 18px 0 34px;
+  background: linear-gradient(
+    90deg,
+    #743974 0%,
+    #9c4b74 18%,
+    #bc5b76 33%,
+    #d96c76 48%,
+    #e37b76 62%,
+    #eb8877 77%,
+    #f09478 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.tu-item {
+  display: flex;
+  gap: 17px;
+  margin-bottom: 28px;
+}
+.tu-check {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(140deg, #efa07e 0%, #c76276 52%, #8e4c86 100%);
+  box-shadow: 0 6px 14px rgba(190, 93, 124, 0.3);
+  margin-top: 2px;
+}
+.tu-check svg {
+  width: 17px;
+  height: 17px;
+  color: #fff;
+}
+.tu-item-t {
+  color: #2d1963;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 0 5px;
+}
+.tu-item-d {
+  color: #4b5563;
+  font-size: 0.98rem;
+  line-height: 1.56;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .tu-wrap {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+  .tu-right {
+    padding-top: 0;
+    position: static;
+    top: auto;
+  }
+}
+@media (max-width: 520px) {
+  .tu-wrap {
+    padding: 62px 18px;
+  }
+  .tu-card {
+    padding: 34px 24px 36px;
+  }
+  .tu-grid2,
+  .tu-seg {
+    grid-template-columns: 1fr;
+  }
+}
+.tu-bottombar {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #f9a57b 0%,
+    #e88979 25%,
+    #d06977 50%,
+    #8d4774 75%,
+    #613073 100%
+  );
+}
+.tu-rev {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.tu.in .tu-rev {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tu-submit,
+  .tu-seg-btn {
+    transition: none;
+  }
+  .tu-submit:hover {
+    transform: none;
+  }
+  .tu-rev {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap");
+
+.tm {
+  font-family:
+    "Krub",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background: #fff8f2;
+  -webkit-font-smoothing: antialiased;
+}
+.tm *,
+.tm *::before,
+.tm *::after {
+  box-sizing: border-box;
+}
+.tm-wrap {
+  padding: 75px 0;
+}
+
+.tm-head {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: #7e7484;
+  margin: 0 0 30px;
+}
+
+.tm-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 11%,
+    #000 89%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 11%,
+    #000 89%,
+    transparent 100%
+  );
+}
+.tm-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: tmScroll 38s linear infinite;
+}
+.tm-marquee:hover .tm-track {
+  animation-play-state: paused;
+}
+@keyframes tmScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tm-brand {
+  flex: 0 0 auto;
+  padding: 0 44px;
+  display: flex;
+  align-items: center;
+}
+.tm-logo {
+  height: 46px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition:
+    filter 0.28s ease,
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+.tm-brand:hover .tm-logo {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.1);
+}
+/* white/light logos: recolor to #4A4A4A so they show on the light background (brightness 0.29 maps white -> #4A4A4A) */
+.tm-logo.tm-inv {
+  filter: brightness(0.29) opacity(0.85);
+}
+.tm-brand:hover .tm-logo.tm-inv {
+  filter: brightness(0.29) opacity(1);
+}
+.tm-word {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8d8199;
+  white-space: nowrap;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm-track {
+    animation: none;
+  }
+  .tm-logo {
+    transition: none;
+  }
+  .tm-brand:hover .tm-logo {
+    transform: none;
+  }
+}
+@media (max-width: 560px) {
+  .tm-wrap {
+    padding: 56px 0;
+  }
+  .tm-brand {
+    padding: 0 28px;
+  }
+  .tm-logo {
+    height: 34px;
+    max-width: 140px;
+  }
+}
