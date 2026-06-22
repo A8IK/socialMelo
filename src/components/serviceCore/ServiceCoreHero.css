@@ -20,7 +20,7 @@
 }
 
 .smh-wrap {
-  max-width: 1200px;
+  max-width: none;
   margin: 0 auto;
   padding: 96px 24px;
 }
@@ -137,12 +137,12 @@
 }
 .smh-stat-n {
   font-weight: 700;
-  font-size: 1.65rem;
+  font-size: 1.9rem;
   color: #2d1963;
   line-height: 1;
 }
 .smh-stat-l {
-  font-size: 0.85rem;
+  font-size: 0.97rem;
   color: #4b5563;
   margin-top: 6px;
 }

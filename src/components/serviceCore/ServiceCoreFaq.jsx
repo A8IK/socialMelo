@@ -74,8 +74,7 @@ export default function SocialMeloIGFAQ() {
           </div>
           <h2 className="ifq-h2">
             Questions buyers ask before
-            <br className="ifq-br" />
-            signing.
+            {/* <br className="ifq-br" /> */} signing.
           </h2>
           {/* <p className="ifq-sub">
             Everything you need to know about our Instagram downloader tool
