@@ -1,0 +1,9 @@
+echo "🔨 Running production build before push (this catches Linux CI errors like case mismatches)..."
+npm run build || {
+  echo ""
+  echo "❌ Production build failed — push aborted."
+  echo "   Fix the error above, then try pushing again."
+  echo "   (Linux CI is case-sensitive — Windows isn't. Always trust the build output.)"
+  exit 1
+}
+echo "✅ Build passed. Pushing..."

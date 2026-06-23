@@ -65,7 +65,7 @@ import SeamlessIntegrations from "./components/partnersPage/SeamlessIntegration"
 import TransformPartnership from "./components/partnersPage/TransformPartnership";
 import TrustedLeaders from "./components/partnersPage/TrustedLeaders";
 import ServiceCorePage from "./components/serviceCore/ServiceCorePage";
-import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/influencerMarketingServicesPage";
+import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
 
 function App() {
   return (
