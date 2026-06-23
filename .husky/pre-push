@@ -1,9 +1,18 @@
-echo "🔨 Running production build before push (this catches Linux CI errors like case mismatches)..."
-npm run build || {
+echo "Checking import case (catches Linux-only build errors that Windows hides)..."
+npm run check:imports || {
   echo ""
-  echo "❌ Production build failed — push aborted."
-  echo "   Fix the error above, then try pushing again."
-  echo "   (Linux CI is case-sensitive — Windows isn't. Always trust the build output.)"
+  echo "Push aborted: fix the case mismatches above."
+  echo "Windows treats foo.png and Foo.png as the same file. Linux CI does not."
   exit 1
 }
-echo "✅ Build passed. Pushing..."
+
+echo ""
+echo "Running production build..."
+npm run build || {
+  echo ""
+  echo "Push aborted: production build failed. See errors above."
+  exit 1
+}
+
+echo ""
+echo "All checks passed. Pushing..."

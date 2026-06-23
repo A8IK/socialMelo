@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "build:production": "vite build && cp public/robots.txt dist/robots.txt",
+    "check:imports": "node scripts/check-import-case.mjs",
     "prepare": "husky"
   },
   "dependencies": {
