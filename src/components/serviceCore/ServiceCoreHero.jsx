@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import "./ServiceCoreHero.css";
 
-import CampaignsImg from "../../assets/images/Campaigns.png";
-import GeosImg from "../../assets/images/Geos.png";
-import IndustriesImg from "../../assets/images/Industries.png";
-import PlatformsImg from "../../assets/images/Platforms.png";
+import CampaignsImg from "../../assets/images/CampaignsCard.png";
+import GeosImg from "../../assets/images/GeosCard.png";
+import IndustriesImg from "../../assets/images/IndustriesCard.png";
+import PlatformsImg from "../../assets/images/PlatformsCard.png";
 
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap";
