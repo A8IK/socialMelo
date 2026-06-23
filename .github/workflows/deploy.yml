@@ -47,7 +47,7 @@ jobs:
             **/sitemap.xml
             **/sitemap.xsl
             **/.cpanel.yml
-          state-name: .ftp-deploy-sync-state-v2.json
+          state-name: .ftp-deploy-sync-state-v3.json
 
   deploy-backend:
     name: Deploy Backend
