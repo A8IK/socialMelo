@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap");
+
+.bt-section {
+  --bt-indigo: #2d1963;
+  --bt-rose: #d76d77;
+  --bt-brand: #5b5181;
+  --bt-pill-text: #7e7a86;
+  --bt-pill-border: #e8e7ef;
+  --bt-card-border: #efe9ee;
+  --bt-cream: #fffcfb;
+
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--bt-cream);
+  padding: clamp(3.5rem, 8vw, 6.5rem) 1.5rem;
+  font-family:
+    "Krub",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+.bt-section *,
+.bt-section *::before,
+.bt-section *::after {
+  box-sizing: border-box;
+}
+
+.bt-wrap {
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+/* ---- header ---- */
+.bt-head {
+  text-align: center;
+}
+.bt-eyebrow {
+  margin: 0 0 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--bt-rose);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.bt-rule {
+  display: inline-block;
+  width: 34px;
+  height: 2px;
+  background: var(--bt-rose);
+}
+.bt-title {
+  margin: 0 auto;
+  max-width: 25ch;
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  background: linear-gradient(
+    90deg,
+    #743974 0%,
+    #9c4b74 18%,
+    #bc5b76 33%,
+    #d96c76 48%,
+    #e37b76 62%,
+    #eb8877 77%,
+    #f09478 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- filter pills ---- */
+.bt-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 clamp(1.6rem, 3vw, 2.4rem);
+}
+.bt-pill {
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--bt-pill-text);
+  background: #fff;
+  border: 1.5px solid var(--bt-pill-border);
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.bt-pill:hover {
+  color: var(--bt-indigo);
+  border-color: #d7c8d2;
+}
+.bt-pill[aria-pressed="true"] {
+  color: #fff;
+  background: var(--bt-indigo);
+  border-color: var(--bt-indigo);
+}
+.bt-pill:focus-visible {
+  outline: 2px solid #b393cc;
+  outline-offset: 3px;
+}
+
+/* ---- brand grid ---- */
+.bt-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.bt-card {
+  flex: 0 1 200px;
+  min-width: 150px;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--bt-card-border);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(150, 110, 130, 0.05);
+  color: var(--bt-brand);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.bt-card:hover {
+  transform: translateY(-3px);
+  border-color: #d89ba3;
+  box-shadow: 0 16px 36px rgba(180, 110, 130, 0.16);
+}
+
+/* ---- contextual category CTA ---- */
+.bt-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+}
+.bt-cta {
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bt-indigo);
+  background: linear-gradient(90deg, #fdf3f1, #f7eef0);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.8rem 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: btCardIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.bt-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(180, 110, 130, 0.16);
+  border-color: var(--bt-indigo);
+}
+.bt-cta-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+.bt-cta:hover .bt-cta-arrow {
+  transform: translateX(3px);
+}
+.bt-cta:focus-visible {
+  outline: 2px solid #b393cc;
+  outline-offset: 3px;
+}
+
+/* ---- reveal + filter entrance ---- */
+.bt-head,
+.bt-pills {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bt-in .bt-head {
+  opacity: 1;
+  transform: none;
+}
+.bt-in .bt-pills {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.1s;
+}
+
+.bt-card {
+  opacity: 0;
+}
+.bt-in .bt-card {
+  animation: btCardIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes btCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bt-head,
+  .bt-pills {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .bt-card {
+    opacity: 1;
+    animation: none;
+  }
+  .bt-in .bt-card {
+    animation: none;
+  }
+  .bt-card:hover,
+  .bt-pill {
+    transition: none;
+  }
+  .bt-card:hover {
+    transform: none;
+  }
+  .bt-cta {
+    animation: none;
+    transition: none;
+  }
+  .bt-cta:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .bt-cta:hover .bt-cta-arrow {
+    transform: none;
+  }
+}
