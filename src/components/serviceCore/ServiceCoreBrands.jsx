@@ -1,24 +1,38 @@
 import { useEffect } from "react";
 import "./ServiceCoreBrands.css";
 
+import AdobeImg from "../../assets/images/Adobe.png";
+import ColgateImg from "../../assets/images/Colgate.png";
+import floxyLogoImg from "../../assets/images/floxy logo.png";
+import HuaweiImg from "../../assets/images/Huawei.png";
+import IceatlImg from "../../assets/images/Iceatl.png";
+import IcecartelImg from "../../assets/images/Icecartel.png";
+import MadeInChina2Img from "../../assets/images/Made in China 2.png";
+import MyliiaImg from "../../assets/images/Myliia.png";
+import OterBox2Img from "../../assets/images/OterBox 2.png";
+import SandcoImg from "../../assets/images/Sandco.png";
+import SocialplugImg from "../../assets/images/Socialplug.png";
+import SommarnoxImg from "../../assets/images/Sommarnox.png";
+import UproasImg from "../../assets/images/Uproas.png";
+
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap";
 
 // logos
 const LOGOS = [
-  { src: "/public/Adobe.png", alt: "Adobe" },
-  { src: "/public/Colgate.png", alt: "Colgate" },
-  { src: "/public/floxy logo.png", alt: "Floxy" },
-  { src: "/public/Huawei.png", alt: "Huawei" },
-  { src: "/public/Iceatl.png", alt: "Iceatl" },
-  { src: "/public/Icecartel.png", alt: "Icecartel" },
-  { src: "/public/Made in China 2.png", alt: "Made in China" },
-  { src: "/public/Myliia.png", alt: "Myliia" },
-  { src: "/public/OterBox 2.png", alt: "OterBox" },
-  { src: "/public/Sandco.png", alt: "Sandco" },
-  { src: "/public/Socialplug.png", alt: "Socialplug" },
-  { src: "/public/Sommarnox.png", alt: "Sommarnox", invert: true },
-  { src: "/public/Huawei.png", alt: "Uproas" },
+  { src: AdobeImg, alt: "Adobe" },
+  { src: ColgateImg, alt: "Colgate" },
+  { src: floxyLogoImg, alt: "Floxy" },
+  { src: HuaweiImg, alt: "Huawei" },
+  { src: IceatlImg, alt: "Iceatl" },
+  { src: IcecartelImg, alt: "Icecartel" },
+  { src: MadeInChina2Img, alt: "Made in China" },
+  { src: MyliiaImg, alt: "Myliia" },
+  { src: OterBox2Img, alt: "OterBox" },
+  { src: SandcoImg, alt: "Sandco" },
+  { src: SocialplugImg, alt: "Socialplug" },
+  { src: SommarnoxImg, alt: "Sommarnox", invert: true },
+  { src: UproasImg, alt: "Uproas" },
 ];
 
 export default function SocialMeloTrustedBy() {

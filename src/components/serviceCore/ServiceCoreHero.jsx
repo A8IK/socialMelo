@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import "./ServiceCoreHero.css";
 
+import CampaignsImg from "../../assets/images/Campaigns.png";
+import GeosImg from "../../assets/images/Geos.png";
+import IndustriesImg from "../../assets/images/Industries.png";
+import PlatformsImg from "../../assets/images/Platforms.png";
+
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap";
 
@@ -11,14 +16,14 @@ const CARDS = [
     name: "Campaigns",
     sub: "6 services",
     delay: "-4s",
-    img: "/public/Campaigns.png",
+    img: CampaignsImg,
   },
   {
     l: "P",
     name: "Platforms",
     sub: "5 services",
     delay: "-6s",
-    img: "/public/Platforms.png",
+    img: PlatformsImg,
     big: true,
   },
   {
@@ -26,7 +31,7 @@ const CARDS = [
     name: "Industries",
     sub: "6 services",
     delay: "0s",
-    img: "/public/Industries.png",
+    img: IndustriesImg,
     big: true,
   },
   {
@@ -34,7 +39,7 @@ const CARDS = [
     name: "Geos",
     sub: "27 cities",
     delay: "-2s",
-    img: "/public/Geos.png",
+    img: GeosImg,
   },
 ];
 

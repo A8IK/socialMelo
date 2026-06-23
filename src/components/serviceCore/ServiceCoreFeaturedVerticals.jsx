@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import "./ServiceCoreFeaturedVerticals.css";
 
+import AutomotiveImg from "../../assets/images/SocialMelo_for_Automotive.png";
+import CPGImg from "../../assets/images/SocialMelo_for_CPG.png";
+import FinanceImg from "../../assets/images/SocialMelo_for_Finance.png";
+import TravelImg from "../../assets/images/SocialMelo_for_Travel.png";
+
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap";
 
@@ -63,7 +68,7 @@ const ROWS = [
     side: "left",
     grad: "coral",
     icon: ICON.plane,
-    img: "/public/SocialMelo_for_Travel.png",
+    img: TravelImg,
     eyebrow: "SocialMelo for Travel",
     title: "Hotels, airlines, destinations & travel platforms.",
     desc: "Travel-cleared shoot capability and visa-ready creators for global campaigns. We've run launch campaigns for boutique hotels, regional tourism boards, and global OTAs.",
@@ -73,7 +78,7 @@ const ROWS = [
     side: "right",
     grad: "purple",
     icon: ICON.contrast,
-    img: "/public/SocialMelo_for_Automotive.png",
+    img: AutomotiveImg,
     eyebrow: "SocialMelo for Automotive",
     title: "OEMs, dealerships, parts & EVs.",
     desc: "Creators with verified automotive audiences and brand-safe content history. From product launches to EV-category education campaigns.",
@@ -83,7 +88,7 @@ const ROWS = [
     side: "left",
     grad: "coral",
     icon: ICON.diamond,
-    img: "/public/SocialMelo_for_CPG.png",
+    img: CPGImg,
     eyebrow: "SocialMelo for CPG",
     title: "FMCG brands, household goods, snacks.",
     desc: "UGC-heavy strategies built for shelf conversion and retail-media amplification. We've run programs for grocery launches, Amazon-first brands, and global FMCG portfolios.",
@@ -93,7 +98,7 @@ const ROWS = [
     side: "right",
     grad: "finance",
     icon: ICON.dollar,
-    img: "/public/SocialMelo_for_Finance.png",
+    img: FinanceImg,
     eyebrow: "SocialMelo for Finance",
     title: "Fintech, neobanks, crypto, investing platforms.",
     desc: "SEC and FCA-compliant creator content with built-in legal review. We've activated creators for neobank launches, crypto-exchange campaigns, and investing-app acquisition.",
