@@ -243,6 +243,14 @@ const Footer = () => {
                 Partners
               </Link>
               <Link
+                to="/service-core-page"
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}
+              >
+                Service Core Page
+              </Link>
+              <Link
                 to="/influencerMarketingServices"
                 style={footerStyles.link}
                 onMouseEnter={handleLinkHover}
