@@ -67,7 +67,8 @@
   line-height: 1.18;
   letter-spacing: -0.01em;
   font-size: clamp(2rem, 4.2vw, 3.1rem);
-  background: linear-gradient(
+  color: #ffffff;
+  /* background: linear-gradient(
     90deg,
     #743974 0%,
     #9c4b74 18%,
@@ -80,7 +81,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 .wy-lead {
   margin: 1.4rem auto 0;
