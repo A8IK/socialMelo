@@ -118,7 +118,7 @@ function App() {
               />
 
               <Route
-                path="/serviceCore"
+                path="/service-core-page"
                 element={
                   <>
                     <ServiceCorePage />
