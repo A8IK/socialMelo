@@ -38,7 +38,7 @@ export default function SocialMeloCTA() {
           audience, and your budget.
         </p>
         <a href="#" className="cta-btn">
-          <span className="cta-btn-text">Custom</span>
+          <span className="cta-btn-text">Request a proposal →</span>
         </a>
       </div>
     </section>

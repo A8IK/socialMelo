@@ -12,6 +12,11 @@
   color: #6f6678;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* fill viewport + center so leftover vertical space splits top/bottom
+     instead of pooling into one big gap below the stats */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 .smh-hero *,
 .smh-hero *::before,
@@ -21,13 +26,16 @@
 
 .smh-wrap {
   max-width: none;
+  width: 100%;
   margin: 0 auto;
-  padding: 96px 24px;
+  /* small side inset (was 24px) */
+  padding: 96px 40px;
 }
 .smh-grid {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: 64px;
+  /* pull the two columns a touch closer to shrink the central gap */
+  gap: 52px;
   align-items: center;
 }
 
@@ -51,11 +59,16 @@
 
 .smh-h1 {
   font-weight: 700;
-  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  font-size: clamp(2.7rem, 6.3vw, 4.05rem);
   line-height: 1.12;
   letter-spacing: -0.01em;
   color: #2d1963;
-  margin: 20px 0 0;
+  margin: 20px 0 35px 0;
+}
+/* heading line-break control: mobile breaks off by default (desktop keeps the
+   "Does" break for 2 lines). Toggled in the <=600px block below for 3 lines. */
+.smh-br-m {
+  display: none;
 }
 .smh-accent {
   background: linear-gradient(
@@ -72,11 +85,12 @@
 }
 
 .smh-p {
-  font-size: 1.1rem;
+  font-size: 1.18rem;
   line-height: 1.62;
   color: #2d1b69;
-  max-width: 495px;
+  max-width: 555px;
   margin: 22px 0 0;
+  text-align: justify;
 }
 
 .smh-btns {
@@ -103,15 +117,20 @@
   transition:
     transform 0.2s ease,
     background 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    box-shadow 0.25s ease;
 }
 .smh-btn-white {
   background: #fff;
   color: #db6072;
-  box-shadow: 0 10px 26px rgba(150, 90, 110, 0.18);
+  /* resting shadow sampled from the reference: ~7px offset, soft ~28px blur,
+     muted purple tint, lighter than the hover shadow */
+  box-shadow: 0 7px 28px rgba(120, 65, 105, 0.22);
 }
 .smh-btn-white:hover {
   transform: translateY(-2px);
+  /* shadow sampled from the reference: small offset, soft ~30px blur, warm plum tint */
+  box-shadow: 0 6px 30px rgba(120, 60, 95, 0.3);
 }
 .smh-btn-outline {
   border-color: #2d1963;
@@ -126,23 +145,23 @@
 .smh-divider {
   height: 1px;
   background: rgba(80, 55, 105, 0.18);
-  margin: 110px 0 0;
+  margin: 92px 0 0;
 }
 
 .smh-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 44px;
+  gap: 52px;
   margin-top: 37px;
 }
 .smh-stat-n {
   font-weight: 700;
-  font-size: 1.9rem;
+  font-size: 2.15rem;
   color: #2d1963;
   line-height: 1;
 }
 .smh-stat-l {
-  font-size: 0.97rem;
+  font-size: 1rem;
   color: #4b5563;
   margin-top: 6px;
 }
@@ -159,7 +178,7 @@
 .smh-cards-wrap {
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: 560px;
   margin: 0 auto;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -170,11 +189,11 @@
 .smh-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 24px;
 }
 .smh-card {
   position: relative;
-  min-height: 228px;
+  min-height: 272px;
   padding: 22px;
   border-radius: 20px;
   background: linear-gradient(
@@ -205,8 +224,8 @@
   overflow: hidden;
 }
 .smh-badge.has-img {
-  width: 180px;
-  height: 180px;
+  width: 214px;
+  height: 214px;
   max-width: 100%;
   border-radius: 18px;
   background: transparent;
@@ -216,8 +235,8 @@
   margin-right: auto;
 }
 .smh-badge.is-185 {
-  width: 187px;
-  height: 187px;
+  width: 222px;
+  height: 222px;
 }
 .smh-badge-img {
   width: 100%;
@@ -241,8 +260,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 92px;
-  height: 92px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 12px 30px rgba(120, 80, 120, 0.2);
@@ -253,12 +272,12 @@
 }
 .smh-disc-n {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.72rem;
   color: #dc6476;
   line-height: 1;
 }
 .smh-disc-l {
-  font-size: 0.56rem;
+  font-size: 0.62rem;
   letter-spacing: 2px;
   color: #847e8e;
   margin-top: 3px;
@@ -270,7 +289,7 @@
     gap: 48px;
   }
   .smh-wrap {
-    padding: 64px 24px;
+    padding: 64px 32px;
   }
 }
 @media (max-width: 520px) {
@@ -283,7 +302,7 @@
 }
 @media (max-width: 600px) {
   .smh-wrap {
-    padding: 60px 18px;
+    padding: 60px 20px;
   }
   .smh-eyebrow {
     justify-content: center;
@@ -291,6 +310,13 @@
   .smh-h1 {
     text-align: center;
     font-size: clamp(1.6rem, 8.5vw, 2.3rem);
+  }
+  /* mobile = 3 lines: turn on the mobile breaks, turn off the desktop break */
+  .smh-br-d {
+    display: none;
+  }
+  .smh-br-m {
+    display: inline;
   }
   .smh-p {
     text-align: center;
@@ -308,7 +334,7 @@
     grid-template-columns: 1fr;
   }
   .smh-badge.has-img {
-    width: 150px;
-    height: 150px;
+    width: 168px;
+    height: 168px;
   }
 }

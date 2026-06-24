@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ServiceCoreBrands from "./ServiceCoreBrands";
 import ServiceCoreDifference from "./ServiceCoreDifference";
 import ServiceCoreFaq from "./ServiceCoreFaq";
-import ServiceCoreFeaturedVerticals from "./ServiceCoreFeaturedVerticals";
+// import ServiceCoreFeaturedVerticals from "./ServiceCoreFeaturedVerticals";
 import ServiceCoreHero from "./ServiceCoreHero";
 import ServiceCoreHowWeWork from "./ServiceCoreHowWeWork";
 import ServiceCoreOurServices from "./ServiceCoreOurServices";
@@ -47,7 +47,7 @@ export default function ServiceCorePage() {
       <ServiceCoreBrands />
       <ServiceCoreDifference />
       <ServiceCoreHowWeWork />
-      <ServiceCoreFeaturedVerticals />
+      {/* <ServiceCoreFeaturedVerticals /> */}
       <ServiceCoreFaq />
       <ServiceCoreReadyToRun />
       <ServicveCoreTellUsAboutCampaign />

@@ -44,7 +44,7 @@ const CARDS = [
 ];
 
 const STATS = [
-  { n: "44", l: "Service pages" },
+  // { n: "44", l: "Service pages" },
   { n: "10,000+", l: "Verified creators" },
   { n: "30+", l: "Countries served" },
 ];
@@ -77,19 +77,19 @@ export default function SocialMeloHero() {
           <div className="smh-grid">
             {/* Left column */}
             <div>
-              <div className="smh-eyebrow">
+              {/* <div className="smh-eyebrow">
                 <span className="smh-line" />
                 <span className="smh-eyebrow-text">What We Do</span>
-              </div>
+              </div> */}
 
+              {/* Desktop = 2 lines (break after "Does"). Mobile = 3 lines
+                  (breaks after "SocialMelo" and after "and"). The breaks toggle
+                  by viewport via smh-br-d / smh-br-m. */}
               <h1 className="smh-h1">
-                Everything
-                <br />
-                SocialMelo Does for
-                <br />
-                <span className="smh-h1">Brands</span> and
-                <br />
-                <span className="smh-h1">Creators.</span>
+                Everything SocialMelo <br className="smh-br-m" />
+                Does <br className="smh-br-d" />
+                for Brands and <br className="smh-br-m" />
+                Creators.
               </h1>
 
               <p className="smh-p">
@@ -102,9 +102,9 @@ export default function SocialMeloHero() {
                 <a href="#contact" className="smh-btn smh-btn-white">
                   <span className="smh-accent">Request a Custom Proposal</span>
                 </a>
-                <a href="#services" className="smh-btn smh-btn-outline">
+                {/* <a href="#services" className="smh-btn smh-btn-outline">
                   Browse Services
-                </a>
+                </a> */}
               </div>
 
               <div className="smh-divider" />
@@ -153,10 +153,10 @@ export default function SocialMeloHero() {
                   </div>
                 ))}
               </div>
-              <div className="smh-disc">
+              {/* <div className="smh-disc">
                 <span className="smh-disc-n">44</span>
                 <span className="smh-disc-l">SERVICES</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

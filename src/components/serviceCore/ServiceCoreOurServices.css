@@ -189,9 +189,12 @@
   z-index: 0;
   pointer-events: none;
 }
-.smo-card > h3,
-.smo-card > p,
-.smo-card > a {
+/* lift card content above the ::before gradient. Target by class (not tag) so
+   the title (an <h4>) is included, otherwise the gradient paints over it on
+   hover and the title goes invisible. */
+.smo-card > .smo-card-t,
+.smo-card > .smo-card-d,
+.smo-card > .smo-card-cta {
   position: relative;
   z-index: 1;
 }

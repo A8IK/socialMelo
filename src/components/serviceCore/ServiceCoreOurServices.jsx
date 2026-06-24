@@ -4,50 +4,51 @@ import "./ServiceCoreOurServices.css";
 const FONT_HREF =
   "https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap";
 
-const FILTERS = ["All", "Campaigns", "Platforms", "Industries", "Geos"];
+// "Campaigns"//
+const FILTERS = ["All", "Platforms", "Industries", "GEOs"];
 
 const CATEGORIES = [
-  {
-    key: "Campaigns",
-    num: "01",
-    title: "Campaigns & Creator Programs",
-    count: "6 services",
-    desc: "The work most brands come to us for: identify the right creators, brief them, ship the content, measure the outcome. Single-platform campaigns, multi-platform launches, and self-serve marketplace access.",
-    services: [
-      {
-        featured: true,
-        badge: "FLAGSHIP",
-        title: "Influencer Marketing Services",
-        desc: "Full-service campaigns across every platform, geo, and vertical, our flagship offering.",
-        cta: "Explore Influencer Marketing",
-      },
-      {
-        title: "UGC Creators",
-        desc: "Raw user-generated content with full usage rights. Files go straight to your ad accounts.",
-        cta: "Explore UGC Creators",
-      },
-      {
-        title: "Influencer Shoutouts",
-        desc: "Single-creator paid posts and Instagram shoutouts. Fast turnaround, fixed pricing.",
-        cta: "Explore Shoutouts",
-      },
-      {
-        title: "Influencer Marketplace",
-        desc: "Self-serve access to the verified creator database. Run campaigns yourself, on your timeline.",
-        cta: "Explore Marketplace",
-      },
-      {
-        title: "Influencer Giveaways",
-        desc: "Multi-creator giveaway campaigns for follower growth and email-list build.",
-        cta: "Explore Giveaways",
-      },
-      {
-        title: "Digital Services for Creators",
-        desc: "Profile growth, content production support, and monetization tools for creators on our roster.",
-        cta: "Explore Creator Services",
-      },
-    ],
-  },
+  // {
+  //   key: "Campaigns",
+  //   num: "01",
+  //   title: "Campaigns & Creator Programs",
+  //   count: "6 services",
+  //   desc: "The work most brands come to us for: identify the right creators, brief them, ship the content, measure the outcome. Single-platform campaigns, multi-platform launches, and self-serve marketplace access.",
+  //   services: [
+  //     {
+  //       featured: true,
+  //       badge: "FLAGSHIP",
+  //       title: "Influencer Marketing Services",
+  //       desc: "Full-service campaigns across every platform, geo, and vertical, our flagship offering.",
+  //       cta: "Explore Influencer Marketing",
+  //     },
+  //     {
+  //       title: "UGC Creators",
+  //       desc: "Raw user-generated content with full usage rights. Files go straight to your ad accounts.",
+  //       cta: "Explore UGC Creators",
+  //     },
+  //     {
+  //       title: "Influencer Shoutouts",
+  //       desc: "Single-creator paid posts and Instagram shoutouts. Fast turnaround, fixed pricing.",
+  //       cta: "Explore Shoutouts",
+  //     },
+  //     {
+  //       title: "Influencer Marketplace",
+  //       desc: "Self-serve access to the verified creator database. Run campaigns yourself, on your timeline.",
+  //       cta: "Explore Marketplace",
+  //     },
+  //     {
+  //       title: "Influencer Giveaways",
+  //       desc: "Multi-creator giveaway campaigns for follower growth and email-list build.",
+  //       cta: "Explore Giveaways",
+  //     },
+  //     {
+  //       title: "Digital Services for Creators",
+  //       desc: "Profile growth, content production support, and monetization tools for creators on our roster.",
+  //       cta: "Explore Creator Services",
+  //     },
+  //   ],
+  // },
   {
     key: "Platforms",
     num: "02",
@@ -122,7 +123,7 @@ const CATEGORIES = [
     ],
   },
   {
-    key: "Geos",
+    key: "GEOs",
     num: "04",
     title: "Geographic Coverage",
     count: "27 cities, 16 countries",
@@ -386,7 +387,7 @@ export default function SocialMeloOurServices() {
             <span className="smo-line" />
             <span className="smo-eyebrow-t">Our Services</span>
           </div>
-          <h2 className="smo-h2">44 service pages across 4 categories.</h2>
+          <h2 className="smo-h2">Browse our Influencer Marketing Services</h2>
           <p className="smo-sub">
             Find what you need fast. Filter by category, or browse all four.
           </p>
@@ -407,9 +408,9 @@ export default function SocialMeloOurServices() {
         {shown.map((cat) => (
           <div key={cat.key} className="smo-cat">
             <div className="smo-cat-head">
-              <span className="smo-num">{cat.num}</span>
+              {/* <span className="smo-num">{cat.num}</span> */}
               <h3 className="smo-cat-title">{cat.title}</h3>
-              <span className="smo-cat-count">{cat.count}</span>
+              {/* <span className="smo-cat-count">{cat.count}</span> */}
             </div>
             <p className="smo-cat-desc">{cat.desc}</p>
             {cat.type === "geo" ? renderGeo(cat) : renderCards(cat)}

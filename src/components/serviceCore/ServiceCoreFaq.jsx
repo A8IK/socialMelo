@@ -7,11 +7,11 @@ const FONT_HREF =
 const FAQS = [
   {
     q: "What does SocialMelo actually do?",
-    a: "SocialMelo runs end-to-end influencer marketing — from creator discovery and brief writing through contracts, content production, paid amplification, and final reporting. We work across TikTok, Instagram, YouTube, Facebook, and Pinterest, in 30+ countries, for brands across CPG, finance, travel, beauty, fashion, and more.",
+    a: "SocialMelo runs end-to-end influencer marketing from creator discovery and brief writing through contracts, content production, paid amplification, and final reporting. We work across TikTok, Instagram, YouTube, Facebook, and Pinterest, in 30+ countries, for brands across CPG, finance, travel, beauty, fashion, and more.",
   },
   {
     q: "How is SocialMelo different from a marketplace like Aspire or Upfluence?",
-    a: "Marketplaces are self-serve creator databases — you do the discovery, outreach, contracts, and reporting yourself. SocialMelo is a full-service agency on top of our proprietary creator network. You get a dedicated team running every part of the campaign, and our creators are vetted directly (not scraped from public APIs).",
+    a: "Marketplaces are self-serve creator databases you do the discovery, outreach, contracts, and reporting yourself. SocialMelo is a full-service agency on top of our proprietary creator network. You get a dedicated team running every part of the campaign, and our creators are vetted directly (not scraped from public APIs).",
   },
   {
     q: "How much does a creator campaign cost?",
@@ -19,15 +19,15 @@ const FAQS = [
   },
   {
     q: "Can you handle a campaign end-to-end, or do I need to manage creators myself?",
-    a: "Both options exist. Full-service: we handle every step from strategy to reporting — that's the flagship Influencer Marketing Services offering. Self-serve: use our Marketplace to access the vetted creator database and run campaigns yourself. Most brands pick full-service for first campaigns, then move some work in-house once they know what works.",
+    a: "Both options exist. Full-service: we handle every step from strategy to reporting that's the flagship Influencer Marketing Services offering. Self-serve: use our Marketplace to access the vetted creator database and run campaigns yourself. Most brands pick full-service for first campaigns, then move some work in-house once they know what works.",
   },
   {
     q: "Which platforms do you cover?",
-    a: "TikTok, Instagram, YouTube, Facebook, and Pinterest are our core five with dedicated service pages. We also run campaigns on LinkedIn (for B2B brands), Snapchat, and emerging platforms like XiaoHongShu for APAC campaigns — request these directly via the contact form.",
+    a: "TikTok, Instagram, YouTube, Facebook, and Pinterest are our core five with dedicated service pages. We also run campaigns on LinkedIn (for B2B brands), Snapchat, and emerging platforms like XiaoHongShu for APAC campaigns request these directly via the contact form.",
   },
   {
     q: "Do you work with agencies as well as direct brands?",
-    a: "Yes — agency partnerships are a meaningful portion of our work. We white-label creator discovery, vetting, contract handling, and reporting for full-service marketing agencies that don't want to build an in-house influencer practice. Reach out via the form, select Agency as your account type, and we'll send you our agency partnership terms.",
+    a: "Yes, agency partnerships are a meaningful portion of our work. We white-label creator discovery, vetting, contract handling, and reporting for full-service marketing agencies that don't want to build an in-house influencer practice. Reach out via the form, select Agency as your account type, and we'll send you our agency partnership terms.",
   },
   {
     q: "How fast can a campaign launch?",

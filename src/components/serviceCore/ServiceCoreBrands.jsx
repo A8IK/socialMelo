@@ -32,7 +32,7 @@ const LOGOS = [
   { src: SandcoImg, alt: "Sandco" },
   { src: SocialplugImg, alt: "Socialplug" },
   { src: SommarnoxImg, alt: "Sommarnox", invert: true },
-  { src: UproasImg, alt: "Uproas" },
+  { src: UproasImg, alt: "Uproas", invert: true },
 ];
 
 export default function SocialMeloTrustedBy() {
@@ -79,7 +79,7 @@ export default function SocialMeloTrustedBy() {
   return (
     <section className="tm">
       <div className="tm-wrap">
-        <p className="tm-head">Trusted by brands across 30+ countries</p>
+        <p className="tm-head">Trusted by Leading Brands in 70+ Countries</p>
         <div className="tm-marquee">
           <div className="tm-track">
             {LOGOS.map((l, i) => renderLogo(l, "a" + i, false))}

@@ -17,17 +17,20 @@
   box-sizing: border-box;
 }
 .tm-wrap {
-  padding: 75px 0;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 40px 24px 70px 24px;
 }
 
 .tm-head {
   text-align: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2.6px;
-  text-transform: uppercase;
-  color: #7e7484;
+  font-size: 2.5rem;
+  font-weight: 600;
+  /* letter-spacing: 0.2px; */
+  /* text-transform: uppercase; */
+  color: #3a1c71;
   margin: 0 0 30px;
+  padding: 0 1rem;
 }
 
 .tm-marquee {
@@ -51,6 +54,7 @@
   display: flex;
   width: max-content;
   align-items: center;
+  margin-top: 1.6rem;
   animation: tmScroll 38s linear infinite;
 }
 .tm-marquee:hover .tm-track {
@@ -72,15 +76,16 @@
   align-items: center;
 }
 .tm-logo {
-  height: 46px;
+  height: 56px;
   width: auto;
-  max-width: 190px;
+  max-width: 230px;
   object-fit: contain;
   display: block;
   user-select: none;
   -webkit-user-drag: none;
   filter: grayscale(1);
-  opacity: 0.72;
+  /* resting state matches the reference: solid grayscale (was faded at 0.72) */
+  opacity: 1;
   transition:
     filter 0.28s ease,
     opacity 0.28s ease,
@@ -119,15 +124,26 @@
     transform: none;
   }
 }
+/* heading sizing for tablet (desktop stays 2.5rem) */
+@media (max-width: 768px) {
+  .tm-head {
+    font-size: 2rem;
+  }
+}
 @media (max-width: 560px) {
   .tm-wrap {
     padding: 56px 0;
+  }
+  /* mobile heading: smaller so it doesn't dominate the section */
+  .tm-head {
+    font-size: 1.5rem;
+    margin-bottom: 22px;
   }
   .tm-brand {
     padding: 0 28px;
   }
   .tm-logo {
-    height: 34px;
-    max-width: 140px;
+    height: 40px;
+    max-width: 165px;
   }
 }

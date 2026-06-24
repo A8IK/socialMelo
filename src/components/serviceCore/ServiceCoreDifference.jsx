@@ -8,7 +8,7 @@ const ITEMS = [
   {
     num: "01",
     title: "Two-Sided Platform, Not Just an Agency",
-    desc: "SocialMelo is both an agency and a platform — the creators we work with are on our roster, not bought from a third-party marketplace. Faster shortlists, direct relationships, enforceable contract terms. Most agencies broker creators. We onboard them.",
+    desc: "SocialMelo is both an agency and a platform the creators we work with are on our roster, not bought from a third-party marketplace. Faster shortlists, direct relationships, enforceable contract terms. Most agencies broker creators. We onboard them.",
   },
   {
     num: "02",
@@ -18,7 +18,7 @@ const ITEMS = [
   {
     num: "03",
     title: "Transparent Pricing, No Markup Games",
-    desc: "We publish budget tiers (Starter / Growth / Enterprise) on every campaign page. No hidden markup on creator fees — you see what the creator gets and what our fee is. Brands waste a lot of money on opaque-bid agency pricing; we don't operate that way.",
+    desc: "We publish budget tiers (Starter / Growth / Enterprise) on every campaign page. No hidden markup on creator fees you see what the creator gets and what our fee is. Brands waste a lot of money on opaque-bid agency pricing; we don't operate that way.",
   },
   {
     num: "04",

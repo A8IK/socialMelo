@@ -33,22 +33,36 @@
 
 .cta-h2 {
   color: #fff;
+  -webkit-text-fill-color: #fff;
   font-weight: 700;
   font-size: clamp(2.1rem, 5vw, 3.3rem);
   line-height: 1.12;
   letter-spacing: -0.015em;
   margin: 0;
 }
-.cta-sub {
-  color: rgba(255, 255, 255, 0.92);
+
+/* Paragraph: forced visible. Higher specificity (.cta .cta-sub) + !important on
+   the visibility-critical props so it wins against whatever global/app rule is
+   currently hiding it (transparent color/fill, opacity:0, or visibility:hidden). */
+.cta .cta-sub {
+  color: rgba(255, 255, 255, 0.92) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.92) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  text-indent: 0 !important;
   font-size: clamp(1rem, 1.6vw, 1.12rem);
   line-height: 1.55;
   max-width: 520px;
-  margin: 22px auto 0;
+  margin: 20px auto 0;
+  padding-bottom: 8px;
 }
 .cta-btn {
   display: inline-block;
-  margin-top: 34px;
+  margin-top: 48px;
+
   background: #fff;
   color: #db6072;
   font-weight: 700;
