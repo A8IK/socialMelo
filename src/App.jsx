@@ -59,6 +59,7 @@ import Error404 from "./components/Error404";
 import TiktokDownloader from "./components/ToolsPage/TikTokDownloader";
 import TwitterDownloader from "./components/ToolsPage/TwitterDownloader";
 import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
+import NewYorkPage from "./components/newYork/NewYorkPage";
 import PartnersFaq from "./components/partnersPage/PartnersFaq";
 import PartnersProcess from "./components/partnersPage/PartnersProcess";
 import Resources from "./components/partnersPage/Resources";
@@ -131,6 +132,15 @@ function App() {
                 element={
                   <>
                     <InfluencerMarketingServicesPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/new-york"
+                element={
+                  <>
+                    <NewYorkPage />
                   </>
                 }
               />
