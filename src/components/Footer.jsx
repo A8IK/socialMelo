@@ -258,6 +258,14 @@ const Footer = () => {
               >
                 Influencer Marketing Page
               </Link>
+              <Link
+                to="/new-york"
+                style={footerStyles.link}
+                onMouseEnter={handleLinkHover}
+                onMouseLeave={handleLinkLeave}
+              >
+                New York Page
+              </Link>
             </div>
           </div>
 
