@@ -49,7 +49,7 @@ export default function SocialMeloHowWeWork() {
   }, []);
 
   return (
-    <section className="hw">
+    <section className="hw-ny">
       <div className="hw-wrap">
         <div className="hw-head">
           <div className="hw-eyebrow">
@@ -64,7 +64,7 @@ export default function SocialMeloHowWeWork() {
 
         <div className="hw-grid">
           {STEPS.map((s) => (
-            <div key={s.num} className="hw-card">
+            <div key={s.num} className="hw-card-ny">
               <div className="hw-badge">{s.num}</div>
               <h3 className="hw-card-t">{s.title}</h3>
               <p className="hw-card-d">{s.desc}</p>

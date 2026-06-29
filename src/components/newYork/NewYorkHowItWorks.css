@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap");
 
-.hw {
+.hw-ny {
   font-family:
     "Krub",
     ui-sans-serif,
@@ -10,16 +10,11 @@
     sans-serif;
   color: #8e8794;
   -webkit-font-smoothing: antialiased;
-  background: #fff8f2;
-  background-image: radial-gradient(
-    900px 440px at 86% -12%,
-    #ffe6d3 0%,
-    rgba(255, 248, 242, 0) 60%
-  );
+  background: #fff;
 }
-.hw *,
-.hw *::before,
-.hw *::after {
+.hw-ny *,
+.hw-ny *::before,
+.hw-ny *::after {
   box-sizing: border-box;
 }
 .hw-wrap {
@@ -92,8 +87,8 @@
   gap: 22px;
   margin-top: 56px;
 }
-.hw-card {
-  background: #fff;
+.hw-card-ny {
+  background: #fff8f2;
   border: 1px solid #f2ecef;
   border-radius: 18px;
   padding: 28px 26px 30px;
@@ -103,7 +98,7 @@
     box-shadow 0.28s ease,
     border-color 0.28s ease;
 }
-.hw-card:hover {
+.hw-card-ny:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 60px rgba(150, 90, 120, 0.18);
   border-color: #ebd9de;
@@ -125,7 +120,7 @@
     transform 0.28s ease,
     box-shadow 0.28s ease;
 }
-.hw-card:hover .hw-badge {
+.hw-card-ny:hover .hw-badge {
   transform: translateY(-2px) scale(1.06);
   box-shadow: 0 14px 28px rgba(190, 93, 124, 0.42);
 }
@@ -144,14 +139,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hw-card,
+  .hw-card-ny,
   .hw-badge {
     transition: none;
   }
-  .hw-card:hover {
+  .hw-card-ny:hover {
     transform: none;
   }
-  .hw-card:hover .hw-badge {
+  .hw-card-ny:hover .hw-badge {
     transform: none;
   }
 }
@@ -168,7 +163,7 @@
   .hw-grid {
     grid-template-columns: 1fr;
   }
-  .hw-card {
+  .hw-card-ny {
     text-align: center;
   }
   .hw-badge {
