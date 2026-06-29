@@ -28,7 +28,7 @@ export default function NewYorkPage() {
       <NewWorkHero />
       <NewYorkShowcase />
       <NewYorkOnTheGround />
-      <NewYorkWhereOurNYC />
+      {/* <NewYorkWhereOurNYC /> */}
       <NewYorkHowItWorks />
       <NewYorkFAQ />
       <NewYorkLookingForCity />

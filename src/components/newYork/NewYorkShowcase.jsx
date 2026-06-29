@@ -215,7 +215,8 @@ export default function SocialMeloNYCShowcase() {
             </div>
           </div>
           <div className="nys-count">
-            <strong>{visible.length}</strong> of 850+ NYC creators
+            {/* temporary hide */}
+            {/* <strong>{visible.length}</strong> of 850+ NYC creators */}
           </div>
         </div>
 
@@ -265,10 +266,11 @@ export default function SocialMeloNYCShowcase() {
           <a href="#contact" className="nys-btn-solid">
             Request the Full NYC Roster →
           </a>
-          <p className="nys-note">
+          {/* temporary hide */}
+          {/* <p className="nys-note">
             Showing 8 sample creators. Full roster of 850+ shared after your
             brief call, matched to your campaign.
-          </p>
+          </p> */}
         </div>
       </div>
     </section>
