@@ -27,7 +27,7 @@ export default function SocialMeloNYCHero() {
 
   return (
     <section className="nyhero">
-      <div className="nyhero-container">
+      <div className="nyhero-container-ny">
         <div className="nyhero-inner">
           <span className="nyhero-eyebrow">📍 New York City</span>
           <h1>Hire New York's Best Creators.</h1>
