@@ -20,8 +20,8 @@ export default function SocialMeloNYCHeader() {
           <a href="/">Home</a>
           <span className="nyh-sep">›</span>
           <a href="/services">Services</a>
-          <span className="nyh-sep">›</span>
-          <a href="/services/influencer-marketing">Influencer Marketing</a>
+          {/* <span className="nyh-sep">›</span> */}
+          {/* <a href="/services/influencer-marketing">Influencer Marketing</a> */}
           <span className="nyh-sep">›</span>
           <span className="nyh-current">New York</span>
         </div>
