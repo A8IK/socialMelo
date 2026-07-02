@@ -21,7 +21,7 @@ export default function SocialMeloNYCFinalCTA() {
           Get a custom proposal in 48 hours, built around your brand, your NYC
           audience, and your budget.
         </p>
-        <a href="#contact" className="nyfc-btn">
+        <a href="/book-a-call" className="nyfc-btn">
           <span>Get a Custom Quote →</span>
         </a>
       </div>
