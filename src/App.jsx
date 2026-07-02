@@ -58,6 +58,7 @@ import ProfileRoute from "./components/profile/ProfileRoute";
 import Error404 from "./components/Error404";
 import TiktokDownloader from "./components/ToolsPage/TikTokDownloader";
 import TwitterDownloader from "./components/ToolsPage/TwitterDownloader";
+import BookACallPage from "./components/bookACall/BookACallPage";
 import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
 import NewYorkPage from "./components/newYork/NewYorkPage";
 import PartnersFaq from "./components/partnersPage/PartnersFaq";
@@ -137,10 +138,19 @@ function App() {
               />
 
               <Route
-                path="/new-york"
+                path="/services/new-york"
                 element={
                   <>
                     <NewYorkPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/book-a-call"
+                element={
+                  <>
+                    <BookACallPage />
                   </>
                 }
               />
