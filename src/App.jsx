@@ -61,6 +61,7 @@ import TwitterDownloader from "./components/ToolsPage/TwitterDownloader";
 import BookACallPage from "./components/bookACall/BookACallPage";
 import ClevelandOhPage from "./components/clevelandOh/ClevelandOhPage";
 import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
+import KansasCityKsPage from "./components/kansasCityKs/KansasCityKsPage";
 import LosAngelesPage from "./components/losAngeles/LosAngelesPage";
 import NewYorkPage from "./components/newYork/NewYorkPage";
 import PartnersFaq from "./components/partnersPage/PartnersFaq";
@@ -165,6 +166,16 @@ function App() {
                   </>
                 }
               />
+
+              <Route
+                path="/services/influencer-marketing-kansas-city"
+                element={
+                  <>
+                    <KansasCityKsPage />
+                  </>
+                }
+              />
+
               <Route
                 path="/book-a-call"
                 element={
