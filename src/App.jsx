@@ -59,6 +59,7 @@ import Error404 from "./components/Error404";
 import TiktokDownloader from "./components/ToolsPage/TikTokDownloader";
 import TwitterDownloader from "./components/ToolsPage/TwitterDownloader";
 import BookACallPage from "./components/bookACall/BookACallPage";
+import ClevelandOhPage from "./components/clevelandOh/ClevelandOhPage";
 import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
 import LosAngelesPage from "./components/losAngeles/LosAngelesPage";
 import NewYorkPage from "./components/newYork/NewYorkPage";
@@ -156,6 +157,14 @@ function App() {
                 }
               />
 
+              <Route
+                path="/services/influencer-marketing-cleveland"
+                element={
+                  <>
+                    <ClevelandOhPage />
+                  </>
+                }
+              />
               <Route
                 path="/book-a-call"
                 element={
