@@ -59,6 +59,7 @@ import Error404 from "./components/Error404";
 import TiktokDownloader from "./components/ToolsPage/TikTokDownloader";
 import TwitterDownloader from "./components/ToolsPage/TwitterDownloader";
 import BookACallPage from "./components/bookACall/BookACallPage";
+import ChicagoPage from "./components/chicago/ChicagoPage";
 import ClevelandOhPage from "./components/clevelandOh/ClevelandOhPage";
 import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
 import KansasCityKsPage from "./components/kansasCityKs/KansasCityKsPage";
@@ -172,6 +173,15 @@ function App() {
                 element={
                   <>
                     <KansasCityKsPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/services/influencer-marketing-chicago"
+                element={
+                  <>
+                    <ChicagoPage />
                   </>
                 }
               />
