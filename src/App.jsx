@@ -72,6 +72,7 @@ import SeamlessIntegrations from "./components/partnersPage/SeamlessIntegration"
 import TransformPartnership from "./components/partnersPage/TransformPartnership";
 import TrustedLeaders from "./components/partnersPage/TrustedLeaders";
 import ServiceCorePage from "./components/serviceCore/ServiceCorePage";
+import MiamiFlPage from "./components/miamiFl/MiamiFlPage";
 
 function App() {
   return (
@@ -182,6 +183,15 @@ function App() {
                 element={
                   <>
                     <ChicagoPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/services/influencer-marketing-miami"
+                element={
+                  <>
+                    <MiamiFlPage />
                   </>
                 }
               />
