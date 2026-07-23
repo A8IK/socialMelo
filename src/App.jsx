@@ -138,7 +138,7 @@ function App() {
               />
 
               <Route
-                path="/new-york"
+                path="/services/influencer-marketing-new-york"
                 element={
                   <>
                     <NewYorkPage />
