@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import RazuTasneemImg from "../../assets/images/tasnim-abedeen-raju.jpg";
 
 const AGENDAS = {
   brand: {
@@ -31,23 +32,23 @@ const AGENDAS = {
     items: [
       [
         "1",
-        "Your client and the brief",
-        "Tell us about the brand you are running this for and the outcome they need, so we can talk specifics, not generalities.",
+        "You and your goals",
+        "Tell us about your niche, your audience, and the brand work you want, so we can talk specifics, not generalities.",
       ],
       [
         "2",
-        "How we work with agencies",
-        "White-label or co-branded, creator sourcing only or full management. We shape the engagement around how your agency operates.",
+        "How SocialMelo works for creators",
+        "Joining is free. You set your own rates and pay a small fee only when a brand books and pays you. We walk you through the whole flow.",
       ],
       [
         "3",
-        "Margins and pricing",
-        "How agency pricing works, where your margin sits, and what a realistic budget looks like for your client.",
+        "Rates and getting booked",
+        "How brands find and book you on SocialMelo, what makes a profile convert, and how to price so you land the right briefs.",
       ],
       [
         "4",
         "An honest fit read",
-        "Whether we are the right creator partner for this client and brief. If we are not a fit, we will point you in a better direction.",
+        "Whether SocialMelo is the right platform for where you are right now. If we are not a fit, we will point you in a better direction.",
       ],
     ],
   },
@@ -58,6 +59,9 @@ const PROOF = [
   { pn: "48h", pl: "To a matched shortlist" },
   { pn: "$0", pl: "Cost for the call" },
 ];
+
+// Set the host headshot path here (leave "" to show the RT initials fallback).
+const HOST_IMG = RazuTasneemImg;
 
 const DAYS = Array.from({ length: 30 }, (_, i) => i + 1);
 const AVAIL = new Set([11, 12, 16, 17, 18, 19, 23, 24, 25, 26, 30]);
@@ -136,7 +140,8 @@ export default function SocialMeloBookBooking() {
         .bkb-ag-text span { color:var(--text-muted); font-size:14px; line-height:1.55; }
 
         .bkb-host { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow-sm); display:flex; gap:18px; align-items:center; margin-bottom:32px; margin-top:18px; }
-        .bkb-host-photo { width:64px; height:64px; border-radius:50%; background:var(--brand-gradient); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--white); font-size:22px; font-weight:700; box-shadow:0 4px 12px rgba(58,28,113,0.25); }
+        .bkb-host-photo { width:64px; height:64px; border-radius:50%; background:var(--brand-gradient); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--white); font-size:22px; font-weight:700; box-shadow:0 4px 12px rgba(58,28,113,0.25); position:relative; overflow:hidden; }
+        .bkb-host-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%; }
         .bkb-host-name { font-size:16px; font-weight:700; color:var(--text); }
         .bkb-host-role { font-size:13px; color:var(--rose); font-weight:600; margin-bottom:6px; }
         .bkb-host-bio { font-size:13px; color:var(--text-muted); line-height:1.55; }
@@ -235,7 +240,7 @@ export default function SocialMeloBookBooking() {
                 aria-selected={persona === "agency"}
                 onClick={() => setPersona("agency")}
               >
-                I'm an Agency
+                I'm an Creator
               </button>
             </div>
 
@@ -260,9 +265,22 @@ export default function SocialMeloBookBooking() {
               Who you'll meet
             </span>
             <div className="bkb-host">
-              <div className="bkb-host-photo">SM</div>
+              <div className="bkb-host-photo">
+                {HOST_IMG && (
+                  <img
+                    className="bkb-host-img"
+                    src={HOST_IMG}
+                    alt="Razu Tasneem"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                )}
+                RT
+              </div>
               <div className="bkb-host-info">
-                <div className="bkb-host-name">[Strategist name]</div>
+                <div className="bkb-host-name">Razu Tasneem</div>
                 <div className="bkb-host-role">
                   Creator Strategy Lead, SocialMelo
                 </div>
@@ -306,9 +324,9 @@ export default function SocialMeloBookBooking() {
                   </svg>
                 </div>
                 <div>
-                  <div className="bkb-ph-title">Creator Strategy Call</div>
+                  <div className="bkb-ph-title">Book free Strategy Call</div>
                   <div className="bkb-ph-meta">
-                    Video call · SocialMelo team
+                    Join a call with SocialMelo team
                   </div>
                 </div>
               </div>
