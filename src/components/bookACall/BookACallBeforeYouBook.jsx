@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import "./BookACallBeforeYouBook.css";
 
 const CARDS = [
   {
@@ -73,71 +74,6 @@ export default function SocialMeloBookObjections() {
 
   return (
     <section className="bko">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap');
-
-        .bko {
-          --rose:#D76D77; --purple:#3A1C71; --white:#FFFFFF;
-          --brand-gradient: linear-gradient(135deg, #FFAF7B, #D76D77, #3A1C71);
-          --bg-warm:#FFF7F2; --surface:#FFFFFF;
-          --text:#2D1B69; --text-muted:#6B5B83;
-          --border:rgba(58,28,113,0.10);
-          --shadow-sm:0 2px 8px rgba(58,28,113,0.06);
-          --shadow-warm:0 18px 42px rgba(180,110,130,0.18);
-          --radius:20px; --container:1200px;
-          font-family:'Krub',system-ui,sans-serif;
-          display:block; background:var(--bg-warm); padding:90px 0; color:var(--text-muted);
-        }
-        .bko *,.bko *::before,.bko *::after { box-sizing:border-box; }
-        .bko-container { max-width:var(--container); margin:0 auto; padding:0 32px; }
-
-        .bko-head { text-align:center; max-width:640px; margin:0 auto 56px; }
-        .bko-eyebrow {
-          font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase;
-          color:var(--rose); display:inline-flex; align-items:center; justify-content:center; gap:12px;
-        }
-        .bko-eyebrow::before { content:""; display:inline-block; width:28px; height:1.5px; background:var(--rose); }
-        .bko-head h2 { font-size:clamp(28px,3.4vw,40px); margin:18px 0 0; font-weight:700; letter-spacing:-0.02em; background:linear-gradient(90deg,#743974 0%,#9c4b74 18%,#bc5b76 33%,#d96c76 48%,#e37b76 62%,#eb8877 77%,#f09478 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
-
-        .bko-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-        .bko-card {
-          background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-          padding:32px; box-shadow:var(--shadow-sm);
-          opacity:0; transform:translateY(28px);
-          transition:opacity 0.5s ease, transform 0.4s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-          will-change:transform, opacity;
-        }
-        .bko-card.in { opacity:1; transform:translateY(0); }
-        .bko-card.in:hover {
-          transform:translateY(-6px);
-          box-shadow:var(--shadow-warm);
-          border-color:var(--rose);
-        }
-        .bko-icon {
-          width:48px; height:48px; border-radius:14px; background:var(--brand-gradient);
-          display:flex; align-items:center; justify-content:center; margin-bottom:20px;
-          box-shadow:0 4px 12px rgba(58,28,113,0.2);
-          transition:transform 0.28s ease, box-shadow 0.28s ease;
-        }
-        .bko-icon svg { width:24px; height:24px; stroke:var(--white); }
-        .bko-card.in:hover .bko-icon { transform:translateY(-2px) scale(1.08); box-shadow:0 10px 24px rgba(58,28,113,0.32); }
-        .bko-card h4 { font-size:18px; color:var(--text); margin:0 0 10px; font-weight:700; letter-spacing:-0.02em; }
-        .bko-card p { color:var(--text-muted); font-size:14px; line-height:1.65; margin:0; }
-
-        @media (max-width:980px) { .bko-grid { grid-template-columns:1fr; } }
-        @media (max-width:640px) {
-          .bko { padding:56px 0; }
-          .bko-container { padding:0 20px; }
-          .bko-card { text-align:center; }
-          .bko-icon { margin-left:auto; margin-right:auto; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .bko-card { opacity:1; transform:none; transition:none; }
-          .bko-card.in:hover { transform:none; box-shadow:var(--shadow-warm); }
-          .bko-icon, .bko-card.in:hover .bko-icon { transition:none; transform:none; }
-        }
-      `}</style>
-
       <div className="bko-container">
         <div className="bko-head">
           <span className="bko-eyebrow">Before you book</span>
