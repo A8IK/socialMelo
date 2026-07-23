@@ -8,16 +8,35 @@ import NewYorkOnTheGround from "./NewYorkOnTheGround";
 import NewYorkReadyToRun from "./NewYorkReadyToRun";
 import NewYorkShowcase from "./NewYorkShowcase";
 import NewYorkTellUsAboutCampaign from "./NewYorkTellUsAboutCampaign";
-import NewYorkWhereOurNYC from "./NewYorkWhereOurNYC";
 
 export default function NewYorkPage() {
   useEffect(() => {
+    // Title
+    const prevTitle = document.title;
+    document.title = "New York Influencer Marketing Agency | SocialMelo";
+
+    // Description
+    let description = document.querySelector('meta[name="description"]');
+    const createdDesc = !description;
+    if (!description) {
+      description = document.createElement("meta");
+      description.name = "description";
+      document.head.appendChild(description);
+    }
+    const prevDesc = description.content;
+    description.content =
+      "Partner with a leading New York influencer marketing agency. Access 850+ vetted NYC creators and launch high-performing influencer campaigns with expert strategy and management.";
+
+    // Robots
     const robots = document.createElement("meta");
     robots.name = "robots";
     robots.content = "noindex, nofollow";
     document.head.appendChild(robots);
 
     return () => {
+      document.title = prevTitle;
+      if (createdDesc) description.remove();
+      else description.content = prevDesc;
       robots.remove();
     };
   }, []);
@@ -28,7 +47,7 @@ export default function NewYorkPage() {
       <NewWorkHero />
       <NewYorkShowcase />
       <NewYorkOnTheGround />
-      <NewYorkWhereOurNYC />
+      {/* <NewYorkWhereOurNYC /> */}
       <NewYorkHowItWorks />
       <NewYorkFAQ />
       <NewYorkLookingForCity />

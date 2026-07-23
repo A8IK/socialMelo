@@ -58,7 +58,12 @@ import ProfileRoute from "./components/profile/ProfileRoute";
 import Error404 from "./components/Error404";
 import TiktokDownloader from "./components/ToolsPage/TikTokDownloader";
 import TwitterDownloader from "./components/ToolsPage/TwitterDownloader";
+import BookACallPage from "./components/bookACall/BookACallPage";
+import ChicagoPage from "./components/chicago/ChicagoPage";
+import ClevelandOhPage from "./components/clevelandOh/ClevelandOhPage";
 import InfluencerMarketingServicesPage from "./components/influencerMarketingServices/InfluencerMarketingServicesPage";
+import KansasCityKsPage from "./components/kansasCityKs/KansasCityKsPage";
+import LosAngelesPage from "./components/losAngeles/LosAngelesPage";
 import NewYorkPage from "./components/newYork/NewYorkPage";
 import PartnersFaq from "./components/partnersPage/PartnersFaq";
 import PartnersProcess from "./components/partnersPage/PartnersProcess";
@@ -67,7 +72,7 @@ import SeamlessIntegrations from "./components/partnersPage/SeamlessIntegration"
 import TransformPartnership from "./components/partnersPage/TransformPartnership";
 import TrustedLeaders from "./components/partnersPage/TrustedLeaders";
 import ServiceCorePage from "./components/serviceCore/ServiceCorePage";
-import BookAcall from "./components/bookACall/BookACallPage";
+import MiamiFlPage from "./components/miamiFl/MiamiFlPage";
 
 function App() {
   return (
@@ -138,7 +143,7 @@ function App() {
               />
 
               <Route
-                path="/new-york"
+                path="/services/new-york"
                 element={
                   <>
                     <NewYorkPage />
@@ -147,10 +152,55 @@ function App() {
               />
 
               <Route
+                path="/services/influencer-marketing-los-angeles"
+                element={
+                  <>
+                    <LosAngelesPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/services/influencer-marketing-cleveland"
+                element={
+                  <>
+                    <ClevelandOhPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/services/influencer-marketing-kansas-city"
+                element={
+                  <>
+                    <KansasCityKsPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/services/influencer-marketing-chicago"
+                element={
+                  <>
+                    <ChicagoPage />
+                  </>
+                }
+              />
+
+              <Route
+                path="/services/influencer-marketing-miami"
+                element={
+                  <>
+                    <MiamiFlPage />
+                  </>
+                }
+              />
+
+              <Route
                 path="/book-a-call"
                 element={
                   <>
-                    <BookAcall />
+                    <BookACallPage />
                   </>
                 }
               />

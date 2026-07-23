@@ -161,6 +161,14 @@
 .nys-photo[data-tone="4"] {
   background: linear-gradient(135deg, #ffaf7b, #3a1c71);
 }
+.nys-photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
 .nys-initials {
   font-size: 48px;
   font-weight: 700;
@@ -172,6 +180,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
+  z-index: 2;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -185,10 +194,20 @@
   color: var(--purple);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+.nys-platform svg {
+  width: 16px;
+  height: 16px;
+}
+.nys-platform-txt {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
 .nys-verified {
   position: absolute;
   top: 12px;
   left: 12px;
+  z-index: 2;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   padding: 4px 10px;
@@ -210,6 +229,7 @@
   position: absolute;
   bottom: 12px;
   left: 12px;
+  z-index: 2;
   background: rgba(45, 27, 105, 0.78);
   backdrop-filter: blur(8px);
   padding: 5px 12px;

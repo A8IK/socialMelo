@@ -27,10 +27,10 @@ export default function SocialMeloNYCHero() {
 
   return (
     <section className="nyhero">
-      <div className="nyhero-container">
+      <div className="nyhero-container-ny">
         <div className="nyhero-inner">
           <span className="nyhero-eyebrow">📍 New York City</span>
-          <h1>Hire New York's Best Creators.</h1>
+          <h1>Influencer Marketing Agency in New York</h1>
           <p className="nyhero-sub">
             Browse 850+ verified NYC creators across Fashion, Beauty, F&amp;B,
             Luxury, and Lifestyle. Filter by borough, niche, and platform, then
