@@ -63,8 +63,6 @@ const PROOF = [
 // Set the host headshot path here (leave "" to show the RT initials fallback).
 const HOST_IMG = RazuTasneemImg;
 
-const DAYS = Array.from({ length: 30 }, (_, i) => i + 1);
-const AVAIL = new Set([11, 12, 16, 17, 18, 19, 23, 24, 25, 26, 30]);
 const SLOTS = [
   "9:00 am",
   "9:30 am",
@@ -77,8 +75,44 @@ const SLOTS = [
   "4:30 pm",
 ];
 
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+const WEEKDAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const daysInMonth = (y, m) => new Date(y, m + 1, 0).getDate();
+const firstWeekday = (y, m) => new Date(y, m, 1).getDay(); // 0 = Sun
+// Availability rule for the mock: every day is open and selectable.
+const isAvail = () => true;
+const firstAvailDay = (y, m) => {
+  const dim = daysInMonth(y, m);
+  for (let d = 1; d <= dim; d++) if (isAvail(y, m, d)) return d;
+  return null;
+};
+
 export default function SocialMeloBookBooking() {
   const [persona, setPersona] = useState("brand");
+  const [viewYear, setViewYear] = useState(2026);
+  const [viewMonth, setViewMonth] = useState(5); // June (0-indexed)
   const [selectedDay, setSelectedDay] = useState(12);
   const [selectedSlot, setSelectedSlot] = useState("9:30 am");
 
@@ -94,6 +128,33 @@ export default function SocialMeloBookBooking() {
   }, []);
 
   const agenda = AGENDAS[persona];
+
+  const changeMonth = (dir) => {
+    let m = viewMonth + dir;
+    let y = viewYear;
+    if (m < 0) {
+      m = 11;
+      y -= 1;
+    } else if (m > 11) {
+      m = 0;
+      y += 1;
+    }
+    setViewYear(y);
+    setViewMonth(m);
+    setSelectedDay(firstAvailDay(y, m));
+  };
+
+  // Build the day grid: leading blanks so the 1st lands on its weekday.
+  const lead = firstWeekday(viewYear, viewMonth);
+  const total = daysInMonth(viewYear, viewMonth);
+  const cells = [];
+  for (let i = 0; i < lead; i++) cells.push(null);
+  for (let d = 1; d <= total; d++) cells.push(d);
+
+  const selectedLabel =
+    selectedDay != null
+      ? `${WEEKDAYS[new Date(viewYear, viewMonth, selectedDay).getDay()]}, ${MONTHS[viewMonth]} ${selectedDay}`
+      : "Select a date";
 
   return (
     <section className="bkb" id="book">
@@ -171,6 +232,7 @@ export default function SocialMeloBookBooking() {
         .bkb-dow span { text-align:center; font-size:11px; font-weight:700; color:var(--text-faint); letter-spacing:0.06em; }
         .bkb-days { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
         .bkb-day { aspect-ratio:1/1; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; border-radius:10px; color:var(--text-faint); cursor:default; }
+        .bkb-day.blank { background:none; cursor:default; }
         .bkb-day.muted { color:var(--border-2); }
         .bkb-day.avail { color:var(--purple); background:var(--brand-gradient-wash); cursor:pointer; transition:all 0.15s ease; }
         .bkb-day.avail:hover { background:var(--purple); color:var(--white); }
@@ -348,9 +410,15 @@ export default function SocialMeloBookBooking() {
             */}
             <div className="bkb-cal">
               <div className="bkb-cal-bar">
-                <div className="bkb-cm-month">June 2026</div>
+                <div className="bkb-cm-month">
+                  {MONTHS[viewMonth]} {viewYear}
+                </div>
                 <div className="bkb-cm-nav">
-                  <button type="button" aria-label="Previous month">
+                  <button
+                    type="button"
+                    aria-label="Previous month"
+                    onClick={() => changeMonth(-1)}
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
@@ -362,7 +430,11 @@ export default function SocialMeloBookBooking() {
                       <polyline points="15 18 9 12 15 6" />
                     </svg>
                   </button>
-                  <button type="button" aria-label="Next month">
+                  <button
+                    type="button"
+                    aria-label="Next month"
+                    onClick={() => changeMonth(1)}
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
@@ -386,8 +458,11 @@ export default function SocialMeloBookBooking() {
                 <span>S</span>
               </div>
               <div className="bkb-days">
-                {DAYS.map((d) => {
-                  const avail = AVAIL.has(d);
+                {cells.map((d, i) => {
+                  if (d === null) {
+                    return <div key={"b" + i} className="bkb-day blank" />;
+                  }
+                  const avail = isAvail(viewYear, viewMonth, d);
                   const cls =
                     "bkb-day" +
                     (avail ? " avail" : " muted") +
@@ -418,7 +493,7 @@ export default function SocialMeloBookBooking() {
 
               <div className="bkb-slots">
                 <div className="bkb-cs-label">
-                  Thursday, June 12 <span>· times in your local zone</span>
+                  {selectedLabel} <span>· times in your local zone</span>
                 </div>
                 <div className="bkb-slot-grid">
                   {SLOTS.map((s) => (

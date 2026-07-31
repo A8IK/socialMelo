@@ -37,8 +37,7 @@ export default function SocialMeloBookHero() {
         <div className="bkhero-inner">
           <span className="bkhero-eyebrow">Free 30-minute strategy call</span>
           <h1>
-            Book a creator strategy call.{" "}
-            <span className="">Leave with a plan.</span>
+            Book a call. <span className="">Leave with a plan.</span>
           </h1>
           <p className="bkhero-sub">
             In 30 minutes you will get a matched creator direction, a realistic

@@ -97,7 +97,7 @@ export default function SocialMeloBookObjections() {
                   {c.icon}
                 </svg>
               </div>
-              <h4>{c.h}</h4>
+              <h3>{c.h}</h3>
               <p>{c.p}</p>
             </div>
           ))}

@@ -16,7 +16,7 @@ export default function SocialMeloBookAlt() {
   return (
     <section className="bka">
       <div className="bka-container">
-        <h3>Prefer to send details first?</h3>
+        <h2>Prefer to send details first?</h2>
         <p>
           If you would rather share your campaign in writing and have us come
           back with a shortlist, skip the call and send a brief instead. We
