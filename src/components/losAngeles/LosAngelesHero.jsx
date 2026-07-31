@@ -40,7 +40,10 @@ export default function SocialMeloNYCHero() {
             <a href="#creators" className="nyhero-btn nyhero-btn-primary">
               <span>Browse LA Creators ↓</span>
             </a>
-            <a href="#contact" className="nyhero-btn nyhero-btn-outline">
+            <a
+              href="https://socialmelo.com/contact"
+              className="nyhero-btn nyhero-btn-outline"
+            >
               Get a Custom Quote
             </a>
           </div>

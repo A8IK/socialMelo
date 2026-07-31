@@ -49,25 +49,25 @@ export default function SocialMeloHowWeWork() {
   }, []);
 
   return (
-    <section className="hw">
-      <div className="hw-wrap">
-        <div className="hw-head">
-          <div className="hw-eyebrow">
-            <span className="hw-line" />
-            <span className="hw-eyebrow-t">How IT Work</span>
+    <section className="la-hw">
+      <div className="la-hw-wrap">
+        <div className="la-hw-head">
+          <div className="la-hw-eyebrow">
+            <span className="la-hw-line" />
+            <span className="la-hw-eyebrow-t">How IT Work</span>
           </div>
-          <h2 className="hw-h2">
+          <h2 className="la-hw-h2">
             Browse creators, we run{" "}
-            <span className="hw-accent">the campaign.</span>
+            <span className="la-hw-accent">the campaign.</span>
           </h2>
         </div>
 
-        <div className="hw-grid">
+        <div className="la-hw-grid">
           {STEPS.map((s) => (
-            <div key={s.num} className="hw-card">
-              <div className="hw-badge">{s.num}</div>
-              <h3 className="hw-card-t">{s.title}</h3>
-              <p className="hw-card-d">{s.desc}</p>
+            <div key={s.num} className="la-hw-card">
+              <div className="la-hw-badge">{s.num}</div>
+              <h3 className="la-hw-card-t">{s.title}</h3>
+              <p className="la-hw-card-d">{s.desc}</p>
             </div>
           ))}
         </div>

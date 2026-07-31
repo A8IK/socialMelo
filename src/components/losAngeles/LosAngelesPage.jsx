@@ -44,7 +44,7 @@ export default function LosAngelesPage() {
       <LosAngelesHero />
       <LosAngelesShowcase />
       <LosAngelesOnTheGround />
-      <LosAngelesWhereOurLA />
+      {/* <LosAngelesWhereOurLA /> */}
       <LosAngelesHowItWorks />
       <LosAngelesFAQ />
       <LosAngelesLookingForCity />

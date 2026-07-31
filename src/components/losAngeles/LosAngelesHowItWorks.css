@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Krub:wght@300;400;500;600;700&display=swap");
 
-.hw {
+.la-hw {
   font-family:
     "Krub",
     ui-sans-serif,
@@ -10,46 +10,41 @@
     sans-serif;
   color: #8e8794;
   -webkit-font-smoothing: antialiased;
-  background: #fff8f2;
-  background-image: radial-gradient(
-    900px 440px at 86% -12%,
-    #ffe6d3 0%,
-    rgba(255, 248, 242, 0) 60%
-  );
+  background: #ffffff;
 }
-.hw *,
-.hw *::before,
-.hw *::after {
+.la-hw *,
+.la-hw *::before,
+.la-hw *::after {
   box-sizing: border-box;
 }
-.hw-wrap {
+.la-hw-wrap {
   max-width: 1180px;
   margin: 0 auto;
   padding: 90px 24px;
 }
 
-.hw-head {
+.la-hw-head {
   text-align: center;
 }
-.hw-eyebrow {
+.la-hw-eyebrow {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
 }
-.hw-line {
+.la-hw-line {
   width: 28px;
   height: 2px;
   background: #d76d77;
 }
-.hw-eyebrow-t {
+.la-hw-eyebrow-t {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 2.4px;
   text-transform: uppercase;
   color: #d76d77;
 }
-.hw-h2 {
+.la-hw-h2 {
   font-weight: 700;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.16;
@@ -72,7 +67,7 @@
   color: transparent;
 }
 
-.hw-accent {
+.la-hw-accent {
   background: linear-gradient(
     100deg,
     #f88f7c 0%,
@@ -86,14 +81,14 @@
   color: transparent;
 }
 
-.hw-grid {
+.la-hw-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 22px;
   margin-top: 56px;
 }
-.hw-card {
-  background: #fff;
+.la-hw-card {
+  background: #fff8f2;
   border: 1px solid #f2ecef;
   border-radius: 18px;
   padding: 28px 26px 30px;
@@ -103,12 +98,12 @@
     box-shadow 0.28s ease,
     border-color 0.28s ease;
 }
-.hw-card:hover {
+.la-hw-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 28px 60px rgba(150, 90, 120, 0.18);
   border-color: #ebd9de;
 }
-.hw-badge {
+.la-hw-badge {
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -125,18 +120,18 @@
     transform 0.28s ease,
     box-shadow 0.28s ease;
 }
-.hw-card:hover .hw-badge {
+.la-hw-card:hover .la-hw-badge {
   transform: translateY(-2px) scale(1.06);
   box-shadow: 0 14px 28px rgba(190, 93, 124, 0.42);
 }
-.hw-card-t {
+.la-hw-card-t {
   color: #2d1963;
   font-weight: 700;
   font-size: 1.08rem;
   line-height: 1.3;
   margin: 0 0 12px;
 }
-.hw-card-d {
+.la-hw-card-d {
   color: #4b5563;
   font-size: 0.9rem;
   line-height: 1.62;
@@ -144,34 +139,34 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hw-card,
-  .hw-badge {
+  .la-hw-card,
+  .la-hw-badge {
     transition: none;
   }
-  .hw-card:hover {
+  .la-hw-card:hover {
     transform: none;
   }
-  .hw-card:hover .hw-badge {
+  .la-hw-card:hover .la-hw-badge {
     transform: none;
   }
 }
 @media (max-width: 880px) {
-  .hw-grid {
+  .la-hw-grid {
     grid-template-columns: 1fr 1fr;
     gap: 18px;
   }
 }
 @media (max-width: 520px) {
-  .hw-wrap {
+  .la-hw-wrap {
     padding: 60px 20px;
   }
-  .hw-grid {
+  .la-hw-grid {
     grid-template-columns: 1fr;
   }
-  .hw-card {
+  .la-hw-card {
     text-align: center;
   }
-  .hw-badge {
+  .la-hw-badge {
     margin-left: auto;
     margin-right: auto;
   }
